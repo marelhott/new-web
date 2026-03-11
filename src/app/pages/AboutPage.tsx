@@ -19,27 +19,27 @@ const team = [
   {
     name: "MAREK",
     role: "Zakladatel",
-    image: "https://images.unsplash.com/photo-1607969892192-8aa9fe65ee26?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtYXR1cmUlMjBtYW4lMjBwb3J0cmFpdCUyMGNyYWZ0c21hbiUyMGV4cGVyaWVuY2VkfGVufDF8fHx8MTc3MTM0MDg5MHww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/team/marek.jpg",
   },
   {
     name: "ALBERT",
     role: "Malíř",
-    image: "https://images.unsplash.com/photo-1584677717756-318ebaf7e1e8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1hbiUyMGRhcmslMjBjdXJseSUyMGhhaXIlMjBjcmVhdGl2ZSUyMHBvcnRyYWl0fGVufDF8fHx8MTc3MTM0MDg5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/team/albert.jpg",
   },
   {
     name: "VINCENT",
     role: "Malíř",
-    image: "https://images.unsplash.com/photo-1754091152246-8d48d91666f8?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1hbiUyMGNhc3VhbCUyMHBvcnRyYWl0JTIwb3V0ZG9vcnMlMjBuYXR1cmFsfGVufDF8fHx8MTc3MTM0MDg5MXww&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/team/vincent.jpg",
   },
   {
     name: "LENKA",
     role: "Koordinace",
-    image: "https://images.unsplash.com/photo-1758598304332-94b40ce7c7b4?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMHdvbWFuJTIwcHJvZmVzc2lvbmFsJTIwcG9ydHJhaXQlMjBuYXR1cmFsJTIwbGlnaHR8ZW58MXx8fHwxNzcxMzQwODkxfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/team/lenka.jpg",
   },
   {
     name: "PAVEL",
     role: "Malíř",
-    image: "https://images.unsplash.com/photo-1582562124760-06459ed90888?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx5b3VuZyUyMG1hbiUyMGJlYW5pZSUyMGhhdCUyMGFydGlzdGljJTIwcG9ydHJhaXR8ZW58MXx8fHwxNzcxMzQwODkzfDA&ixlib=rb-4.1.0&q=80&w=1080",
+    image: "/team/pavel.jpg",
   },
 ];
 
