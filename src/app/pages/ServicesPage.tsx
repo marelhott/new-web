@@ -1,0 +1,458 @@
+import { useRef } from "react";
+import { Link } from "react-router";
+import { motion, useInView } from "motion/react";
+import {
+  ArrowRight,
+  ArrowUpRight,
+  Check,
+  Home,
+  Building2,
+  Palette,
+  Wrench,
+  Store,
+  Users,
+} from "lucide-react";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+
+const faqItems = [
+  {
+    q: "Jak vybrat správnou službu, když si nejsem jistý?",
+    a: "Pokud si nejste jistí, využijte online kalkulačku nebo nás kontaktujte. Doporučíme vhodný postup podle typu prostoru a stavu povrchů.",
+  },
+  {
+    q: "Děláte i komerční zakázky a SVJ?",
+    a: "Ano. Realizujeme kanceláře, společné prostory, komerční objekty i zakázky pro SVJ a developery včetně etapového postupu.",
+  },
+  {
+    q: "Je možné domluvit prohlídku a přesnější nacenění?",
+    a: "Ano, po úvodní poptávce domluvíme prohlídku nebo upřesnění podkladů a připravíme konkrétní nabídku.",
+  },
+];
+
+/* ─── Reveal helper ─── */
+function Reveal({
+  children,
+  className = "",
+  delay = 0,
+}: {
+  children: React.ReactNode;
+  className?: string;
+  delay?: number;
+}) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div
+      ref={ref}
+      initial={{ opacity: 0, y: 50 }}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+      transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
+      className={className}
+    >
+      {children}
+    </motion.div>
+  );
+}
+
+/* ─── Services data ─── */
+const allServices = [
+  {
+    title: "Malování bytů a domů",
+    slug: "malovani-bytu",
+    tag: "Rezidenční",
+    icon: Home,
+    desc: "Váš domov si zaslouží to nejlepší – a my vám to rádi dopřejeme díky dokonalé výmalbě vašich osobních prostor. Od garsoniéry po rodinný dům.",
+    features: [
+      "Kompletní zakrytí nábytku a podlah",
+      "Prémiové barvy Dulux / Caparol",
+      "Poradenství při výběru barev zdarma",
+    ],
+    price: "Od 85 Kč/m²",
+    color: "#c9982d",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F5e3db085be04449fb327c79b0ec47e1b",
+  },
+  {
+    title: "Malování firem a ordinací",
+    slug: "malovani-kancelari",
+    tag: "Komerční",
+    icon: Building2,
+    desc: "Reprezentativní prostředí je vizitkou každé úspěšné firmy či ordinace – a my vám ho pomůžeme vytvořit. Pracujeme mimo pracovní dobu, o víkendech i v noci.",
+    features: [
+      "Zero-disruption – mimo pracovní dobu",
+      "Korporátní barvy dle CI",
+      "Pojištění do 5 mil. Kč",
+    ],
+    price: "Od 75 Kč/m²",
+    color: "#6b8f71",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F3026d95741854f52aaaf83680e170c34",
+  },
+  {
+    title: "Obchody, kavárny a pensiony",
+    slug: "komercni-objekty",
+    tag: "Hospitality",
+    icon: Store,
+    desc: "Každý obchod, kavárna či penzion má svůj příběh – a my ho podtrhneme dokonalým vzhledem. Malujeme v termínech, které vám vyhovují.",
+    features: [
+      "Flexibilní termíny bez příplatků",
+      "Odolné a omyvatelné nátěry",
+      "Kompletní fotodokumentace",
+    ],
+    price: "Od 80 Kč/m²",
+    color: "#c9982d",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F813e356566e0424cbba8f945a4b5a0bc",
+  },
+  {
+    title: "SVJ – chodby a schodiště",
+    slug: "komercni-objekty",
+    tag: "SVJ / Developers",
+    icon: Users,
+    desc: "Společné prostory jsou tváří každého domu. Jsme odborníci na malování chodeb, schodišť a dalších prostor spravovaných SVJ a bytovými družstvy.",
+    features: [
+      "Etapová realizace v obydlených domech",
+      "Hromadné slevy pro SVJ",
+      "Koordinace s výborem SVJ",
+    ],
+    price: "Individuální",
+    color: "#6b8f71",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Ffe0d5ae8e8b3454e951a42634b8be26d",
+  },
+  {
+    title: "Dekorativní stěrky a štuk",
+    slug: "dekorativni-sterky",
+    tag: "Speciální",
+    icon: Palette,
+    desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Unikátní interiéry s precizním řemeslem a důrazem na jedinečnost.",
+    features: [
+      "Microcement a benátský štuk",
+      "Vzorky a vizualizace zdarma",
+      "Voděodolné úpravy pro wellness",
+    ],
+    price: "Od 850 Kč/m²",
+    color: "#b8a88a",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fc56ff688f14e45aabf5bbee2d3fe87bc",
+  },
+  {
+    title: "Opravy a příprava zdí",
+    slug: "opravy-a-priprava",
+    tag: "Příprava",
+    icon: Wrench,
+    desc: "Kvalitní malba začíná perfektní přípravou. Tmelení, broušení, penetrace, sanace vlhkosti — základ pro dokonalý a trvanlivý výsledek.",
+    features: [
+      "Oprava prasklin a omítek",
+      "Strojní i ruční broušení",
+      "Sanace vlhkých stěn",
+    ],
+    price: "Od 45 Kč/m²",
+    color: "#1e3a5f",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F7bc2d8e387984b9c83f26dd48b4352e0",
+  },
+];
+
+/* ─── Page ─── */
+export default function ServicesPage() {
+  return (
+    <>
+      {/* ── HERO ── */}
+      <section
+        className="relative pt-32 pb-20 noise-overlay overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(160deg, #ffffff 0%, #f4f8ff 46%, #ffffff 100%)",
+        }}
+      >
+        <div
+          className="absolute w-[600px] h-[600px] -top-[200px] -right-[100px] rounded-full blur-[200px] animate-float-slow pointer-events-none"
+          style={{ background: "rgba(37,99,235,0.12)" }}
+        />
+        <div
+          className="absolute w-[400px] h-[400px] bottom-0 -left-[100px] rounded-full blur-[150px] animate-float-reverse pointer-events-none"
+          style={{ background: "rgba(124,58,237,0.08)" }}
+        />
+
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span
+              className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-6 block"
+              style={{ fontSize: "12px", fontWeight: 600 }}
+            >
+              Naše služby
+            </span>
+            <h1
+              className="font-[family-name:var(--font-display)] text-foreground mb-6"
+              style={{
+                fontSize: "clamp(36px, 6vw, 72px)",
+                fontWeight: 700,
+                lineHeight: 1.0,
+              }}
+            >
+              Kompletní malířské
+              <br />
+              <span className="bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">
+                služby
+              </span>
+            </h1>
+            <p
+              className="font-sans max-w-xl"
+              style={{ fontSize: "17px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+            >
+              Od klasického malování bytů přes komerční prostory a SVJ po
+              speciální dekorativní techniky. Vždy precizně, čistě, v termínu a
+              za předem dohodnutou cenu.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* ── SERVICES LIST ── */}
+      <section
+        className="relative py-20 noise-overlay"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)",
+        }}
+      >
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+          <div className="flex flex-col gap-8">
+            {allServices.map((s, i) => (
+              <Reveal key={`${s.slug}-${i}`} delay={i * 0.06}>
+                <Link to={`/sluzby/${s.slug}`} className="group block">
+                  <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(37,99,235,0.08)]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+                    <div className="grid grid-cols-1 lg:grid-cols-2">
+                      {/* Image */}
+                      <div
+                        className={`aspect-[4/3] lg:aspect-auto overflow-hidden relative ${
+                          i % 2 === 1 ? "lg:order-2" : ""
+                        }`}
+                      >
+                        <ImageWithFallback
+                          src={s.image}
+                          alt={s.title}
+                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-none" />
+                        {/* Color accent strip */}
+                        <div
+                          className="absolute bottom-0 left-0 right-0 h-1 lg:hidden"
+                          style={{ background: s.color }}
+                        />
+                      </div>
+
+                      {/* Content */}
+                      <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
+                        <div className="flex items-center gap-3 mb-6">
+                          <div
+                            className="w-10 h-10 rounded-xl flex items-center justify-center"
+                            style={{
+                              background: `${s.color}15`,
+                              border: `1px solid ${s.color}30`,
+                            }}
+                          >
+                            <s.icon
+                              size={18}
+                              style={{ color: s.color }}
+                              strokeWidth={1.5}
+                            />
+                          </div>
+                          <span
+                            className="px-3 py-1 rounded-full border"
+                            style={{
+                              fontSize: "11px",
+                              fontWeight: 700,
+                              letterSpacing: "0.08em",
+                              textTransform: "uppercase",
+                              color: s.color,
+                              background: `${s.color}12`,
+                              borderColor: `${s.color}22`,
+                              fontFamily: "'Manrope', var(--font-sans)",
+                            }}
+                          >
+                            {s.tag}
+                          </span>
+                        </div>
+
+                        <h2
+                          className="mb-4"
+                          style={{
+                            fontFamily: "'Sora', sans-serif",
+                            fontSize: "clamp(24px, 3vw, 34px)",
+                            fontWeight: 700,
+                            lineHeight: 1.08,
+                            letterSpacing: "-0.04em",
+                            color: "#0f172a",
+                          }}
+                        >
+                          {s.title}
+                        </h2>
+
+                        <p
+                          className="font-sans mb-6"
+                          style={{ fontSize: "15px", lineHeight: 1.74, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+                        >
+                          {s.desc}
+                        </p>
+
+                        <div className="flex flex-col gap-2 mb-8">
+                          {s.features.map((f) => (
+                            <div key={f} className="flex items-center gap-2">
+                              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${s.color}14`, color: s.color }}>
+                                <Check
+                                  size={10}
+                                  className=""
+                                  strokeWidth={3}
+                                />
+                              </div>
+                              <span
+                                className="font-sans"
+                                style={{ fontSize: "13px", color: "#415063", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}
+                              >
+                                {f}
+                              </span>
+                            </div>
+                          ))}
+                        </div>
+
+                        <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
+                          <div>
+                            <span
+                              className="font-sans block"
+                              style={{
+                                fontSize: "11px",
+                                letterSpacing: "0.08em",
+                                color: "#7b8794",
+                                fontFamily: "'Manrope', var(--font-sans)",
+                                fontWeight: 700,
+                              }}
+                            >
+                              ORIENTAČNÍ CENA
+                            </span>
+                            <span
+                              className=""
+                              style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, color: s.color, letterSpacing: "-0.03em" }}
+                            >
+                              {s.price}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all duration-300">
+                            <span
+                              className=""
+                              style={{ fontSize: "13px", fontWeight: 800, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.06em" }}
+                            >
+                              Detail služby
+                            </span>
+                            <ArrowUpRight size={16} />
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </Link>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ── CTA BOTTOM ── */}
+      <section
+        className="relative py-20 noise-overlay"
+        style={{
+          background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)",
+        }}
+      >
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-center">
+          <Reveal>
+            <h2
+              className="font-[family-name:var(--font-display)] text-foreground mb-6"
+              style={{
+                fontSize: "clamp(28px, 4vw, 48px)",
+                fontWeight: 700,
+              }}
+            >
+              Nevíte, jakou službu potřebujete?
+            </h2>
+            <p
+              className="text-foreground/50 font-sans mb-10 max-w-lg mx-auto"
+              style={{ fontSize: "16px", lineHeight: 1.7 }}
+            >
+              Použijte naši online kalkulačku a spočítejte si cenu předem — nebo
+              nám zavolejte a poradíme.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to="/kalkulacka"
+                className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
+                style={{
+                  background: "linear-gradient(135deg, #2563eb, #4f46e5)",
+                  fontSize: "15px",
+                  fontWeight: 600,
+                }}
+              >
+                Online kalkulačka{" "}
+                <ArrowRight
+                  size={16}
+                  className="group-hover:translate-x-1 transition-transform"
+                />
+              </Link>
+              <Link
+                to="/kontakt"
+                className="inline-flex items-center px-8 py-4 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "15px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}
+                
+              >
+                Kontaktovat nás
+              </Link>
+            </div>
+          </Reveal>
+        </div>
+      </section>
+
+      <section
+        className="relative py-16 noise-overlay"
+        style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 100%)" }}
+      >
+        <div className="max-w-[1000px] mx-auto px-6 md:px-10 relative z-10">
+          <Reveal>
+            <div className="text-center mb-10">
+              <span
+                className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block"
+                style={{ fontSize: "12px", fontWeight: 600 }}
+              >
+                FAQ
+              </span>
+              <h2
+                className="font-[family-name:var(--font-display)] text-foreground"
+                style={{ fontSize: "clamp(26px, 4vw, 42px)", fontWeight: 700 }}
+              >
+                Časté dotazy ke službám
+              </h2>
+            </div>
+          </Reveal>
+          <div className="grid gap-4">
+            {faqItems.map((item, i) => (
+              <Reveal key={item.q} delay={i * 0.05}>
+                <article className="rounded-[24px] p-6" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 14px 36px rgba(15,23,42,0.04)" }}>
+                  <h3 className="mb-3" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a" }}>
+                    {item.q}
+                  </h3>
+                  <p className="font-sans" style={{ fontSize: "15px", lineHeight: 1.74, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                    {item.a}
+                  </p>
+                </article>
+              </Reveal>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

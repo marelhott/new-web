@@ -1,0 +1,693 @@
+import React, { useRef, useState, useEffect, useCallback } from "react";
+import { Link } from "react-router";
+import { motion, useInView, AnimatePresence } from "motion/react";
+import {
+  ArrowRight, ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight,
+  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock
+} from "lucide-react";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+
+const heroPhoto = "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fde4c3a59dfe7452abff728cfc029c559?format=webp&width=2400&height=3600";
+
+const IMG = {
+  apartment: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fccb0003eea4f4419ae5d6485d2222ae5",
+  office: "https://images.unsplash.com/photo-1764410481612-7544525b2991?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBvZmZpY2UlMjBpbnRlcmlvciUyMGRlc2lnbnxlbnwxfHx8fDE3NzEzMjcxNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  microcement: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fac74bb287f214990a9342caddd066a63",
+  roller: "https://images.unsplash.com/photo-1589307693556-7286ae38293c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHdhbGwlMjBwYWludCUyMHJvbGxlciUyMGZyZXNoJTIwY29hdHxlbnwxfHx8fDE3NzEzMjcxNjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  commercial: "https://images.unsplash.com/photo-1768270181430-3e3672a32283?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb21tZXJjaWFsJTIwYnVpbGRpbmclMjBsb2JieSUyMGludGVyaW9yfGVufDF8fHx8MTc3MTMyNzE1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+  before: "https://images.unsplash.com/photo-1566503732592-748f40a6e997?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbXB0eSUyMHJvb20lMjBiZWZvcmUlMjByZW5vdmF0aW9uJTIwd2FsbHN8ZW58MXx8fHwxNzcxMzI3MTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
+  after: "https://images.unsplash.com/photo-1741105820091-3d150a451cfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjbGVhbiUyMHdoaXRlJTIwcm9vbSUyMGFmdGVyJTIwcmVub3ZhdGlvbnxlbnwxfHx8fDE3NzEzMjcxNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  howStep1: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fe13cc55ca0b340e681ebe2d6bb1cc47a",
+  howStep2: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F99308e88c7b44684867965ebc35d3d74",
+  howStep3: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F0597aaf49233415892a99debe1695c52",
+  decoArt1: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F2a3232c9a8fd4bbd98ad49cd2837db64",
+  decoArt2: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Ff79c6da27b1d444ba0b154fb40a7321d",
+  decoArt3: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fbad5f6bc0f8b40218b9f946ea125ad93",
+  decoArt4: "https://images.unsplash.com/photo-1767277680127-dc94441d576c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBiYXIlMjByZXN0YXVyYW50JTIwbW9vZHklMjBhbWJpZW50JTIwaW50ZXJpb3J8ZW58MXx8fHwxNzcxMzQwODk5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+  decoArt5: "https://images.unsplash.com/photo-1748075823969-0f3b0870912a?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxvcm5hbWVudGFsJTIwd2FsbCUyMHBhaW50aW5nJTIwY2xhc3NpY2FsJTIwYXJ0JTIwaW50ZXJpb3J8ZW58MXx8fHwxNzcxMzQwODk5fDA&ixlib=rb-4.1.0&q=80&w=1080",
+};
+
+function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-80px" });
+  return (
+    <motion.div ref={ref} initial={{ opacity: 0, y: 50 }} animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }} transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }} className={className}>
+      {children}
+    </motion.div>
+  );
+}
+
+function GradientMesh({ variant = "hero" }: { variant?: string }) {
+  return (
+    <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {variant === "hero" && (
+        <>
+          <div className="absolute w-[700px] h-[700px] -top-[200px] -right-[200px] rounded-full blur-[200px] animate-float-slow" style={{ background: "var(--orb-navy)" }} />
+          <div className="absolute w-[500px] h-[500px] top-[40%] -left-[150px] rounded-full blur-[180px] animate-float-reverse" style={{ background: "var(--orb-accent)" }} />
+          <div className="absolute w-[400px] h-[400px] bottom-0 right-[30%] rounded-full blur-[160px] animate-pulse-glow" style={{ background: "var(--orb-olive)" }} />
+          <div className="absolute w-[300px] h-[300px] top-[20%] left-[40%] rounded-full blur-[140px] animate-float-slow" style={{ background: "var(--orb-copper)" }} />
+        </>
+      )}
+      {variant === "dark" && (
+        <>
+          <div className="absolute w-[600px] h-[400px] top-0 left-1/4 rounded-full blur-[200px] animate-float-slow" style={{ background: "var(--orb-accent)" }} />
+          <div className="absolute w-[400px] h-[300px] bottom-0 right-0 rounded-full blur-[150px] animate-float-reverse" style={{ background: "var(--orb-navy)" }} />
+        </>
+      )}
+    </div>
+  );
+}
+
+/* ───────── HERO (Light bg, text left, photo right – Paintly style) ───────── */
+function HeroSection() {
+  return (
+    <section className="relative min-h-screen flex items-center overflow-hidden bg-background" style={{ paddingTop: "92px", paddingBottom: "128px" }}>
+      <div className="absolute top-[18%] left-[6%] w-[360px] h-[360px] bg-[#2563eb]/[0.08] rounded-full blur-[170px] pointer-events-none" />
+      <div className="absolute bottom-[6%] left-[28%] w-[260px] h-[260px] bg-[#ec4899]/[0.06] rounded-full blur-[130px] pointer-events-none" />
+      <div className="absolute top-[14%] right-[20%] w-[240px] h-[240px] bg-[#14b8a6]/[0.05] rounded-full blur-[120px] pointer-events-none" />
+
+      {/* Photo – full width, full height, centered */}
+      <div className="absolute top-0 right-0 bottom-0 left-0 w-full hidden lg:block z-0">
+        <img
+          src={heroPhoto}
+          alt="Malířka při práci"
+          className="absolute inset-0 w-full h-full object-cover"
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
+          style={{ objectPosition: "center 58%" }}
+        />
+        <div className="absolute inset-y-0 left-0 w-[48%] bg-gradient-to-r from-white via-white/92 to-transparent" />
+        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.36)_0%,rgba(255,255,255,0)_18%,rgba(255,255,255,0.04)_100%)]" />
+      </div>
+
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-12 md:pt-16 pb-32">
+        <div className="max-w-xl lg:max-w-[52%]">
+          <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
+            <h1
+              className="tracking-[-0.045em] text-[#09090b]"
+              style={{ fontSize: "clamp(38px, 5.1vw, 70px)", fontWeight: 600, lineHeight: 0.96, fontFamily: "'Sora', sans-serif" }}
+            >
+              Malování bytů, domů,
+              <br />
+              kanceláří v&nbsp;Praze
+              <br />
+              a&nbsp;okolí.{" "}
+              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic" }}>Kvalitně, rychle a&nbsp;s&nbsp;péčí o&nbsp;detail.</span>
+            </h1>
+          </motion.div>
+
+          <motion.p
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 0.3 }}
+            className="text-[#334155] max-w-xl mt-9 mb-10 font-sans"
+            style={{ fontSize: "clamp(14px, 1.08vw, 18px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+          >
+            Potřebujete vymalovat a&nbsp;chcete mít jistotu, že výsledek bude perfektní, aniž byste se museli o&nbsp;cokoli starat? Malíři v&nbsp;černém to zařídí&nbsp;– rychle, čistě a s&nbsp;důrazem na detail. Díky online kalkulačce navíc cenu znáte předem, přesně a bez překvapení.
+          </motion.p>
+
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
+            <Link
+              to="/kalkulacka"
+              className="group inline-flex items-center gap-3 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-xl hover:shadow-[#c9982d]/30 hover:scale-[1.02]"
+              style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700, boxShadow: "0 18px 38px rgba(37,99,235,.18)" }}
+            >
+              Spočítat cenu
+              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-9 flex items-center gap-2 flex-wrap">
+            <span className="text-foreground/55 font-sans" style={{ fontSize: "14px", fontFamily: "'Manrope', var(--font-sans)" }}>
+              nebo nás kontaktujte přímo:
+            </span>
+            <a
+              href="tel:+420732333550"
+              className="inline-flex items-center gap-2 text-foreground font-[family-name:var(--font-display)] hover:text-accent transition-colors duration-300"
+              style={{ fontSize: "17px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}
+            >
+              <Phone size={16} strokeWidth={2} className="text-accent" />
+              +420 732 333 550
+            </a>
+          </motion.div>
+        </div>
+
+        {/* Mobile hero image */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="mt-12 lg:hidden rounded-2xl overflow-hidden shadow-xl"
+        >
+          <img src={heroPhoto} alt="Malířka při práci" className="w-full h-auto object-cover aspect-[4/3]" loading="eager" decoding="async" />
+        </motion.div>
+      </div>
+
+      {/* Scroll indicator */}
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
+        <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="flex flex-col items-center gap-2 text-foreground/30">
+          <span className="font-[family-name:var(--font-display)] tracking-widest uppercase" style={{ fontSize: "10px" }}>Scroll</span>
+          <ArrowDown size={14} />
+        </motion.div>
+      </motion.div>
+    </section>
+  );
+}
+
+/* ───────── TRUST — 3 feature cards (Figma-style) ───────── */
+const featureCards = [
+  {
+    icon: Paintbrush,
+    title: "NAŠE SPECIALIZACE JSOU INTERIÉRY",
+    desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových domů, stejně tak zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
+    color: "#2563eb",
+  },
+  {
+    icon: Shield,
+    title: "OPRAVÍME ZDI PŘED VÝMALBOU",
+    desc: "Před každou výmalbou je potřeba stěny opravit, zatmelit, upravit povrch, napenetrovat. Je to nedílná součást naší přípravy. Stejně tak pečlivé zakrytí nábytku a podlah.",
+    color: "#7c3aed",
+  },
+  {
+    icon: Clock,
+    title: "EXPRES A VÍKENDOVÉ TERMÍNY",
+    desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
+    color: "#0f766e",
+  },
+];
+
+function TrustSection() {
+  return (
+    <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+      <GradientMesh variant="dark" />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+          {featureCards.map((card, index) => (
+            <Reveal key={card.title} delay={index * 0.1}>
+              <div className="group relative p-8 md:p-9 rounded-[28px] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(37,99,235,0.09)] h-full text-center" style={{ background: index === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.92) 100%)" : index === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.94) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(238,253,248,0.94) 100%)", border: `1px solid ${card.color}22`, boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+                <div className="absolute inset-x-8 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${card.color}66, transparent)` }} />
+                <motion.div
+                  className="mx-auto mb-5 flex w-fit items-center justify-center"
+                  animate={{ y: [0, -5, 0], rotate: [0, -2, 0, 2, 0], opacity: [0.72, 1, 0.72] }}
+                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.22 }}
+                >
+                  <card.icon size={20} style={{ color: card.color }} strokeWidth={1.45} />
+                </motion.div>
+                <h3 className="mb-4 tracking-[-0.035em] text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(18px, 1.45vw, 23px)", fontWeight: 700, lineHeight: 1.12 }}>
+                  {card.title}
+                </h3>
+                <p className="font-sans text-[#334155]" style={{ fontSize: "15px", lineHeight: 1.76, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── STATS COUNTERS ───────── */
+function useCounter(target: number, duration = 2000) {
+  const [count, setCount] = useState(target);
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: "-100px" });
+
+  useEffect(() => {
+    if (!inView) return;
+    let startTime: number;
+    const animate = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = (timestamp - startTime) / duration;
+      if (progress < 1) {
+        setCount(Math.floor(target * progress));
+        requestAnimationFrame(animate);
+      } else {
+        setCount(target);
+      }
+    };
+    requestAnimationFrame(animate);
+  }, [inView, target, duration]);
+
+  return { count, ref };
+}
+
+const statsData = [
+  { label: "let zkušeností", target: 23, suffix: "+" },
+  { label: "hotových projektů", target: 120, suffix: "k+", divide: true },
+  { label: "spokojených klientů", target: 98, suffix: "%" },
+  { label: "oceněných služeb", target: 15, suffix: "+" },
+];
+
+function StatCounter({ stat }: { stat: typeof statsData[0] }) {
+  const { count, ref } = useCounter(stat.target);
+  return (
+    <div ref={ref} className="text-center">
+      <div className="font-[family-name:var(--font-display)]" style={{ fontSize: "clamp(48px, 7vw, 80px)", fontWeight: 400, color: "var(--accent)", lineHeight: 1.0, fontFamily: "'Sora', sans-serif" }}>
+        {stat.divide ? (count / 1000).toFixed(1) : count}{stat.suffix}
+      </div>
+      <p className="text-foreground/60 font-sans mt-2" style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.02em" }}>{stat.label}</p>
+    </div>
+  );
+}
+
+function StatsSection() {
+  return (
+    <section className="relative py-8 md:py-12 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 100%)" }}>
+      <div className="absolute top-1/2 right-0 w-[400px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-accent)" }} />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 md:gap-10">
+          {statsData.map((stat, i) => (
+            <Reveal key={i} delay={i * 0.1}>
+              <StatCounter stat={stat} />
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── HOW IT WORKS ───────── */
+const howItWorksSteps = [
+  {
+    title: "Kalkulačka a objednávka",
+    desc: "Zde na webu si sami spočítáte cenu, zadáte parametry a termín a provedete jedním kliknutím objednávku. Cena za realizaci je tak předem jasně daná a vyhneme se obě strany nepříjemnému smlouvání. Objednávku okamžitě zpracujeme a reagujeme telefonátem nebo emailem. Nejpozději do 24 hodin.",
+    image: IMG.howStep1,
+  },
+  {
+    title: "Příprava a realizace",
+    desc: "Po dohodnutí termínu a podrobností zakázky přijedeme na místo a provedeme přípravné práce, vše pečlivě zakryjeme, opavíme zdi a vymalujeme předem domluvenou barvou a postupem. Následně po sobě pečlivě uklidíme a byt odevzdáme v perfektním stavu klientovi jako nový…",
+    image: IMG.howStep2,
+  },
+  {
+    title: "Kontrola a fakturace",
+    desc: "Klient zkontroluje provedení zakázky, pokud není vše jak má být, okamžitě – již bezplatně – opravíme eventuální nedostatky. Následně práci klient převezme a předem domluvenou částku zaplatí, následně vystavíme fakturu. Zbývá jenom poděkovat za skvělou spolupráci:)",
+    image: IMG.howStep3,
+  },
+];
+
+function HowItWorksSection() {
+  return (
+    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+      <div className="absolute top-0 left-1/4 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-olive)" }} />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-16">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proces</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(34px, 4.6vw, 58px)", fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.04em" }}>
+              Jak to <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>funguje?</em>
+            </h2>
+            <div className="w-18 h-[3px] mx-auto mt-6 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          {howItWorksSteps.map((step, i) => (
+            <Reveal key={step.title} delay={i * 0.12}>
+              <div className="group overflow-hidden rounded-[30px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(37,99,235,0.10)] h-full flex flex-col" style={{ background: i === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,247,255,0.95) 100%)" : i === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.95) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,253,248,0.95) 100%)", border: i === 0 ? "1px solid rgba(37,99,235,0.14)" : i === 1 ? "1px solid rgba(124,58,237,0.14)" : "1px solid rgba(15,118,110,0.14)", boxShadow: "0 18px 44px rgba(15,23,42,0.05)" }}>
+                <div className="aspect-[4/3] overflow-hidden relative">
+                  <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.08), transparent 36%)" }} />
+                  <div className="absolute top-5 left-5" style={{ fontSize: "12px", fontWeight: 800, color: i === 0 ? "#2563eb" : i === 1 ? "#7c3aed" : "#0f766e", letterSpacing: "0.14em", fontFamily: "'Manrope', var(--font-sans)" }}>
+                    0{i + 1}
+                  </div>
+                </div>
+                <div className="p-6 md:p-7 flex flex-col flex-1">
+                  <h3 className="mb-3" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.04em", color: i === 0 ? "#10213f" : i === 1 ? "#231942" : "#16382f" }}>{step.title}</h3>
+                  <p className="font-sans flex-1" style={{ fontSize: "15px", lineHeight: 1.78, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500, color: "#475569" }}>{step.desc}</p>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── SERVICE PREVIEW ───────── */
+const services = [
+  { title: "Malování bytů", desc: "Kompletní malířské práce pro byty a rodinné domy.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
+  { title: "Malování kanceláří", desc: "Profesionální servis pro komerční prostory. Mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
+  { title: "Dekorativní stěrky", desc: "Microcement, benátský štuk a moderní povrchové úpravy.", image: IMG.microcement, slug: "dekorativni-sterky", tag: "Speciální" },
+  { title: "Opravy a příprava", desc: "Tmelení, broušení, penetrace. Důkladná příprava.", image: IMG.roller, slug: "opravy-a-priprava", tag: "Příprava" },
+  { title: "Komerční objekty", desc: "SVJ, bytové domy, developerské projekty.", image: IMG.commercial, slug: "komercni-objekty", tag: "SVJ / Dev" },
+];
+
+function ServicePreview() {
+  return (
+    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+      <GradientMesh variant="dark" />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-8">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Služby</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
+              Co pro vás{" "}
+              <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>můžeme udělat</em>
+            </h2>
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
+          </div>
+          <div className="text-center mb-10">
+            <Link to="/sluzby" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
+              Všechny služby <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+          {services.map((s, i) => (
+            <Reveal key={s.slug} delay={i * 0.08}>
+              <Link to={`/sluzby/${s.slug}`} className="group block">
+                <div className="relative overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(37,99,235,0.08)]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 16px 40px rgba(15,23,42,0.05)" }}>
+                  <div className="aspect-[4/3] overflow-hidden relative">
+                    <ImageWithFallback src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                    <div className="absolute top-4 left-4">
+                      <span className="px-3 py-1 rounded-full border" style={{ fontSize: "11px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.88)", background: "rgba(15,23,42,0.26)", borderColor: "rgba(255,255,255,0.14)", backdropFilter: "blur(10px)" }}>{s.tag}</span>
+                    </div>
+                  </div>
+                  <div className="p-6">
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
+                        <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
+                      </div>
+                      <div className="flex-shrink-0 w-11 h-11 rounded-[14px] flex items-center justify-center transition-all duration-300 group-hover:scale-105" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.08), rgba(124,58,237,0.08))", border: "1px solid rgba(37,99,235,0.14)", color: "#2563eb" }}>
+                        <ArrowUpRight size={16} />
+                      </div>
+                    </div>
+                    <div className="mt-4 flex items-center gap-1.5 text-accent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                      <span style={{ fontSize: "12px", fontWeight: 800, letterSpacing: "0.09em", fontFamily: "'Manrope', var(--font-sans)" }}>DETAIL SLUŽBY</span>
+                      <ArrowRight size={12} />
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── REALIZACE CATEGORIES ───────── */
+const realizaceCategories = [
+  {
+    title: "Moderní vize",
+    desc: "Vytváření moderních prostor, která jsou teplá a osobní.",
+    image: IMG.apartment,
+    color: "#6b9fb8",
+    slug: "malovani-bytu",
+  },
+  {
+    title: "Umělecká forma a rovnováha",
+    desc: "Kombinace vize a detailu k dokonalosti každého prostoru.",
+    image: IMG.office,
+    color: "#6b9fb8",
+    slug: "malovani-kancelari",
+  },
+  {
+    title: "Přizpůsobený design",
+    desc: "Vytváření jedinečných interiérů, které odrážejí životní styl klienta.",
+    image: IMG.commercial,
+    color: "#6b9fb8",
+    slug: "komercni-objekty",
+  },
+  {
+    title: "Elegantní bydlení",
+    desc: "Transformace interiérů v každodenní zážitky.",
+    image: IMG.roller,
+    color: "#6b9fb8",
+    slug: "komercni-objekty",
+  },
+];
+
+function RealizaceCategoriesSection() {
+  return (
+    <section className="relative py-20 md:py-24 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 50%, var(--s2) 100%)" }}>
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-copper)" }} />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-8">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Realizace</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
+              Naše <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>specializace</em>
+            </h2>
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
+          </div>
+          <div className="text-center mb-6">
+            <Link to="/realizace" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
+              Všechny realizace <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+            </Link>
+          </div>
+        </Reveal>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {realizaceCategories.map((cat, i) => (
+            <Reveal key={cat.title} delay={i * 0.1}>
+              <Link to={`/sluzby/${cat.slug}`} className="group block">
+                <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_80px_rgba(15,23,42,0.10)]" style={{ minHeight: "380px", background: i === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,247,255,0.95) 100%)" : i === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.95) 100%)" : i === 2 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,253,248,0.95) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,247,237,0.95) 100%)", border: i === 0 ? "1px solid rgba(37,99,235,0.14)" : i === 1 ? "1px solid rgba(124,58,237,0.14)" : i === 2 ? "1px solid rgba(15,118,110,0.14)" : "1px solid rgba(234,88,12,0.14)", boxShadow: "0 16px 48px rgba(15,23,42,0.06)" }}>
+                  {/* Image positioned in top area */}
+                  <div className={`absolute top-0 ${i % 2 === 0 ? "left-0 w-[60%]" : "right-0 w-[70%]"} h-[55%] overflow-hidden`} style={{ borderRadius: i % 2 === 0 ? "20px 0 0 0" : "0 20px 0 0" }}>
+                    <ImageWithFallback src={cat.image} alt={cat.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                  </div>
+                  {/* Color accent gradient in corner */}
+                  <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{ background: `linear-gradient(135deg, transparent 0%, transparent 50%, ${cat.color}20 100%)` }} />
+                  {/* Text content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8 pt-12" style={{ background: `linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.72) 100%)` }}>
+                    <div className="flex items-start justify-between gap-4">
+                      <div>
+                        <h3 className="mb-3" style={{ fontSize: "22px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a", fontFamily: "'Sora', sans-serif", lineHeight: 1.08 }}>
+                          {cat.title}
+                        </h3>
+                        <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                          {cat.desc}
+                        </p>
+                      </div>
+                      <div className="flex-shrink-0 w-12 h-12 rounded-[16px] flex items-center justify-center transition-all duration-300 transform group-hover:scale-105" style={{ background: i === 0 ? "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(37,99,235,0.06))" : i === 1 ? "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(124,58,237,0.06))" : i === 2 ? "linear-gradient(135deg, rgba(15,118,110,0.12), rgba(15,118,110,0.06))" : "linear-gradient(135deg, rgba(234,88,12,0.12), rgba(234,88,12,0.06))", color: i === 0 ? "#2563eb" : i === 1 ? "#7c3aed" : i === 2 ? "#0f766e" : "#ea580c", border: i === 0 ? "1px solid rgba(37,99,235,0.18)" : i === 1 ? "1px solid rgba(124,58,237,0.18)" : i === 2 ? "1px solid rgba(15,118,110,0.18)" : "1px solid rgba(234,88,12,0.18)" }}>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                          <line x1="7" y1="17" x2="17" y2="7"></line>
+                          <polyline points="17 7 17 17 7 17"></polyline>
+                        </svg>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Link>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── WHY US (updated with real content) ───────── */
+const whyUsLeft = [
+  "více jak 500 dokončených zakázek",
+  "přímý kontakt s klientem",
+  "rychlost a dostupnost",
+  "okamžitá kalkulace ceny",
+  "určete si sami termín realizace",
+  "reagujeme do 24 hodin",
+];
+
+const whyUsRight = [
+  "nezanecháváme stopy, jen dokonalé stěny",
+  "přijedeme včas a vždy dodržíme termín",
+  "profesionální vybavení a kvalitní barvy – žádné kompromisy v kvalitě",
+  "rádi vám poradíme s výběrem barev a typem nátěru",
+  "malování bez starostí? Stačí zavolat nebo si jenom spočítat online cenu",
+];
+
+function WhyUsSection() {
+  return (
+    <section className="relative py-16 md:py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 100%)" }}>
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-accent)" }} />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-8">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proč my</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
+              Proč <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>my?</em>
+            </h2>
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div className="max-w-5xl mx-auto p-8 md:p-12 rounded-[30px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 20px 60px rgba(15,23,42,0.06)" }}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
+              <ul className="flex flex-col gap-3">
+                {whyUsLeft.map((item) => (
+                  <li key={item} className="flex items-start gap-4 rounded-[18px] px-4 py-4" style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(37,99,235,0.08)" }}>
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full mt-0.5 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.14), rgba(124,58,237,0.10))", color: "#2563eb" }}>
+                      <Check size={13} strokeWidth={2.2} />
+                    </span>
+                    <span className="font-sans" style={{ fontSize: "15px", lineHeight: 1.62, color: "#334155", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <ul className="flex flex-col gap-3">
+                {whyUsRight.map((item) => (
+                  <li key={item} className="flex items-start gap-4 rounded-[18px] px-4 py-4" style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(15,118,110,0.08)" }}>
+                    <span className="flex-shrink-0 w-6 h-6 rounded-full mt-0.5 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(15,118,110,0.14), rgba(37,99,235,0.10))", color: "#0f766e" }}>
+                      <Check size={13} strokeWidth={2.2} />
+                    </span>
+                    <span className="font-sans" style={{ fontSize: "15px", lineHeight: 1.62, color: "#334155", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── DECORATIVE ART SECTION ───────── */
+const decoImages = [IMG.decoArt1, IMG.decoArt2, IMG.decoArt3, IMG.decoArt4];
+
+function DecorativeArtSection() {
+  return (
+    <section className="relative py-6 md:py-8 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+      <div className="absolute top-1/2 left-0 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-navy)" }} />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-10">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Speciální služby</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 700, lineHeight: 1.1 }}>
+              Dekorativní a umělecká{" "}
+              <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>úprava stěn</em>
+            </h2>
+            <p className="font-sans max-w-2xl mx-auto mt-4" style={{ fontSize: "15px", lineHeight: 1.72, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+              Zde malá ochutnávka z realizací naší přidružené firmy, která se rozšířila i do oblasti klasického řemesla. Jedná se o dekorativní, uměleckou malbu na zakázku s důrazem na jedinečnost a řemeslnou dokonalost různých exkluzivních malířských technik.
+            </p>
+            <Link to="/sluzby/dekorativni-sterky" className="group inline-flex items-center gap-2 mt-6 px-7 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}>
+              Chci vědět víc <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.15}>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-12">
+            {decoImages.map((img, i) => (
+              <div key={i} className={`overflow-hidden rounded-xl ${i === 0 ? "row-span-2" : ""}`}>
+                <ImageWithFallback
+                  src={img}
+                  alt={`Dekorativní malba ${i + 1}`}
+                  className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
+                  style={{ minHeight: i === 0 ? "320px" : "160px" }}
+                  loading="lazy"
+                />
+              </div>
+            ))}
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── BEFORE / AFTER ───────── */
+/* ───────── TESTIMONIALS ───────── */
+const testimonials = [
+  { quote: "Profesionální přístup od začátku do konce. Precizně dodrželi termín a po sobě uklidili.", author: "Ing. Martin Krejčí", role: "Předseda SVJ, Praha 7", initials: "MK" },
+  { quote: "Hledali jsme spolehlivou firmu pro celou kancelář. Skvělá práce – rychle, čistě a za férovou cenu.", author: "Petra Novotná", role: "Office Manager, Tech startup", initials: "PN" },
+  { quote: "Dekorativní stěrka v obýváku předčila naše očekávání. Výsledek vypadá jako z designového časopisu.", author: "Tomáš a Lucie Dvořákovi", role: "Rezidenční klient, Praha 5", initials: "TD" },
+  { quote: "Spolupracujeme opakovaně. Vždy precizní práce, dodržení harmonogramu a perfektní komunikace.", author: "Jakub Horák", role: "Project Manager, Development s.r.o.", initials: "JH" },
+];
+
+function TestimonialsSection() {
+  const [cur, setCur] = useState(0);
+  const [dir, setDir] = useState(1);
+  const next = useCallback(() => { setDir(1); setCur((p) => (p + 1) % testimonials.length); }, []);
+  const prev = useCallback(() => { setDir(-1); setCur((p) => (p - 1 + testimonials.length) % testimonials.length); }, []);
+  useEffect(() => { const t = setInterval(next, 6000); return () => clearInterval(t); }, [next]);
+
+  return (
+    <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6f9ff 50%, #ffffff 100%)" }}>
+      <div className="absolute top-24 left-[12%] w-[360px] h-[240px] rounded-full blur-[140px] pointer-events-none" style={{ background: "rgba(37,99,235,0.10)" }} />
+      <div className="absolute bottom-12 right-[10%] w-[320px] h-[220px] rounded-full blur-[140px] pointer-events-none" style={{ background: "rgba(124,58,237,0.08)" }} />
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-14">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-[0.18em] uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 700 }}>Reference</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.045em" }}>
+              Co říkají <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>naši klienti</em>
+            </h2>
+            <div className="w-20 h-[3px] mx-auto mt-5 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
+          </div>
+        </Reveal>
+        <div className="max-w-4xl mx-auto">
+          <div className="rounded-[34px] border p-8 md:p-12" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", borderColor: "rgba(37,99,235,0.12)", boxShadow: "0 24px 80px rgba(15,23,42,0.06)" }}>
+            <div className="relative min-h-[260px] flex items-center">
+              <AnimatePresence mode="wait" custom={dir}>
+                <motion.div key={cur} custom={dir} initial={{ opacity: 0, x: dir * 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: dir * -60 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="w-full">
+                  <div className="grid md:grid-cols-[120px_minmax(0,1fr)] gap-8 items-start">
+                    <div className="flex md:block items-center justify-center md:justify-start gap-4">
+                      <div className="w-16 h-16 rounded-[20px] flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.16), rgba(124,58,237,0.12))", border: "1px solid rgba(37,99,235,0.16)" }}>
+                        <span style={{ fontFamily: "'Sora', sans-serif", fontSize: "18px", fontWeight: 700, color: "#10213f", letterSpacing: "-0.04em" }}>{testimonials[cur].initials}</span>
+                      </div>
+                      <div className="hidden md:block w-12 h-px" style={{ background: "linear-gradient(90deg, rgba(37,99,235,0.55), transparent)" }} />
+                    </div>
+                    <div>
+                      <Quote size={26} className="mb-5" style={{ color: 'rgba(37,99,235,0.34)' }} strokeWidth={1.2} />
+                      <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: "clamp(24px, 2.7vw, 36px)", lineHeight: 1.28, fontStyle: "italic", color: "#162033", marginBottom: '28px' }}>
+                        &ldquo;{testimonials[cur].quote}&rdquo;
+                      </p>
+                      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
+                        <div>
+                          <div style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, color: "#0f172a", letterSpacing: "-0.03em" }}>{testimonials[cur].author}</div>
+                          <div style={{ fontFamily: "'Manrope', var(--font-sans)", fontSize: "14px", fontWeight: 600, color: "#5b6877", marginTop: '6px' }}>{testimonials[cur].role}</div>
+                        </div>
+                        <div className="flex items-center gap-3">
+                          <button onClick={prev} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
+                            <ChevronLeft size={16} />
+                          </button>
+                          <div className="flex gap-2">
+                            {testimonials.map((_, i) => (
+                              <button
+                                key={i}
+                                onClick={() => { setDir(i > cur ? 1 : -1); setCur(i); }}
+                                className="rounded-full transition-all duration-300"
+                                style={{ width: i === cur ? '26px' : '8px', height: '8px', background: i === cur ? 'linear-gradient(90deg, #2563eb, #7c3aed)' : 'rgba(148,163,184,0.35)' }}
+                              />
+                            ))}
+                          </div>
+                          <button onClick={next} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
+                            <ChevronRight size={16} />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+export default function HomePage() {
+  return (
+    <>
+      <HeroSection />
+      <TrustSection />
+      <StatsSection />
+      <HowItWorksSection />
+      <ServicePreview />
+      <RealizaceCategoriesSection />
+      <WhyUsSection />
+      <DecorativeArtSection />
+      <TestimonialsSection />
+    </>
+  );
+}
