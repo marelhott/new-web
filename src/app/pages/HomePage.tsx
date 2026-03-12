@@ -304,7 +304,7 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {howItWorksSteps.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.12}>
-              <div className="group overflow-hidden rounded-[30px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(37,99,235,0.10)] h-full flex flex-col" style={{ background: i === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,247,255,0.95) 100%)" : i === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.95) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,253,248,0.95) 100%)", border: i === 0 ? "1px solid rgba(37,99,235,0.14)" : i === 1 ? "1px solid rgba(124,58,237,0.14)" : "1px solid rgba(15,118,110,0.14)", boxShadow: "0 18px 44px rgba(15,23,42,0.05)" }}>
+              <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "#ffffff", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.08), transparent 36%)" }} />
