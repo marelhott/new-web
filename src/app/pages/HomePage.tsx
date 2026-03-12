@@ -308,9 +308,6 @@ function HowItWorksSection() {
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.08), transparent 36%)" }} />
-                  <div className="absolute top-5 left-5" style={{ fontSize: "12px", fontWeight: 800, color: i === 0 ? "#2563eb" : i === 1 ? "#7c3aed" : "#0f766e", letterSpacing: "0.14em", fontFamily: "'Manrope', var(--font-sans)" }}>
-                    0{i + 1}
-                  </div>
                 </div>
                 <div className="p-6 md:p-7 flex flex-col flex-1 text-center">
                   <h3 className="mb-3" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.04em", color: i === 0 ? "#10213f" : i === 1 ? "#231942" : "#16382f" }}>{step.title}</h3>
