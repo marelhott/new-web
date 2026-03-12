@@ -300,9 +300,8 @@ function HowItWorksSection() {
           {howItWorksSteps.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.12}>
               <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "rgba(10, 15, 25, 0.95)", backdropFilter: "blur(12px)", border: "1px solid rgba(100, 116, 139, 0.1)", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
-                <div className="aspect-[4/3] overflow-hidden relative">
+                <div className="aspect-[4/3] overflow-hidden relative rounded-[12px]">
                   <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.3), transparent 36%)" }} />
                 </div>
                 <div className="p-6 md:p-7 flex flex-col flex-1 text-center">
                   <h3 className="mb-5 text-white" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.03em" }}>{step.title}</h3>
