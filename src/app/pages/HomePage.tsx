@@ -558,7 +558,7 @@ function WhyUsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   const getIcon = (iconType: string) => {
-    const iconProps = { size: 20, strokeWidth: 2 };
+    const iconProps = { size: 40, strokeWidth: 1.5 };
     const iconMap: Record<string, React.ReactNode> = {
       home: <Home {...iconProps} />,
       phone: <Phone {...iconProps} />,
@@ -582,52 +582,74 @@ function WhyUsSection() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
-          {/* Image */}
-          <Reveal delay={0.1}>
-            <div className="w-full">
+        <Reveal delay={0.1}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+            {/* Image */}
+            <div style={{ width: "100%" }}>
               <ImageWithFallback
                 src={IMG.apartment}
                 alt="Proč my"
-                className="w-full rounded-[16px] object-cover"
-                style={{ height: "500px" }}
+                className="w-full rounded-[10px] object-cover"
+                style={{ height: "686px" }}
                 loading="lazy"
               />
             </div>
-          </Reveal>
 
-          {/* Accordion */}
-          <Reveal delay={0.1}>
-            <div className="flex flex-col gap-0" style={{ fontFamily: "Manrope, sans-serif" }}>
+            {/* Accordion List */}
+            <div style={{ width: "100%" }}>
               {whyUsServices.map((service, index) => (
-                <div
+                <article
                   key={index}
-                  className="border-b border-slate-200 last:border-b-0"
-                  style={{ borderColor: "rgba(203, 213, 225, 0.5)" }}
+                  style={{
+                    borderBottom: "1px solid #dbdad9",
+                  }}
                 >
                   <button
                     onClick={() => setActiveIndex(index)}
-                    className="w-full flex items-center justify-between gap-4 py-6 md:py-8 text-left transition-colors hover:text-slate-900"
-                    style={{ color: activeIndex === index ? "#101014" : "#475569" }}
+                    style={{
+                      width: "100%",
+                      height: "80px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "20px",
+                      border: "none",
+                      background: "none",
+                      padding: "0",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
                   >
-                    <div className="flex items-start gap-4 flex-1 min-w-0">
-                      <span className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center" style={{ color: activeIndex === index ? "#2563eb" : "#94a3b8" }}>
+                    <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
+                      <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
                         {getIcon(service.icon)}
                       </span>
-                      <h3
-                        className="font-sans"
-                        style={{
-                          fontSize: "16px",
-                          fontWeight: activeIndex === index ? 600 : 500,
-                          lineHeight: 1.4,
-                          color: activeIndex === index ? "#101014" : "#3d3d47"
-                        }}
-                      >
+                      <h3 style={{ margin: 0, color: "#101014", fontSize: "22px", lineHeight: "30.8px", fontWeight: 500, letterSpacing: "-0.2px" }}>
                         {service.title}
                       </h3>
                     </div>
-                    <span className="flex-shrink-0 text-lg font-light" style={{ color: activeIndex === index ? "#2563eb" : "#94a3b8" }}>
-                      {activeIndex === index ? "−" : "+"}
+                    {/* Toggle */}
+                    <span
+                      style={{
+                        position: "relative",
+                        width: "24px",
+                        height: "24px",
+                        flex: "0 0 auto",
+                        display: "block",
+                      }}
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                        {activeIndex === index ? (
+                          <>
+                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                          </>
+                        ) : (
+                          <>
+                            <line x1="12" y1="2" x2="12" y2="22" strokeLinecap="round" />
+                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                          </>
+                        )}
+                      </svg>
                     </span>
                   </button>
 
@@ -639,16 +661,16 @@ function WhyUsSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p className="pb-6 md:pb-8 pl-10 font-sans" style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", fontFamily: "Manrope, sans-serif", fontWeight: 500 }}>
+                      <p style={{ width: "100%", margin: 0, padding: "0 0 30px", color: "#3d3d47", fontSize: "18px", lineHeight: "27px", letterSpacing: "-0.1px", fontFamily: "Manrope, sans-serif" }}>
                         {service.desc}
                       </p>
                     </motion.div>
                   )}
-                </div>
+                </article>
               ))}
             </div>
-          </Reveal>
-        </div>
+          </div>
+        </Reveal>
       </div>
     </section>
   );
