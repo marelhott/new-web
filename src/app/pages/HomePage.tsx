@@ -543,65 +543,99 @@ function RealizaceCategoriesSection() {
   );
 }
 
-/* ───────── WHY US (updated with real content) ───────── */
-const whyUsLeft = [
-  "více jak 500 dokončených zakázek",
-  "přímý kontakt s klientem",
-  "rychlost a dostupnost",
-  "okamžitá kalkulace ceny",
-  "určete si sami termín realizace",
-  "reagujeme do 24 hodin",
-];
-
-const whyUsRight = [
-  "nezanecháváme stopy, jen dokonalé stěny",
-  "přijedeme včas a vždy dodržíme termín",
-  "profesionální vybavení a kvalitní barvy – žádné kompromisy v kvalitě",
-  "rádi vám poradíme s výběrem barev a typem nátěru",
-  "malování bez starostí? Stačí zavolat nebo si jenom spočítat online cenu",
+/* ───────── WHY US (Services Showcase) ───────── */
+const whyUsServices = [
+  { title: "Více jak 500 dokončených zakázek", desc: "Máme bohaté zkušenosti a zkušenosti s různými typy projektů. Naší prioritou je kvalita a spokojenost klientů." },
+  { title: "Přímý kontakt s klientem", desc: "Komunikujeme přímo a jasně. Vždy víte, na koho se obrátit a dostanete okamžitou odpověď na vaše otázky." },
+  { title: "Rychlost a dostupnost", desc: "Jsme k dispozici tehdy, když nás potřebujete. Reagujeme rychle a efektivně na všechny vaše požadavky." },
+  { title: "Okamžitá kalkulace ceny", desc: "Pomocí naší online kalkulačky si můžete spočítat cenu v reálném čase bez skrytých poplatků." },
+  { title: "Určete si sami termín realizace", desc: "Vyberte si termín, který vám nejlépe vyhovuje. Nabízíme flexibilní harmonogramy včetně víkendů." },
+  { title: "Reagujeme do 24 hodin", desc: "Na vaši zprávu či dotaz odpovídáme nejpozději do jednoho pracovního dne." },
 ];
 
 function WhyUsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
   return (
-    <section className="relative py-16 md:py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 100%)" }}>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-accent)" }} />
+    <section id="proc-my" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-8">
+          <div className="text-center mb-20">
             <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proč my</span>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               Proč <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>my?</em>
             </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
           </div>
         </Reveal>
 
-        <Reveal delay={0.1}>
-          <div className="max-w-5xl mx-auto p-8 md:p-12 rounded-[30px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 20px 60px rgba(15,23,42,0.06)" }}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              <ul className="flex flex-col gap-3">
-                {whyUsLeft.map((item) => (
-                  <li key={item} className="flex items-start gap-4 rounded-[18px] px-4 py-4" style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(37,99,235,0.08)" }}>
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full mt-0.5 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.14), rgba(124,58,237,0.10))", color: "#2563eb" }}>
-                      <Check size={13} strokeWidth={2.2} />
-                    </span>
-                    <span className="font-sans" style={{ fontSize: "15px", lineHeight: 1.62, color: "#334155", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col gap-3">
-                {whyUsRight.map((item) => (
-                  <li key={item} className="flex items-start gap-4 rounded-[18px] px-4 py-4" style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(15,118,110,0.08)" }}>
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full mt-0.5 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(15,118,110,0.14), rgba(37,99,235,0.10))", color: "#0f766e" }}>
-                      <Check size={13} strokeWidth={2.2} />
-                    </span>
-                    <span className="font-sans" style={{ fontSize: "15px", lineHeight: 1.62, color: "#334155", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-start">
+          {/* Image */}
+          <Reveal delay={0.1}>
+            <div className="w-full">
+              <ImageWithFallback
+                src={IMG.apartment}
+                alt="Proč my"
+                className="w-full rounded-[16px] object-cover"
+                style={{ height: "500px" }}
+                loading="lazy"
+              />
             </div>
-          </div>
-        </Reveal>
+          </Reveal>
+
+          {/* Accordion */}
+          <Reveal delay={0.1}>
+            <div className="flex flex-col gap-0" style={{ fontFamily: "Manrope, sans-serif" }}>
+              {whyUsServices.map((service, index) => (
+                <div
+                  key={index}
+                  className="border-b border-slate-200 last:border-b-0"
+                  style={{ borderColor: "rgba(203, 213, 225, 0.5)" }}
+                >
+                  <button
+                    onClick={() => setActiveIndex(index)}
+                    className="w-full flex items-center justify-between gap-4 py-6 md:py-8 text-left transition-colors hover:text-slate-900"
+                    style={{ color: activeIndex === index ? "#101014" : "#475569" }}
+                  >
+                    <div className="flex items-start gap-4 flex-1 min-w-0">
+                      <span className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center rounded-full" style={{ background: activeIndex === index ? "#2563eb" : "transparent" }}>
+                        {activeIndex === index ? (
+                          <span style={{ color: "white", fontSize: "14px", fontWeight: 600 }}>−</span>
+                        ) : (
+                          <span style={{ color: "#2563eb", fontSize: "14px", fontWeight: 600 }}>+</span>
+                        )}
+                      </span>
+                      <h3
+                        className="font-sans"
+                        style={{
+                          fontSize: "18px",
+                          fontWeight: activeIndex === index ? 600 : 500,
+                          lineHeight: 1.4,
+                          color: activeIndex === index ? "#101014" : "#3d3d47"
+                        }}
+                      >
+                        {service.title}
+                      </h3>
+                    </div>
+                  </button>
+
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p className="pb-6 md:pb-8 pl-10 font-sans" style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", fontFamily: "Manrope, sans-serif", fontWeight: 500 }}>
+                        {service.desc}
+                      </p>
+                    </motion.div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </Reveal>
+        </div>
       </div>
     </section>
   );
