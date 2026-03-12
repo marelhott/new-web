@@ -73,7 +73,6 @@ function HeroSection() {
           alt="Malířka při práci"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
-          fetchPriority="high"
           decoding="async"
           style={{ objectPosition: "center 58%" }}
         />
