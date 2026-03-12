@@ -3,7 +3,8 @@ import { Link } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
   ArrowRight, ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight,
-  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock
+  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock,
+  Hammer, Home, Droplet, Building2, Wrench, Zap
 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
@@ -545,16 +546,29 @@ function RealizaceCategoriesSection() {
 
 /* ───────── WHY US (Services Showcase) ───────── */
 const whyUsServices = [
-  { title: "Více jak 500 dokončených zakázek", desc: "Máme bohaté zkušenosti a zkušenosti s různými typy projektů. Naší prioritou je kvalita a spokojenost klientů." },
-  { title: "Přímý kontakt s klientem", desc: "Komunikujeme přímo a jasně. Vždy víte, na koho se obrátit a dostanete okamžitou odpověď na vaše otázky." },
-  { title: "Rychlost a dostupnost", desc: "Jsme k dispozici tehdy, když nás potřebujete. Reagujeme rychle a efektivně na všechny vaše požadavky." },
-  { title: "Okamžitá kalkulace ceny", desc: "Pomocí naší online kalkulačky si můžete spočítat cenu v reálném čase bez skrytých poplatků." },
-  { title: "Určete si sami termín realizace", desc: "Vyberte si termín, který vám nejlépe vyhovuje. Nabízíme flexibilní harmonogramy včetně víkendů." },
-  { title: "Reagujeme do 24 hodin", desc: "Na vaši zprávu či dotaz odpovídáme nejpozději do jednoho pracovního dne." },
+  { title: "Více jak 500 dokončených zakázek", desc: "Máme bohaté zkušenosti s různými typy projektů. Naší prioritou je kvalita a spokojenost klientů.", icon: "home" },
+  { title: "Přímý kontakt s klientem", desc: "Komunikujeme přímo a jasně. Vždy víte, na koho se obrátit a dostanete okamžitou odpověď.", icon: "phone" },
+  { title: "Rychlost a dostupnost", desc: "Jsme k dispozici tehdy, když nás potřebujete. Reagujeme rychle a efektivně.", icon: "zap" },
+  { title: "Okamžitá kalkulace ceny", desc: "Pomocí naší online kalkulačky si můžete spočítat cenu v reálném čase bez skrytých poplatků.", icon: "calculator" },
+  { title: "Určete si sami termín realizace", desc: "Vyberte si termín, který vám nejlépe vyhovuje. Nabízíme flexibilní harmonogramy.", icon: "calendar" },
+  { title: "Reagujeme do 24 hodin", desc: "Na vaši zprávu či dotaz odpovídáme nejpozději do jednoho pracovního dne.", icon: "clock" },
 ];
 
 function WhyUsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
+
+  const getIcon = (iconType: string) => {
+    const iconProps = { size: 20, strokeWidth: 2 };
+    const iconMap: Record<string, React.ReactNode> = {
+      home: <Home {...iconProps} />,
+      phone: <Phone {...iconProps} />,
+      zap: <Zap {...iconProps} />,
+      calculator: <Calculator {...iconProps} />,
+      calendar: <Calendar {...iconProps} />,
+      clock: <Clock {...iconProps} />,
+    };
+    return iconMap[iconType] || null;
+  };
 
   return (
     <section id="proc-my" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
@@ -597,17 +611,13 @@ function WhyUsSection() {
                     style={{ color: activeIndex === index ? "#101014" : "#475569" }}
                   >
                     <div className="flex items-start gap-4 flex-1 min-w-0">
-                      <span className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center rounded-full" style={{ background: activeIndex === index ? "#2563eb" : "transparent" }}>
-                        {activeIndex === index ? (
-                          <span style={{ color: "white", fontSize: "14px", fontWeight: 600 }}>−</span>
-                        ) : (
-                          <span style={{ color: "#2563eb", fontSize: "14px", fontWeight: 600 }}>+</span>
-                        )}
+                      <span className="flex-shrink-0 w-6 h-6 mt-1 flex items-center justify-center" style={{ color: activeIndex === index ? "#2563eb" : "#94a3b8" }}>
+                        {getIcon(service.icon)}
                       </span>
                       <h3
                         className="font-sans"
                         style={{
-                          fontSize: "18px",
+                          fontSize: "16px",
                           fontWeight: activeIndex === index ? 600 : 500,
                           lineHeight: 1.4,
                           color: activeIndex === index ? "#101014" : "#3d3d47"
@@ -616,6 +626,9 @@ function WhyUsSection() {
                         {service.title}
                       </h3>
                     </div>
+                    <span className="flex-shrink-0 text-lg font-light" style={{ color: activeIndex === index ? "#2563eb" : "#94a3b8" }}>
+                      {activeIndex === index ? "−" : "+"}
+                    </span>
                   </button>
 
                   {activeIndex === index && (
