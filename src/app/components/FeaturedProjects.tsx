@@ -67,8 +67,8 @@ export function FeaturedProjects() {
       ref={ref}
     >
       {/* Gradient background */}
-      <div className="absolute inset-0 bg-gradient-to-b from-secondary/50 via-secondary/30 to-secondary/50 pointer-events-none" />
-      <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-accent/5 rounded-full blur-[180px] pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-slate-900 via-slate-950 to-slate-900 pointer-events-none" />
+      <div className="absolute bottom-0 right-0 w-[500px] h-[300px] bg-blue-900/20 rounded-full blur-[180px] pointer-events-none" />
 
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <AnimatedSection>
@@ -116,45 +116,65 @@ export function FeaturedProjects() {
           </div>
         </AnimatedSection>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="space-y-8">
           {filteredProjects.map((project, i) => (
             <motion.div
               key={project.title}
               layout
-              initial={{ opacity: 0, scale: 0.95 }}
+              initial={{ opacity: 0, y: 20 }}
               animate={
                 isInView
-                  ? { opacity: 1, scale: 1 }
-                  : { opacity: 0, scale: 0.95 }
+                  ? { opacity: 1, y: 0 }
+                  : { opacity: 0, y: 20 }
               }
               transition={{
                 duration: 0.6,
-                delay: i * 0.08,
+                delay: i * 0.12,
                 ease: [0.16, 1, 0.3, 1],
               }}
-              className="group relative overflow-hidden rounded-2xl cursor-pointer aspect-[4/5]"
+              className="group relative overflow-hidden rounded-[16px] flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12 p-6 md:p-10 transition-all duration-500 hover:shadow-lg"
+              style={{
+                background: "rgba(30, 41, 59, 0.8)",
+                backdropFilter: "blur(8px)",
+                border: "1px solid rgba(148, 163, 184, 0.2)"
+              }}
               data-cursor-hover
             >
-              <ImageWithFallback
-                src={project.image}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                loading="lazy"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              <div className="absolute inset-0 flex flex-col justify-end p-6 opacity-0 group-hover:opacity-100 transition-all duration-500 translate-y-4 group-hover:translate-y-0">
-                <span
-                  className="text-white/60 font-sans mb-1"
-                  style={{ fontSize: "12px", fontWeight: 500, letterSpacing: "0.05em" }}
-                >
-                  {project.category} · {project.area}
-                </span>
-                <h3
-                  className="text-white font-sans"
-                  style={{ fontSize: "20px", fontWeight: 600 }}
-                >
-                  {project.title}
-                </h3>
+              {/* Image */}
+              <div className="w-full lg:w-[350px] flex-shrink-0">
+                <ImageWithFallback
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-[250px] lg:h-[300px] object-cover transition-transform duration-700 group-hover:scale-105 rounded-[12px]"
+                  loading="lazy"
+                />
+              </div>
+
+              {/* Text */}
+              <div className="flex flex-col gap-6 flex-1 min-w-0">
+                <div>
+                  <span
+                    className="text-slate-400 font-sans mb-3 block"
+                    style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}
+                  >
+                    {project.category} · {project.area}
+                  </span>
+                  <h3
+                    className="text-white font-sans mb-3"
+                    style={{ fontSize: "clamp(28px, 3vw, 40px)", fontWeight: 600, lineHeight: 1.1 }}
+                  >
+                    {project.title}
+                  </h3>
+                  <p className="text-slate-300 font-sans" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif" }}>
+                    Profesionální malářské práce se zaměřením na kvalitu a detail. Kompletní řešení od přípravy povrchu až po finální nátěr. Spokojení klienti a bezchybná provedení.
+                  </p>
+                </div>
+
+                <div className="flex items-center gap-4">
+                  <span className="px-4 py-2 rounded-full text-white text-sm font-semibold" style={{ background: "#2563eb" }}>
+                    Zobrazit projekt
+                  </span>
+                </div>
               </div>
             </motion.div>
           ))}
