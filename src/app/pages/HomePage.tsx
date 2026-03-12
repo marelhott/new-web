@@ -299,7 +299,7 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {howItWorksSteps.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.12}>
-              <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "rgba(30, 41, 59, 0.6)", backdropFilter: "blur(8px)", border: "1px solid rgba(148, 163, 184, 0.2)", boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}>
+              <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "rgba(15, 23, 42, 0.9)", backdropFilter: "blur(12px)", border: "1px solid rgba(148, 163, 184, 0.15)", boxShadow: "0 8px 24px rgba(0,0,0,0.4)" }}>
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.3), transparent 36%)" }} />
