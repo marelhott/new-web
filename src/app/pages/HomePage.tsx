@@ -181,22 +181,26 @@ function TrustSection() {
     <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+        <div className="grid grid-cols-1 gap-6 md:gap-7">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-[28px] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(37,99,235,0.09)] h-full text-center" style={{ background: index === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.92) 100%)" : index === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.94) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(238,253,248,0.94) 100%)", border: `1px solid ${card.color}22`, boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+              <div className="group relative p-8 md:p-10 rounded-[28px] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(37,99,235,0.09)] h-full flex items-center gap-8" style={{ background: index === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.92) 100%)" : index === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.94) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(238,253,248,0.94) 100%)", border: `1px solid ${card.color}22`, boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
                 <div className="absolute inset-x-8 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${card.color}66, transparent)` }} />
                 <motion.div
-                  className="mx-auto mb-5 flex w-fit items-center justify-center"
+                  className="flex-shrink-0 flex w-fit h-fit items-center justify-center"
                   animate={{ y: [0, -5, 0], rotate: [0, -2, 0, 2, 0], opacity: [0.72, 1, 0.72] }}
                   transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.22 }}
                 >
-                  <card.icon size={20} style={{ color: card.color }} strokeWidth={1.45} />
+                  <div className="w-16 h-16 rounded-[16px] flex items-center justify-center flex-shrink-0" style={{ background: `${card.color}12`, border: `2px solid ${card.color}22` }}>
+                    <card.icon size={28} style={{ color: card.color }} strokeWidth={1.45} />
+                  </div>
                 </motion.div>
-                <h3 className="mb-4 tracking-[-0.035em] text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(18px, 1.45vw, 23px)", fontWeight: 700, lineHeight: 1.12 }}>
-                  {card.title}
-                </h3>
-                <p className="font-sans text-[#334155]" style={{ fontSize: "15px", lineHeight: 1.76, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
+                <div className="flex-1 text-left">
+                  <h3 className="mb-3 tracking-[-0.035em] text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(18px, 1.45vw, 23px)", fontWeight: 700, lineHeight: 1.12 }}>
+                    {card.title}
+                  </h3>
+                  <p className="font-sans text-[#334155]" style={{ fontSize: "15px", lineHeight: 1.76, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
+                </div>
               </div>
             </Reveal>
           ))}
