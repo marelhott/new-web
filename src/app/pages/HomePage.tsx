@@ -369,7 +369,7 @@ function ServicePreview() {
                       <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
                       <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
                     </div>
-                    <div className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0" style={{ background: "#3a3f47", color: "#ffffff" }}>
+                    <div className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0" style={{ background: "#3a3f47", color: "#ffffff", width: "fit-content" }}>
                       <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", fontFamily: "'Manrope', var(--font-sans)" }}>Více info</span>
                       <ArrowRight size={12} />
                     </div>
