@@ -283,14 +283,14 @@ const howItWorksSteps = [
 
 function HowItWorksSection() {
   return (
-    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
-      <div className="absolute top-0 left-1/4 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-olive)" }} />
+    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, #1e293b 0%, #0f172a 50%, #1e293b 100%)" }}>
+      <div className="absolute top-0 left-1/4 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "rgba(37, 99, 235, 0.1)" }} />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
           <div className="text-center mb-16">
-            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proces</span>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(34px, 4.6vw, 58px)", fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.04em" }}>
-              Jak to <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>funguje?</em>
+            <span className="text-blue-400 font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proces</span>
+            <h2 className="font-[family-name:var(--font-display)] text-white" style={{ fontSize: "clamp(34px, 4.6vw, 58px)", fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.04em" }}>
+              Jak to <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#60a5fa" }}>funguje?</em>
             </h2>
             <div className="w-18 h-[3px] mx-auto mt-6 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
           </div>
@@ -299,14 +299,14 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {howItWorksSteps.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.12}>
-              <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "#ffffff", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
+              <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "rgba(30, 41, 59, 0.6)", backdropFilter: "blur(8px)", border: "1px solid rgba(148, 163, 184, 0.2)", boxShadow: "0 4px 12px rgba(0,0,0,0.3)" }}>
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.08), transparent 36%)" }} />
+                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.3), transparent 36%)" }} />
                 </div>
                 <div className="p-6 md:p-7 flex flex-col flex-1 text-center">
-                  <h3 className="mb-3" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.03em", color: i === 0 ? "#10213f" : i === 1 ? "#231942" : "#16382f" }}>{step.title}</h3>
-                  <p className="font-sans flex-1" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500, color: "#475569" }}>{step.desc}</p>
+                  <h3 className="mb-3 text-white" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.03em" }}>{step.title}</h3>
+                  <p className="font-sans flex-1 text-slate-300" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500 }}>{step.desc}</p>
                 </div>
               </div>
             </Reveal>
