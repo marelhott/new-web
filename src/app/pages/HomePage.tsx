@@ -352,26 +352,73 @@ function ServicePreview() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 0.08}>
-              <Link to={`/sluzby/${s.slug}`} className="group block h-full">
-                <div className="relative overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(37,99,235,0.08)] h-full flex flex-col" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 16px 40px rgba(15,23,42,0.05)" }}>
-                  <div className="aspect-[4/3] overflow-hidden relative flex-shrink-0">
-                    <ImageWithFallback src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full border" style={{ fontSize: "11px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.88)", background: "rgba(15,23,42,0.26)", borderColor: "rgba(255,255,255,0.14)", backdropFilter: "blur(10px)" }}>{s.tag}</span>
-                    </div>
+              <Link to={`/sluzby/${s.slug}`} className="group block h-full no-underline">
+                <div
+                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
+                  style={{
+                    background: "#e9ecf2",
+                    padding: "24px",
+                    fontFamily: "Manrope, sans-serif",
+                    textDecoration: "none",
+                  }}
+                >
+                  {/* Image */}
+                  <div className="w-full lg:w-auto flex-shrink-0">
+                    <ImageWithFallback
+                      src={s.image}
+                      alt={s.title}
+                      className="w-full lg:w-[300px] h-[250px] lg:h-[300px] object-cover rounded-[12px] transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="p-6 flex flex-col justify-between h-full">
-                    <div>
-                      <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
-                      <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
+
+                  {/* Text content */}
+                  <div className="flex flex-col gap-6 flex-1 min-w-0">
+                    <div className="flex flex-col gap-4">
+                      <h3
+                        className="m-0"
+                        style={{
+                          fontSize: "32px",
+                          fontWeight: 600,
+                          letterSpacing: "-0.03em",
+                          color: "#101014",
+                          lineHeight: 1.1
+                        }}
+                      >
+                        {s.title}
+                      </h3>
+                      <p
+                        className="m-0"
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: 1.6,
+                          color: "#3d3d47"
+                        }}
+                      >
+                        {s.desc}
+                      </p>
                     </div>
-                    <div className="mt-4 inline-flex items-center gap-1.5 px-4 py-2 rounded-lg opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0" style={{ background: "#2563eb", color: "#ffffff", width: "fit-content" }}>
-                      <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", fontFamily: "'Manrope', var(--font-sans)" }}>Více info</span>
-                      <ArrowRight size={12} />
+
+                    {/* Tag + More link */}
+                    <div className="flex items-center gap-4">
+                      <span
+                        className="px-3 py-1.5 rounded-full"
+                        style={{
+                          fontSize: "12px",
+                          fontWeight: 600,
+                          color: "white",
+                          background: "#334155"
+                        }}
+                      >
+                        {s.tag}
+                      </span>
+                      <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg" style={{ background: "#334155" }}>
+                        <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
+                        <ArrowRight size={16} />
+                      </div>
                     </div>
                   </div>
                 </div>
