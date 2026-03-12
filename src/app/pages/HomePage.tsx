@@ -312,7 +312,7 @@ function HowItWorksSection() {
                     0{i + 1}
                   </div>
                 </div>
-                <div className="p-6 md:p-7 flex flex-col flex-1">
+                <div className="p-6 md:p-7 flex flex-col flex-1 text-center">
                   <h3 className="mb-3" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.04em", color: i === 0 ? "#10213f" : i === 1 ? "#231942" : "#16382f" }}>{step.title}</h3>
                   <p className="font-sans flex-1" style={{ fontSize: "15px", lineHeight: 1.78, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500, color: "#475569" }}>{step.desc}</p>
                 </div>
