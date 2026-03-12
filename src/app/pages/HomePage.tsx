@@ -583,14 +583,13 @@ function WhyUsSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "stretch", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
             {/* Image */}
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%", overflow: "hidden" }}>
               <ImageWithFallback
                 src={IMG.apartment}
                 alt="Proč my"
-                className="w-full rounded-[10px] object-cover"
-                style={{ height: "686px" }}
+                className="w-full h-full rounded-[10px] object-cover"
                 loading="lazy"
               />
             </div>
