@@ -70,7 +70,7 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-strong shadow-lg shadow-black/5" : "bg-transparent"
           }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px] pt-6">
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={isDark ? logoLightUrl : logoDarkUrl}
