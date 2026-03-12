@@ -624,7 +624,7 @@ function WhyUsSection() {
                       <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
                         {getIcon(service.icon)}
                       </span>
-                      <h3 style={{ margin: 0, color: "#101014", fontSize: "22px", lineHeight: "30.8px", fontWeight: 500, letterSpacing: "-0.2px" }}>
+                      <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
                         {service.title}
                       </h3>
                     </div>
@@ -661,7 +661,7 @@ function WhyUsSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p style={{ width: "100%", margin: 0, padding: "0 0 30px", color: "#3d3d47", fontSize: "18px", lineHeight: "27px", letterSpacing: "-0.1px", fontFamily: "Manrope, sans-serif" }}>
+                      <p style={{ width: "100%", margin: 0, padding: "0 0 30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px", fontFamily: "Manrope, sans-serif" }}>
                         {service.desc}
                       </p>
                     </motion.div>
