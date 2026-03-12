@@ -367,9 +367,15 @@ function ServicePreview() {
                       <span className="px-3 py-1 rounded-full border" style={{ fontSize: "11px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.88)", background: "rgba(15,23,42,0.26)", borderColor: "rgba(255,255,255,0.14)", backdropFilter: "blur(10px)" }}>{s.tag}</span>
                     </div>
                   </div>
-                  <div className="p-6">
-                    <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
-                    <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
+                  <div className="p-6 flex flex-col justify-between h-full">
+                    <div>
+                      <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
+                      <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
+                    </div>
+                    <div className="mt-4 flex items-center gap-1.5 text-accent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
+                      <span style={{ fontSize: "12px", fontWeight: 700, letterSpacing: "0.08em", fontFamily: "'Manrope', var(--font-sans)" }}>Více info</span>
+                      <ArrowRight size={12} />
+                    </div>
                   </div>
                 </div>
               </Link>
