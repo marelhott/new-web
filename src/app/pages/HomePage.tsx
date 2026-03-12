@@ -436,34 +436,27 @@ function RealizaceCategoriesSection() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6">
           {realizaceCategories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.1}>
               <Link to={`/sluzby/${cat.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_80px_rgba(15,23,42,0.10)]" style={{ minHeight: "380px", background: i === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,247,255,0.95) 100%)" : i === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.95) 100%)" : i === 2 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,253,248,0.95) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,247,237,0.95) 100%)", border: i === 0 ? "1px solid rgba(37,99,235,0.14)" : i === 1 ? "1px solid rgba(124,58,237,0.14)" : i === 2 ? "1px solid rgba(15,118,110,0.14)" : "1px solid rgba(234,88,12,0.14)", boxShadow: "0 16px 48px rgba(15,23,42,0.06)" }}>
-                  {/* Image positioned in top area */}
-                  <div className={`absolute top-0 ${i % 2 === 0 ? "left-0 w-[60%]" : "right-0 w-[70%]"} h-[55%] overflow-hidden`} style={{ borderRadius: i % 2 === 0 ? "20px 0 0 0" : "0 20px 0 0" }}>
-                    <ImageWithFallback src={cat.image} alt={cat.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+                <div className="relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-lg flex" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 4px 16px rgba(15,23,42,0.05)" }}>
+                  {/* Image left side */}
+                  <div className="w-2/5 md:w-1/2 overflow-hidden flex-shrink-0">
+                    <ImageWithFallback src={cat.image} alt={cat.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" style={{ minHeight: "280px" }} />
                   </div>
-                  {/* Color accent gradient in corner */}
-                  <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{ background: `linear-gradient(135deg, transparent 0%, transparent 50%, ${cat.color}20 100%)` }} />
-                  {/* Text content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 pt-12" style={{ background: `linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.72) 100%)` }}>
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="mb-3" style={{ fontSize: "22px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a", fontFamily: "'Sora', sans-serif", lineHeight: 1.08 }}>
-                          {cat.title}
-                        </h3>
-                        <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-                          {cat.desc}
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-12 h-12 rounded-[16px] flex items-center justify-center transition-all duration-300 transform group-hover:scale-105" style={{ background: i === 0 ? "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(37,99,235,0.06))" : i === 1 ? "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(124,58,237,0.06))" : i === 2 ? "linear-gradient(135deg, rgba(15,118,110,0.12), rgba(15,118,110,0.06))" : "linear-gradient(135deg, rgba(234,88,12,0.12), rgba(234,88,12,0.06))", color: i === 0 ? "#2563eb" : i === 1 ? "#7c3aed" : i === 2 ? "#0f766e" : "#ea580c", border: i === 0 ? "1px solid rgba(37,99,235,0.18)" : i === 1 ? "1px solid rgba(124,58,237,0.18)" : i === 2 ? "1px solid rgba(15,118,110,0.18)" : "1px solid rgba(234,88,12,0.18)" }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="7" y1="17" x2="17" y2="7"></line>
-                          <polyline points="17 7 17 17 7 17"></polyline>
-                        </svg>
-                      </div>
+                  {/* Text content right side */}
+                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
+                    <div>
+                      <h3 className="mb-3" style={{ fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a", fontFamily: "'Sora', sans-serif", lineHeight: 1.2 }}>
+                        {cat.title}
+                      </h3>
+                      <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.6, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                        {cat.desc}
+                      </p>
+                    </div>
+                    <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg" style={{ background: "#e0e8f5", color: "#2563eb" }}>
+                      <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", fontFamily: "'Manrope', var(--font-sans)" }}>VÍCE</span>
                     </div>
                   </div>
                 </div>
