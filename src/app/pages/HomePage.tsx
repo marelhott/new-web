@@ -181,20 +181,18 @@ function TrustSection() {
     <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-1 hover:shadow-lg h-full" style={{ background: "rgba(255,255,255,0.95)", border: "1px solid rgba(0,0,0,0.06)", boxShadow: "0 4px 16px rgba(0,0,0,0.05)" }}>
+              <div className="group relative transition-all duration-500 hover:-translate-y-1.5 h-full" style={{}}>
                 <div className="flex flex-col h-full">
-                  <div className="mb-6 flex items-center justify-center">
-                    <div className="w-12 h-12 rounded-xl flex items-center justify-center" style={{ background: "rgba(0,0,0,0.03)" }}>
-                      <card.icon size={24} style={{ color: card.color }} strokeWidth={1.5} />
-                    </div>
+                  <div className="mb-8 flex items-start">
+                    <card.icon size={32} style={{ color: card.color, strokeWidth: 1.2, flexShrink: 0 }} />
                   </div>
-                  <h3 className="mb-4 text-center tracking-tight text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(16px, 1.35vw, 20px)", fontWeight: 700, lineHeight: 1.2 }}>
+                  <h3 className="mb-4 tracking-[-0.02em] text-[#0f172a]" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, lineHeight: 1.3 }}>
                     {card.title}
                   </h3>
-                  <p className="font-sans text-center text-[#4a5568]" style={{ fontSize: "14px", lineHeight: 1.6, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
+                  <p className="text-[#5a6b7a]" style={{ fontSize: "15px", lineHeight: 1.7, fontFamily: "var(--font-sans)", fontWeight: 450 }}>{card.desc}</p>
                 </div>
               </div>
             </Reveal>
