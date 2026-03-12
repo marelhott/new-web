@@ -184,7 +184,7 @@ function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 hover:shadow-lg h-full text-center" style={{ background: "#ffffff", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
+              <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 hover:shadow-lg h-full text-center" style={{ background: "#e9ecf2", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
                 <h3 className="mb-4 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2 }}>
                   {card.title}
                 </h3>
