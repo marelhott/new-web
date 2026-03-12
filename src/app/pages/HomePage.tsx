@@ -384,7 +384,7 @@ function ServicePreview() {
                         fontSize: "12px",
                         fontWeight: 600,
                         color: "white",
-                        background: "#334155"
+                        background: "#2563eb"
                       }}
                     >
                       {s.tag}
