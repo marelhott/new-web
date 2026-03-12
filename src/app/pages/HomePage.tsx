@@ -436,27 +436,27 @@ function RealizaceCategoriesSection() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {realizaceCategories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.1}>
-              <Link to={`/sluzby/${cat.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-lg flex" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 4px 16px rgba(15,23,42,0.05)" }}>
-                  {/* Image left side */}
-                  <div className="w-2/5 md:w-1/2 overflow-hidden flex-shrink-0">
-                    <ImageWithFallback src={cat.image} alt={cat.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" style={{ minHeight: "280px" }} />
+              <Link to={`/sluzby/${cat.slug}`} className="group block h-full">
+                <div className="relative overflow-hidden rounded-2xl transition-all duration-500 hover:shadow-lg" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 4px 16px rgba(15,23,42,0.05)", height: "100%" }}>
+                  {/* Image top */}
+                  <div className="overflow-hidden" style={{ height: "200px" }}>
+                    <ImageWithFallback src={cat.image} alt={cat.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110" loading="lazy" />
                   </div>
-                  {/* Text content right side */}
-                  <div className="flex-1 p-6 md:p-8 flex flex-col justify-between">
+                  {/* Text content bottom */}
+                  <div className="p-5 md:p-6 flex flex-col justify-between h-[calc(100%-200px)]">
                     <div>
-                      <h3 className="mb-3" style={{ fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a", fontFamily: "'Sora', sans-serif", lineHeight: 1.2 }}>
+                      <h3 className="mb-2" style={{ fontSize: "18px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a", fontFamily: "'Sora', sans-serif", lineHeight: 1.2 }}>
                         {cat.title}
                       </h3>
-                      <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.6, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                      <p className="font-sans" style={{ fontSize: "13px", lineHeight: 1.5, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
                         {cat.desc}
                       </p>
                     </div>
-                    <div className="mt-4 inline-flex items-center gap-1.5 px-3 py-2 rounded-lg" style={{ background: "#e0e8f5", color: "#2563eb" }}>
-                      <span style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", fontFamily: "'Manrope', var(--font-sans)" }}>VÍCE</span>
+                    <div className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg" style={{ background: "#e0e8f5", color: "#2563eb" }}>
+                      <span style={{ fontSize: "10px", fontWeight: 700, letterSpacing: "0.08em", fontFamily: "'Manrope', var(--font-sans)" }}>VÍCE</span>
                     </div>
                   </div>
                 </div>
