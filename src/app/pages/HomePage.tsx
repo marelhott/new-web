@@ -377,6 +377,19 @@ function ServicePreview() {
 
                   {/* Text content */}
                   <div className="flex flex-col gap-6 flex-1 min-w-0">
+                    {/* Tag */}
+                    <span
+                      className="w-fit px-3 py-1.5 rounded-full"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        color: "white",
+                        background: "#334155"
+                      }}
+                    >
+                      {s.tag}
+                    </span>
+
                     <div className="flex flex-col gap-4">
                       <h3
                         className="m-0"
@@ -402,23 +415,10 @@ function ServicePreview() {
                       </p>
                     </div>
 
-                    {/* Tag + More link */}
-                    <div className="flex items-center gap-4">
-                      <span
-                        className="px-3 py-1.5 rounded-full"
-                        style={{
-                          fontSize: "12px",
-                          fontWeight: 600,
-                          color: "white",
-                          background: "#334155"
-                        }}
-                      >
-                        {s.tag}
-                      </span>
-                      <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg" style={{ background: "#334155" }}>
-                        <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
-                        <ArrowRight size={16} />
-                      </div>
+                    {/* More link */}
+                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
+                      <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
+                      <ArrowRight size={16} />
                     </div>
                   </div>
                 </div>
