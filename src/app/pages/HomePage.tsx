@@ -368,19 +368,8 @@ function ServicePreview() {
                     </div>
                   </div>
                   <div className="p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
-                        <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
-                      </div>
-                      <div className="flex-shrink-0 w-11 h-11 rounded-[14px] flex items-center justify-center transition-all duration-300 group-hover:scale-105" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.08), rgba(124,58,237,0.08))", border: "1px solid rgba(37,99,235,0.14)", color: "#2563eb" }}>
-                        <ArrowUpRight size={16} />
-                      </div>
-                    </div>
-                    <div className="mt-4 flex items-center gap-1.5 text-accent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                      <span style={{ fontSize: "12px", fontWeight: 800, letterSpacing: "0.09em", fontFamily: "'Manrope', var(--font-sans)" }}>DETAIL SLUŽBY</span>
-                      <ArrowRight size={12} />
-                    </div>
+                    <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
+                    <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
                   </div>
                 </div>
               </Link>
