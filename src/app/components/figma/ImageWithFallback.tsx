@@ -17,6 +17,7 @@ export function ImageWithFallback(props: React.ImgHTMLAttributes<HTMLImageElemen
     className,
     loading = 'lazy',
     decoding = 'async',
+    fetchPriority,
     ...rest
   } = props
 
