@@ -88,7 +88,7 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                     ? "bg-black text-white"
                     : "text-foreground/70 hover:text-foreground hover:bg-black/5"
                   }`}
-                style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "-0.01em", fontFamily: "'Manrope', sans-serif" }}
+                style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.01em", fontFamily: "'Manrope', sans-serif" }}
               >
                 {link.label}
               </Link>
