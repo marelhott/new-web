@@ -159,19 +159,19 @@ function HeroSection() {
 const featureCards = [
   {
     icon: Paintbrush,
-    title: "NAŠE SPECIALIZACE JSOU INTERIÉRY",
+    title: "Naše specializace jsou interiéry",
     desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových domů, stejně tak zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
     color: "#2563eb",
   },
   {
     icon: Shield,
-    title: "OPRAVÍME ZDI PŘED VÝMALBOU",
+    title: "Opravíme zdi před výmalbou",
     desc: "Před každou výmalbou je potřeba stěny opravit, zatmelit, upravit povrch, napenetrovat. Je to nedílná součást naší přípravy. Stejně tak pečlivé zakrytí nábytku a podlah.",
     color: "#7c3aed",
   },
   {
     icon: Clock,
-    title: "EXPRES A VÍKENDOVÉ TERMÍNY",
+    title: "Expres a víkendové termíny",
     desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
     color: "#0f766e",
   },
@@ -187,7 +187,7 @@ function TrustSection() {
             <Reveal key={card.title} delay={index * 0.1}>
               <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 hover:shadow-lg h-full text-center" style={{ background: "#e9ecf2", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
                 <div className="mb-6 flex justify-center">
-                  <card.icon size={32} style={{ color: "#334155" }} strokeWidth={1.5} />
+                  <card.icon size={32} style={{ color: "#2563eb" }} strokeWidth={1.5} />
                 </div>
                 <h3 className="mb-4 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2 }}>
                   {card.title}
