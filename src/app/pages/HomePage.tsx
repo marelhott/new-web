@@ -184,15 +184,15 @@ function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 md:gap-10">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative transition-all duration-500 hover:-translate-y-1.5 h-full" style={{}}>
+              <div className="group p-8 md:p-10 rounded-2xl transition-all duration-500 hover:shadow-lg h-full" style={{ background: "#ffffff", border: "1px solid #e5e7eb", boxShadow: "0 2px 8px rgba(0,0,0,0.04)" }}>
                 <div className="flex flex-col h-full">
-                  <div className="mb-8 flex items-start">
-                    <card.icon size={32} style={{ color: card.color, strokeWidth: 1.2, flexShrink: 0 }} />
+                  <div className="mb-6 flex items-center justify-center">
+                    <card.icon size={40} style={{ color: "#1a1a1a", strokeWidth: 1.5 }} />
                   </div>
-                  <h3 className="mb-4 tracking-[-0.02em] text-[#0f172a]" style={{ fontFamily: "var(--font-display)", fontSize: "clamp(18px, 1.5vw, 24px)", fontWeight: 700, lineHeight: 1.3 }}>
+                  <h3 className="mb-4 text-center tracking-[-0.02em] text-[#0f172a]" style={{ fontFamily: "'Inter', 'Sora', sans-serif", fontSize: "clamp(16px, 1.4vw, 22px)", fontWeight: 700, lineHeight: 1.3 }}>
                     {card.title}
                   </h3>
-                  <p className="text-[#5a6b7a]" style={{ fontSize: "15px", lineHeight: 1.7, fontFamily: "var(--font-sans)", fontWeight: 450 }}>{card.desc}</p>
+                  <p className="text-center text-[#4a5568]" style={{ fontSize: "15px", lineHeight: 1.65, fontFamily: "'Inter', 'Manrope', sans-serif", fontWeight: 500 }}>{card.desc}</p>
                 </div>
               </div>
             </Reveal>
