@@ -160,43 +160,79 @@ const featureCards = [
     icon: Paintbrush,
     title: "NAŠE SPECIALIZACE JSOU INTERIÉRY",
     desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových domů, stejně tak zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
+    image: IMG.apartment,
     color: "#2563eb",
   },
   {
     icon: Shield,
     title: "OPRAVÍME ZDI PŘED VÝMALBOU",
     desc: "Před každou výmalbou je potřeba stěny opravit, zatmelit, upravit povrch, napenetrovat. Je to nedílná součást naší přípravy. Stejně tak pečlivé zakrytí nábytku a podlah.",
+    image: IMG.office,
     color: "#7c3aed",
   },
   {
     icon: Clock,
     title: "EXPRES A VÍKENDOVÉ TERMÍNY",
     desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
+    image: IMG.commercial,
     color: "#0f766e",
   },
 ];
 
 function TrustSection() {
   return (
-    <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+        <div className="space-y-8">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-[28px] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(37,99,235,0.09)] h-full text-center" style={{ background: index === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.92) 100%)" : index === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.94) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(238,253,248,0.94) 100%)", border: `1px solid ${card.color}22`, boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
-                <div className="absolute inset-x-8 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${card.color}66, transparent)` }} />
-                <motion.div
-                  className="mx-auto mb-5 flex w-fit items-center justify-center"
-                  animate={{ y: [0, -5, 0], rotate: [0, -2, 0, 2, 0], opacity: [0.72, 1, 0.72] }}
-                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.22 }}
-                >
-                  <card.icon size={20} style={{ color: card.color }} strokeWidth={1.45} />
-                </motion.div>
-                <h3 className="mb-4 tracking-[-0.035em] text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(18px, 1.45vw, 23px)", fontWeight: 700, lineHeight: 1.12 }}>
-                  {card.title}
-                </h3>
-                <p className="font-sans text-[#334155]" style={{ fontSize: "15px", lineHeight: 1.76, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
+              <div
+                className="group relative rounded-[10px] overflow-hidden transition-all duration-500 h-full flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
+                style={{
+                  background: "#e9ecf2",
+                  padding: "24px",
+                  fontFamily: "Manrope, sans-serif",
+                }}
+              >
+                {/* Image */}
+                <div className="w-full lg:w-auto flex-shrink-0">
+                  <ImageWithFallback
+                    src={card.image}
+                    alt={card.title}
+                    className="w-full lg:w-[300px] h-[250px] lg:h-[300px] object-cover rounded-[12px]"
+                    loading="lazy"
+                  />
+                </div>
+
+                {/* Content */}
+                <div className="flex flex-col gap-6 flex-1 min-w-0">
+                  <div className="flex flex-col gap-4">
+                    <h3 className="m-0 text-[#101014]" style={{ fontSize: "32px", lineHeight: 1.1, fontWeight: 600, letterSpacing: "-0.03em" }}>
+                      {card.title}
+                    </h3>
+                    <p className="m-0 text-[#3d3d47]" style={{ fontSize: "16px", lineHeight: 1.6 }}>
+                      {card.desc}
+                    </p>
+                  </div>
+
+                  {/* More link */}
+                  <div>
+                    <Link
+                      to="#"
+                      className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg"
+                      style={{
+                        background: "#334155",
+                        fontSize: "14px",
+                        fontWeight: 600,
+                        textDecoration: "none",
+                      }}
+                    >
+                      Více info
+                      <ArrowRight size={16} />
+                    </Link>
+                  </div>
+                </div>
               </div>
             </Reveal>
           ))}
