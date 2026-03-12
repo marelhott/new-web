@@ -154,118 +154,49 @@ function HeroSection() {
   );
 }
 
-/* ───────── TRUST — 4 feature cards (project showcase style) ───────── */
+/* ───────── TRUST — 3 feature cards (Figma-style) ───────── */
 const featureCards = [
   {
-    title: "Moderní kuchyň",
-    desc: "Transformace kuchyně přinesla elegantní design a zvýšenou funkčnost. Instalace kvalitní kuchyňské linky, pracovní desky a moderních spotřebičů vytvořily stylový prostor. Všechny detaily byly dopracovány do detailu.",
-    image: IMG.office,
-    tag1: "Kuchyň",
-    tag2: "4 týdny",
-    quote: "Renovace kompletně proměnila naši kuchyň, která je nyní krásná i funkční. Řemeslné zpracování bylo výjimečné, tým byl profesionální a komunikativní.",
-    author: "Petra Nováková",
+    icon: Paintbrush,
+    title: "NAŠE SPECIALIZACE JSOU INTERIÉRY",
+    desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových domů, stejně tak zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
+    color: "#2563eb",
   },
   {
-    title: "Obývací pokoj",
-    desc: "Kompletní malba obývacího pokoje s přípravou stěn, tmelením nerovností a aplikací premium barev. Prostor získal nový vzhled se zachováním původního charakteru.",
-    image: IMG.apartment,
-    tag1: "Obývák",
-    tag2: "2 týdny",
-    quote: "Výborná kvalita práce, čistota při realizaci a rychlost. Domů vypadá jako nový. Velice spokojeni!",
-    author: "Jan Svoboda",
+    icon: Shield,
+    title: "OPRAVÍME ZDI PŘED VÝMALBOU",
+    desc: "Před každou výmalbou je potřeba stěny opravit, zatmelit, upravit povrch, napenetrovat. Je to nedílná součást naší přípravy. Stejně tak pečlivé zakrytí nábytku a podlah.",
+    color: "#7c3aed",
   },
   {
-    title: "Komerční prostory",
-    desc: "Profesionální malba kancelářských prostor a recepce se speciálními požadavky na časový režim. Prácí mimo pracovní dobu se minimalizovalo narušení činnosti firmy.",
-    image: IMG.commercial,
-    tag1: "Komerční",
-    tag2: "1 týden",
-    quote: "Nenarušili nám provoz, práce byla hotová přesně včas. Náš prostor vypadá profesionálně.",
-    author: "Miroslav Dvořák",
-  },
-  {
-    title: "Dekorativní stěrka",
-    desc: "Aplikace moderní dekorativní stěrky s mikrocementem. Techniky vytvoření speciálních povrchových efektů a textur. Výsledkem je jedinečný design prostor.",
-    image: IMG.microcement,
-    tag1: "Dekorace",
-    tag2: "3 týdny",
-    quote: "Naprosto nádherný výsledek, přesně jak jsme si představovali. Stěrka vypadá profesionálně a je velmi odolná.",
-    author: "Lucie Vítová",
+    icon: Clock,
+    title: "EXPRES A VÍKENDOVÉ TERMÍNY",
+    desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
+    color: "#0f766e",
   },
 ];
 
 function TrustSection() {
   return (
-    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+    <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div
-                className="group relative rounded-[10px] overflow-hidden transition-all duration-500 h-full flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-[70px]"
-                style={{
-                  background: "#e9ecf2",
-                  padding: "24px",
-                  fontFamily: "Manrope, sans-serif",
-                  minHeight: "100%",
-                }}
-              >
-                {/* Image */}
-                <div className="w-full">
-                  <ImageWithFallback
-                    src={card.image}
-                    alt={card.title}
-                    className="w-full h-[500px] object-cover rounded-[16px] display-block"
-                    loading="lazy"
-                  />
-                </div>
-
-                {/* Content */}
-                <div className="flex flex-col gap-[30px] min-w-0">
-                  {/* Intro */}
-                  <div className="flex flex-col gap-[20px]">
-                    <h2 className="m-0 text-[#101014]" style={{ fontSize: "42px", lineHeight: 1.1, fontWeight: 500, letterSpacing: "-0.03em" }}>
-                      {card.title}
-                    </h2>
-                    <p className="m-0 text-[#3d3d47]" style={{ fontSize: "18px", lineHeight: 1.5, maxWidth: "760px" }}>
-                      {card.desc}
-                    </p>
-                  </div>
-
-                  {/* Tags */}
-                  <div className="flex flex-wrap gap-[16px]">
-                    <span
-                      className="inline-flex items-center justify-center px-3 py-1 rounded-[16px] text-white whitespace-nowrap"
-                      style={{ padding: "5px 12px 6px", background: "#28282c", fontSize: "14px", lineHeight: 1, fontWeight: 400 }}
-                    >
-                      {card.tag1}
-                    </span>
-                    <span
-                      className="inline-flex items-center justify-center px-3 py-1 rounded-[16px] text-white whitespace-nowrap"
-                      style={{ padding: "5px 12px 6px", background: "#28282c", fontSize: "14px", lineHeight: 1, fontWeight: 400 }}
-                    >
-                      {card.tag2}
-                    </span>
-                  </div>
-
-                  {/* Quote */}
-                  <blockquote className="m-0 flex items-start gap-[20px]">
-                    <span className="text-[#101014]" style={{ fontSize: "56px", lineHeight: 0.8, fontWeight: 700, transform: "translateY(-4px)" }}>
-                      "
-                    </span>
-                    <p className="m-0 text-[#3d3d47]" style={{ fontSize: "20px", lineHeight: 1.4, maxWidth: "760px" }}>
-                      {card.quote}
-                    </p>
-                  </blockquote>
-
-                  {/* Author */}
-                  <div className="flex items-center gap-[16px]">
-                    <span className="text-[#101014]" style={{ fontSize: "18px", lineHeight: 1.3, fontWeight: 400 }}>
-                      {card.author}
-                    </span>
-                  </div>
-                </div>
+              <div className="group relative p-8 md:p-9 rounded-[28px] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(37,99,235,0.09)] h-full text-center" style={{ background: index === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.92) 100%)" : index === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.94) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(238,253,248,0.94) 100%)", border: `1px solid ${card.color}22`, boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+                <div className="absolute inset-x-8 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${card.color}66, transparent)` }} />
+                <motion.div
+                  className="mx-auto mb-5 flex w-fit items-center justify-center"
+                  animate={{ y: [0, -5, 0], rotate: [0, -2, 0, 2, 0], opacity: [0.72, 1, 0.72] }}
+                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.22 }}
+                >
+                  <card.icon size={20} style={{ color: card.color }} strokeWidth={1.45} />
+                </motion.div>
+                <h3 className="mb-4 tracking-[-0.035em] text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(18px, 1.45vw, 23px)", fontWeight: 700, lineHeight: 1.12 }}>
+                  {card.title}
+                </h3>
+                <p className="font-sans text-[#334155]" style={{ fontSize: "15px", lineHeight: 1.76, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
               </div>
             </Reveal>
           ))}
