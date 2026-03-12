@@ -436,7 +436,7 @@ function RealizaceCategoriesSection() {
           </div>
         </Reveal>
 
-        <div className="space-y-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {realizaceCategories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.1}>
               <Link to={`/sluzby/${cat.slug}`} className="group block h-full no-underline">
