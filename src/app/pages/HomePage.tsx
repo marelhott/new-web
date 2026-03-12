@@ -80,7 +80,7 @@ function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.36)_0%,rgba(255,255,255,0)_18%,rgba(255,255,255,0.04)_100%)]" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-12 md:pt-16 pb-32">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-20 md:pt-32 pb-32">
         <div className="max-w-xl lg:max-w-[52%]">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <h1
@@ -100,8 +100,8 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#334155] max-w-xl mt-9 mb-10 font-sans"
-            style={{ fontSize: "clamp(14px, 1.08vw, 18px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+            className="text-[#334155] max-w-xl mt-14 mb-10 font-sans"
+            style={{ fontSize: "clamp(13px, 1.05vw, 17px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
           >
             Potřebujete vymalovat a&nbsp;chcete mít jistotu, že výsledek bude perfektní, aniž byste se museli o&nbsp;cokoli starat? Malíři v&nbsp;černém to zařídí&nbsp;– rychle, čistě a s&nbsp;důrazem na detail. Díky online kalkulačce navíc cenu znáte předem, přesně a bez překvapení.
           </motion.p>
@@ -118,7 +118,7 @@ function HeroSection() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-9 flex items-center gap-2 flex-wrap">
-            <span className="text-foreground/55 font-sans" style={{ fontSize: "14px", fontFamily: "'Manrope', var(--font-sans)" }}>
+            <span className="text-foreground/55 font-sans" style={{ fontSize: "12px", fontFamily: "'Manrope', var(--font-sans)" }}>
               nebo nás kontaktujte přímo:
             </span>
             <a
