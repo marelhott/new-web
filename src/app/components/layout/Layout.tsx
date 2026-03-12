@@ -75,7 +75,7 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
             <img
               src={isDark ? logoLightUrl : logoDarkUrl}
               alt="Malíři v černém"
-              className="h-8 md:h-9 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
