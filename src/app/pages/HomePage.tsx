@@ -305,8 +305,8 @@ function HowItWorksSection() {
                   <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(0,0,0,0.3), transparent 36%)" }} />
                 </div>
                 <div className="p-6 md:p-7 flex flex-col flex-1 text-center">
-                  <h3 className="mb-3 text-white" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.03em" }}>{step.title}</h3>
-                  <p className="font-sans flex-1 text-slate-300" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500 }}>{step.desc}</p>
+                  <h3 className="mb-5 text-white" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.03em" }}>{step.title}</h3>
+                  <p className="font-sans flex-1 text-slate-300" style={{ fontSize: "14px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500 }}>{step.desc}</p>
                 </div>
               </div>
             </Reveal>
