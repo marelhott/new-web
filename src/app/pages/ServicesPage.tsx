@@ -73,6 +73,22 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F5e3db085be04449fb327c79b0ec47e1b",
   },
   {
+    title: "Malování před prodejem nebo pronájmem",
+    slug: "malovani-pred-prodejem",
+    tag: "Osobní",
+    icon: Home,
+    desc: "Příprava nemovitosti na prodej nebo pronájem vyžaduje čisté a neutrální prostředí. Zvýšíme atraktivitu vašeho bytu či domu rychlým a efektivním malováním.",
+    features: [
+      "Neutralizace intenzivních barev",
+      "Rychlá realizace — 1–2 dny",
+      "Zvýšíme atraktivitu na trhu",
+    ],
+    price: "Od 80 Kč/m²",
+    color: "#4f9fb8",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Ffcfa66d16cf849eda662201d2a379fe7",
+  },
+  {
     title: "Malování firem a ordinací",
     slug: "malovani-kancelari",
     tag: "Komerční",
