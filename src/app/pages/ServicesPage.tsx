@@ -86,7 +86,7 @@ const allServices = [
     price: "Od 80 Kč/m²",
     color: "#4f9fb8",
     image:
-      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Ffcfa66d16cf849eda662201d2a379fe7",
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F752b5b5a955d4f689677e763af1ca440",
   },
   {
     title: "Malování firem a ordinací",
