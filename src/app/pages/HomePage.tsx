@@ -90,10 +90,8 @@ function HeroSection() {
             >
               Malujeme interiéry
               <br />
-              v&nbsp;Praze a&nbsp;okolí
-              <br />
-              –{" "}
-              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic" }}>rychle, čistě a bez starostí.</span>
+              v&nbsp;Praze a&nbsp;okolí –{" "}
+              <span style={{ color: "#2563eb", fontFamily: "'Sora', sans-serif", fontWeight: 600 }}>rychle, čistě a bez starostí. Postaráme se o vše, od zakrytí nábytku až po finální úklid.</span>
             </h1>
           </motion.div>
 
