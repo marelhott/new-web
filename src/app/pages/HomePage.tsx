@@ -544,130 +544,98 @@ function RealizaceCategoriesSection() {
   );
 }
 
-/* ───────── WHY US (Services Showcase) ───────── */
-const whyUsServices = [
-  { title: "Více jak 500 dokončených zakázek", desc: "Máme bohaté zkušenosti s různými typy projektů. Naší prioritou je kvalita a spokojenost klientů.", icon: "home" },
-  { title: "Přímý kontakt s klientem", desc: "Komunikujeme přímo a jasně. Vždy víte, na koho se obrátit a dostanete okamžitou odpověď.", icon: "phone" },
-  { title: "Rychlost a dostupnost", desc: "Jsme k dispozici tehdy, když nás potřebujete. Reagujeme rychle a efektivně.", icon: "zap" },
-  { title: "Okamžitá kalkulace ceny", desc: "Pomocí naší online kalkulačky si můžete spočítat cenu v reálném čase bez skrytých poplatků.", icon: "calculator" },
-  { title: "Určete si sami termín realizace", desc: "Vyberte si termín, který vám nejlépe vyhovuje. Nabízíme flexibilní harmonogramy.", icon: "calendar" },
-  { title: "Reagujeme do 24 hodin", desc: "Na vaši zprávu či dotaz odpovídáme nejpozději do jednoho pracovního dne.", icon: "clock" },
+/* ───────── FAQ (Frequently Asked Questions) ───────── */
+const faqItems = [
+  { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
+  { title: "Jak dlouho trvá výmalba bytu?", desc: "Většinu bytů zvládneme vymalovat během jednoho až dvou dnů. Záleží na rozsahu zakázky. Rádi se přijedeme na byt podívat a vše s vámi probereme osobně." },
+  { title: "Jak rychle můžete nastoupit na zakázku?", desc: "Termín závisí na aktuální vytíženosti, ale často dokážeme nabídnout i expresní termín." },
+  { title: "Používáte vlastní barvy?", desc: "Ano, používáme kvalitní osvědčené barvy. Pokud máte vlastní preferenci, rádi se přizpůsobíme." },
+  { title: "Pomůžete mi s výběrem barev?", desc: "Ano. Rádi vám pomůžeme vybrat vhodný odstín tak, aby v interiéru dobře fungoval. V případě zájmu dokážeme připravit také jednoduchou vizualizaci." },
 ];
 
 function WhyUsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const getIcon = (iconType: string) => {
-    const iconProps = { size: 40, strokeWidth: 1.5 };
-    const iconMap: Record<string, React.ReactNode> = {
-      home: <Home {...iconProps} />,
-      phone: <Phone {...iconProps} />,
-      zap: <Zap {...iconProps} />,
-      calculator: <Calculator {...iconProps} />,
-      calendar: <Calendar {...iconProps} />,
-      clock: <Clock {...iconProps} />,
-    };
-    return iconMap[iconType] || null;
-  };
-
   return (
-    <section id="proc-my" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+    <section id="faq" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
           <div className="text-center mb-20">
-            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proč my</span>
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Často se nás ptáte</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-              Proč <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>my?</em>
+              Často se nás <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>ptáte?</em>
             </h2>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
-            {/* Image */}
-            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
-              <ImageWithFallback
-                src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
-                alt="Proč my"
-                className="w-full h-full object-cover"
-                loading="lazy"
-              />
-            </div>
-
-            {/* Accordion List */}
-            <div style={{ width: "100%" }}>
-              {whyUsServices.map((service, index) => (
-                <article
-                  key={index}
+          <div style={{ maxWidth: "800px", margin: "0 auto", fontFamily: "Manrope, sans-serif" }}>
+            {faqItems.map((item, index) => (
+              <article
+                key={index}
+                style={{
+                  borderBottom: "1px solid #dbdad9",
+                }}
+              >
+                <button
+                  onClick={() => setActiveIndex(index)}
                   style={{
-                    borderBottom: "1px solid #dbdad9",
+                    width: "100%",
+                    minHeight: "80px",
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "space-between",
+                    gap: "20px",
+                    border: "none",
+                    background: "none",
+                    padding: "20px 0",
+                    cursor: "pointer",
+                    textAlign: "left",
                   }}
                 >
-                  <button
-                    onClick={() => setActiveIndex(index)}
+                  <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px", flex: 1 }}>
+                    {item.title}
+                  </h3>
+                  {/* Toggle */}
+                  <span
                     style={{
-                      width: "100%",
-                      height: "80px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "20px",
-                      border: "none",
-                      background: "none",
-                      padding: "0",
-                      cursor: "pointer",
-                      textAlign: "left",
+                      position: "relative",
+                      width: "24px",
+                      height: "24px",
+                      flex: "0 0 auto",
+                      display: "block",
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
-                      <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
-                        {getIcon(service.icon)}
-                      </span>
-                      <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
-                        {service.title}
-                      </h3>
-                    </div>
-                    {/* Toggle */}
-                    <span
-                      style={{
-                        position: "relative",
-                        width: "24px",
-                        height: "24px",
-                        flex: "0 0 auto",
-                        display: "block",
-                      }}
-                    >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-                        {activeIndex === index ? (
-                          <>
-                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
-                          </>
-                        ) : (
-                          <>
-                            <line x1="12" y1="2" x2="12" y2="22" strokeLinecap="round" />
-                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
-                          </>
-                        )}
-                      </svg>
-                    </span>
-                  </button>
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                      {activeIndex === index ? (
+                        <>
+                          <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                        </>
+                      ) : (
+                        <>
+                          <line x1="12" y1="2" x2="12" y2="22" strokeLinecap="round" />
+                          <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                        </>
+                      )}
+                    </svg>
+                  </span>
+                </button>
 
-                  {activeIndex === index && (
-                    <motion.div
-                      initial={{ opacity: 0, height: 0 }}
-                      animate={{ opacity: 1, height: "auto" }}
-                      exit={{ opacity: 0, height: 0 }}
-                      transition={{ duration: 0.3 }}
-                      className="overflow-hidden"
-                    >
-                      <p style={{ width: "100%", margin: 0, padding: "0 0 30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px", fontFamily: "Manrope, sans-serif" }}>
-                        {service.desc}
-                      </p>
-                    </motion.div>
-                  )}
-                </article>
-              ))}
-            </div>
+                {activeIndex === index && (
+                  <motion.div
+                    initial={{ opacity: 0, height: 0 }}
+                    animate={{ opacity: 1, height: "auto" }}
+                    exit={{ opacity: 0, height: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px" }}>
+                      {item.desc}
+                    </p>
+                  </motion.div>
+                )}
+              </article>
+            ))}
           </div>
         </Reveal>
       </div>
