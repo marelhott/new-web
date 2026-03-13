@@ -88,12 +88,12 @@ function HeroSection() {
               className="tracking-[-0.045em] text-[#09090b]"
               style={{ fontSize: "clamp(38px, 5.1vw, 70px)", fontWeight: 600, lineHeight: 0.96, fontFamily: "'Sora', sans-serif" }}
             >
-              Malování bytů, domů,
+              Malujeme interiéry
               <br />
-              kanceláří v&nbsp;Praze
+              v&nbsp;Praze a&nbsp;okolí
               <br />
-              a&nbsp;okolí.{" "}
-              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic" }}>Kvalitně, rychle a&nbsp;s&nbsp;péčí o&nbsp;detail.</span>
+              –{" "}
+              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic" }}>rychle, čistě a bez starostí.</span>
             </h1>
           </motion.div>
 
