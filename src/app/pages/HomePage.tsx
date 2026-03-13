@@ -162,8 +162,8 @@ const featureCards = [
   },
   {
     icon: Shield,
-    title: "Opravíme zdi před výmalbou",
-    desc: "Před každou výmalbou je potřeba stěny opravit, zatmelit, upravit povrch, napenetrovat. Je to nedílná součást naší přípravy. Stejně tak pečlivé zakrytí nábytku a podlah.",
+    title: "NAZÁVAZNÁ KALKULACE",
+    desc: "Stačí nám pár základních informací o bytě a připravíme orientační cenu výmalby.\nPokud bude potřeba, rádi se přijedeme na byt podívat a vše s vámi probereme osobně.",
     color: "#7c3aed",
   },
   {
