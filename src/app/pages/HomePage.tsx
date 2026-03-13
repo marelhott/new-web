@@ -157,7 +157,7 @@ const featureCards = [
   {
     icon: Paintbrush,
     title: "Naše specializace jsou interiéry",
-    desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových domů, stejně tak zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
+    desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových dom. Stejně tak ale zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
     color: "#2563eb",
   },
   {
