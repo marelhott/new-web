@@ -352,7 +352,7 @@ function ServicePreview() {
             <Reveal key={s.slug} delay={i * 0.08}>
               <Link to={`/sluzby/${s.slug}`} className="group block h-full no-underline">
                 <div
-                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
+                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-12 h-full"
                   style={{
                     background: "#e9ecf2",
                     padding: "24px",
