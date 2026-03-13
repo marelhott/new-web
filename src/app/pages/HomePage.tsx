@@ -322,7 +322,7 @@ const services = [
   { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
   { title: "Výmalba společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.microcement, slug: "dekorativni-sterky", tag: "Speciální" },
   { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální výmalba kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.roller, slug: "opravy-a-priprava", tag: "Příprava" },
-  { title: "Komerční objekty", desc: "SVJ, bytové domy, developerské projekty.", image: IMG.commercial, slug: "komercni-objekty", tag: "SVJ / Dev" },
+  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Výmalba pokojů i společných prostor s minimálním omezením provozu.", image: IMG.commercial, slug: "komercni-objekty", tag: "SVJ / Dev" },
 ];
 
 function ServicePreview() {
