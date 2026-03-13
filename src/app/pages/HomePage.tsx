@@ -656,6 +656,81 @@ function WhyUsSection() {
   );
 }
 
+/* ───────── PRICING SECTION ───────── */
+function PricingSection() {
+  return (
+    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-20">
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+              Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
+            </h2>
+            <p className="font-sans max-w-2xl mx-auto mt-8" style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+              Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací.<br />
+              Pro představu uvádíme orientační ceny běžných zakázek.
+            </p>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div style={{ maxWidth: "900px", margin: "0 auto" }}>
+            <div style={{ background: "rgba(233, 236, 242, 0.7)", borderRadius: "16px", padding: "40px", fontFamily: "Manrope, sans-serif", backdropFilter: "blur(12px)" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", marginBottom: "30px" }}>
+                <div style={{ borderBottom: "2px solid #dbdad9", paddingBottom: "15px" }}>
+                  <h3 style={{ margin: "0 0 15px", fontSize: "18px", fontWeight: 600, color: "#101014" }}>Typ bytu</h3>
+                </div>
+                <div style={{ borderBottom: "2px solid #dbdad9", paddingBottom: "15px" }}>
+                  <h3 style={{ margin: "0 0 15px", fontSize: "18px", fontWeight: 600, color: "#101014" }}>Orientační cena</h3>
+                </div>
+              </div>
+
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "30px", gap: "30px" }}>
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>1+kk</p>
+                </div>
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>od 5500 Kč</p>
+                </div>
+
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>2+kk</p>
+                </div>
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>od 8500 Kč</p>
+                </div>
+
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>3+kk / 3+1</p>
+                </div>
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>od 12000 Kč</p>
+                </div>
+
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>4+kk a větší</p>
+                </div>
+                <div style={{ paddingBottom: "20px" }}>
+                  <p style={{ margin: 0, fontSize: "16px", color: "#3d3d47", fontWeight: 500 }}>individuální kalkulace</p>
+                </div>
+              </div>
+
+              <div style={{ borderTop: "2px solid #dbdad9", paddingTop: "30px", marginTop: "30px", textAlign: "center" }}>
+                <p style={{ margin: "0 0 20px", fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", fontFamily: "Manrope, sans-serif" }}>
+                  Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
+                </p>
+                <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
+                  Spočítat cenu <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 /* ───────── DECORATIVE ART SECTION ───────── */
 const decoImages = [IMG.decoArt1, IMG.decoArt2, IMG.decoArt3, IMG.decoArt4];
 
@@ -792,6 +867,7 @@ export default function HomePage() {
       <ServicePreview />
       <WhyUsSection />
       <RealizaceCategoriesSection />
+      <PricingSection />
       <TrustSection />
       <DecorativeArtSection />
       <TestimonialsSection />
