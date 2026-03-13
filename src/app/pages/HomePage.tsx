@@ -790,8 +790,8 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
-      <RealizaceCategoriesSection />
       <WhyUsSection />
+      <RealizaceCategoriesSection />
       <TrustSection />
       <DecorativeArtSection />
       <TestimonialsSection />
