@@ -121,7 +121,7 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F813e356566e0424cbba8f945a4b5a0bc",
   },
   {
-    title: "SVJ – chodby a schodiště",
+    title: "Malování společných prostorů domu (SVJ)",
     slug: "komercni-objekty",
     tag: "SVJ / Developers",
     icon: Users,
@@ -137,7 +137,7 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Ffe0d5ae8e8b3454e951a42634b8be26d",
   },
   {
-    title: "Dekorativní stěrky a štuk",
+    title: "Dekorativní úprava zdí",
     slug: "dekorativni-sterky",
     tag: "Speciální",
     icon: Palette,
