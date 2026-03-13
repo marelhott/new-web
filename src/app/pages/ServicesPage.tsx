@@ -93,7 +93,7 @@ const allServices = [
     slug: "malovani-spolecnych-prostor",
     tag: "SVJ / Developers",
     icon: Users,
-    desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.",
+    desc: "Odborné malování chodeb, schodišť a společných prostor bytových domů. Koordinace s SVJ.",
     features: [
       "Etapová realizace v obydlených domech",
       "Hromadné slevy pro SVJ",
