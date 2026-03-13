@@ -569,73 +569,86 @@ function WhyUsSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ maxWidth: "800px", margin: "0 auto", fontFamily: "Manrope, sans-serif" }}>
-            {faqItems.map((item, index) => (
-              <article
-                key={index}
-                style={{
-                  borderBottom: "1px solid #dbdad9",
-                }}
-              >
-                <button
-                  onClick={() => setActiveIndex(index)}
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+            {/* Image */}
+            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+              <ImageWithFallback
+                src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
+                alt="Často se nás ptáte"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* FAQ List */}
+            <div style={{ width: "100%" }}>
+              {faqItems.map((item, index) => (
+                <article
+                  key={index}
                   style={{
-                    width: "100%",
-                    minHeight: "80px",
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "space-between",
-                    gap: "20px",
-                    border: "none",
-                    background: "none",
-                    padding: "20px 0",
-                    cursor: "pointer",
-                    textAlign: "left",
+                    borderBottom: "1px solid #dbdad9",
                   }}
                 >
-                  <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px", flex: 1 }}>
-                    {item.title}
-                  </h3>
-                  {/* Toggle */}
-                  <span
+                  <button
+                    onClick={() => setActiveIndex(index)}
                     style={{
-                      position: "relative",
-                      width: "24px",
-                      height: "24px",
-                      flex: "0 0 auto",
-                      display: "block",
+                      width: "100%",
+                      minHeight: "80px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "20px",
+                      border: "none",
+                      background: "none",
+                      padding: "20px 0",
+                      cursor: "pointer",
+                      textAlign: "left",
                     }}
                   >
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
-                      {activeIndex === index ? (
-                        <>
-                          <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
-                        </>
-                      ) : (
-                        <>
-                          <line x1="12" y1="2" x2="12" y2="22" strokeLinecap="round" />
-                          <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
-                        </>
-                      )}
-                    </svg>
-                  </span>
-                </button>
+                    <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px", flex: 1 }}>
+                      {item.title}
+                    </h3>
+                    {/* Toggle */}
+                    <span
+                      style={{
+                        position: "relative",
+                        width: "24px",
+                        height: "24px",
+                        flex: "0 0 auto",
+                        display: "block",
+                      }}
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                        {activeIndex === index ? (
+                          <>
+                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                          </>
+                        ) : (
+                          <>
+                            <line x1="12" y1="2" x2="12" y2="22" strokeLinecap="round" />
+                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                          </>
+                        )}
+                      </svg>
+                    </span>
+                  </button>
 
-                {activeIndex === index && (
-                  <motion.div
-                    initial={{ opacity: 0, height: 0 }}
-                    animate={{ opacity: 1, height: "auto" }}
-                    exit={{ opacity: 0, height: 0 }}
-                    transition={{ duration: 0.3 }}
-                    className="overflow-hidden"
-                  >
-                    <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px" }}>
-                      {item.desc}
-                    </p>
-                  </motion.div>
-                )}
-              </article>
-            ))}
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px" }}>
+                        {item.desc}
+                      </p>
+                    </motion.div>
+                  )}
+                </article>
+              ))}
+            </div>
           </div>
         </Reveal>
       </div>
