@@ -3,23 +3,24 @@ import { Link } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
   ArrowRight, ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight,
-  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock
+  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock,
+  Hammer, Home, Droplet, Building2, Wrench, Zap
 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 const heroPhoto = "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fde4c3a59dfe7452abff728cfc029c559?format=webp&width=2400&height=3600";
 
 const IMG = {
-  apartment: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fccb0003eea4f4419ae5d6485d2222ae5",
-  office: "https://images.unsplash.com/photo-1764410481612-7544525b2991?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsdXh1cnklMjBvZmZpY2UlMjBpbnRlcmlvciUyMGRlc2lnbnxlbnwxfHx8fDE3NzEzMjcxNTh8MA&ixlib=rb-4.1.0&q=80&w=1080",
+  apartment: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fabc211a34f1e4518bec3c79251d04fee",
+  office: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F747e3375b3e84ca38e9af5aff4e9bee8",
   microcement: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fac74bb287f214990a9342caddd066a63",
   roller: "https://images.unsplash.com/photo-1589307693556-7286ae38293c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3aGl0ZSUyMHdhbGwlMjBwYWludCUyMHJvbGxlciUyMGZyZXNoJTIwY29hdHxlbnwxfHx8fDE3NzEzMjcxNjV8MA&ixlib=rb-4.1.0&q=80&w=1080",
-  commercial: "https://images.unsplash.com/photo-1768270181430-3e3672a32283?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjb21tZXJjaWFsJTIwYnVpbGRpbmclMjBsb2JieSUyMGludGVyaW9yfGVufDF8fHx8MTc3MTMyNzE1OXww&ixlib=rb-4.1.0&q=80&w=1080",
+  commercial: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fb9f6d6ba78a64aac8ceef99230e436ae",
   before: "https://images.unsplash.com/photo-1566503732592-748f40a6e997?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxlbXB0eSUyMHJvb20lMjBiZWZvcmUlMjByZW5vdmF0aW9uJTIwd2FsbHN8ZW58MXx8fHwxNzcxMzI3MTY2fDA&ixlib=rb-4.1.0&q=80&w=1080",
   after: "https://images.unsplash.com/photo-1741105820091-3d150a451cfe?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtb2Rlcm4lMjBjbGVhbiUyMHdoaXRlJTIwcm9vbSUyMGFmdGVyJTIwcmVub3ZhdGlvbnxlbnwxfHx8fDE3NzEzMjcxNjZ8MA&ixlib=rb-4.1.0&q=80&w=1080",
   howStep1: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fe13cc55ca0b340e681ebe2d6bb1cc47a",
-  howStep2: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F99308e88c7b44684867965ebc35d3d74",
-  howStep3: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F0597aaf49233415892a99debe1695c52",
+  howStep2: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F52d4aa0b37b24f659f721d9267457b33",
+  howStep3: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F5e136471cb4b4d218ea326f9855b60aa",
   decoArt1: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F2a3232c9a8fd4bbd98ad49cd2837db64",
   decoArt2: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Ff79c6da27b1d444ba0b154fb40a7321d",
   decoArt3: "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fbad5f6bc0f8b40218b9f946ea125ad93",
@@ -73,7 +74,6 @@ function HeroSection() {
           alt="Malířka při práci"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
-          fetchPriority="high"
           decoding="async"
           style={{ objectPosition: "center 58%" }}
         />
@@ -81,19 +81,16 @@ function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.36)_0%,rgba(255,255,255,0)_18%,rgba(255,255,255,0.04)_100%)]" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-12 md:pt-16 pb-32">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-20 md:pt-32 pb-32">
         <div className="max-w-xl lg:max-w-[52%]">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <h1
               className="tracking-[-0.045em] text-[#09090b]"
-              style={{ fontSize: "clamp(38px, 5.1vw, 70px)", fontWeight: 600, lineHeight: 0.96, fontFamily: "'Sora', sans-serif" }}
+              style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 600, lineHeight: 1.2, fontFamily: "'Sora', sans-serif" }}
             >
-              Malování bytů, domů,
+              Malujeme interiéry v Praze a okolí – rychle, čistě a bez starostí. Postaráme se o vše, od zakrytí nábytku až po finální úklid.
               <br />
-              kanceláří v&nbsp;Praze
-              <br />
-              a&nbsp;okolí.{" "}
-              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic" }}>Kvalitně, rychle a&nbsp;s&nbsp;péčí o&nbsp;detail.</span>
+              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: "clamp(28px, 3.5vw, 48px)" }}>Váš byt můžeme vymalovat už za jeden den.</span>
             </h1>
           </motion.div>
 
@@ -101,8 +98,8 @@ function HeroSection() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#334155] max-w-xl mt-9 mb-10 font-sans"
-            style={{ fontSize: "clamp(14px, 1.08vw, 18px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+            className="text-[#334155] max-w-xl mt-14 mb-10 font-sans"
+            style={{ fontSize: "clamp(13px, 1.05vw, 17px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
           >
             Potřebujete vymalovat a&nbsp;chcete mít jistotu, že výsledek bude perfektní, aniž byste se museli o&nbsp;cokoli starat? Malíři v&nbsp;černém to zařídí&nbsp;– rychle, čistě a s&nbsp;důrazem na detail. Díky online kalkulačce navíc cenu znáte předem, přesně a bez překvapení.
           </motion.p>
@@ -119,7 +116,7 @@ function HeroSection() {
           </motion.div>
 
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-9 flex items-center gap-2 flex-wrap">
-            <span className="text-foreground/55 font-sans" style={{ fontSize: "14px", fontFamily: "'Manrope', var(--font-sans)" }}>
+            <span className="text-foreground/55 font-sans" style={{ fontSize: "12px", fontFamily: "'Manrope', var(--font-sans)" }}>
               nebo nás kontaktujte přímo:
             </span>
             <a
@@ -159,19 +156,19 @@ function HeroSection() {
 const featureCards = [
   {
     icon: Paintbrush,
-    title: "NAŠE SPECIALIZACE JSOU INTERIÉRY",
-    desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových domů, stejně tak zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
+    title: "Naše specializace jsou interiéry",
+    desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových dom. Stejně tak ale zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
     color: "#2563eb",
   },
   {
     icon: Shield,
-    title: "OPRAVÍME ZDI PŘED VÝMALBOU",
-    desc: "Před každou výmalbou je potřeba stěny opravit, zatmelit, upravit povrch, napenetrovat. Je to nedílná součást naší přípravy. Stejně tak pečlivé zakrytí nábytku a podlah.",
+    title: "Nezávazná kalkulace",
+    desc: "Stačí nám pár základních informací o bytě a připravíme orientační cenu výmalby.\nPokud bude potřeba, rádi se přijedeme na byt podívat a vše s vámi probereme osobně.",
     color: "#7c3aed",
   },
   {
     icon: Clock,
-    title: "EXPRES A VÍKENDOVÉ TERMÍNY",
+    title: "Expres a víkendové termíny",
     desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
     color: "#0f766e",
   },
@@ -185,19 +182,16 @@ function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-[28px] overflow-hidden transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_22px_60px_rgba(37,99,235,0.09)] h-full text-center" style={{ background: index === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(239,246,255,0.92) 100%)" : index === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(250,245,255,0.94) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(238,253,248,0.94) 100%)", border: `1px solid ${card.color}22`, boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
-                <div className="absolute inset-x-8 top-0 h-px" style={{ background: `linear-gradient(90deg, transparent, ${card.color}66, transparent)` }} />
-                <motion.div
-                  className="mx-auto mb-5 flex w-fit items-center justify-center"
-                  animate={{ y: [0, -5, 0], rotate: [0, -2, 0, 2, 0], opacity: [0.72, 1, 0.72] }}
-                  transition={{ duration: 4.8, repeat: Infinity, ease: "easeInOut", delay: index * 0.22 }}
-                >
-                  <card.icon size={20} style={{ color: card.color }} strokeWidth={1.45} />
-                </motion.div>
-                <h3 className="mb-4 tracking-[-0.035em] text-[#0f172a]" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(18px, 1.45vw, 23px)", fontWeight: 700, lineHeight: 1.12 }}>
+              <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 h-full flex flex-col text-center" style={{ background: "rgba(233, 236, 242, 0.7)", backdropFilter: "blur(12px)" }}>
+                <div className="h-12 flex justify-center items-center mb-4">
+                  <card.icon size={32} style={{ color: "#2563eb" }} strokeWidth={1.5} />
+                </div>
+                <h3 className="mb-6 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, minHeight: "60px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {card.title}
                 </h3>
-                <p className="font-sans text-[#334155]" style={{ fontSize: "15px", lineHeight: 1.76, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{card.desc}</p>
+                <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500, display: "flex", alignItems: "flex-start" }}>
+                  {card.desc}
+                </p>
               </div>
             </Reveal>
           ))}
@@ -305,17 +299,13 @@ function HowItWorksSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {howItWorksSteps.map((step, i) => (
             <Reveal key={step.title} delay={i * 0.12}>
-              <div className="group overflow-hidden rounded-[30px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(37,99,235,0.10)] h-full flex flex-col" style={{ background: i === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,247,255,0.95) 100%)" : i === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.95) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,253,248,0.95) 100%)", border: i === 0 ? "1px solid rgba(37,99,235,0.14)" : i === 1 ? "1px solid rgba(124,58,237,0.14)" : "1px solid rgba(15,118,110,0.14)", boxShadow: "0 18px 44px rgba(15,23,42,0.05)" }}>
+              <div className="group overflow-hidden rounded-[16px] transition-all duration-500 hover:shadow-lg h-full flex flex-col" style={{ background: "rgba(10, 15, 25, 0.95)", backdropFilter: "blur(12px)", border: "none", boxShadow: "0 8px 24px rgba(0,0,0,0.5)" }}>
                 <div className="aspect-[4/3] overflow-hidden relative">
                   <ImageWithFallback src={step.image} alt={step.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                  <div className="absolute inset-0" style={{ background: "linear-gradient(180deg, rgba(15,23,42,0.08), transparent 36%)" }} />
-                  <div className="absolute top-5 left-5" style={{ fontSize: "12px", fontWeight: 800, color: i === 0 ? "#2563eb" : i === 1 ? "#7c3aed" : "#0f766e", letterSpacing: "0.14em", fontFamily: "'Manrope', var(--font-sans)" }}>
-                    0{i + 1}
-                  </div>
                 </div>
-                <div className="p-6 md:p-7 flex flex-col flex-1">
-                  <h3 className="mb-3" style={{ fontFamily: "'Sora', sans-serif", fontSize: "clamp(22px, 1.8vw, 28px)", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.04em", color: i === 0 ? "#10213f" : i === 1 ? "#231942" : "#16382f" }}>{step.title}</h3>
-                  <p className="font-sans flex-1" style={{ fontSize: "15px", lineHeight: 1.78, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500, color: "#475569" }}>{step.desc}</p>
+                <div className="p-6 md:p-7 flex flex-col flex-1 text-center">
+                  <h3 className="mb-5 text-white" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, letterSpacing: "-0.03em" }}>{step.title}</h3>
+                  <p className="font-sans flex-1 text-slate-300" style={{ fontSize: "14px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500 }}>{step.desc}</p>
                 </div>
               </div>
             </Reveal>
@@ -328,11 +318,12 @@ function HowItWorksSection() {
 
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
-  { title: "Malování bytů", desc: "Kompletní malířské práce pro byty a rodinné domy.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
-  { title: "Malování kanceláří", desc: "Profesionální servis pro komerční prostory. Mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
-  { title: "Dekorativní stěrky", desc: "Microcement, benátský štuk a moderní povrchové úpravy.", image: IMG.microcement, slug: "dekorativni-sterky", tag: "Speciální" },
-  { title: "Opravy a příprava", desc: "Tmelení, broušení, penetrace. Důkladná příprava.", image: IMG.roller, slug: "opravy-a-priprava", tag: "Příprava" },
-  { title: "Komerční objekty", desc: "SVJ, bytové domy, developerské projekty.", image: IMG.commercial, slug: "komercni-objekty", tag: "SVJ / Dev" },
+  { title: "Výmalba bytů a domů", desc: "Kompletní výmalba bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
+  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-kancelari", tag: "Osobní" },
+  { title: "Výmalba společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "dekorativni-sterky", tag: "Odborné" },
+  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální výmalba kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "opravy-a-priprava", tag: "Komerční" },
+  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Výmalba pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
+  { title: "Dekorativní výmalba", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-vymalba", tag: "Design" },
 ];
 
 function ServicePreview() {
@@ -356,31 +347,73 @@ function ServicePreview() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, i) => (
             <Reveal key={s.slug} delay={i * 0.08}>
-              <Link to={`/sluzby/${s.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-[28px] transition-all duration-500 hover:-translate-y-1.5 hover:shadow-[0_24px_60px_rgba(37,99,235,0.08)]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 16px 40px rgba(15,23,42,0.05)" }}>
-                  <div className="aspect-[4/3] overflow-hidden relative">
-                    <ImageWithFallback src={s.image} alt={s.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                    <div className="absolute top-4 left-4">
-                      <span className="px-3 py-1 rounded-full border" style={{ fontSize: "11px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.08em", textTransform: "uppercase", color: "rgba(255,255,255,0.88)", background: "rgba(15,23,42,0.26)", borderColor: "rgba(255,255,255,0.14)", backdropFilter: "blur(10px)" }}>{s.tag}</span>
-                    </div>
+              <Link to={`/sluzby/${s.slug}`} className="group block h-full no-underline">
+                <div
+                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-12 h-full"
+                  style={{
+                    background: "#e9ecf2",
+                    padding: "24px",
+                    fontFamily: "Manrope, sans-serif",
+                    textDecoration: "none",
+                  }}
+                >
+                  {/* Image */}
+                  <div className="w-full lg:w-auto flex-shrink-0">
+                    <ImageWithFallback
+                      src={s.image}
+                      alt={s.title}
+                      className="w-full lg:w-[300px] h-[250px] lg:h-[300px] object-cover rounded-[12px] transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
                   </div>
-                  <div className="p-6">
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, lineHeight: 1.08, letterSpacing: "-0.035em", color: "#0f172a" }}>{s.title}</h3>
-                        <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{s.desc}</p>
-                      </div>
-                      <div className="flex-shrink-0 w-11 h-11 rounded-[14px] flex items-center justify-center transition-all duration-300 group-hover:scale-105" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.08), rgba(124,58,237,0.08))", border: "1px solid rgba(37,99,235,0.14)", color: "#2563eb" }}>
-                        <ArrowUpRight size={16} />
-                      </div>
+
+                  {/* Text content */}
+                  <div className="flex flex-col gap-6 flex-1 min-w-0">
+                    {/* Tag */}
+                    <span
+                      className="w-fit px-3 py-1.5 rounded-full"
+                      style={{
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        color: "white",
+                        background: "#2563eb"
+                      }}
+                    >
+                      {s.tag}
+                    </span>
+
+                    <div className="flex flex-col gap-4">
+                      <h3
+                        className="m-0"
+                        style={{
+                          fontSize: "32px",
+                          fontWeight: 600,
+                          letterSpacing: "-0.03em",
+                          color: "#101014",
+                          lineHeight: 1.1
+                        }}
+                      >
+                        {s.title}
+                      </h3>
+                      <p
+                        className="m-0"
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: 1.6,
+                          color: "#3d3d47"
+                        }}
+                      >
+                        {s.desc}
+                      </p>
                     </div>
-                    <div className="mt-4 flex items-center gap-1.5 text-accent opacity-0 group-hover:opacity-100 transition-all duration-300 translate-y-2 group-hover:translate-y-0">
-                      <span style={{ fontSize: "12px", fontWeight: 800, letterSpacing: "0.09em", fontFamily: "'Manrope', var(--font-sans)" }}>DETAIL SLUŽBY</span>
-                      <ArrowRight size={12} />
+
+                    {/* More link */}
+                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
+                      <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
+                      <ArrowRight size={16} />
                     </div>
                   </div>
                 </div>
@@ -445,34 +478,60 @@ function RealizaceCategoriesSection() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {realizaceCategories.map((cat, i) => (
             <Reveal key={cat.title} delay={i * 0.1}>
-              <Link to={`/sluzby/${cat.slug}`} className="group block">
-                <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_28px_80px_rgba(15,23,42,0.10)]" style={{ minHeight: "380px", background: i === 0 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(242,247,255,0.95) 100%)" : i === 1 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(248,244,255,0.95) 100%)" : i === 2 ? "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(241,253,248,0.95) 100%)" : "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(255,247,237,0.95) 100%)", border: i === 0 ? "1px solid rgba(37,99,235,0.14)" : i === 1 ? "1px solid rgba(124,58,237,0.14)" : i === 2 ? "1px solid rgba(15,118,110,0.14)" : "1px solid rgba(234,88,12,0.14)", boxShadow: "0 16px 48px rgba(15,23,42,0.06)" }}>
-                  {/* Image positioned in top area */}
-                  <div className={`absolute top-0 ${i % 2 === 0 ? "left-0 w-[60%]" : "right-0 w-[70%]"} h-[55%] overflow-hidden`} style={{ borderRadius: i % 2 === 0 ? "20px 0 0 0" : "0 20px 0 0" }}>
-                    <ImageWithFallback src={cat.image} alt={cat.title} className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" loading="lazy" />
+              <Link to={`/sluzby/${cat.slug}`} className="group block h-full no-underline">
+                <div
+                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
+                  style={{
+                    background: "#e9ecf2",
+                    padding: "24px",
+                    fontFamily: "Manrope, sans-serif",
+                    textDecoration: "none",
+                  }}
+                >
+                  {/* Image */}
+                  <div className="w-full lg:w-auto flex-shrink-0">
+                    <ImageWithFallback
+                      src={cat.image}
+                      alt={cat.title}
+                      className="w-full lg:w-[300px] h-[250px] lg:h-[300px] object-cover rounded-[12px] transition-transform duration-700 group-hover:scale-105"
+                      loading="lazy"
+                    />
                   </div>
-                  {/* Color accent gradient in corner */}
-                  <div className="absolute inset-0 rounded-3xl pointer-events-none" style={{ background: `linear-gradient(135deg, transparent 0%, transparent 50%, ${cat.color}20 100%)` }} />
+
                   {/* Text content */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 pt-12" style={{ background: `linear-gradient(180deg, transparent 0%, rgba(255,255,255,0.72) 100%)` }}>
-                    <div className="flex items-start justify-between gap-4">
-                      <div>
-                        <h3 className="mb-3" style={{ fontSize: "22px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a", fontFamily: "'Sora', sans-serif", lineHeight: 1.08 }}>
-                          {cat.title}
-                        </h3>
-                        <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.68, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-                          {cat.desc}
-                        </p>
-                      </div>
-                      <div className="flex-shrink-0 w-12 h-12 rounded-[16px] flex items-center justify-center transition-all duration-300 transform group-hover:scale-105" style={{ background: i === 0 ? "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(37,99,235,0.06))" : i === 1 ? "linear-gradient(135deg, rgba(124,58,237,0.12), rgba(124,58,237,0.06))" : i === 2 ? "linear-gradient(135deg, rgba(15,118,110,0.12), rgba(15,118,110,0.06))" : "linear-gradient(135deg, rgba(234,88,12,0.12), rgba(234,88,12,0.06))", color: i === 0 ? "#2563eb" : i === 1 ? "#7c3aed" : i === 2 ? "#0f766e" : "#ea580c", border: i === 0 ? "1px solid rgba(37,99,235,0.18)" : i === 1 ? "1px solid rgba(124,58,237,0.18)" : i === 2 ? "1px solid rgba(15,118,110,0.18)" : "1px solid rgba(234,88,12,0.18)" }}>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                          <line x1="7" y1="17" x2="17" y2="7"></line>
-                          <polyline points="17 7 17 17 7 17"></polyline>
-                        </svg>
-                      </div>
+                  <div className="flex flex-col gap-6 flex-1 min-w-0">
+                    <div className="flex flex-col gap-4">
+                      <h3
+                        className="m-0"
+                        style={{
+                          fontSize: "32px",
+                          fontWeight: 600,
+                          letterSpacing: "-0.03em",
+                          color: "#101014",
+                          lineHeight: 1.1
+                        }}
+                      >
+                        {cat.title}
+                      </h3>
+                      <p
+                        className="m-0"
+                        style={{
+                          fontSize: "16px",
+                          lineHeight: 1.6,
+                          color: "#3d3d47"
+                        }}
+                      >
+                        {cat.desc}
+                      </p>
+                    </div>
+
+                    {/* More link */}
+                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
+                      <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
+                      <ArrowRight size={16} />
                     </div>
                   </div>
                 </div>
@@ -485,62 +544,129 @@ function RealizaceCategoriesSection() {
   );
 }
 
-/* ───────── WHY US (updated with real content) ───────── */
-const whyUsLeft = [
-  "více jak 500 dokončených zakázek",
-  "přímý kontakt s klientem",
-  "rychlost a dostupnost",
-  "okamžitá kalkulace ceny",
-  "určete si sami termín realizace",
-  "reagujeme do 24 hodin",
-];
-
-const whyUsRight = [
-  "nezanecháváme stopy, jen dokonalé stěny",
-  "přijedeme včas a vždy dodržíme termín",
-  "profesionální vybavení a kvalitní barvy – žádné kompromisy v kvalitě",
-  "rádi vám poradíme s výběrem barev a typem nátěru",
-  "malování bez starostí? Stačí zavolat nebo si jenom spočítat online cenu",
+/* ───────── WHY US (Services Showcase) ───────── */
+const whyUsServices = [
+  { title: "Více jak 500 dokončených zakázek", desc: "Máme bohaté zkušenosti s různými typy projektů. Naší prioritou je kvalita a spokojenost klientů.", icon: "home" },
+  { title: "Přímý kontakt s klientem", desc: "Komunikujeme přímo a jasně. Vždy víte, na koho se obrátit a dostanete okamžitou odpověď.", icon: "phone" },
+  { title: "Rychlost a dostupnost", desc: "Jsme k dispozici tehdy, když nás potřebujete. Reagujeme rychle a efektivně.", icon: "zap" },
+  { title: "Okamžitá kalkulace ceny", desc: "Pomocí naší online kalkulačky si můžete spočítat cenu v reálném čase bez skrytých poplatků.", icon: "calculator" },
+  { title: "Určete si sami termín realizace", desc: "Vyberte si termín, který vám nejlépe vyhovuje. Nabízíme flexibilní harmonogramy.", icon: "calendar" },
+  { title: "Reagujeme do 24 hodin", desc: "Na vaši zprávu či dotaz odpovídáme nejpozději do jednoho pracovního dne.", icon: "clock" },
 ];
 
 function WhyUsSection() {
+  const [activeIndex, setActiveIndex] = useState(0);
+
+  const getIcon = (iconType: string) => {
+    const iconProps = { size: 40, strokeWidth: 1.5 };
+    const iconMap: Record<string, React.ReactNode> = {
+      home: <Home {...iconProps} />,
+      phone: <Phone {...iconProps} />,
+      zap: <Zap {...iconProps} />,
+      calculator: <Calculator {...iconProps} />,
+      calendar: <Calendar {...iconProps} />,
+      clock: <Clock {...iconProps} />,
+    };
+    return iconMap[iconType] || null;
+  };
+
   return (
-    <section className="relative py-16 md:py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 100%)" }}>
-      <div className="absolute top-0 right-0 w-[500px] h-[500px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-accent)" }} />
+    <section id="proc-my" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-8">
+          <div className="text-center mb-20">
             <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proč my</span>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               Proč <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>my?</em>
             </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div className="max-w-5xl mx-auto p-8 md:p-12 rounded-[30px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 20px 60px rgba(15,23,42,0.06)" }}>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-              <ul className="flex flex-col gap-3">
-                {whyUsLeft.map((item) => (
-                  <li key={item} className="flex items-start gap-4 rounded-[18px] px-4 py-4" style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(37,99,235,0.08)" }}>
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full mt-0.5 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.14), rgba(124,58,237,0.10))", color: "#2563eb" }}>
-                      <Check size={13} strokeWidth={2.2} />
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+            {/* Image */}
+            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+              <ImageWithFallback
+                src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
+                alt="Proč my"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Accordion List */}
+            <div style={{ width: "100%" }}>
+              {whyUsServices.map((service, index) => (
+                <article
+                  key={index}
+                  style={{
+                    borderBottom: "1px solid #dbdad9",
+                  }}
+                >
+                  <button
+                    onClick={() => setActiveIndex(index)}
+                    style={{
+                      width: "100%",
+                      height: "80px",
+                      display: "flex",
+                      alignItems: "center",
+                      justifyContent: "space-between",
+                      gap: "20px",
+                      border: "none",
+                      background: "none",
+                      padding: "0",
+                      cursor: "pointer",
+                      textAlign: "left",
+                    }}
+                  >
+                    <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
+                      <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
+                        {getIcon(service.icon)}
+                      </span>
+                      <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
+                        {service.title}
+                      </h3>
+                    </div>
+                    {/* Toggle */}
+                    <span
+                      style={{
+                        position: "relative",
+                        width: "24px",
+                        height: "24px",
+                        flex: "0 0 auto",
+                        display: "block",
+                      }}
+                    >
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                        {activeIndex === index ? (
+                          <>
+                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                          </>
+                        ) : (
+                          <>
+                            <line x1="12" y1="2" x2="12" y2="22" strokeLinecap="round" />
+                            <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
+                          </>
+                        )}
+                      </svg>
                     </span>
-                    <span className="font-sans" style={{ fontSize: "15px", lineHeight: 1.62, color: "#334155", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <ul className="flex flex-col gap-3">
-                {whyUsRight.map((item) => (
-                  <li key={item} className="flex items-start gap-4 rounded-[18px] px-4 py-4" style={{ background: "rgba(255,255,255,0.55)", border: "1px solid rgba(15,118,110,0.08)" }}>
-                    <span className="flex-shrink-0 w-6 h-6 rounded-full mt-0.5 flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(15,118,110,0.14), rgba(37,99,235,0.10))", color: "#0f766e" }}>
-                      <Check size={13} strokeWidth={2.2} />
-                    </span>
-                    <span className="font-sans" style={{ fontSize: "15px", lineHeight: 1.62, color: "#334155", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
-                  </li>
-                ))}
-              </ul>
+                  </button>
+
+                  {activeIndex === index && (
+                    <motion.div
+                      initial={{ opacity: 0, height: 0 }}
+                      animate={{ opacity: 1, height: "auto" }}
+                      exit={{ opacity: 0, height: 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="overflow-hidden"
+                    >
+                      <p style={{ width: "100%", margin: 0, padding: "0 0 30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px", fontFamily: "Manrope, sans-serif" }}>
+                        {service.desc}
+                      </p>
+                    </motion.div>
+                  )}
+                </article>
+              ))}
             </div>
           </div>
         </Reveal>

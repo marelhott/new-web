@@ -70,12 +70,12 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ${scrolled ? "glass-strong shadow-lg shadow-black/5" : "bg-transparent"
           }`}
       >
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px]">
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 flex items-center justify-between h-[72px] pt-6">
           <Link to="/" className="flex items-center gap-3 group">
             <img
               src={isDark ? logoLightUrl : logoDarkUrl}
               alt="Malíři v černém"
-              className="h-8 md:h-9 w-auto transition-transform duration-300 group-hover:scale-105"
+              className="h-12 md:h-14 w-auto transition-transform duration-300 group-hover:scale-105"
             />
           </Link>
 
@@ -84,20 +84,13 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
               <Link
                 key={link.href}
                 to={link.href}
-                className={`relative px-4 py-2 rounded-full transition-all duration-300 ${isActive(link.href)
-                    ? "text-foreground bg-foreground/5"
-                    : "text-foreground/60 hover:text-foreground hover:bg-foreground/5"
+                className={`relative px-5 py-2.5 rounded-full transition-all duration-300 ${isActive(link.href)
+                    ? "bg-black text-white"
+                    : "text-foreground/70 hover:text-foreground hover:bg-black/5"
                   }`}
-                style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.01em", fontFamily: "'Space Grotesk', system-ui, sans-serif" }}
+                style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "-0.01em", fontFamily: "'Manrope', sans-serif" }}
               >
                 {link.label}
-                {isActive(link.href) && (
-                  <motion.div
-                    layoutId="nav-indicator"
-                    className="absolute bottom-0 left-1/2 -translate-x-1/2 w-1 h-1 rounded-full bg-accent"
-                    transition={{ type: "spring", stiffness: 500, damping: 30 }}
-                  />
-                )}
               </Link>
             ))}
           </div>
