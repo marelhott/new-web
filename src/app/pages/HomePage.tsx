@@ -323,6 +323,7 @@ const services = [
   { title: "Výmalba společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.microcement, slug: "dekorativni-sterky", tag: "Speciální" },
   { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální výmalba kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.roller, slug: "opravy-a-priprava", tag: "Příprava" },
   { title: "Malování restaurací, penzionů a menších hotelů", desc: "Výmalba pokojů i společných prostor s minimálním omezením provozu.", image: IMG.commercial, slug: "komercni-objekty", tag: "SVJ / Dev" },
+  { title: "Dekorativní výmalba", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby.", image: IMG.decoArt1, slug: "dekorativni-vymalba", tag: "Design" },
 ];
 
 function ServicePreview() {
