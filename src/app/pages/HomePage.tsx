@@ -182,24 +182,22 @@ function TrustSection() {
     <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <div className="p-10 rounded-[20px] border border-[#dbdad9]" style={{ background: "linear-gradient(180deg, #f8f9fb 0%, #f5f6fb 100%)" }}>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
-            {featureCards.map((card, index) => (
-              <Reveal key={card.title} delay={index * 0.1}>
-                <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 hover:shadow-lg h-full flex flex-col text-center" style={{ background: "#ffffff", border: "1px solid #e5e4e3", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
-                  <div className="h-12 flex justify-center items-center mb-4">
-                    <card.icon size={32} style={{ color: "#2563eb" }} strokeWidth={1.5} />
-                  </div>
-                  <h3 className="mb-6 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, minHeight: "60px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                    {card.title}
-                  </h3>
-                  <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500, display: "flex", alignItems: "flex-start" }}>
-                    {card.desc}
-                  </p>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
+          {featureCards.map((card, index) => (
+            <Reveal key={card.title} delay={index * 0.1}>
+              <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 hover:shadow-lg h-full flex flex-col text-center" style={{ background: "rgba(255, 255, 255, 0.8)", border: "1px solid rgba(219, 218, 217, 0.6)", backdropFilter: "blur(12px)", boxShadow: "0 4px 12px rgba(15,23,42,0.08)" }}>
+                <div className="h-12 flex justify-center items-center mb-4">
+                  <card.icon size={32} style={{ color: "#2563eb" }} strokeWidth={1.5} />
                 </div>
-              </Reveal>
-            ))}
-          </div>
+                <h3 className="mb-6 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, minHeight: "60px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                  {card.title}
+                </h3>
+                <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500, display: "flex", alignItems: "flex-start" }}>
+                  {card.desc}
+                </p>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
