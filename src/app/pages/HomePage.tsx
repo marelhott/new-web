@@ -162,7 +162,7 @@ const featureCards = [
   },
   {
     icon: Shield,
-    title: "NAZÁVAZNÁ KALKULACE",
+    title: "Nezávazná kalkulace",
     desc: "Stačí nám pár základních informací o bytě a připravíme orientační cenu výmalby.\nPokud bude potřeba, rádi se přijedeme na byt podívat a vše s vámi probereme osobně.",
     color: "#7c3aed",
   },
