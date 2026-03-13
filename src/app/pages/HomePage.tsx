@@ -319,7 +319,7 @@ function HowItWorksSection() {
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
   { title: "Výmalba bytů a domů", desc: "Kompletní výmalba bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
-  { title: "Malování kanceláří", desc: "Profesionální servis pro komerční prostory. Mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
+  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
   { title: "Dekorativní stěrky", desc: "Microcement, benátský štuk a moderní povrchové úpravy.", image: IMG.microcement, slug: "dekorativni-sterky", tag: "Speciální" },
   { title: "Opravy a příprava", desc: "Tmelení, broušení, penetrace. Důkladná příprava.", image: IMG.roller, slug: "opravy-a-priprava", tag: "Příprava" },
   { title: "Komerční objekty", desc: "SVJ, bytové domy, developerské projekty.", image: IMG.commercial, slug: "komercni-objekty", tag: "SVJ / Dev" },
