@@ -318,12 +318,12 @@ function HowItWorksSection() {
 
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
-  { title: "Výmalba bytů a domů", desc: "Kompletní výmalba bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
-  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-kancelari", tag: "Osobní" },
-  { title: "Výmalba společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "dekorativni-sterky", tag: "Odborné" },
-  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální výmalba kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "opravy-a-priprava", tag: "Komerční" },
-  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Výmalba pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
-  { title: "Dekorativní výmalba", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-vymalba", tag: "Design" },
+  { title: "Malování bytů a domů", desc: "Kompletní malování bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
+  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlé malování, které pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-kancelari", tag: "Osobní" },
+  { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "dekorativni-sterky", tag: "Odborné" },
+  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "opravy-a-priprava", tag: "Komerční" },
+  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Malování pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
+  { title: "Dekorativní malování", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-vymalba", tag: "Design" },
 ];
 
 function ServicePreview() {
@@ -677,7 +677,7 @@ function PricingSection() {
           <div className="text-center mb-24">
             <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Cena</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-              Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
+              Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>malování?</em>
             </h2>
           </div>
         </Reveal>
@@ -698,7 +698,7 @@ function PricingSection() {
             <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
               <div>
                 <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "30px" }}>
-                  Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
+                  Cena malování závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
                 </p>
 
                 {priceItems.map((item, index) => (
