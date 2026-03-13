@@ -787,12 +787,12 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
+      <WhyUsSection />
       <TrustSection />
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
       <RealizaceCategoriesSection />
-      <WhyUsSection />
       <DecorativeArtSection />
       <TestimonialsSection />
     </>
