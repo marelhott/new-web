@@ -86,13 +86,11 @@ function HeroSection() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <h1
               className="tracking-[-0.045em] text-[#09090b]"
-              style={{ fontSize: "clamp(38px, 5.1vw, 70px)", fontWeight: 600, lineHeight: 0.96, fontFamily: "'Sora', sans-serif" }}
+              style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 600, lineHeight: 1.2, fontFamily: "'Sora', sans-serif" }}
             >
-              Malujeme interiéry
+              Malujeme interiéry v Praze a okolí – rychle, čistě a bez starostí. Postaráme se o vše, od zakrytí nábytku až po finální úklid.
               <br />
-              v&nbsp;Praze a&nbsp;okolí – rychle, čistě a bez starostí.
-              <br />
-              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic" }}>Postaráme se o vše, od zakrytí nábytku až po finální úklid.</span>
+              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: "clamp(28px, 3.5vw, 48px)" }}>Váš byt můžeme vymalovat už za jeden den.</span>
             </h1>
           </motion.div>
 
