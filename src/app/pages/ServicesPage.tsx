@@ -89,7 +89,7 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c",
   },
   {
-    title: "Malování firem a ordinací",
+    title: "Malování kanceláří a komerčních prostor",
     slug: "malovani-kancelari",
     tag: "Komerční",
     icon: Building2,
