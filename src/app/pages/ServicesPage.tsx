@@ -121,7 +121,7 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F3026d95741854f52aaaf83680e170c34",
   },
   {
-    title: "Obchody, kavárny a pensiony",
+    title: "Malování pensionů, restaurací a menších hotelů",
     slug: "komercni-objekty",
     tag: "Hospitality",
     icon: Store,
