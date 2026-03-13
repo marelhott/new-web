@@ -665,8 +665,6 @@ const priceItems = [
 ];
 
 function PricingSection() {
-  const [activePrice, setActivePrice] = useState(0);
-
   const getPriceIcon = (iconType: string) => {
     const iconProps = { size: 40, strokeWidth: 1.5 };
     return <Home {...iconProps} />;
@@ -676,12 +674,12 @@ function PricingSection() {
     <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-8">
+          <div className="text-center mb-6">
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
             </h2>
           </div>
-          <div className="text-center mb-20" style={{ maxWidth: "800px", margin: "0 auto" }}>
+          <div className="text-center mb-24" style={{ maxWidth: "800px", margin: "0 auto" }}>
             <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500 }}>
               Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
             </p>
@@ -701,49 +699,47 @@ function PricingSection() {
             </div>
 
             {/* Price List */}
-            <div style={{ width: "100%" }}>
-              {priceItems.map((item, index) => (
-                <article
-                  key={index}
-                  style={{
-                    borderBottom: "1px solid #dbdad9",
-                  }}
-                >
-                  <button
-                    onClick={() => setActivePrice(index)}
+            <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
+              <div>
+                {priceItems.map((item, index) => (
+                  <article
+                    key={index}
                     style={{
-                      width: "100%",
-                      height: "80px",
-                      display: "flex",
-                      alignItems: "center",
-                      justifyContent: "space-between",
-                      gap: "20px",
-                      border: "none",
-                      background: "none",
-                      padding: "0",
-                      cursor: "pointer",
-                      textAlign: "left",
+                      borderBottom: "1px solid #dbdad9",
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
-                      <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
-                        {getPriceIcon(item.icon)}
-                      </span>
-                      <div>
-                        <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
-                          {item.title}
-                        </h3>
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "80px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        gap: "20px",
+                        padding: "0",
+                        textAlign: "left",
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
+                        <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
+                          {getPriceIcon(item.icon)}
+                        </span>
+                        <div>
+                          <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
+                            {item.title}
+                          </h3>
+                        </div>
                       </div>
+                      {/* Price */}
+                      <span style={{ fontSize: "16px", fontWeight: 500, color: "#2563eb", flex: "0 0 auto" }}>
+                        {item.price}
+                      </span>
                     </div>
-                    {/* Price */}
-                    <span style={{ fontSize: "16px", fontWeight: 500, color: "#2563eb", flex: "0 0 auto" }}>
-                      {item.price}
-                    </span>
-                  </button>
-                </article>
-              ))}
+                  </article>
+                ))}
+              </div>
 
-              <div style={{ textAlign: "center", marginTop: "40px" }}>
+              <div style={{ textAlign: "center" }}>
                 <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "20px" }}>
                   Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
                 </p>
