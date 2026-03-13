@@ -319,7 +319,7 @@ function HowItWorksSection() {
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
   { title: "Výmalba bytů a domů", desc: "Kompletní výmalba bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
-  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: IMG.office, slug: "malovani-kancelari", tag: "Osobní" },
+  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-kancelari", tag: "Osobní" },
   { title: "Výmalba společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "dekorativni-sterky", tag: "Odborné" },
   { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální výmalba kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "opravy-a-priprava", tag: "Komerční" },
   { title: "Malování restaurací, penzionů a menších hotelů", desc: "Výmalba pokojů i společných prostor s minimálním omezením provozu.", image: IMG.commercial, slug: "komercni-objekty", tag: "Komerční" },
