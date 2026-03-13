@@ -676,20 +676,28 @@ function PricingSection() {
     <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-20">
+          <div className="text-center mb-8">
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
             </h2>
+          </div>
+          <div className="text-center mb-20" style={{ maxWidth: "800px", margin: "0 auto" }}>
+            <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500 }}>
+              Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
+            </p>
           </div>
         </Reveal>
 
         <Reveal delay={0.1}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
-            {/* Info */}
-            <div>
-              <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "20px" }}>
-                Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
-              </p>
+            {/* Image */}
+            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+              <ImageWithFallback
+                src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
+                alt="Cenová kalkulačka"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
             </div>
 
             {/* Price List */}
@@ -727,23 +735,23 @@ function PricingSection() {
                         </h3>
                       </div>
                     </div>
-                    {/* Price/Toggle */}
+                    {/* Price */}
                     <span style={{ fontSize: "16px", fontWeight: 500, color: "#2563eb", flex: "0 0 auto" }}>
                       {item.price}
                     </span>
                   </button>
                 </article>
               ))}
-            </div>
-          </div>
 
-          <div style={{ textAlign: "center", marginTop: "40px" }}>
-            <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "20px", fontFamily: "Manrope, sans-serif" }}>
-              Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
-            </p>
-            <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
-              Spočítat cenu <ArrowRight size={16} />
-            </Link>
+              <div style={{ textAlign: "center", marginTop: "40px" }}>
+                <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "20px" }}>
+                  Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
+                </p>
+                <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
+                  Spočítat cenu <ArrowRight size={16} />
+                </Link>
+              </div>
+            </div>
           </div>
         </Reveal>
       </div>
