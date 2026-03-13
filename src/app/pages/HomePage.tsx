@@ -318,7 +318,7 @@ function HowItWorksSection() {
 
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
-  { title: "Malování bytů", desc: "Kompletní malířské práce pro byty a rodinné domy.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
+  { title: "Výmalba bytů a domů", desc: "Kompletní výmalba bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
   { title: "Malování kanceláří", desc: "Profesionální servis pro komerční prostory. Mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
   { title: "Dekorativní stěrky", desc: "Microcement, benátský štuk a moderní povrchové úpravy.", image: IMG.microcement, slug: "dekorativni-sterky", tag: "Speciální" },
   { title: "Opravy a příprava", desc: "Tmelení, broušení, penetrace. Důkladná příprava.", image: IMG.roller, slug: "opravy-a-priprava", tag: "Příprava" },
