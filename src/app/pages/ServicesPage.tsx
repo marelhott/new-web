@@ -152,22 +152,6 @@ const allServices = [
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fc56ff688f14e45aabf5bbee2d3fe87bc",
   },
-  {
-    title: "Opravy a příprava zdí",
-    slug: "opravy-a-priprava",
-    tag: "Příprava",
-    icon: Wrench,
-    desc: "Kvalitní malba začíná perfektní přípravou. Tmelení, broušení, penetrace, sanace vlhkosti — základ pro dokonalý a trvanlivý výsledek.",
-    features: [
-      "Oprava prasklin a omítek",
-      "Strojní i ruční broušení",
-      "Sanace vlhkých stěn",
-    ],
-    price: "Od 45 Kč/m²",
-    color: "#1e3a5f",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F7bc2d8e387984b9c83f26dd48b4352e0",
-  },
 ];
 
 /* ─── Page ─── */
