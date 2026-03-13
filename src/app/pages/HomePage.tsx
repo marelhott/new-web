@@ -701,6 +701,10 @@ function PricingSection() {
             {/* Price List */}
             <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
               <div>
+                <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "30px" }}>
+                  Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
+                </p>
+
                 {priceItems.map((item, index) => (
                   <article
                     key={index}
@@ -740,7 +744,7 @@ function PricingSection() {
               </div>
 
               <div style={{ textAlign: "center" }}>
-                <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "20px" }}>
+                <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "15px" }}>
                   Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
                 </p>
                 <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
