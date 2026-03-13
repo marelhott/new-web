@@ -674,15 +674,11 @@ function PricingSection() {
     <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-6">
+          <div className="text-center mb-24">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Cena</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
             </h2>
-          </div>
-          <div className="text-center mb-24" style={{ maxWidth: "800px", margin: "0 auto" }}>
-            <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500 }}>
-              Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
-            </p>
           </div>
         </Reveal>
 
