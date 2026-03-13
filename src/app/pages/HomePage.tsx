@@ -544,40 +544,26 @@ function RealizaceCategoriesSection() {
   );
 }
 
-/* ───────── WHY US (Services Showcase) ───────── */
-const whyUsServices = [
-  { title: "Více jak 500 dokončených zakázek", desc: "Máme bohaté zkušenosti s různými typy projektů. Naší prioritou je kvalita a spokojenost klientů.", icon: "home" },
-  { title: "Přímý kontakt s klientem", desc: "Komunikujeme přímo a jasně. Vždy víte, na koho se obrátit a dostanete okamžitou odpověď.", icon: "phone" },
-  { title: "Rychlost a dostupnost", desc: "Jsme k dispozici tehdy, když nás potřebujete. Reagujeme rychle a efektivně.", icon: "zap" },
-  { title: "Okamžitá kalkulace ceny", desc: "Pomocí naší online kalkulačky si můžete spočítat cenu v reálném čase bez skrytých poplatků.", icon: "calculator" },
-  { title: "Určete si sami termín realizace", desc: "Vyberte si termín, který vám nejlépe vyhovuje. Nabízíme flexibilní harmonogramy.", icon: "calendar" },
-  { title: "Reagujeme do 24 hodin", desc: "Na vaši zprávu či dotaz odpovídáme nejpozději do jednoho pracovního dne.", icon: "clock" },
+/* ───────── FAQ (Frequently Asked Questions) ───────── */
+const faqItems = [
+  { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
+  { title: "Jak dlouho trvá výmalba bytu?", desc: "Většinu bytů zvládneme vymalovat během jednoho až dvou dnů. Záleží na rozsahu zakázky. Rádi se přijedeme na byt podívat a vše s vámi probereme osobně." },
+  { title: "Jak rychle můžete nastoupit na zakázku?", desc: "Termín závisí na aktuální vytíženosti, ale často dokážeme nabídnout i expresní termín." },
+  { title: "Používáte vlastní barvy?", desc: "Ano, používáme kvalitní osvědčené barvy. Pokud máte vlastní preferenci, rádi se přizpůsobíme." },
+  { title: "Pomůžete mi s výběrem barev?", desc: "Ano. Rádi vám pomůžeme vybrat vhodný odstín tak, aby v interiéru dobře fungoval. V případě zájmu dokážeme připravit také jednoduchou vizualizaci." },
 ];
 
 function WhyUsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const getIcon = (iconType: string) => {
-    const iconProps = { size: 40, strokeWidth: 1.5 };
-    const iconMap: Record<string, React.ReactNode> = {
-      home: <Home {...iconProps} />,
-      phone: <Phone {...iconProps} />,
-      zap: <Zap {...iconProps} />,
-      calculator: <Calculator {...iconProps} />,
-      calendar: <Calendar {...iconProps} />,
-      clock: <Clock {...iconProps} />,
-    };
-    return iconMap[iconType] || null;
-  };
-
   return (
-    <section id="proc-my" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+    <section id="faq" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
           <div className="text-center mb-20">
-            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Proč my</span>
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Otázky & Odpovědi</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-              Proč <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>my?</em>
+              Často se nás <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>ptáte?</em>
             </h2>
           </div>
         </Reveal>
@@ -588,15 +574,15 @@ function WhyUsSection() {
             <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
-                alt="Proč my"
+                alt="Často se nás ptáte"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
 
-            {/* Accordion List */}
+            {/* FAQ List */}
             <div style={{ width: "100%" }}>
-              {whyUsServices.map((service, index) => (
+              {faqItems.map((item, index) => (
                 <article
                   key={index}
                   style={{
@@ -607,26 +593,21 @@ function WhyUsSection() {
                     onClick={() => setActiveIndex(index)}
                     style={{
                       width: "100%",
-                      height: "80px",
+                      minHeight: "80px",
                       display: "flex",
                       alignItems: "center",
                       justifyContent: "space-between",
                       gap: "20px",
                       border: "none",
                       background: "none",
-                      padding: "0",
+                      padding: "20px 0",
                       cursor: "pointer",
                       textAlign: "left",
                     }}
                   >
-                    <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
-                      <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
-                        {getIcon(service.icon)}
-                      </span>
-                      <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
-                        {service.title}
-                      </h3>
-                    </div>
+                    <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px", flex: 1 }}>
+                      {item.title}
+                    </h3>
                     {/* Toggle */}
                     <span
                       style={{
@@ -660,13 +641,112 @@ function WhyUsSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p style={{ width: "100%", margin: 0, padding: "0 0 30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px", fontFamily: "Manrope, sans-serif" }}>
-                        {service.desc}
+                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px" }}>
+                        {item.desc}
                       </p>
                     </motion.div>
                   )}
                 </article>
               ))}
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
+/* ───────── PRICING SECTION ───────── */
+const priceItems = [
+  { title: "1+kk", price: "od 5500 Kč", icon: "home" },
+  { title: "2+kk", price: "od 8500 Kč", icon: "home" },
+  { title: "3+kk / 3+1", price: "od 12000 Kč", icon: "home" },
+  { title: "4+kk a větší", price: "individuální kalkulace", icon: "home" },
+];
+
+function PricingSection() {
+  const getPriceIcon = (iconType: string) => {
+    const iconProps = { size: 40, strokeWidth: 1.5 };
+    return <Home {...iconProps} />;
+  };
+
+  return (
+    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="text-center mb-24">
+            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Cena</span>
+            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
+              Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
+            </h2>
+          </div>
+        </Reveal>
+
+        <Reveal delay={0.1}>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+            {/* Image */}
+            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+              <ImageWithFallback
+                src="https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg"
+                alt="Cenová kalkulačka"
+                className="w-full h-full object-cover"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Price List */}
+            <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
+              <div>
+                <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "30px" }}>
+                  Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
+                </p>
+
+                {priceItems.map((item, index) => (
+                  <article
+                    key={index}
+                    style={{
+                      borderBottom: "1px solid #dbdad9",
+                    }}
+                  >
+                    <div
+                      style={{
+                        width: "100%",
+                        height: "80px",
+                        display: "flex",
+                        alignItems: "center",
+                        justifyContent: "space-between",
+                        gap: "20px",
+                        padding: "0",
+                        textAlign: "left",
+                      }}
+                    >
+                      <div style={{ display: "flex", alignItems: "center", gap: "20px", minWidth: 0, flex: 1 }}>
+                        <span style={{ width: "40px", height: "40px", flex: "0 0 auto", display: "flex", alignItems: "center", justifyContent: "center", color: "#101014" }}>
+                          {getPriceIcon(item.icon)}
+                        </span>
+                        <div>
+                          <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px" }}>
+                            {item.title}
+                          </h3>
+                        </div>
+                      </div>
+                      {/* Price */}
+                      <span style={{ fontSize: "16px", fontWeight: 500, color: "#2563eb", flex: "0 0 auto" }}>
+                        {item.price}
+                      </span>
+                    </div>
+                  </article>
+                ))}
+              </div>
+
+              <div style={{ textAlign: "center" }}>
+                <p style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "15px" }}>
+                  Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
+                </p>
+                <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
+                  Spočítat cenu <ArrowRight size={16} />
+                </Link>
+              </div>
             </div>
           </div>
         </Reveal>
@@ -810,8 +890,9 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
-      <RealizaceCategoriesSection />
       <WhyUsSection />
+      <RealizaceCategoriesSection />
+      <PricingSection />
       <DecorativeArtSection />
       <TestimonialsSection />
     </>
