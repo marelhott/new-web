@@ -89,6 +89,22 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c",
   },
   {
+    title: "Malování společných prostor domů (SVJ)",
+    slug: "malovani-spolecnych-prostor",
+    tag: "SVJ / Developers",
+    icon: Users,
+    desc: "Společné prostory jsou tváří každého domu. Jsme odborníci na malování chodeb, schodišť a dalších prostor spravovaných SVJ a bytovými družstvy.",
+    features: [
+      "Etapová realizace v obydlených domech",
+      "Hromadné slevy pro SVJ",
+      "Koordinace s výborem SVJ",
+    ],
+    price: "Individuální",
+    color: "#d4a574",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fb9f6d6ba78a64aac8ceef99230e436ae",
+  },
+  {
     title: "Malování kanceláří a komerčních prostor",
     slug: "malovani-kancelari",
     tag: "Komerční",
