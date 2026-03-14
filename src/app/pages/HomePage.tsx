@@ -352,7 +352,7 @@ function ServicePreview() {
           </div>
           <div className="text-center mb-10">
             <Link to="/sluzby" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-              Všechny služby <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              Všechny služby <ArrowRightIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </Reveal>
@@ -754,7 +754,7 @@ function PricingSection() {
                   Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
                 </p>
                 <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
-                  Spočítat cenu <ArrowRight size={16} />
+                  Spočítat cenu <ArrowRightIcon className="w-4 h-4" />
                 </Link>
               </div>
             </div>
