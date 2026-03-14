@@ -138,10 +138,10 @@ export default function ServiceDetailPage() {
 
                 {/* Right side - CTA buttons */}
                 <div className="flex flex-col gap-4">
-                  <Link to="/kalkulacka" className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg" style={{ background: "linear-gradient(135deg, #b8a88a, #c08050)", fontSize: "15px", fontWeight: 600 }}>
+                  <Link to="/kalkulacka" className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-white transition-all duration-300 hover:shadow-lg" style={{ background: "#1a1a1a", fontSize: "15px", fontWeight: 600 }}>
                     {service.cta} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <a href="tel:+420732333550" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-foreground border-2 transition-all duration-300 hover:bg-foreground/5" style={{ fontSize: "15px", fontWeight: 600, borderColor: "#6b7785", color: "#0f172a" }}>
+                  <a href="tel:+420732333550" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg text-foreground border transition-all duration-300 hover:bg-foreground/5" style={{ fontSize: "15px", fontWeight: 600, borderColor: "#d0d0d0", color: "#0f172a" }}>
                     <Phone size={16} /> Zavolat
                   </a>
                 </div>
