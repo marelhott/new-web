@@ -1,8 +1,9 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useMemo } from "react";
 import React from "react";
 import { motion, useInView } from "motion/react";
-import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightIcon, ExclamationTriangleIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { contactEmailRegex, contactPhoneRegex } from "@/lib/contactInquiry";
 
 const getContactIcon = (iconName: string) => {
   const icons: Record<string, React.ComponentType<{className?: string}>> = {
@@ -34,7 +35,45 @@ const contactInfo = [
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false);
   const [formData, setFormData] = useState({ name: "", email: "", phone: "", type: "", message: "" });
-  const handleSubmit = (e: React.FormEvent) => { e.preventDefault(); setSubmitted(true); };
+  const [submitting, setSubmitting] = useState(false);
+  const [submitMsg, setSubmitMsg] = useState<{ text: string; type: "success" | "error" } | null>(null);
+
+  const isFormValid = useMemo(() => {
+    return (
+      formData.name.trim() !== "" &&
+      formData.message.trim() !== "" &&
+      contactEmailRegex.test(formData.email.trim()) &&
+      contactPhoneRegex.test(formData.phone.trim())
+    );
+  }, [formData]);
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (submitting || !isFormValid) return;
+
+    setSubmitting(true);
+    setSubmitMsg(null);
+
+    try {
+      const response = await fetch("/api/contact-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+
+      const data = (await response.json()) as { ok?: boolean; message?: string };
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "Odeslání se nepodařilo.");
+      }
+
+      setSubmitted(true);
+      setSubmitMsg({ text: "Zpráva byla úspěšně odeslána. Potvrzení jsme poslali i na váš email.", type: "success" });
+    } catch {
+      setSubmitMsg({ text: "Zprávu se nepodařilo odeslat. Napište nám prosím přímo na info@malirivcernem.cz.", type: "error" });
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   const inputClass = "w-full px-5 py-4 rounded-xl border border-foreground/8 bg-foreground/3 text-foreground font-sans transition-all duration-300 focus:border-accent/50 focus:bg-foreground/5 focus:outline-none focus:shadow-lg focus:shadow-accent/5 placeholder:text-foreground/20";
 
@@ -79,7 +118,7 @@ export default function ContactPage() {
                     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
                       <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2563eb]/20 to-[#4f46e5]/10 flex items-center justify-center mx-auto mb-6"><CheckCircleIcon className="w-7 h-7 text-[#2563eb]" /></div>
                       <h3 className="font-[family-name:var(--font-display)] text-foreground mb-3" style={{ fontSize: "24px", fontWeight: 600 }}>Děkujeme za zprávu!</h3>
-                      <p className="font-sans max-w-md mx-auto" style={{ fontSize: "15px", lineHeight: 1.72, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>Ozveme se vám do 2 hodin v pracovní dny.</p>
+                      <p className="font-sans max-w-md mx-auto" style={{ fontSize: "15px", lineHeight: 1.72, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>Ozveme se vám do 2 hodin v pracovní dny. Potvrzení jsme poslali i na váš email.</p>
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit}>
@@ -116,8 +155,31 @@ export default function ContactPage() {
                         <label className="block text-foreground/50 font-[family-name:var(--font-display)] mb-2" style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.05em", textTransform: "uppercase" }}>Zpráva *</label>
                         <textarea required rows={5} placeholder="Popište váš projekt..." value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${inputClass} resize-none`} style={{ fontSize: "14px" }} />
                       </div>
-                      <button type="submit" className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}>
-                        <PaperAirplaneIcon className="w-4 h-4" /> Odeslat poptávku <ArrowRightIcon className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                      {submitMsg && (
+                        <div
+                          className="mb-6 flex items-start gap-3 rounded-xl border px-4 py-3"
+                          style={{
+                            borderColor: submitMsg.type === "success" ? "rgba(37,99,235,0.18)" : "rgba(239,68,68,0.2)",
+                            background: submitMsg.type === "success" ? "rgba(37,99,235,0.06)" : "rgba(239,68,68,0.06)",
+                          }}
+                        >
+                          {submitMsg.type === "success" ? (
+                            <CheckCircleIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-[#2563eb]" />
+                          ) : (
+                            <ExclamationTriangleIcon className="mt-0.5 h-5 w-5 flex-shrink-0 text-red-500" />
+                          )}
+                          <p className="font-sans" style={{ fontSize: "13px", lineHeight: 1.6, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>
+                            {submitMsg.text}
+                          </p>
+                        </div>
+                      )}
+                      <button
+                        type="submit"
+                        disabled={!isFormValid || submitting}
+                        className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20 disabled:cursor-not-allowed disabled:opacity-60"
+                        style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}
+                      >
+                        <PaperAirplaneIcon className="w-4 h-4" /> {submitting ? "Odesílám..." : "Odeslat poptávku"} <ArrowRightIcon className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                       </button>
                     </form>
                   )}

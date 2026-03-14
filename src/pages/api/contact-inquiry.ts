@@ -1,9 +1,6 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import { createBusinessInquiryEmail, createCustomerConfirmationEmail } from "@/emails/calculatorEmails";
-import {
-  isCalculatorInquiryPayload,
-  validateCalculatorInquiry,
-} from "@/lib/calculatorInquiry";
+import { createBusinessContactEmail, createCustomerContactConfirmationEmail } from "@/emails/contactEmails";
+import { isContactInquiryPayload, validateContactInquiry } from "@/lib/contactInquiry";
 import { getLeadNotificationEmail, getMailerFromAddress, getMailerTransporter } from "@/lib/mailer";
 
 type ApiResponse = {
@@ -17,11 +14,11 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     return res.status(405).json({ ok: false, message: "Method not allowed." });
   }
 
-  if (!isCalculatorInquiryPayload(req.body)) {
+  if (!isContactInquiryPayload(req.body)) {
     return res.status(400).json({ ok: false, message: "Neplatná data formuláře." });
   }
 
-  const validationError = validateCalculatorInquiry(req.body);
+  const validationError = validateContactInquiry(req.body);
   if (validationError) {
     return res.status(400).json({ ok: false, message: validationError });
   }
@@ -30,9 +27,8 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
     const transporter = getMailerTransporter();
     const from = getMailerFromAddress();
     const businessRecipient = getLeadNotificationEmail();
-
-    const businessEmail = createBusinessInquiryEmail(req.body);
-    const customerEmail = createCustomerConfirmationEmail(req.body);
+    const businessEmail = createBusinessContactEmail(req.body);
+    const customerEmail = createCustomerContactConfirmationEmail(req.body);
 
     await transporter.sendMail({
       from,
@@ -52,9 +48,9 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       text: customerEmail.text,
     });
 
-    return res.status(200).json({ ok: true, message: "Poptávka byla odeslána." });
+    return res.status(200).json({ ok: true, message: "Zpráva byla odeslána." });
   } catch (error) {
-    console.error("Calculator inquiry email failed", error);
+    console.error("Contact inquiry email failed", error);
     return res.status(500).json({ ok: false, message: "Odeslání se nepodařilo." });
   }
 }
