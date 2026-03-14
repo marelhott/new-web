@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import React from "react";
+import React, { useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -117,7 +117,7 @@ export default function ContactPage() {
                         <textarea required rows={5} placeholder="Popište váš projekt..." value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${inputClass} resize-none`} style={{ fontSize: "14px" }} />
                       </div>
                       <button type="submit" className="group w-full inline-flex items-center justify-center gap-2 px-8 py-4 rounded-xl text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}>
-                        <Send size={16} /> Odeslat poptávku <ArrowRight size={16} className="opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                        <PaperAirplaneIcon className="w-4 h-4" /> Odeslat poptávku <ArrowRightIcon className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                       </button>
                     </form>
                   )}
