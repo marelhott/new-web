@@ -489,7 +489,7 @@ export default function CalculatorPage() {
             {/* ─── LEFT COLUMN ─── */}
             <div className="flex flex-col gap-7">
               {/* CARD 1: Typ plochy */}
-              <SectionCard icon={Home} title="Typ plochy" delay={0}>
+              <SectionCard icon={HomeIcon} title="Typ plochy" delay={0}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                   <RadioCard
                     selected={form.selectedWork === "Půdorys"}
@@ -546,7 +546,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 2: Typ opravy */}
-              <SectionCard icon={Settings} title="Typ opravy" delay={0.05}>
+              <SectionCard icon={Cog6ToothIcon} title="Typ opravy" delay={0.05}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <RadioCard
                     selected={form.repairType === "Malé"}
@@ -576,7 +576,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 3: Služby */}
-              <SectionCard icon={Package} title="Služby" subtitle="ovlivňující cenu" delay={0.1}>
+              <SectionCard icon={Square3Stack3DIcon} title="Služby" subtitle="ovlivňující cenu" delay={0.1}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Material */}
                   <div>
@@ -626,7 +626,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 4: Další údaje */}
-              <SectionCard icon={Settings} title="Další údaje" delay={0.15}>
+              <SectionCard icon={Cog6ToothIcon} title="Další údaje" delay={0.15}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Empty space */}
                   <div>
@@ -687,7 +687,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 5: Doplňující informace */}
-              <SectionCard icon={MessageCircle} title="Doplňující informace" delay={0.2}>
+              <SectionCard icon={ChatBubbleLeftIcon} title="Doplňující informace" delay={0.2}>
                 <textarea
                   placeholder="Zde můžete napsat jakékoli dodatečné informace o práci..."
                   value={form.additionalInfo}
