@@ -188,17 +188,6 @@ export default function AboutPage() {
       </section>
 
       {/* CTA */}
-      <section className="relative py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1), var(--s2))" }}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-center">
-          <Reveal>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 700 }}>Chcete se k nám přidat?</h2>
-            <p className="text-foreground/40 font-sans mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", lineHeight: 1.7 }}>Hledáme talentované malíře, kteří sdílejí naše hodnoty poctivé práce.</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}>
-              Kontaktujte nás <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Reveal>
-        </div>
-      </section>
     </>
   );
 }
