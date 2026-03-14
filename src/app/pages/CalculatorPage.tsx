@@ -1,27 +1,12 @@
 import { ComponentType, SVGProps, useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
-import emailjs from "@emailjs/browser";
 import {
   CalculatorIcon, HomeIcon, Cog6ToothIcon, CheckBadgeIcon, ChatBubbleLeftIcon,
   UserIcon, CheckIcon, XMarkIcon, PhoneIcon, EnvelopeIcon, MapPinIcon, CalendarIcon,
   PaperAirplaneIcon, SparklesIcon, CheckCircleIcon, ExclamationTriangleIcon, ArrowTopRightOnSquareIcon,
   Square3Stack3DIcon, PaintBrushIcon, BuildingLibraryIcon, ShieldCheckIcon, TrashIcon
 } from "@heroicons/react/24/outline";
-
-/* ─── EMAILJS CONFIG ─── */
-const EMAILJS_CONFIG = {
-  serviceID: "service_nis6m4f",
-  businessTemplateID: "template_cgsqabs",
-  customerTemplateID: "template_65qsr9b",
-  publicKey: "1qHEdD1y0wMojMsRL",
-};
-
-/* ─── TYPES ─── */
-type AreaType = "Půdorys" | "Stěna";
-type CeilingHeight = "250" | "350" | "450";
-type RepairType = "Malé" | "Střední" | "Velké" | "Žádné";
-type YesNo = "Ano" | "Ne";
-type CleaningType = "Potřebuji" | "Nepotřebuji";
+import { emailRegex, phoneRegex, type AreaType, type CeilingHeight, type RepairType, type YesNo, type CleaningType } from "@/lib/calculatorInquiry";
 
 interface FormState {
   selectedWork: AreaType;
@@ -290,10 +275,6 @@ function calculatePrice(form: FormState): number {
   return Math.round(total);
 }
 
-/* ─── VALIDATION ─── */
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^(\+420\s?)?[0-9]{3}\s?[0-9]{3}\s?[0-9]{3}$/;
-
 /* ─── MAIN COMPONENT ─── */
 export default function CalculatorPage() {
   const [form, setForm] = useState<FormState>({
@@ -323,11 +304,6 @@ export default function CalculatorPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitMsg, setSubmitMsg] = useState<{ text: string; type: "success" | "error" } | null>(null);
   const [showFallback, setShowFallback] = useState(false);
-
-  // Initialize EmailJS
-  useEffect(() => {
-    emailjs.init(EMAILJS_CONFIG.publicKey);
-  }, []);
 
   const set = useCallback(
     <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((prev) => ({ ...prev, [key]: value })),
@@ -379,53 +355,23 @@ export default function CalculatorPage() {
     setSubmitMsg(null);
     setShowFallback(false);
 
-    const emailData = {
-      current_date: new Date().toLocaleDateString("cs-CZ", { weekday: "long", year: "numeric", month: "long", day: "numeric" }),
-      creation_time: new Date().toLocaleString("cs-CZ"),
-      customer_name: form.name || "Neuvedeno",
-      customer_email: form.email,
-      customer_phone: form.phone,
-      address: form.address || "Neuvedeno",
-      realization_date: form.realizationDate ? new Date(form.realizationDate).toLocaleDateString("cs-CZ") : "Neuvedeno",
-      total_area: form.totalArea || "0",
-      area_type: form.selectedWork === "Půdorys" ? "Podlahová plocha" : "Stěnová plocha",
-      room_count: form.roomCount || "Neuvedeno",
-      space_type: form.spaceType || "Neuvedeno",
-      repair_type: form.repairType,
-      ceiling_height: form.selectedWork === "Půdorys" ? `${form.ceilingHeightForPrice} cm` : "Neovlivňuje cenu",
-      material_provider: form.material === "Ano" ? "Malíř zajistí barvu" : "Zákazník má vlastní barvu",
-      furniture_moving: form.furnitureMoving === "Ano" ? "Ano, potřebuje" : "Ne, vyřeší sám",
-      covering: form.covering === "Ano" ? "Ano, požaduje" : "Není potřeba",
-      cleaning_service: form.cleaning === "Potřebuji" ? "Ano, požaduje úklid" : "Nepotřebuje úklid",
-      space_status: form.emptySpace === "Ano" ? "Prázdný prostor" : "Zařízený prostor",
-      carpets: form.carpets === "Ano" ? "Jsou koberce" : "Holá podlaha",
-      total_price: totalPrice.toLocaleString("cs-CZ"),
-      additional_info: form.additionalInfo || "Žádné dodatečné informace",
-    };
-
     try {
-      let businessSent = false;
-      let customerSent = false;
+      const response = await fetch("/api/calculator-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          totalPrice,
+        }),
+      });
 
-      try {
-        await emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.businessTemplateID, { ...emailData, to_email: "info@malirivcernem.cz" }, EMAILJS_CONFIG.publicKey);
-        businessSent = true;
-      } catch { /* silent */ }
-
-      try {
-        await emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.customerTemplateID, { ...emailData, to_email: form.email }, EMAILJS_CONFIG.publicKey);
-        customerSent = true;
-      } catch { /* silent */ }
-
-      if (businessSent && customerSent) {
-        setSubmitted(true);
-        setSubmitMsg({ text: "Poptávka byla úspěšně odeslána! Ozveme se vám do 24 hodin.", type: "success" });
-      } else if (businessSent) {
-        setSubmitted(true);
-        setSubmitMsg({ text: "Poptávka byla odeslána! Potvrzovací email se nepodařilo doručit, ale vaše poptávka byla přijata.", type: "success" });
-      } else {
-        throw new Error("EmailJS nedostupný");
+      const data = (await response.json()) as { ok?: boolean; message?: string };
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "Odeslání se nepodařilo.");
       }
+
+      setSubmitted(true);
+      setSubmitMsg({ text: "Poptávka byla úspěšně odeslána! Ozveme se vám do 24 hodin.", type: "success" });
     } catch {
       setSubmitMsg({ text: "Automatické odesílání není momentálně dostupné. Použijte prosím přímý kontakt:", type: "error" });
       setShowFallback(true);
