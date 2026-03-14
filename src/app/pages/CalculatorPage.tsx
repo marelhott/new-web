@@ -259,42 +259,33 @@ function calculatePrice(form: FormState): number {
   const area = Number(form.totalArea) || 0;
   if (area <= 0) return 0;
 
-  const FLOOR_AREA_BASE_PRICE = 3000;
-  const FLOOR_AREA_THRESHOLD = 20;
-  const FLOOR_AREA_RATE = 164.2857142857;
+  const FLOOR_AREA_RATE = 10000 / 55;
+  const WALL_AREA_RATE = FLOOR_AREA_RATE / 3.5;
+  const MIN_PRICE = 3000;
 
-  // Base price
-  let basePrice = 0;
-  if (form.selectedWork === "Půdorys") {
-    basePrice =
-      area > FLOOR_AREA_THRESHOLD
-        ? FLOOR_AREA_BASE_PRICE + (area - FLOOR_AREA_THRESHOLD) * FLOOR_AREA_RATE
-        : FLOOR_AREA_BASE_PRICE;
-  } else {
-    basePrice = area > 80 ? 3000 + (area - 80) * 40 : 3000;
-  }
+  const basePrice = Math.max(
+    form.selectedWork === "Půdorys" ? area * FLOOR_AREA_RATE : area * WALL_AREA_RATE,
+    MIN_PRICE
+  );
 
   let total = basePrice;
 
   // Ceiling height (only for floor area)
   if (form.selectedWork === "Půdorys") {
-    if (form.ceilingHeightForPrice === "350") total += basePrice * 0.15;
-    else if (form.ceilingHeightForPrice === "450") total += basePrice * 0.3;
+    if (form.ceilingHeightForPrice === "350") total += basePrice * 0.1;
+    else if (form.ceilingHeightForPrice === "450") total += basePrice * 0.2;
   }
 
   // Repair type
   if (form.repairType === "Malé") total += basePrice * 0.17;
   else if (form.repairType === "Střední") total += basePrice * 0.35;
-  else if (form.repairType === "Velké") total += basePrice * 0.8;
+  else if (form.repairType === "Velké") total += basePrice * 0.6;
 
   // Services
   if (form.material === "Ano") total += basePrice * 0.2;
   if (form.furnitureMoving === "Ano") total += basePrice * 0.12;
   if (form.covering === "Ano") total += basePrice * 0.05;
   if (form.cleaning === "Potřebuji") total += basePrice * 0.1;
-
-  // Base cleanup fee
-  total += basePrice * 0.2;
 
   return Math.round(total);
 }
