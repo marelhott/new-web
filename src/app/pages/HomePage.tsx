@@ -1,11 +1,12 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
+import React from "react";
 import { Link } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
-  ArrowRight, ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight,
-  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock,
-  Hammer, Home, Droplet, Building2, Wrench, Zap
-} from "lucide-react";
+  ArrowRightIcon, ArrowDownIcon, ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon,
+  CalendarIcon, CheckIcon, CheckCircleIcon, EyeIcon, ChatBubbleLeftIcon, PhoneIcon, PaintBrushIcon, ShieldCheckIcon, ClockIcon,
+  WrenchIcon, HomeIcon, SparklesIcon, BuildingLibraryIcon, BoltIcon, CalculatorIcon
+} from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 const heroPhoto = "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fde4c3a59dfe7452abff728cfc029c559?format=webp&width=2400&height=3600";
@@ -111,7 +112,7 @@ function HeroSection() {
               style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700, boxShadow: "0 18px 38px rgba(37,99,235,.18)" }}
             >
               Spočítat cenu
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
@@ -124,7 +125,7 @@ function HeroSection() {
               className="inline-flex items-center gap-2 text-foreground font-[family-name:var(--font-display)] hover:text-accent transition-colors duration-300"
               style={{ fontSize: "17px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}
             >
-              <Phone size={16} strokeWidth={2} className="text-accent" />
+              <PhoneIcon className="w-4 h-4 text-accent" />
               +420 732 333 550
             </a>
           </motion.div>
@@ -145,7 +146,7 @@ function HeroSection() {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="flex flex-col items-center gap-2 text-foreground/30">
           <span className="font-[family-name:var(--font-display)] tracking-widest uppercase" style={{ fontSize: "10px" }}>Scroll</span>
-          <ArrowDown size={14} />
+          <ArrowDownIcon className="w-3.5 h-3.5" />
         </motion.div>
       </motion.div>
     </section>
@@ -153,21 +154,31 @@ function HeroSection() {
 }
 
 /* ───────── TRUST — 3 feature cards (Figma-style) ───────── */
+// Helper to get Heroicon component by name
+const getHeroIcon = (iconName: string) => {
+  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+    paintbrush: PaintBrushIcon,
+    shield: ShieldCheckIcon,
+    clock: ClockIcon,
+  };
+  return icons[iconName.toLowerCase()] || null;
+};
+
 const featureCards = [
   {
-    icon: Paintbrush,
+    iconName: "paintbrush",
     title: "Naše specializace jsou interiéry",
     desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových dom. Stejně tak ale zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
     color: "#2563eb",
   },
   {
-    icon: Shield,
+    iconName: "shield",
     title: "Nezávazná kalkulace",
     desc: "Stačí nám pár základních informací o bytě a připravíme orientační cenu výmalby.\nPokud bude potřeba, rádi se přijedeme na byt podívat a vše s vámi probereme osobně.",
     color: "#7c3aed",
   },
   {
-    icon: Clock,
+    iconName: "clock",
     title: "Expres a víkendové termíny",
     desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
     color: "#0f766e",
@@ -184,7 +195,7 @@ function TrustSection() {
             <Reveal key={card.title} delay={index * 0.1}>
               <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 h-full flex flex-col text-center" style={{ background: "rgba(233, 236, 242, 0.7)", backdropFilter: "blur(12px)" }}>
                 <div className="h-12 flex justify-center items-center mb-4">
-                  <card.icon size={32} style={{ color: "#2563eb" }} strokeWidth={1.5} />
+                  {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-8 h-8", style: { color: "#2563eb" } })}
                 </div>
                 <h3 className="mb-6 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, minHeight: "60px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                   {card.title}
@@ -413,7 +424,7 @@ function ServicePreview() {
                     {/* More link */}
                     <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
                       <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
-                      <ArrowRight size={16} />
+                      <ArrowRightIcon className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -531,7 +542,7 @@ function RealizaceCategoriesSection() {
                     {/* More link */}
                     <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
                       <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
-                      <ArrowRight size={16} />
+                      <ArrowRightIcon className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -853,7 +864,7 @@ function TestimonialsSection() {
                         </div>
                         <div className="flex items-center gap-3">
                           <button onClick={prev} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
-                            <ChevronLeft size={16} />
+                            <ChevronLeftIcon className="w-4 h-4" />
                           </button>
                           <div className="flex gap-2">
                             {testimonials.map((_, i) => (
@@ -866,7 +877,7 @@ function TestimonialsSection() {
                             ))}
                           </div>
                           <button onClick={next} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
-                            <ChevronRight size={16} />
+                            <ChevronRightIcon className="w-4 h-4" />
                           </button>
                         </div>
                       </div>
