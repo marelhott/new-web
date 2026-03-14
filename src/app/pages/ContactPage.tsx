@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import { useState, useRef } from "react";
+import React from "react";
 import { motion, useInView } from "motion/react";
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
@@ -133,7 +133,7 @@ export default function ContactPage() {
                     <div className="flex flex-col gap-3">
                       {["Bezplatná konzultace a prohlídka", "Přesná kalkulace do 24 hodin", "Pojištění odpovědnosti do 5 mil. Kč", "Reference od 1 000+ klientů"].map((item) => (
                         <div key={item} className="flex items-center gap-3">
-                          <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0"><CheckCircle size={10} className="text-accent" strokeWidth={3} /></div>
+                          <div className="w-5 h-5 rounded-full bg-accent/15 flex items-center justify-center flex-shrink-0"><CheckCircleIcon className="w-3 h-3 text-accent" strokeWidth={3} /></div>
                           <span className="font-sans" style={{ fontSize: "13px", color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{item}</span>
                         </div>
                       ))}
@@ -147,7 +147,7 @@ export default function ContactPage() {
                       <h4 className="mb-3" style={{ fontSize: "18px", fontWeight: 600 }}>Rychlá kalkulace</h4>
                       <p className="font-sans mb-6" style={{ fontSize: "14px", lineHeight: 1.68, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>Spočítejte si orientační cenu online ihned.</p>
                       <a href="/kalkulacka" className="group inline-flex items-center gap-2 px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "13px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.03em" }}>
-                        Online kalkulačka <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+                        Online kalkulačka <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                       </a>
                     </div>
                   </div>
