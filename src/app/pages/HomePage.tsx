@@ -62,7 +62,7 @@ function GradientMesh({ variant = "hero" }: { variant?: string }) {
 /* ───────── HERO (Light bg, text left, photo right – Paintly style) ───────── */
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background" style={{ paddingTop: "92px", paddingBottom: "128px" }}>
+    <section className="relative flex items-center overflow-hidden bg-background pb-8 md:pb-20" style={{ paddingTop: "92px", minHeight: "100vh" }}>
       <div className="absolute top-[18%] left-[6%] w-[360px] h-[360px] bg-[#2563eb]/[0.08] rounded-full blur-[170px] pointer-events-none" />
       <div className="absolute bottom-[6%] left-[28%] w-[260px] h-[260px] bg-[#ec4899]/[0.06] rounded-full blur-[130px] pointer-events-none" />
       <div className="absolute top-[14%] right-[20%] w-[240px] h-[240px] bg-[#14b8a6]/[0.05] rounded-full blur-[120px] pointer-events-none" />
@@ -81,7 +81,7 @@ function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.36)_0%,rgba(255,255,255,0)_18%,rgba(255,255,255,0.04)_100%)]" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-20 md:pt-32 pb-32">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-20 md:pt-32 pb-8 md:pb-32">
         <div className="max-w-xl lg:max-w-[52%]">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <h1
@@ -490,13 +490,13 @@ function WhyUsSection() {
                     <span
                       style={{
                         position: "relative",
-                        width: "24px",
-                        height: "24px",
+                        width: "12px",
+                        height: "12px",
                         flex: "0 0 auto",
                         display: "block",
                       }}
                     >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                         {activeIndex === index ? (
                           <>
                             <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
