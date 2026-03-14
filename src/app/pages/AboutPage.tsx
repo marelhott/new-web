@@ -176,7 +176,7 @@ export default function AboutPage() {
               <Reveal key={v.title} delay={i * 0.08}>
                 <div className="group p-7 rounded-[26px] transition-all duration-500 hover:-translate-y-1" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 16px 42px rgba(15,23,42,0.05)" }}>
                   <div className="mb-5">
-                    <v.icon size={24} className="text-[#2563eb]" strokeWidth={1.5} />
+                    <v.icon size={20} className="text-[#2563eb] w-5 h-5" strokeWidth={1.5} />
                   </div>
                   <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a" }}>{v.title}</h3>
                   <p className="font-sans" style={{ fontSize: "14px", lineHeight: 1.7, color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{v.desc}</p>
