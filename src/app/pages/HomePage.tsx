@@ -483,7 +483,7 @@ function RealizaceCategoriesSection() {
           </div>
           <div className="text-center mb-6">
             <Link to="/realizace" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-              Všechny realizace <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
+              Všechny realizace <ArrowRightIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
         </Reveal>
@@ -784,7 +784,7 @@ function DecorativeArtSection() {
               Zde malá ochutnávka z realizací naší přidružené firmy, která se rozšířila i do oblasti klasického řemesla. Jedná se o dekorativní, uměleckou malbu na zakázku s důrazem na jedinečnost a řemeslnou dokonalost různých exkluzivních malířských technik.
             </p>
             <Link to="/sluzby/dekorativni-sterky" className="group inline-flex items-center gap-2 mt-6 px-7 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}>
-              Chci vědět víc <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              Chci vědět víc <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </Reveal>
