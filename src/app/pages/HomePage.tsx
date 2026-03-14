@@ -851,7 +851,7 @@ function TestimonialsSection() {
                       <div className="hidden md:block w-12 h-px" style={{ background: "linear-gradient(90deg, rgba(37,99,235,0.55), transparent)" }} />
                     </div>
                     <div>
-                      <Quote size={26} className="mb-5" style={{ color: 'rgba(37,99,235,0.34)' }} strokeWidth={1.2} />
+                      <ChatBubbleLeftIcon className="w-6 h-6 mb-5" style={{ color: 'rgba(37,99,235,0.34)' }} />
                       <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: "clamp(24px, 2.7vw, 36px)", lineHeight: 1.28, fontStyle: "italic", color: "#162033", marginBottom: '28px' }}>
                         &ldquo;{testimonials[cur].quote}&rdquo;
                       </p>
