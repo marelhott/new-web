@@ -2,11 +2,11 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import emailjs from "@emailjs/browser";
 import {
-  Calculator, Home, Settings, Package, MessageCircle,
-  User, Check, X, Phone, Mail, MapPin, CalendarDays,
-  Send, Loader2, CheckCircle, AlertTriangle, ExternalLink,
-  Ruler, Paintbrush, Sofa, Shield, Sparkles, Trash2
-} from "lucide-react";
+  CalculatorIcon, HomeIcon, Cog6ToothIcon, CheckBadgeIcon, ChatBubbleLeftIcon,
+  UserIcon, CheckIcon, XMarkIcon, PhoneIcon, EnvelopeIcon, MapPinIcon, CalendarIcon,
+  PaperAirplaneIcon, SparklesIcon, CheckCircleIcon, ExclamationTriangleIcon, ArrowTopRightOnSquareIcon,
+  Square3Stack3DIcon, PaintBrushIcon, BuildingLibraryIcon, ShieldCheckIcon, TrashIcon
+} from "@heroicons/react/24/outline";
 
 /* ─── EMAILJS CONFIG ─── */
 const EMAILJS_CONFIG = {
@@ -171,9 +171,9 @@ function ServiceToggle({
       />
       <div className="flex items-center gap-2.5 flex-1">
         {isPositive ? (
-          <Check size={16} className={`flex-shrink-0 transition-colors ${selected ? "text-emerald-500" : "text-foreground/30"}`} strokeWidth={2} />
+          <CheckIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-emerald-500" : "text-foreground/30"}`} />
         ) : (
-          <X size={16} className={`flex-shrink-0 transition-colors ${selected ? "text-red-400" : "text-foreground/30"}`} strokeWidth={2} />
+          <XMarkIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-red-400" : "text-foreground/30"}`} />
         )}
         <span className="text-foreground font-sans" style={{ fontSize: "14px", fontWeight: 400 }}>
           {label}
@@ -464,7 +464,7 @@ export default function CalculatorPage() {
                 className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl shadow-accent/20"
                 style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
               >
-                <Calculator size={26} className="text-white" strokeWidth={1.5} />
+                <CalculatorIcon className="w-6 h-6 text-white" />
               </div>
               <h1 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 300, letterSpacing: "-0.02em" }}>
                 <b>Kalkulačka </b><span className="bg-gradient-to-r from-[#2563eb] to-[#4f46e5] bg-clip-text text-transparent" style={{ fontWeight: 700 }}>| Poptávka</span>
