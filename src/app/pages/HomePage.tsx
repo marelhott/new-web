@@ -4,7 +4,7 @@ import { motion, useInView, AnimatePresence } from "motion/react";
 import {
   ArrowRightIcon, ArrowDownIcon, ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon,
   CalendarIcon, CheckIcon, CheckCircleIcon, EyeIcon, ChatBubbleLeftIcon, PhoneIcon, PaintBrushIcon, ShieldCheckIcon, ClockIcon,
-  WrenchIcon, HomeIcon, SparklesIcon, BuildingLibraryIcon, BoltIcon, CalculatorIcon
+  WrenchIcon, HomeIcon, SparklesIcon, BuildingLibraryIcon, BoltIcon, CalculatorIcon, SwatchIcon
 } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
@@ -437,33 +437,44 @@ function ServicePreview() {
 }
 
 /* ───────── REALIZACE CATEGORIES ───────── */
+/* ─── Icon helper ─── */
+const getCategoryIcon = (iconName: string) => {
+  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+    home: HomeIcon,
+    building: BuildingLibraryIcon,
+    palette: SwatchIcon,
+    paint: PaintBrushIcon,
+  };
+  return icons[iconName.toLowerCase()] || HomeIcon;
+};
+
 const realizaceCategories = [
   {
     title: "Moderní vize",
     desc: "Vytváření moderních prostor, která jsou teplá a osobní.",
-    image: IMG.apartment,
-    color: "#6b9fb8",
+    iconName: "home",
+    color: "#2563eb",
     slug: "malovani-bytu",
   },
   {
     title: "Umělecká forma a rovnováha",
     desc: "Kombinace vize a detailu k dokonalosti každého prostoru.",
-    image: IMG.office,
-    color: "#6b9fb8",
+    iconName: "building",
+    color: "#2563eb",
     slug: "malovani-kancelari",
   },
   {
     title: "Přizpůsobený design",
     desc: "Vytváření jedinečných interiérů, které odrážejí životní styl klienta.",
-    image: IMG.commercial,
-    color: "#6b9fb8",
+    iconName: "palette",
+    color: "#2563eb",
     slug: "komercni-objekty",
   },
   {
     title: "Elegantní bydlení",
     desc: "Transformace interiérů v každodenní zážitky.",
-    image: IMG.roller,
-    color: "#6b9fb8",
+    iconName: "paint",
+    color: "#2563eb",
     slug: "komercni-objekty",
   },
 ];
@@ -488,40 +499,40 @@ function RealizaceCategoriesSection() {
           </div>
         </Reveal>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {realizaceCategories.map((cat, i) => (
-            <Reveal key={cat.title} delay={i * 0.1}>
-              <Link to={`/sluzby/${cat.slug}`} className="group block h-full no-underline">
-                <div
-                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
-                  style={{
-                    background: "#e9ecf2",
-                    padding: "24px",
-                    fontFamily: "Manrope, sans-serif",
-                    textDecoration: "none",
-                  }}
-                >
-                  {/* Image */}
-                  <div className="w-full lg:w-auto flex-shrink-0">
-                    <ImageWithFallback
-                      src={cat.image}
-                      alt={cat.title}
-                      className="w-full lg:w-[300px] h-[250px] lg:h-[300px] object-cover rounded-[12px] transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          {realizaceCategories.map((cat, i) => {
+            const IconComponent = getCategoryIcon(cat.iconName);
+            return (
+              <Reveal key={cat.title} delay={i * 0.1}>
+                <Link to={`/sluzby/${cat.slug}`} className="group block h-full no-underline">
+                  <div
+                    className="relative transition-all duration-300 hover:translate-x-2 flex items-start gap-5"
+                    style={{
+                      textDecoration: "none",
+                    }}
+                  >
+                    {/* Icon */}
+                    <div className="flex-shrink-0">
+                      <div
+                        className="w-20 h-20 rounded-2xl flex items-center justify-center"
+                        style={{
+                          background: "#2563eb",
+                        }}
+                      >
+                        <IconComponent className="w-10 h-10 text-white" />
+                      </div>
+                    </div>
 
-                  {/* Text content */}
-                  <div className="flex flex-col gap-6 flex-1 min-w-0">
-                    <div className="flex flex-col gap-4">
+                    {/* Text content */}
+                    <div className="flex flex-col gap-3 flex-1 pt-2">
                       <h3
                         className="m-0"
                         style={{
-                          fontSize: "32px",
+                          fontSize: "22px",
                           fontWeight: 600,
-                          letterSpacing: "-0.03em",
+                          letterSpacing: "-0.02em",
                           color: "#101014",
-                          lineHeight: 1.1
+                          lineHeight: 1.2
                         }}
                       >
                         {cat.title}
@@ -529,25 +540,19 @@ function RealizaceCategoriesSection() {
                       <p
                         className="m-0"
                         style={{
-                          fontSize: "16px",
-                          lineHeight: 1.6,
-                          color: "#3d3d47"
+                          fontSize: "15px",
+                          lineHeight: 1.5,
+                          color: "#526071"
                         }}
                       >
                         {cat.desc}
                       </p>
                     </div>
-
-                    {/* More link */}
-                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
-                      <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
-                      <ArrowRightIcon className="w-4 h-4" />
-                    </div>
                   </div>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
+                </Link>
+              </Reveal>
+            );
+          })}
         </div>
       </div>
     </section>
