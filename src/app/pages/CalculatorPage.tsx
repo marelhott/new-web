@@ -235,13 +235,8 @@ function SectionCard({
   return (
     <Reveal delay={delay}>
       <div className="p-7 md:p-8 rounded-[28px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
-        <div className="flex items-center gap-4 mb-7">
-          <div
-            className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
-          >
-            <Icon size={20} className="text-white" strokeWidth={1.5} />
-          </div>
+        <div className="flex items-center gap-3 mb-7">
+          <Icon className="w-5 h-5 text-foreground flex-shrink-0" strokeWidth={1.5} />
           <div>
             <h2 className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "20px", fontWeight: 600 }}>
               {title}
@@ -460,12 +455,7 @@ export default function CalculatorPage() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center justify-center gap-4 mb-8">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl shadow-accent/20"
-                style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
-              >
-                <CalculatorIcon className="w-6 h-6 text-white" />
-              </div>
+              <CalculatorIcon className="w-6 h-6 text-foreground" />
               <h1 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 300, letterSpacing: "-0.02em" }}>
                 <b>Kalkulačka </b><span className="bg-gradient-to-r from-[#2563eb] to-[#4f46e5] bg-clip-text text-transparent" style={{ fontWeight: 700 }}>| Poptávka</span>
               </h1>
@@ -727,12 +717,7 @@ export default function CalculatorPage() {
               <Reveal delay={0.15}>
                 <div className="p-7 rounded-[28px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
                   <div className="flex items-center gap-3 mb-6">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
-                    >
-                      <UserIcon className="w-4.5 h-4.5 text-white" />
-                    </div>
+                    <UserIcon className="w-5 h-5 text-foreground flex-shrink-0" />
                     <h2 className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "18px", fontWeight: 600 }}>
                       Kontaktní údaje
                     </h2>
