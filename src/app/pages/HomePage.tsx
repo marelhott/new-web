@@ -94,7 +94,7 @@ function HeroSection() {
             </h1>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="mt-16">
             <Link
               to="/kalkulacka"
               className="group inline-flex items-center gap-3 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-xl hover:shadow-[#c9982d]/30 hover:scale-[1.02]"
@@ -105,7 +105,7 @@ function HeroSection() {
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-9 flex items-center gap-2 flex-wrap">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-6 flex items-center gap-2 flex-wrap">
             <span className="text-foreground/55 font-sans" style={{ fontSize: "12px", fontFamily: "'Manrope', var(--font-sans)" }}>
               nebo nás kontaktujte přímo:
             </span>
