@@ -704,7 +704,7 @@ function TestimonialsSection() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.045em" }}>
               Co říkají <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>naši klienti</em>
             </h2>
-            <div className="w-20 h-[3px] mx-auto mt-5 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
         <div className="max-w-4xl mx-auto">
