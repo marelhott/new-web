@@ -30,23 +30,57 @@ export default function ServiceDetailPage() {
 
   return (
     <>
-      <section className="relative pt-24 noise-overlay overflow-hidden" style={{ background: "linear-gradient(160deg, var(--s1) 0%, var(--s3) 40%, var(--s1) 100%)" }}>
-        <div className="absolute w-[500px] h-[500px] -top-[100px] -right-[100px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-accent)" }} />
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 pt-12 pb-0">
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <Link to="/sluzby" className="inline-flex items-center gap-2 text-foreground/40 hover:text-accent transition-colors mb-8 font-sans" style={{ fontSize: "13px" }}>
-              <ArrowLeft size={14} /> Zpět na služby
-            </Link>
-          </motion.div>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-end pb-16">
-            <motion.div initial={{ opacity: 0, y: 40 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }}>
-              <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-foreground/5 border border-foreground/10 text-accent mb-6 font-[family-name:var(--font-display)]" style={{ fontSize: "11px", fontWeight: 600 }}>{service.tag}</span>
-              <h1 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(36px, 5vw, 64px)", fontWeight: 700, lineHeight: 1.0 }}>{service.title}</h1>
-              <p className="text-foreground/40 font-sans max-w-xl" style={{ fontSize: "17px", lineHeight: 1.8 }}>{service.heroDesc}</p>
-            </motion.div>
-            <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8, delay: 0.2 }}>
-              <div className="rounded-2xl overflow-hidden gradient-border aspect-[4/3]"><ImageWithFallback src={service.image} alt={service.title} className="w-full h-full object-cover" /></div>
-            </motion.div>
+      <section className="relative py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)" }}>
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
+          <div className="relative rounded-[10px] overflow-hidden" style={{ background: "#e9ecf2", padding: "30px" }}>
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+              {/* Image */}
+              <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
+                <div className="rounded-[16px] overflow-hidden">
+                  <ImageWithFallback src={service.image} alt={service.title} className="w-full h-[400px] object-cover" />
+                </div>
+              </motion.div>
+
+              {/* Content */}
+              <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.1 }} className="flex flex-col gap-8">
+                {/* Tag */}
+                <div>
+                  <span className="inline-block px-3 py-1.5 rounded-full bg-foreground/10 text-foreground font-sans" style={{ fontSize: "12px", fontWeight: 600 }}>
+                    {service.tag}
+                  </span>
+                </div>
+
+                {/* Title */}
+                <div>
+                  <h1 className="font-[family-name:var(--font-display)] text-foreground m-0" style={{ fontSize: "42px", fontWeight: 500, letterSpacing: "-0.03em", lineHeight: 1.1 }}>
+                    {service.title}
+                  </h1>
+                </div>
+
+                {/* Description */}
+                <p className="font-sans text-foreground m-0" style={{ fontSize: "18px", lineHeight: 1.5, color: "#3d3d47" }}>
+                  {service.heroDesc}
+                </p>
+
+                {/* Quote */}
+                <div className="flex items-start gap-5">
+                  <span className="text-foreground flex-shrink-0 font-bold" style={{ fontSize: "56px", lineHeight: 0.8 }}>"</span>
+                  <p className="font-sans text-foreground m-0" style={{ fontSize: "18px", lineHeight: 1.4, color: "#3d3d47" }}>
+                    {service.tag === "Rezidenční" ? "Kompletně transformované byty naší týmem jsou tichou svědkyní naší péče o každý detail. Klienti si cení našeho profesionalismu a vstupu do jejich domovů s úctou." : "Naše služby jsou poskytovány s maximální profesionalitou a péčí o vaši spokojenost."}
+                  </p>
+                </div>
+
+                {/* Author */}
+                <div className="flex items-center gap-4">
+                  <div className="w-12 h-12 rounded-full" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }} />
+                  <div>
+                    <p className="font-sans text-foreground m-0" style={{ fontSize: "16px", fontWeight: 500 }}>
+                      {service.tag === "Rezidenční" ? "Spokojený klient" : "Tým profesionálů"}
+                    </p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           </div>
         </div>
       </section>
