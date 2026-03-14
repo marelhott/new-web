@@ -118,7 +118,7 @@ export default function ContactPage() {
                         <textarea required rows={5} placeholder="Popište váš projekt..." value={formData.message} onChange={(e) => setFormData({ ...formData, message: e.target.value })} className={`${inputClass} resize-none`} style={{ ...inputStyle }} />
                       </div>
                       <button type="submit" className="group w-full inline-flex items-center justify-center gap-2 px-8 py-3 rounded-lg text-white transition-all duration-300" style={{ background: "#2563eb", fontSize: "14px", fontWeight: 600 }}>
-                        <PaperAirplaneIcon className="w-4 h-4" /> Odeslat poptávku <ArrowRightIcon className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
+                        <PaperAirplaneIcon className="w-4 h-4" /> Odeslat zprávu <ArrowRightIcon className="w-4 h-4 opacity-0 -ml-4 group-hover:opacity-100 group-hover:ml-0 transition-all duration-300" />
                       </button>
                     </form>
                   )}
