@@ -421,129 +421,6 @@ function ServicePreview() {
   );
 }
 
-/* ───────── REALIZACE CATEGORIES ───────── */
-/* ─── Icon helper ─── */
-const getCategoryIcon = (iconName: string) => {
-  const icons: Record<string, React.ComponentType<{className?: string}>> = {
-    home: HomeIcon,
-    building: BuildingLibraryIcon,
-    palette: SwatchIcon,
-    paint: PaintBrushIcon,
-  };
-  return icons[iconName.toLowerCase()] || HomeIcon;
-};
-
-const realizaceCategories = [
-  {
-    title: "Moderní vize",
-    desc: "Vytváření moderních prostor, která jsou teplá a osobní.",
-    iconName: "home",
-    color: "#2563eb",
-    slug: "malovani-bytu",
-  },
-  {
-    title: "Umělecká forma a rovnováha",
-    desc: "Kombinace vize a detailu k dokonalosti každého prostoru.",
-    iconName: "building",
-    color: "#2563eb",
-    slug: "malovani-kancelari",
-  },
-  {
-    title: "Přizpůsobený design",
-    desc: "Vytváření jedinečných interiérů, které odrážejí životní styl klienta.",
-    iconName: "palette",
-    color: "#2563eb",
-    slug: "dekorativni-sterky",
-  },
-  {
-    title: "Elegantní bydlení",
-    desc: "Transformace interiérů v každodenní zážitky.",
-    iconName: "paint",
-    color: "#2563eb",
-    slug: "komercni-objekty",
-  },
-];
-
-function RealizaceCategoriesSection() {
-  return (
-    <section className="relative py-20 md:py-24 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 50%, var(--s2) 100%)" }}>
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-copper)" }} />
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <Reveal>
-          <div className="text-center mb-8">
-            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Realizace</span>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
-              Naše <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>specializace</em>
-            </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
-          </div>
-          <div className="text-center mb-6">
-            <Link to="/realizace" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-              Všechny realizace <ArrowRightIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {realizaceCategories.map((cat, i) => {
-            const IconComponent = getCategoryIcon(cat.iconName);
-            return (
-              <Reveal key={cat.title} delay={i * 0.1}>
-                <Link to={`/sluzby/${cat.slug}`} className="group block h-full no-underline">
-                  <div
-                    className="relative transition-all duration-300 hover:translate-x-2 flex items-start gap-5"
-                    style={{
-                      textDecoration: "none",
-                    }}
-                  >
-                    {/* Icon */}
-                    <div className="flex-shrink-0">
-                      <div
-                        className="w-20 h-20 rounded-2xl flex items-center justify-center"
-                        style={{
-                          background: "#2563eb",
-                        }}
-                      >
-                        <IconComponent className="w-10 h-10 text-white" />
-                      </div>
-                    </div>
-
-                    {/* Text content */}
-                    <div className="flex flex-col gap-3 flex-1 pt-2">
-                      <h3
-                        className="m-0"
-                        style={{
-                          fontSize: "22px",
-                          fontWeight: 600,
-                          letterSpacing: "-0.02em",
-                          color: "#101014",
-                          lineHeight: 1.2
-                        }}
-                      >
-                        {cat.title}
-                      </h3>
-                      <p
-                        className="m-0"
-                        style={{
-                          fontSize: "15px",
-                          lineHeight: 1.5,
-                          color: "#526071"
-                        }}
-                      >
-                        {cat.desc}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </Reveal>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 /* ───────── FAQ (Frequently Asked Questions) ───────── */
 const faqItems = [
   { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
@@ -890,7 +767,6 @@ export default function HomePage() {
       <HowItWorksSection />
       <ServicePreview />
       <WhyUsSection />
-      <RealizaceCategoriesSection />
       <PricingSection />
       <DecorativeArtSection />
       <TestimonialsSection />
