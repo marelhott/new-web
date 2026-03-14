@@ -292,7 +292,7 @@ function HowItWorksSection() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(34px, 4.6vw, 58px)", fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.04em" }}>
               Jak to <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>funguje?</em>
             </h2>
-            <div className="w-18 h-[3px] mx-auto mt-6 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
 
@@ -338,7 +338,7 @@ function ServicePreview() {
               Co pro vás{" "}
               <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>můžeme udělat</em>
             </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
 
@@ -475,7 +475,7 @@ function RealizaceCategoriesSection() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
               Naše <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>specializace</em>
             </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
           <div className="text-center mb-6">
             <Link to="/realizace" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
