@@ -116,7 +116,7 @@ function RadioCard({
     >
       <div
         className={`flex-shrink-0 w-5 h-5 rounded-full transition-all duration-300 ${
-          selected ? "bg-slate-700 shadow-[0_0_8px_rgba(51,65,85,0.6)]" : "border border-foreground/20"
+          selected ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
@@ -166,12 +166,12 @@ function ServiceToggle({
     >
       <div
         className={`flex-shrink-0 w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-slate-700 shadow-[0_0_8px_rgba(51,65,85,0.6)]" : "border border-foreground/20"
+          selected ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex items-center gap-2.5 flex-1">
         {isPositive ? (
-          <CheckIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-slate-700" : "text-foreground/30"}`} />
+          <CheckIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-blue-500" : "text-foreground/30"}`} />
         ) : (
           <XMarkIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-red-400" : "text-foreground/30"}`} />
         )}
@@ -206,7 +206,7 @@ function CeilingOption({
     >
       <div
         className={`w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-slate-700 shadow-[0_0_8px_rgba(51,65,85,0.6)]" : "border border-foreground/20"
+          selected ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]" : "border border-foreground/20"
         }`}
       />
       <span className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "16px", fontWeight: 600 }}>
@@ -439,7 +439,7 @@ export default function CalculatorPage() {
   /* ─── INPUT STYLE ─── */
   const inputCls = "w-full px-4 py-3.5 rounded-xl border bg-foreground/[0.02] text-foreground font-sans transition-all duration-300 focus:outline-none focus:shadow-lg placeholder:text-foreground/20";
   const inputNormal = `${inputCls} border-foreground/8 focus:border-accent/50 focus:bg-foreground/[0.04] focus:shadow-accent/5`;
-  const inputGreen = `${inputCls} border-emerald-500/50 border-2 focus:border-emerald-500 focus:bg-foreground/[0.04] focus:shadow-emerald-500/10`;
+  const inputGreen = `${inputCls} border-slate-400/50 border-2 focus:border-slate-400 focus:bg-foreground/[0.04] focus:shadow-slate-400/10`;
   const inputError = `${inputCls} border-red-400 bg-red-400/5 focus:border-red-400 focus:shadow-red-400/10`;
 
   return (
@@ -741,7 +741,7 @@ export default function CalculatorPage() {
                     {/* Phone */}
                     <div>
                       <label className="block font-sans mb-2" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-                        Telefon <span className="text-emerald-500 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
+                        Telefon <span className="text-red-400 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
                       </label>
                       <input
                         type="tel"
@@ -763,7 +763,7 @@ export default function CalculatorPage() {
                     {/* Email */}
                     <div>
                       <label className="block font-sans mb-2" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-                        E-mail <span className="text-emerald-500 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
+                        E-mail <span className="text-red-400 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
                       </label>
                       <input
                         type="email"
