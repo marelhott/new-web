@@ -135,7 +135,7 @@ const allServices = [
   },
   {
     title: "Malování společných prostorů domu (SVJ)",
-    slug: "komercni-objekty",
+    slug: "malovani-svj",
     tag: "SVJ / Developers",
     iconName: "users",
     desc: "Společné prostory jsou tváří každého domu. Jsme odborníci na malování chodeb, schodišť a dalších prostor spravovaných SVJ a bytovými družstvy.",
