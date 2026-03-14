@@ -94,17 +94,7 @@ function HeroSection() {
             </h1>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#334155] max-w-xl mt-14 mb-10 font-sans"
-            style={{ fontSize: "clamp(13px, 1.05vw, 17px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
-          >
-            Potřebujete vymalovat a&nbsp;chcete mít jistotu, že výsledek bude perfektní, aniž byste se museli o&nbsp;cokoli starat? Malíři v&nbsp;černém to zařídí&nbsp;– rychle, čistě a s&nbsp;důrazem na detail. Díky online kalkulačce navíc cenu znáte předem, přesně a bez překvapení.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }}>
             <Link
               to="/kalkulacka"
               className="group inline-flex items-center gap-3 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-xl hover:shadow-[#c9982d]/30 hover:scale-[1.02]"
