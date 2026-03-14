@@ -31,7 +31,7 @@ const faqItems = [
 
 /* ─── Icon helper ─── */
 const getServiceIcon = (iconName: string) => {
-  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+  const icons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
     home: HomeIcon,
     building: BuildingLibraryIcon,
     palette: PaintBrushIcon,

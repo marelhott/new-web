@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { ComponentType, SVGProps, useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import emailjs from "@emailjs/browser";
 import {
@@ -226,7 +226,7 @@ function SectionCard({
   children,
   delay = 0,
 }: {
-  icon: typeof Calculator;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   title: string;
   subtitle?: string;
   children: React.ReactNode;
