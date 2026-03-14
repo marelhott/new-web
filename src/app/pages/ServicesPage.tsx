@@ -1,17 +1,17 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Home,
-  Building2,
-  Palette,
-  Wrench,
-  Store,
-  Users,
-} from "lucide-react";
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  CheckIcon,
+  HomeIcon,
+  BuildingLibraryIcon,
+  PaintBrushIcon,
+  WrenchIcon,
+  BuildingStorefrontIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 const faqItems = [
@@ -28,6 +28,19 @@ const faqItems = [
     a: "Ano, po úvodní poptávce domluvíme prohlídku nebo upřesnění podkladů a připravíme konkrétní nabídku.",
   },
 ];
+
+/* ─── Icon helper ─── */
+const getServiceIcon = (iconName: string) => {
+  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+    home: HomeIcon,
+    building: BuildingLibraryIcon,
+    palette: PaintBrushIcon,
+    wrench: WrenchIcon,
+    store: BuildingStorefrontIcon,
+    users: UserGroupIcon,
+  };
+  return icons[iconName.toLowerCase()] || null;
+};
 
 /* ─── Reveal helper ─── */
 function Reveal({
@@ -60,7 +73,7 @@ const allServices = [
     title: "Malování bytů a domů",
     slug: "malovani-bytu",
     tag: "Rezidenční",
-    icon: Home,
+    iconName: "home",
     desc: "Váš domov si zaslouží to nejlepší – a my vám to rádi dopřejeme díky dokonalé výmalbě vašich osobních prostor. Od garsoniéry po rodinný dům.",
     features: [
       "Kompletní zakrytí nábytku a podlah",
@@ -73,10 +86,26 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F5e3db085be04449fb327c79b0ec47e1b",
   },
   {
-    title: "Malování firem a ordinací",
+    title: "Malování před prodejem nebo pronájmem",
+    slug: "malovani-pred-prodejem",
+    tag: "Osobní",
+    iconName: "home",
+    desc: "Příprava nemovitosti na prodej nebo pronájem vyžaduje čisté a neutrální prostředí. Zvýšíme atraktivitu vašeho bytu či domu rychlým a efektivním malováním.",
+    features: [
+      "Neutralizace intenzivních barev",
+      "Rychlá realizace — 1–2 dny",
+      "Zvýšíme atraktivitu na trhu",
+    ],
+    price: "Od 80 Kč/m²",
+    color: "#4f9fb8",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c",
+  },
+  {
+    title: "Malování kanceláří a komerčních prostor",
     slug: "malovani-kancelari",
     tag: "Komerční",
-    icon: Building2,
+    iconName: "building",
     desc: "Reprezentativní prostředí je vizitkou každé úspěšné firmy či ordinace – a my vám ho pomůžeme vytvořit. Pracujeme mimo pracovní dobu, o víkendech i v noci.",
     features: [
       "Zero-disruption – mimo pracovní dobu",
@@ -89,10 +118,10 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F3026d95741854f52aaaf83680e170c34",
   },
   {
-    title: "Obchody, kavárny a pensiony",
+    title: "Malování pensionů, restaurací a menších hotelů",
     slug: "komercni-objekty",
     tag: "Hospitality",
-    icon: Store,
+    iconName: "store",
     desc: "Každý obchod, kavárna či penzion má svůj příběh – a my ho podtrhneme dokonalým vzhledem. Malujeme v termínech, které vám vyhovují.",
     features: [
       "Flexibilní termíny bez příplatků",
@@ -105,10 +134,10 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F813e356566e0424cbba8f945a4b5a0bc",
   },
   {
-    title: "SVJ – chodby a schodiště",
-    slug: "komercni-objekty",
+    title: "Malování společných prostorů domu (SVJ)",
+    slug: "malovani-svj",
     tag: "SVJ / Developers",
-    icon: Users,
+    iconName: "users",
     desc: "Společné prostory jsou tváří každého domu. Jsme odborníci na malování chodeb, schodišť a dalších prostor spravovaných SVJ a bytovými družstvy.",
     features: [
       "Etapová realizace v obydlených domech",
@@ -121,10 +150,10 @@ const allServices = [
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Ffe0d5ae8e8b3454e951a42634b8be26d",
   },
   {
-    title: "Dekorativní stěrky a štuk",
+    title: "Dekorativní úprava zdí",
     slug: "dekorativni-sterky",
     tag: "Speciální",
-    icon: Palette,
+    iconName: "palette",
     desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Unikátní interiéry s precizním řemeslem a důrazem na jedinečnost.",
     features: [
       "Microcement a benátský štuk",
@@ -135,22 +164,6 @@ const allServices = [
     color: "#b8a88a",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fc56ff688f14e45aabf5bbee2d3fe87bc",
-  },
-  {
-    title: "Opravy a příprava zdí",
-    slug: "opravy-a-priprava",
-    tag: "Příprava",
-    icon: Wrench,
-    desc: "Kvalitní malba začíná perfektní přípravou. Tmelení, broušení, penetrace, sanace vlhkosti — základ pro dokonalý a trvanlivý výsledek.",
-    features: [
-      "Oprava prasklin a omítek",
-      "Strojní i ruční broušení",
-      "Sanace vlhkých stěn",
-    ],
-    price: "Od 45 Kč/m²",
-    color: "#1e3a5f",
-    image:
-      "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F7bc2d8e387984b9c83f26dd48b4352e0",
   },
 ];
 
@@ -230,7 +243,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                       {/* Image */}
                       <div
-                        className={`aspect-[4/3] lg:aspect-auto overflow-hidden relative ${
+                        className={`aspect-[4/3] lg:aspect-[4/3] overflow-hidden relative ${
                           i % 2 === 1 ? "lg:order-2" : ""
                         }`}
                       >
@@ -250,71 +263,50 @@ export default function ServicesPage() {
 
                       {/* Content */}
                       <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
-                        <div className="flex items-center gap-3 mb-6">
-                          <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center"
-                            style={{
-                              background: `${s.color}15`,
-                              border: `1px solid ${s.color}30`,
-                            }}
-                          >
-                            <s.icon
-                              size={18}
-                              style={{ color: s.color }}
-                              strokeWidth={1.5}
-                            />
+                        {/* Tag with Icon */}
+                        <div className="mb-8">
+                          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full" style={{ background: "#1a1a1a" }}>
+                            {React.createElement(getServiceIcon(s.iconName)!, {
+                              className: "w-5 h-5",
+                              style: { color: "#ffffff" },
+                            })}
+                            <span className="font-sans text-white" style={{ fontSize: "12px", fontWeight: 600 }}>
+                              {s.tag}
+                            </span>
                           </div>
-                          <span
-                            className="px-3 py-1 rounded-full border"
-                            style={{
-                              fontSize: "11px",
-                              fontWeight: 700,
-                              letterSpacing: "0.08em",
-                              textTransform: "uppercase",
-                              color: s.color,
-                              background: `${s.color}12`,
-                              borderColor: `${s.color}22`,
-                              fontFamily: "'Manrope', var(--font-sans)",
-                            }}
-                          >
-                            {s.tag}
-                          </span>
                         </div>
 
+                        {/* Title */}
                         <h2
-                          className="mb-4"
+                          className="mb-6"
                           style={{
-                            fontFamily: "'Sora', sans-serif",
-                            fontSize: "clamp(24px, 3vw, 34px)",
-                            fontWeight: 700,
-                            lineHeight: 1.08,
-                            letterSpacing: "-0.04em",
+                            fontFamily: "var(--font-display)",
+                            fontSize: "32px",
+                            fontWeight: 500,
+                            lineHeight: 1.2,
+                            letterSpacing: "-0.03em",
                             color: "#0f172a",
                           }}
                         >
                           {s.title}
                         </h2>
 
+                        {/* Description */}
                         <p
-                          className="font-sans mb-6"
-                          style={{ fontSize: "15px", lineHeight: 1.74, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+                          className="font-sans mb-8"
+                          style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}
                         >
                           {s.desc}
                         </p>
 
-                        <div className="flex flex-col gap-2 mb-8">
+                        {/* Features */}
+                        <div className="flex flex-col gap-3 mb-8">
                           {s.features.map((f) => (
-                            <div key={f} className="flex items-center gap-2">
-                              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${s.color}14`, color: s.color }}>
-                                <Check
-                                  size={10}
-                                  className=""
-                                  strokeWidth={3}
-                                />
-                              </div>
+                            <div key={f} className="flex items-start gap-2">
+                              <span className="text-foreground flex-shrink-0" style={{ fontSize: "14px" }}>•</span>
                               <span
                                 className="font-sans"
-                                style={{ fontSize: "13px", color: "#415063", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}
+                                style={{ fontSize: "14px", color: "#3d3d47", lineHeight: 1.5 }}
                               >
                                 {f}
                               </span>
@@ -322,7 +314,8 @@ export default function ServicesPage() {
                           ))}
                         </div>
 
-                        <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
+                        {/* Price and CTA */}
+                        <div className="flex items-end justify-between pt-6" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
                           <div>
                             <span
                               className="font-sans block"
@@ -330,27 +323,25 @@ export default function ServicesPage() {
                                 fontSize: "11px",
                                 letterSpacing: "0.08em",
                                 color: "#7b8794",
-                                fontFamily: "'Manrope', var(--font-sans)",
                                 fontWeight: 700,
+                                marginBottom: "4px",
                               }}
                             >
                               ORIENTAČNÍ CENA
                             </span>
                             <span
-                              className=""
-                              style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, color: s.color, letterSpacing: "-0.03em" }}
+                              style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 500, color: "#0f172a", letterSpacing: "-0.02em" }}
                             >
                               {s.price}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all duration-300">
+                          <div className="px-6 py-3 rounded-full transition-all duration-300" style={{ background: "#1a1a1a" }}>
                             <span
-                              className=""
-                              style={{ fontSize: "13px", fontWeight: 800, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.06em" }}
+                              className="text-white font-sans"
+                              style={{ fontSize: "13px", fontWeight: 600 }}
                             >
                               Detail služby
                             </span>
-                            <ArrowUpRight size={16} />
                           </div>
                         </div>
                       </div>
@@ -399,9 +390,8 @@ export default function ServicesPage() {
                 }}
               >
                 Online kalkulačka{" "}
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
+                <ArrowRightIcon
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 />
               </Link>
               <Link

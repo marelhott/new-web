@@ -2,10 +2,10 @@ import React, { useRef, useState, useEffect, useCallback } from "react";
 import { Link } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
-  ArrowRight, ArrowDown, ArrowUpRight, ChevronLeft, ChevronRight,
-  Calendar, Check, CheckCircle, Calculator, Eye, Quote, Phone, Paintbrush, Shield, Clock,
-  Hammer, Home, Droplet, Building2, Wrench, Zap
-} from "lucide-react";
+  ArrowRightIcon, ArrowDownIcon, ArrowUpRightIcon, ChevronLeftIcon, ChevronRightIcon,
+  CalendarIcon, CheckIcon, CheckCircleIcon, EyeIcon, ChatBubbleLeftIcon, PhoneIcon, PaintBrushIcon, ShieldCheckIcon, ClockIcon,
+  WrenchIcon, HomeIcon, SparklesIcon, BuildingLibraryIcon, BoltIcon, CalculatorIcon, SwatchIcon
+} from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 const heroPhoto = "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fde4c3a59dfe7452abff728cfc029c559?format=webp&width=2400&height=3600";
@@ -94,28 +94,18 @@ function HeroSection() {
             </h1>
           </motion.div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="text-[#334155] max-w-xl mt-14 mb-10 font-sans"
-            style={{ fontSize: "clamp(13px, 1.05vw, 17px)", lineHeight: 1.75, fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
-          >
-            Potřebujete vymalovat a&nbsp;chcete mít jistotu, že výsledek bude perfektní, aniž byste se museli o&nbsp;cokoli starat? Malíři v&nbsp;černém to zařídí&nbsp;– rychle, čistě a s&nbsp;důrazem na detail. Díky online kalkulačce navíc cenu znáte předem, přesně a bez překvapení.
-          </motion.p>
-
-          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.5 }}>
+          <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.3 }} className="mt-16">
             <Link
               to="/kalkulacka"
               className="group inline-flex items-center gap-3 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-xl hover:shadow-[#c9982d]/30 hover:scale-[1.02]"
               style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700, boxShadow: "0 18px 38px rgba(37,99,235,.18)" }}
             >
               Spočítat cenu
-              <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
+              <ArrowRightIcon className="w-5 h-5 transition-transform group-hover:translate-x-1" />
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-9 flex items-center gap-2 flex-wrap">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-6 flex items-center gap-2 flex-wrap">
             <span className="text-foreground/55 font-sans" style={{ fontSize: "12px", fontFamily: "'Manrope', var(--font-sans)" }}>
               nebo nás kontaktujte přímo:
             </span>
@@ -124,7 +114,7 @@ function HeroSection() {
               className="inline-flex items-center gap-2 text-foreground font-[family-name:var(--font-display)] hover:text-accent transition-colors duration-300"
               style={{ fontSize: "17px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}
             >
-              <Phone size={16} strokeWidth={2} className="text-accent" />
+              <PhoneIcon className="w-4 h-4 text-accent" />
               +420 732 333 550
             </a>
           </motion.div>
@@ -145,7 +135,7 @@ function HeroSection() {
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.8 }} className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
         <motion.div animate={{ y: [0, 8, 0] }} transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }} className="flex flex-col items-center gap-2 text-foreground/30">
           <span className="font-[family-name:var(--font-display)] tracking-widest uppercase" style={{ fontSize: "10px" }}>Scroll</span>
-          <ArrowDown size={14} />
+          <ArrowDownIcon className="w-3.5 h-3.5" />
         </motion.div>
       </motion.div>
     </section>
@@ -153,21 +143,31 @@ function HeroSection() {
 }
 
 /* ───────── TRUST — 3 feature cards (Figma-style) ───────── */
+// Helper to get Heroicon component by name
+const getHeroIcon = (iconName: string) => {
+  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+    paintbrush: PaintBrushIcon,
+    shield: ShieldCheckIcon,
+    clock: ClockIcon,
+  };
+  return icons[iconName.toLowerCase()] || null;
+};
+
 const featureCards = [
   {
-    icon: Paintbrush,
+    iconName: "paintbrush",
     title: "Naše specializace jsou interiéry",
     desc: "Malujeme byty, rodinné domy, schodiště a chodby bytových dom. Stejně tak ale zrealizujeme výmalbu komerčních prostor jako je kavárna, restaurace, kancelář, menší hotel nebo penzion.",
     color: "#2563eb",
   },
   {
-    icon: Shield,
+    iconName: "shield",
     title: "Nezávazná kalkulace",
     desc: "Stačí nám pár základních informací o bytě a připravíme orientační cenu výmalby.\nPokud bude potřeba, rádi se přijedeme na byt podívat a vše s vámi probereme osobně.",
     color: "#7c3aed",
   },
   {
-    icon: Clock,
+    iconName: "clock",
     title: "Expres a víkendové termíny",
     desc: "Potřebujete váš domov vymalovat co nejrychleji? Nechcete přerušovat provoz restaurace, kanceláře, recepce? Určete si sami termín a čas realizace BEZ PŘÍPLATKŮ.",
     color: "#0f766e",
@@ -182,14 +182,14 @@ function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 h-full flex flex-col text-center" style={{ background: "rgba(233, 236, 242, 0.7)", backdropFilter: "blur(12px)" }}>
-                <div className="h-12 flex justify-center items-center mb-4">
-                  <card.icon size={32} style={{ color: "#2563eb" }} strokeWidth={1.5} />
+              <div className="group relative p-8 md:p-9 rounded-lg overflow-hidden transition-all duration-500 h-full flex flex-col text-left" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
+                <div className="mb-6">
+                  {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-6 h-6", style: { color: "#9ca3af" } })}
                 </div>
-                <h3 className="mb-6 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, minHeight: "60px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <h3 className="mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
                   {card.title}
                 </h3>
-                <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500, display: "flex", alignItems: "flex-start" }}>
+                <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}>
                   {card.desc}
                 </p>
               </div>
@@ -227,10 +227,10 @@ function useCounter(target: number, duration = 2000) {
 }
 
 const statsData = [
-  { label: "let zkušeností", target: 23, suffix: "+" },
-  { label: "hotových projektů", target: 120, suffix: "k+", divide: true },
+  { label: "let zkušeností", target: 30, suffix: "+" },
+  { label: "hotových projektů", target: 1000, suffix: "+" },
   { label: "spokojených klientů", target: 98, suffix: "%" },
-  { label: "oceněných služeb", target: 15, suffix: "+" },
+  { label: "oceněných služeb", target: 300, suffix: "+" },
 ];
 
 function StatCounter({ stat }: { stat: typeof statsData[0] }) {
@@ -292,7 +292,7 @@ function HowItWorksSection() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(34px, 4.6vw, 58px)", fontWeight: 700, lineHeight: 1.0, letterSpacing: "-0.04em" }}>
               Jak to <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>funguje?</em>
             </h2>
-            <div className="w-18 h-[3px] mx-auto mt-6 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
 
@@ -318,38 +318,33 @@ function HowItWorksSection() {
 
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
-  { title: "Výmalba bytů a domů", desc: "Kompletní výmalba bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
-  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlá výmalba, která pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-kancelari", tag: "Osobní" },
-  { title: "Výmalba společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "dekorativni-sterky", tag: "Odborné" },
-  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální výmalba kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "opravy-a-priprava", tag: "Komerční" },
-  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Výmalba pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
-  { title: "Dekorativní výmalba", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-vymalba", tag: "Design" },
+  { title: "Malování bytů a domů", desc: "Kompletní malování bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
+  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlé malování, které pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-pred-prodejem", tag: "Osobní" },
+  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
+  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Malování pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
+  { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "malovani-svj", tag: "Odborné" },
+  { title: "Dekorativní úprava zdí", desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-sterky", tag: "Design" },
 ];
 
 function ServicePreview() {
   return (
-    <section className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
+    <section className="relative py-12 md:py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-8">
+          <div className="text-center mb-16 pt-8 md:pt-12">
             <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Služby</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
               Co pro vás{" "}
               <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>můžeme udělat</em>
             </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
-          </div>
-          <div className="text-center mb-10">
-            <Link to="/sluzby" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-              Všechny služby <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-            </Link>
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 0.08}>
+            <Reveal key={s.title} delay={i * 0.08}>
               <Link to={`/sluzby/${s.slug}`} className="group block h-full no-underline">
                 <div
                   className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-12 h-full"
@@ -413,125 +408,7 @@ function ServicePreview() {
                     {/* More link */}
                     <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
                       <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
-                      <ArrowRight size={16} />
-                    </div>
-                  </div>
-                </div>
-              </Link>
-            </Reveal>
-          ))}
-        </div>
-      </div>
-    </section>
-  );
-}
-
-/* ───────── REALIZACE CATEGORIES ───────── */
-const realizaceCategories = [
-  {
-    title: "Moderní vize",
-    desc: "Vytváření moderních prostor, která jsou teplá a osobní.",
-    image: IMG.apartment,
-    color: "#6b9fb8",
-    slug: "malovani-bytu",
-  },
-  {
-    title: "Umělecká forma a rovnováha",
-    desc: "Kombinace vize a detailu k dokonalosti každého prostoru.",
-    image: IMG.office,
-    color: "#6b9fb8",
-    slug: "malovani-kancelari",
-  },
-  {
-    title: "Přizpůsobený design",
-    desc: "Vytváření jedinečných interiérů, které odrážejí životní styl klienta.",
-    image: IMG.commercial,
-    color: "#6b9fb8",
-    slug: "komercni-objekty",
-  },
-  {
-    title: "Elegantní bydlení",
-    desc: "Transformace interiérů v každodenní zážitky.",
-    image: IMG.roller,
-    color: "#6b9fb8",
-    slug: "komercni-objekty",
-  },
-];
-
-function RealizaceCategoriesSection() {
-  return (
-    <section className="relative py-20 md:py-24 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s2) 0%, var(--s1) 50%, var(--s2) 100%)" }}>
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[400px] rounded-full blur-[200px] pointer-events-none" style={{ background: "var(--orb-copper)" }} />
-      <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-        <Reveal>
-          <div className="text-center mb-8">
-            <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Realizace</span>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
-              Naše <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>specializace</em>
-            </h2>
-            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
-          </div>
-          <div className="text-center mb-6">
-            <Link to="/realizace" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-              Všechny realizace <ArrowRight size={14} className="transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
-        </Reveal>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {realizaceCategories.map((cat, i) => (
-            <Reveal key={cat.title} delay={i * 0.1}>
-              <Link to={`/sluzby/${cat.slug}`} className="group block h-full no-underline">
-                <div
-                  className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-center gap-8 lg:gap-12"
-                  style={{
-                    background: "#e9ecf2",
-                    padding: "24px",
-                    fontFamily: "Manrope, sans-serif",
-                    textDecoration: "none",
-                  }}
-                >
-                  {/* Image */}
-                  <div className="w-full lg:w-auto flex-shrink-0">
-                    <ImageWithFallback
-                      src={cat.image}
-                      alt={cat.title}
-                      className="w-full lg:w-[300px] h-[250px] lg:h-[300px] object-cover rounded-[12px] transition-transform duration-700 group-hover:scale-105"
-                      loading="lazy"
-                    />
-                  </div>
-
-                  {/* Text content */}
-                  <div className="flex flex-col gap-6 flex-1 min-w-0">
-                    <div className="flex flex-col gap-4">
-                      <h3
-                        className="m-0"
-                        style={{
-                          fontSize: "32px",
-                          fontWeight: 600,
-                          letterSpacing: "-0.03em",
-                          color: "#101014",
-                          lineHeight: 1.1
-                        }}
-                      >
-                        {cat.title}
-                      </h3>
-                      <p
-                        className="m-0"
-                        style={{
-                          fontSize: "16px",
-                          lineHeight: 1.6,
-                          color: "#3d3d47"
-                        }}
-                      >
-                        {cat.desc}
-                      </p>
-                    </div>
-
-                    {/* More link */}
-                    <div className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-white transition-all duration-300 hover:shadow-lg w-fit" style={{ background: "#334155" }}>
-                      <span style={{ fontSize: "14px", fontWeight: 600 }}>Více info</span>
-                      <ArrowRight size={16} />
+                      <ArrowRightIcon className="w-4 h-4" />
                     </div>
                   </div>
                 </div>
@@ -565,6 +442,7 @@ function WhyUsSection() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
               Často se nás <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>ptáte?</em>
             </h2>
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
 
@@ -666,8 +544,7 @@ const priceItems = [
 
 function PricingSection() {
   const getPriceIcon = (iconType: string) => {
-    const iconProps = { size: 40, strokeWidth: 1.5 };
-    return <Home {...iconProps} />;
+    return <HomeIcon className="w-10 h-10" />;
   };
 
   return (
@@ -677,8 +554,9 @@ function PricingSection() {
           <div className="text-center mb-24">
             <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Cena</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(40px, 5vw, 58px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}>
-              Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>výmalba?</em>
+              Kolik stojí <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>malování?</em>
             </h2>
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
 
@@ -698,7 +576,7 @@ function PricingSection() {
             <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
               <div>
                 <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "30px" }}>
-                  Cena výmalby závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
+                  Cena malování závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
                 </p>
 
                 {priceItems.map((item, index) => (
@@ -744,7 +622,7 @@ function PricingSection() {
                   Přesnou cenu sami snadno spočítáte podle velikosti bytu a stavu zdí.
                 </p>
                 <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-9 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #0f172a 0%, #1e3a8a 58%, #2563eb 100%)", fontSize: "15px", fontWeight: 700 }}>
-                  Spočítat cenu <ArrowRight size={16} />
+                  Spočítat cenu <ArrowRightIcon className="w-4 h-4" />
                 </Link>
               </div>
             </div>
@@ -774,7 +652,7 @@ function DecorativeArtSection() {
               Zde malá ochutnávka z realizací naší přidružené firmy, která se rozšířila i do oblasti klasického řemesla. Jedná se o dekorativní, uměleckou malbu na zakázku s důrazem na jedinečnost a řemeslnou dokonalost různých exkluzivních malířských technik.
             </p>
             <Link to="/sluzby/dekorativni-sterky" className="group inline-flex items-center gap-2 mt-6 px-7 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}>
-              Chci vědět víc <ArrowRight size={14} className="group-hover:translate-x-1 transition-transform" />
+              Chci vědět víc <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
         </Reveal>
@@ -809,12 +687,6 @@ const testimonials = [
 ];
 
 function TestimonialsSection() {
-  const [cur, setCur] = useState(0);
-  const [dir, setDir] = useState(1);
-  const next = useCallback(() => { setDir(1); setCur((p) => (p + 1) % testimonials.length); }, []);
-  const prev = useCallback(() => { setDir(-1); setCur((p) => (p - 1 + testimonials.length) % testimonials.length); }, []);
-  useEffect(() => { const t = setInterval(next, 6000); return () => clearInterval(t); }, [next]);
-
   return (
     <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6f9ff 50%, #ffffff 100%)" }}>
       <div className="absolute top-24 left-[12%] w-[360px] h-[240px] rounded-full blur-[140px] pointer-events-none" style={{ background: "rgba(37,99,235,0.10)" }} />
@@ -826,56 +698,36 @@ function TestimonialsSection() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 52px)", fontWeight: 700, lineHeight: 1.02, letterSpacing: "-0.045em" }}>
               Co říkají <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>naši klienti</em>
             </h2>
-            <div className="w-20 h-[3px] mx-auto mt-5 rounded-full" style={{ background: "linear-gradient(90deg, #2563eb, #7c3aed)" }} />
+            <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
-        <div className="max-w-4xl mx-auto">
-          <div className="rounded-[34px] border p-8 md:p-12" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", borderColor: "rgba(37,99,235,0.12)", boxShadow: "0 24px 80px rgba(15,23,42,0.06)" }}>
-            <div className="relative min-h-[260px] flex items-center">
-              <AnimatePresence mode="wait" custom={dir}>
-                <motion.div key={cur} custom={dir} initial={{ opacity: 0, x: dir * 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: dir * -60 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="w-full">
-                  <div className="grid md:grid-cols-[120px_minmax(0,1fr)] gap-8 items-start">
-                    <div className="flex md:block items-center justify-center md:justify-start gap-4">
-                      <div className="w-16 h-16 rounded-[20px] flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.16), rgba(124,58,237,0.12))", border: "1px solid rgba(37,99,235,0.16)" }}>
-                        <span style={{ fontFamily: "'Sora', sans-serif", fontSize: "18px", fontWeight: 700, color: "#10213f", letterSpacing: "-0.04em" }}>{testimonials[cur].initials}</span>
-                      </div>
-                      <div className="hidden md:block w-12 h-px" style={{ background: "linear-gradient(90deg, rgba(37,99,235,0.55), transparent)" }} />
-                    </div>
-                    <div>
-                      <Quote size={26} className="mb-5" style={{ color: 'rgba(37,99,235,0.34)' }} strokeWidth={1.2} />
-                      <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: "clamp(24px, 2.7vw, 36px)", lineHeight: 1.28, fontStyle: "italic", color: "#162033", marginBottom: '28px' }}>
-                        &ldquo;{testimonials[cur].quote}&rdquo;
-                      </p>
-                      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
-                        <div>
-                          <div style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, color: "#0f172a", letterSpacing: "-0.03em" }}>{testimonials[cur].author}</div>
-                          <div style={{ fontFamily: "'Manrope', var(--font-sans)", fontSize: "14px", fontWeight: 600, color: "#5b6877", marginTop: '6px' }}>{testimonials[cur].role}</div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <button onClick={prev} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
-                            <ChevronLeft size={16} />
-                          </button>
-                          <div className="flex gap-2">
-                            {testimonials.map((_, i) => (
-                              <button
-                                key={i}
-                                onClick={() => { setDir(i > cur ? 1 : -1); setCur(i); }}
-                                className="rounded-full transition-all duration-300"
-                                style={{ width: i === cur ? '26px' : '8px', height: '8px', background: i === cur ? 'linear-gradient(90deg, #2563eb, #7c3aed)' : 'rgba(148,163,184,0.35)' }}
-                              />
-                            ))}
-                          </div>
-                          <button onClick={next} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
-                            <ChevronRight size={16} />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {testimonials.map((t, i) => (
+            <Reveal key={i} delay={i * 0.08}>
+              <div className="p-6 md:p-7 rounded-lg" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <span key={j} style={{ fontSize: "18px", color: "#1a1a1a" }}>★</span>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "20px" }}>
+                  {t.quote}
+                </p>
+                {/* Author */}
+                <div style={{ paddingTop: "16px", borderTop: "1px solid rgba(15,23,42,0.08)", display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#e9ecf2" }}>
+                    <span style={{ fontFamily: "'Sora', sans-serif", fontSize: "12px", fontWeight: 700, color: "#0f172a" }}>{t.initials}</span>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+                  <div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: "14px", fontWeight: 700, color: "#0f172a" }}>{t.author}</div>
+                    <div style={{ fontSize: "12px", color: "#7b8794" }}>{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
@@ -890,10 +742,9 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
-      <WhyUsSection />
-      <RealizaceCategoriesSection />
       <PricingSection />
       <DecorativeArtSection />
+      <WhyUsSection />
       <TestimonialsSection />
     </>
   );

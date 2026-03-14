@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
-import { ArrowRight, Heart, Target, Users, Award, Sparkles, Shield } from "lucide-react";
+import { ArrowRightIcon, HeartIcon, CogIcon, UserGroupIcon, CheckCircleIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -48,17 +48,17 @@ const timeline = [
   { year: "~2015", title: "Založení firmy", desc: "Marek zakládá firmu Malíři v černém s vizí rodinného podniku a moderního přístupu k tradičnímu řemeslu." },
   { year: "2018", title: "Synové se přidávají", desc: "Albert a Vincent, Markovi synové, se postupně zapojují do firmy a přinášejí novou energii." },
   { year: "2020", title: "Rozšíření týmu", desc: "K rodinné firmě se přidávají blízcí přátelé – Lenka a Pavel. Tým roste a kapacita se zvyšuje." },
-  { year: "2023", title: "500+ zakázek", desc: "Překonáváme hranici 500 úspěšně dokončených zakázek. Důkaz poctivé manuální práce." },
+  { year: "2023", title: "1000+ zakázek", desc: "Překonáváme hranici 1000 úspěšně dokončených zakázek. Důkaz poctivé manuální práce." },
   { year: "2026", title: "Nová éra", desc: "Online kalkulačka, digitální procesy a neustálý růst. Firma funguje přes 10 let." },
 ];
 
 const values = [
-  { icon: Target, title: "Preciznost", desc: "Každý detail se počítá.", gradient: "from-[#1e3a5f]/25" },
-  { icon: Heart, title: "Vášeň", desc: "Poctivá manuální práce nás baví.", gradient: "from-[#c08050]/25" },
-  { icon: Users, title: "Rodinné hodnoty", desc: "Jsme rodina — a tak přistupujeme i ke klientům.", gradient: "from-[#8a9a7a]/25" },
-  { icon: Shield, title: "Spolehlivost", desc: "Na naše slovo se můžete spolehnout.", gradient: "from-accent/25" },
-  { icon: Sparkles, title: "Kvalita", desc: "Pouze ověřené materiály a profesionální vybavení.", gradient: "from-[#1e3a5f]/25" },
-  { icon: Award, title: "Tradice", desc: "Přes 30 let zkušeností zakladatele.", gradient: "from-[#c08050]/25" },
+  { icon: CogIcon, title: "Preciznost", desc: "Každý detail se počítá.", gradient: "from-[#1e3a5f]/25" },
+  { icon: HeartIcon, title: "Vášeň", desc: "Poctivá manuální práce nás baví.", gradient: "from-[#c08050]/25" },
+  { icon: UserGroupIcon, title: "Rodinné hodnoty", desc: "Jsme rodina — a tak přistupujeme i ke klientům.", gradient: "from-[#8a9a7a]/25" },
+  { icon: ShieldCheckIcon, title: "Spolehlivost", desc: "Na naše slovo se můžete spolehnout.", gradient: "from-accent/25" },
+  { icon: SparklesIcon, title: "Kvalita", desc: "Pouze ověřené materiály a profesionální vybavení.", gradient: "from-[#1e3a5f]/25" },
+  { icon: CheckCircleIcon, title: "Tradice", desc: "Přes 30 let zkušeností zakladatele.", gradient: "from-[#c08050]/25" },
 ];
 
 export default function AboutPage() {
@@ -78,12 +78,9 @@ export default function AboutPage() {
               Česká rodinná firma, která společně{" "}
               <span className="bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">funguje už přes 10 let</span>
             </h1>
-            <div className="font-sans max-w-3xl mx-auto space-y-2" style={{ fontSize: "16px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-              <p>Naše firma se věnuje tradičnímu řemeslu.</p>
-              <p>Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let.</p>
-              <p>Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali.</p>
-              <p>Poctivá, manuální práce nás baví a důkazem toho je přes 500 úspěšně dokončených zakázek.</p>
-            </div>
+            <p className="font-sans max-w-3xl mx-auto" style={{ fontSize: "16px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+              Naše firma se věnuje tradičnímu řemeslu. Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let. Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali. Poctivá, manuální práce nás baví a důkazem toho je přes 1000 úspěšně dokončených zakázek.
+            </p>
           </motion.div>
         </div>
       </section>
@@ -197,7 +194,7 @@ export default function AboutPage() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 700 }}>Chcete se k nám přidat?</h2>
             <p className="text-foreground/40 font-sans mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", lineHeight: 1.7 }}>Hledáme talentované malíře, kteří sdílejí naše hodnoty poctivé práce.</p>
             <Link to="/kontakt" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}>
-              Kontaktujte nás <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              Kontaktujte nás <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Reveal>
         </div>

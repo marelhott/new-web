@@ -1,7 +1,18 @@
 import { useState, useRef } from "react";
+import React from "react";
 import { motion, useInView } from "motion/react";
-import { Phone, Mail, MapPin, Clock, Send, CheckCircle, ArrowRight } from "lucide-react";
+import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+
+const getContactIcon = (iconName: string) => {
+  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+    phone: PhoneIcon,
+    mail: EnvelopeIcon,
+    mappin: MapPinIcon,
+    clock: ClockIcon,
+  };
+  return icons[iconName.toLowerCase()] || null;
+};
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -14,10 +25,10 @@ function Reveal({ children, className = "", delay = 0 }: { children: React.React
 }
 
 const contactInfo = [
-  { icon: Phone, label: "Telefon", value: "+420 732 333 550", href: "tel:+420732333550", desc: "Po–Pá 7:00–18:00" },
-  { icon: Mail, label: "E-mail", value: "info@malirivcernem.cz", href: "mailto:info@malirivcernem.cz", desc: "Odpovíme do 2 hodin" },
-  { icon: MapPin, label: "Adresa", value: "Praha, Česká republika", href: "#", desc: "Působíme v celé Praze" },
-  { icon: Clock, label: "Pracovní doba", value: "Po–Pá: 7:00 – 18:00", href: "#", desc: "Víkendové termíny po domluvě" },
+  { iconName: "phone", label: "Telefon", value: "+420 732 333 550", href: "tel:+420732333550", desc: "Po–Pá 7:00–18:00" },
+  { iconName: "mail", label: "E-mail", value: "info@malirivcernem.cz", href: "mailto:info@malirivcernem.cz", desc: "Odpovíme do 2 hodin" },
+  { iconName: "mappin", label: "Adresa", value: "Praha, Česká republika", href: "#", desc: "Působíme v celé Praze" },
+  { iconName: "clock", label: "Pracovní doba", value: "Po–Pá: 7:00 – 18:00", href: "#", desc: "Víkendové termíny po domluvě" },
 ];
 
 export default function ContactPage() {
@@ -51,7 +62,7 @@ export default function ContactPage() {
             {contactInfo.map((c, i) => (
               <Reveal key={c.label} delay={i * 0.08}>
                 <a href={c.href} className="group block p-6 rounded-[26px] transition-all duration-500 hover:-translate-y-1" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 16px 40px rgba(15,23,42,0.05)" }}>
-                  <div className="w-10 h-10 rounded-[14px] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(124,58,237,0.08))", border: "1px solid rgba(37,99,235,0.14)" }}><c.icon size={18} className="text-[#2563eb]" strokeWidth={1.5} /></div>
+                  <div className="w-10 h-10 rounded-[14px] flex items-center justify-center mb-4 group-hover:scale-110 transition-transform duration-300" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.12), rgba(124,58,237,0.08))", border: "1px solid rgba(37,99,235,0.14)" }}>{getContactIcon(c.iconName) && React.createElement(getContactIcon(c.iconName)!, { className: "w-4.5 h-4.5 text-[#2563eb]" })}</div>
                   <span className="block mb-1" style={{ fontSize: "11px", fontWeight: 700, letterSpacing: "0.08em", textTransform: "uppercase", color: "#7b8794", fontFamily: "'Manrope', var(--font-sans)" }}>{c.label}</span>
                   <span className="block mb-1" style={{ fontSize: "17px", fontWeight: 700, color: "#0f172a", fontFamily: "'Sora', sans-serif", letterSpacing: "-0.03em" }}>{c.value}</span>
                   <span className="font-sans" style={{ fontSize: "12px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}>{c.desc}</span>
@@ -66,7 +77,7 @@ export default function ContactPage() {
                 <div className="p-8 md:p-10 rounded-[28px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
                   {submitted ? (
                     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
-                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2563eb]/20 to-[#4f46e5]/10 flex items-center justify-center mx-auto mb-6"><CheckCircle size={28} className="text-[#2563eb]" /></div>
+                      <div className="w-16 h-16 rounded-full bg-gradient-to-br from-[#2563eb]/20 to-[#4f46e5]/10 flex items-center justify-center mx-auto mb-6"><CheckCircleIcon className="w-7 h-7 text-[#2563eb]" /></div>
                       <h3 className="font-[family-name:var(--font-display)] text-foreground mb-3" style={{ fontSize: "24px", fontWeight: 600 }}>Děkujeme za zprávu!</h3>
                       <p className="font-sans max-w-md mx-auto" style={{ fontSize: "15px", lineHeight: 1.72, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>Ozveme se vám do 2 hodin v pracovní dny.</p>
                     </motion.div>

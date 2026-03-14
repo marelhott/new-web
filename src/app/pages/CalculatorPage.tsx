@@ -2,11 +2,11 @@ import { useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import emailjs from "@emailjs/browser";
 import {
-  Calculator, Home, Settings, Package, MessageCircle,
-  User, Check, X, Phone, Mail, MapPin, CalendarDays,
-  Send, Loader2, CheckCircle, AlertTriangle, ExternalLink,
-  Ruler, Paintbrush, Sofa, Shield, Sparkles, Trash2
-} from "lucide-react";
+  CalculatorIcon, HomeIcon, Cog6ToothIcon, CheckBadgeIcon, ChatBubbleLeftIcon,
+  UserIcon, CheckIcon, XMarkIcon, PhoneIcon, EnvelopeIcon, MapPinIcon, CalendarIcon,
+  PaperAirplaneIcon, SparklesIcon, CheckCircleIcon, ExclamationTriangleIcon, ArrowTopRightOnSquareIcon,
+  Square3Stack3DIcon, PaintBrushIcon, BuildingLibraryIcon, ShieldCheckIcon, TrashIcon
+} from "@heroicons/react/24/outline";
 
 /* ─── EMAILJS CONFIG ─── */
 const EMAILJS_CONFIG = {
@@ -108,15 +108,15 @@ function RadioCard({
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full flex items-center gap-4 p-5 rounded-xl border-2 text-left transition-all duration-300 ${
+      className={`relative w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-all duration-300 ${
         selected
-          ? "border-accent bg-accent/8 shadow-lg shadow-accent/8"
-          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15 hover:bg-foreground/[0.04]"
+          ? "border-accent/30 bg-accent/8 shadow-lg shadow-accent/8"
+          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/10 hover:bg-foreground/[0.04]"
       }`}
     >
       <div
-        className={`flex-shrink-0 w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6),0_0_16px_rgba(16,185,129,0.3)]" : "border-2 border-foreground/20"
+        className={`flex-shrink-0 w-5 h-5 rounded-full transition-all duration-300 ${
+          selected ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
@@ -158,22 +158,22 @@ function ServiceToggle({
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border-2 text-left transition-all duration-300 ${
+      className={`relative w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all duration-300 ${
         selected
-          ? "border-accent bg-accent/8 shadow-lg shadow-accent/8"
-          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15"
+          ? "border-accent/30 bg-accent/8 shadow-lg shadow-accent/8"
+          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/10"
       }`}
     >
       <div
         className={`flex-shrink-0 w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border-2 border-foreground/20"
+          selected ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex items-center gap-2.5 flex-1">
         {isPositive ? (
-          <Check size={16} className={`flex-shrink-0 transition-colors ${selected ? "text-emerald-500" : "text-foreground/30"}`} strokeWidth={2} />
+          <CheckIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-blue-500" : "text-foreground/30"}`} />
         ) : (
-          <X size={16} className={`flex-shrink-0 transition-colors ${selected ? "text-red-400" : "text-foreground/30"}`} strokeWidth={2} />
+          <XMarkIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-red-400" : "text-foreground/30"}`} />
         )}
         <span className="text-foreground font-sans" style={{ fontSize: "14px", fontWeight: 400 }}>
           {label}
@@ -198,15 +198,15 @@ function CeilingOption({
     <button
       type="button"
       onClick={onClick}
-      className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-300 ${
+      className={`flex flex-col items-center gap-2 p-4 rounded-xl border transition-all duration-300 ${
         selected
-          ? "border-accent bg-accent/8 shadow-lg shadow-accent/8"
-          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15"
+          ? "border-accent/30 bg-accent/8 shadow-lg shadow-accent/8"
+          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/10"
       }`}
     >
       <div
         className={`w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border-2 border-foreground/20"
+          selected ? "bg-blue-500 shadow-[0_0_8px_rgba(59,130,246,0.6)]" : "border border-foreground/20"
         }`}
       />
       <span className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "16px", fontWeight: 600 }}>
@@ -235,13 +235,8 @@ function SectionCard({
   return (
     <Reveal delay={delay}>
       <div className="p-7 md:p-8 rounded-[28px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
-        <div className="flex items-center gap-4 mb-7">
-          <div
-            className="w-11 h-11 rounded-xl flex items-center justify-center flex-shrink-0"
-            style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
-          >
-            <Icon size={20} className="text-white" strokeWidth={1.5} />
-          </div>
+        <div className="flex items-center gap-3 mb-7">
+          <Icon className="w-5 h-5 text-foreground flex-shrink-0" strokeWidth={1.5} />
           <div>
             <h2 className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "20px", fontWeight: 600 }}>
               {title}
@@ -444,7 +439,7 @@ export default function CalculatorPage() {
   /* ─── INPUT STYLE ─── */
   const inputCls = "w-full px-4 py-3.5 rounded-xl border bg-foreground/[0.02] text-foreground font-sans transition-all duration-300 focus:outline-none focus:shadow-lg placeholder:text-foreground/20";
   const inputNormal = `${inputCls} border-foreground/8 focus:border-accent/50 focus:bg-foreground/[0.04] focus:shadow-accent/5`;
-  const inputGreen = `${inputCls} border-emerald-500/50 border-2 focus:border-emerald-500 focus:bg-foreground/[0.04] focus:shadow-emerald-500/10`;
+  const inputGreen = `${inputCls} border-slate-400/50 border-2 focus:border-slate-400 focus:bg-foreground/[0.04] focus:shadow-slate-400/10`;
   const inputError = `${inputCls} border-red-400 bg-red-400/5 focus:border-red-400 focus:shadow-red-400/10`;
 
   return (
@@ -460,12 +455,7 @@ export default function CalculatorPage() {
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-center">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
             <div className="flex items-center justify-center gap-4 mb-8">
-              <div
-                className="w-14 h-14 rounded-2xl flex items-center justify-center shadow-xl shadow-accent/20"
-                style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
-              >
-                <Calculator size={26} className="text-white" strokeWidth={1.5} />
-              </div>
+              <CalculatorIcon className="w-6 h-6 text-foreground" />
               <h1 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(28px, 5vw, 48px)", fontWeight: 300, letterSpacing: "-0.02em" }}>
                 <b>Kalkulačka </b><span className="bg-gradient-to-r from-[#2563eb] to-[#4f46e5] bg-clip-text text-transparent" style={{ fontWeight: 700 }}>| Poptávka</span>
               </h1>
@@ -489,7 +479,7 @@ export default function CalculatorPage() {
             {/* ─── LEFT COLUMN ─── */}
             <div className="flex flex-col gap-7">
               {/* CARD 1: Typ plochy */}
-              <SectionCard icon={Home} title="Typ plochy" delay={0}>
+              <SectionCard icon={HomeIcon} title="Typ plochy" delay={0}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3 mb-8">
                   <RadioCard
                     selected={form.selectedWork === "Půdorys"}
@@ -546,7 +536,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 2: Typ opravy */}
-              <SectionCard icon={Settings} title="Typ opravy" delay={0.05}>
+              <SectionCard icon={Cog6ToothIcon} title="Typ opravy" delay={0.05}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                   <RadioCard
                     selected={form.repairType === "Malé"}
@@ -576,12 +566,12 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 3: Služby */}
-              <SectionCard icon={Package} title="Služby" subtitle="ovlivňující cenu" delay={0.1}>
+              <SectionCard icon={Square3Stack3DIcon} title="Služby" subtitle="ovlivňující cenu" delay={0.1}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Material */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Paintbrush size={14} className="inline mr-2 text-[#2563eb]" />
+                      <PaintBrushIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Barvu zajistí malíř?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -592,7 +582,7 @@ export default function CalculatorPage() {
                   {/* Furniture */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Sofa size={14} className="inline mr-2 text-[#2563eb]" />
+                      <BuildingLibraryIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Posunutí nábytku?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -603,7 +593,7 @@ export default function CalculatorPage() {
                   {/* Covering */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Shield size={14} className="inline mr-2 text-[#2563eb]" />
+                      <ShieldCheckIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Zakrývání, oblepování?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -614,7 +604,7 @@ export default function CalculatorPage() {
                   {/* Cleaning */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Sparkles size={14} className="inline mr-2 text-[#2563eb]" />
+                      <SparklesIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Úklid po práci?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -626,7 +616,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 4: Další údaje */}
-              <SectionCard icon={Settings} title="Další údaje" delay={0.15}>
+              <SectionCard icon={Cog6ToothIcon} title="Další údaje" delay={0.15}>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   {/* Empty space */}
                   <div>
@@ -687,7 +677,7 @@ export default function CalculatorPage() {
               </SectionCard>
 
               {/* CARD 5: Doplňující informace */}
-              <SectionCard icon={MessageCircle} title="Doplňující informace" delay={0.2}>
+              <SectionCard icon={ChatBubbleLeftIcon} title="Doplňující informace" delay={0.2}>
                 <textarea
                   placeholder="Zde můžete napsat jakékoli dodatečné informace o práci..."
                   value={form.additionalInfo}
@@ -727,12 +717,7 @@ export default function CalculatorPage() {
               <Reveal delay={0.15}>
                 <div className="p-7 rounded-[28px]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
                   <div className="flex items-center gap-3 mb-6">
-                    <div
-                      className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
-                      style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
-                    >
-                      <User size={18} className="text-white" strokeWidth={1.5} />
-                    </div>
+                    <UserIcon className="w-5 h-5 text-foreground flex-shrink-0" />
                     <h2 className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "18px", fontWeight: 600 }}>
                       Kontaktní údaje
                     </h2>
@@ -756,7 +741,7 @@ export default function CalculatorPage() {
                     {/* Phone */}
                     <div>
                       <label className="block font-sans mb-2" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-                        Telefon <span className="text-emerald-500 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
+                        Telefon <span className="text-red-400 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
                       </label>
                       <input
                         type="tel"
@@ -769,7 +754,7 @@ export default function CalculatorPage() {
                       />
                       {phoneErr && (
                         <div className="flex items-center gap-2 mt-2 text-red-400" style={{ fontSize: "12px" }}>
-                          <AlertTriangle size={14} />
+                          <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                           <span>Neplatný formát (použijte: +420 123 456 789)</span>
                         </div>
                       )}
@@ -778,7 +763,7 @@ export default function CalculatorPage() {
                     {/* Email */}
                     <div>
                       <label className="block font-sans mb-2" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-                        E-mail <span className="text-emerald-500 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
+                        E-mail <span className="text-red-400 italic" style={{ fontSize: "11px" }}>nutné vyplnit</span>
                       </label>
                       <input
                         type="email"
@@ -791,7 +776,7 @@ export default function CalculatorPage() {
                       />
                       {emailErr && (
                         <div className="flex items-center gap-2 mt-2 text-red-400" style={{ fontSize: "12px" }}>
-                          <AlertTriangle size={14} />
+                          <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                           <span>Neplatný formát emailu</span>
                         </div>
                       )}
@@ -868,17 +853,17 @@ export default function CalculatorPage() {
                 >
                   {submitted ? (
                     <>
-                      <CheckCircle size={22} />
+                      <CheckCircleIcon className="w-5.5 h-5.5" />
                       ODESLÁNO
                     </>
                   ) : submitting ? (
                     <>
-                      <Loader2 size={22} className="animate-spin" />
+                      <SparklesIcon className="w-5.5 h-5.5 animate-spin" />
                       ODESÍLÁM...
                     </>
                   ) : (
                     <>
-                      <Send size={20} />
+                      <PaperAirplaneIcon className="w-5 h-5" />
                       ODESLAT POPTÁVKU
                     </>
                   )}
@@ -922,23 +907,23 @@ export default function CalculatorPage() {
                           href={createMailtoLink()}
                           className="flex items-center gap-3 p-4 rounded-xl bg-foreground/[0.03] border border-foreground/8 hover:bg-foreground/[0.06] transition-all duration-300"
                         >
-                          <Mail size={18} className="text-accent flex-shrink-0" />
+                          <EnvelopeIcon className="w-4.5 h-4.5 text-accent flex-shrink-0" />
                           <div className="flex-1 min-w-0">
                             <p className="text-foreground font-sans" style={{ fontSize: "14px", fontWeight: 500 }}>Odeslat poptávku emailem</p>
                             <p className="text-accent font-sans" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>info@malirivcernem.cz</p>
                           </div>
-                          <ExternalLink size={14} className="text-foreground/30 flex-shrink-0" />
+                          <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-foreground/30 flex-shrink-0" />
                         </a>
                         <a
                           href="tel:+420732333550"
                           className="flex items-center gap-3 p-4 rounded-xl bg-foreground/[0.03] border border-foreground/8 hover:bg-foreground/[0.06] transition-all duration-300"
                         >
-                          <Phone size={18} className="text-accent flex-shrink-0" />
+                          <PhoneIcon className="w-4.5 h-4.5 text-accent flex-shrink-0" />
                           <div className="flex-1 min-w-0">
                             <p className="text-foreground font-sans" style={{ fontSize: "14px", fontWeight: 500 }}>Zavolat</p>
                             <p className="text-accent font-sans" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>+420 732 333 550</p>
                           </div>
-                          <ExternalLink size={14} className="text-foreground/30 flex-shrink-0" />
+                          <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-foreground/30 flex-shrink-0" />
                         </a>
                       </div>
                       <p className="text-foreground/25 font-sans text-center mt-4" style={{ fontSize: "11px" }}>
