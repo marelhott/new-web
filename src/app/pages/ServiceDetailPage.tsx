@@ -30,10 +30,10 @@ export default function ServiceDetailPage() {
 
   return (
     <>
-      <section className="relative py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)" }}>
+      <section className="relative pt-32 pb-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)" }}>
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
-          <div className="relative rounded-[10px] overflow-hidden" style={{ background: "#e9ecf2", padding: "30px" }}>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+          <div className="relative rounded-[10px] overflow-hidden" style={{ background: "#e9ecf2", padding: "40px 60px" }}>
+            <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-[70px] items-center">
               {/* Image */}
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
                 <div className="rounded-[16px] overflow-hidden">
@@ -72,12 +72,9 @@ export default function ServiceDetailPage() {
 
                 {/* Author */}
                 <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 rounded-full" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }} />
-                  <div>
-                    <p className="font-sans text-foreground m-0" style={{ fontSize: "16px", fontWeight: 500 }}>
-                      {service.tag === "Rezidenční" ? "Spokojený klient" : "Tým profesionálů"}
-                    </p>
-                  </div>
+                  <p className="font-sans text-foreground m-0" style={{ fontSize: "16px", fontWeight: 400, color: "#6b7785" }}>
+                    {service.tag === "Rezidenční" ? "Spokojený klient" : "Tým profesionálů"}
+                  </p>
                 </div>
               </motion.div>
             </div>
