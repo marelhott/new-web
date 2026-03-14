@@ -48,7 +48,7 @@ const timeline = [
   { year: "~2015", title: "Založení firmy", desc: "Marek zakládá firmu Malíři v černém s vizí rodinného podniku a moderního přístupu k tradičnímu řemeslu." },
   { year: "2018", title: "Synové se přidávají", desc: "Albert a Vincent, Markovi synové, se postupně zapojují do firmy a přinášejí novou energii." },
   { year: "2020", title: "Rozšíření týmu", desc: "K rodinné firmě se přidávají blízcí přátelé – Lenka a Pavel. Tým roste a kapacita se zvyšuje." },
-  { year: "2023", title: "500+ zakázek", desc: "Překonáváme hranici 500 úspěšně dokončených zakázek. Důkaz poctivé manuální práce." },
+  { year: "2023", title: "1000+ zakázek", desc: "Překonáváme hranici 1000 úspěšně dokončených zakázek. Důkaz poctivé manuální práce." },
   { year: "2026", title: "Nová éra", desc: "Online kalkulačka, digitální procesy a neustálý růst. Firma funguje přes 10 let." },
 ];
 
@@ -79,7 +79,7 @@ export default function AboutPage() {
               <span className="bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">funguje už přes 10 let</span>
             </h1>
             <p className="font-sans max-w-3xl mx-auto" style={{ fontSize: "16px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-              Naše firma se věnuje tradičnímu řemeslu. Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let. Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali. Poctivá, manuální práce nás baví a důkazem toho je přes 500 úspěšně dokončených zakázek.
+              Naše firma se věnuje tradičnímu řemeslu. Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let. Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali. Poctivá, manuální práce nás baví a důkazem toho je přes 1000 úspěšně dokončených zakázek.
             </p>
           </motion.div>
         </div>
