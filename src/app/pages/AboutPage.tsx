@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
-import { ArrowRightIcon, HeartIcon, TargetIcon, UserGroupIcon, CheckCircleIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
+import { ArrowRightIcon, HeartIcon, CogIcon, UserGroupIcon, CheckCircleIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -53,7 +53,7 @@ const timeline = [
 ];
 
 const values = [
-  { icon: TargetIcon, title: "Preciznost", desc: "Každý detail se počítá.", gradient: "from-[#1e3a5f]/25" },
+  { icon: CogIcon, title: "Preciznost", desc: "Každý detail se počítá.", gradient: "from-[#1e3a5f]/25" },
   { icon: HeartIcon, title: "Vášeň", desc: "Poctivá manuální práce nás baví.", gradient: "from-[#c08050]/25" },
   { icon: UserGroupIcon, title: "Rodinné hodnoty", desc: "Jsme rodina — a tak přistupujeme i ke klientům.", gradient: "from-[#8a9a7a]/25" },
   { icon: ShieldCheckIcon, title: "Spolehlivost", desc: "Na naše slovo se můžete spolehnout.", gradient: "from-accent/25" },
