@@ -1,5 +1,5 @@
 import { useState, useRef } from "react";
-import React, { useState, useRef } from "react";
+import { useState, useRef } from "react";
 import { motion, useInView } from "motion/react";
 import { PhoneIcon, EnvelopeIcon, MapPinIcon, ClockIcon, PaperAirplaneIcon, CheckCircleIcon, ArrowRightIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
