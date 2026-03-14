@@ -192,14 +192,14 @@ function TrustSection() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-7">
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
-              <div className="group relative p-8 md:p-9 rounded-[16px] overflow-hidden transition-all duration-500 h-full flex flex-col text-center" style={{ background: "rgba(233, 236, 242, 0.7)", backdropFilter: "blur(12px)" }}>
-                <div className="h-12 flex justify-center items-center mb-4">
-                  {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-8 h-8", style: { color: "#2563eb" } })}
+              <div className="group relative p-8 md:p-9 rounded-lg overflow-hidden transition-all duration-500 h-full flex flex-col text-left" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
+                <div className="mb-6">
+                  {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-6 h-6", style: { color: "#9ca3af" } })}
                 </div>
-                <h3 className="mb-6 tracking-[-0.03em] text-[#101014]" style={{ fontFamily: "Manrope, sans-serif", fontSize: "clamp(20px, 1.5vw, 28px)", fontWeight: 600, lineHeight: 1.2, minHeight: "60px", display: "flex", alignItems: "center", justifyContent: "center" }}>
+                <h3 className="mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
                   {card.title}
                 </h3>
-                <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "16px", lineHeight: 1.6, fontFamily: "Manrope, sans-serif", fontWeight: 500, display: "flex", alignItems: "flex-start" }}>
+                <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}>
                   {card.desc}
                 </p>
               </div>
