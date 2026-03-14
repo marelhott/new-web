@@ -766,9 +766,9 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
-      <WhyUsSection />
       <PricingSection />
       <DecorativeArtSection />
+      <WhyUsSection />
       <TestimonialsSection />
     </>
   );
