@@ -335,7 +335,7 @@ export default function ServicesPage() {
                               {s.price}
                             </span>
                           </div>
-                          <div className="px-6 py-3 rounded-full transition-all duration-300" style={{ background: "#1a1a1a" }}>
+                          <div className="px-6 py-3 rounded-full transition-all duration-300" style={{ background: "#2563eb" }}>
                             <span
                               className="text-white font-sans"
                               style={{ fontSize: "13px", fontWeight: 600 }}
