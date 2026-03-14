@@ -237,10 +237,10 @@ function useCounter(target: number, duration = 2000) {
 }
 
 const statsData = [
-  { label: "let zkušeností", target: 23, suffix: "+" },
+  { label: "let zkušeností", target: 30, suffix: "+" },
   { label: "hotových projektů", target: 1000, suffix: "+" },
   { label: "spokojených klientů", target: 98, suffix: "%" },
-  { label: "oceněných služeb", target: 15, suffix: "+" },
+  { label: "oceněných služeb", target: 300, suffix: "+" },
 ];
 
 function StatCounter({ stat }: { stat: typeof statsData[0] }) {
