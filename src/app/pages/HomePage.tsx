@@ -125,7 +125,7 @@ function HeroSection() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1, delay: 0.4 }}
-          className="mt-12 lg:hidden rounded-2xl overflow-hidden shadow-xl"
+          className="mt-12 hidden rounded-2xl overflow-hidden shadow-xl"
         >
           <img src={heroPhoto} alt="Malířka při práci" className="w-full h-auto object-cover aspect-[4/3]" loading="eager" decoding="async" />
         </motion.div>
@@ -447,9 +447,9 @@ function WhyUsSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px]" style={{ alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
             {/* Image */}
-            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+            <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
                 alt="Často se nás ptáte"
@@ -459,7 +459,7 @@ function WhyUsSection() {
             </div>
 
             {/* FAQ List */}
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%" }} className="md:col-span-1 col-span-1">
               {faqItems.map((item, index) => (
                 <article
                   key={index}
@@ -561,9 +561,9 @@ function PricingSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px]" style={{ alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
             {/* Image */}
-            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+            <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg"
                 alt="Cenová kalkulačka"
@@ -573,7 +573,7 @@ function PricingSection() {
             </div>
 
             {/* Price List */}
-            <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
+            <div style={{ width: "100%", display: "flex", flexDirection: "column", minHeight: "auto", justifyContent: "space-between" }} className="md:h-[570px]">
               <div>
                 <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#3d3d47", fontWeight: 500, marginBottom: "30px" }}>
                   Cena malování závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
