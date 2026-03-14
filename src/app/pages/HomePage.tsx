@@ -575,7 +575,7 @@ function PricingSection() {
             {/* Price List */}
             <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
               <div>
-                <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "30px" }}>
+                <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#3d3d47", fontWeight: 500, marginBottom: "30px" }}>
                   Cena malování závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
                 </p>
 
