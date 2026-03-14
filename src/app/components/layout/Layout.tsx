@@ -118,7 +118,7 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden w-9 h-9 flex items-center justify-center"
+              className="lg:hidden w-9 h-9 flex items-center justify-center cursor-pointer hover:bg-foreground/5 rounded-full transition-colors"
             >
               {mobileOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
             </button>
@@ -132,8 +132,8 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 lg:hidden noise-overlay"
-            style={{ background: "linear-gradient(180deg, var(--background) 0%, var(--card) 100%)" }}
+            className="fixed inset-0 lg:hidden noise-overlay"
+            style={{ background: "linear-gradient(180deg, var(--background) 0%, var(--card) 100%)", zIndex: 49 }}
           >
             <div className="flex flex-col items-center justify-center h-full gap-6 pt-[72px] pb-20">
               {navLinks.map((link, i) => (
