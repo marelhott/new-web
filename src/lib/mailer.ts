@@ -1,25 +1,22 @@
-import nodemailer from "nodemailer";
+import { Resend } from "resend";
 
-export function getMailerTransporter() {
-  const host = process.env.SMTP_HOST;
-  const port = Number(process.env.SMTP_PORT || "587");
-  const user = process.env.SMTP_USER;
-  const pass = process.env.SMTP_PASSWORD;
+let resendClient: Resend | null = null;
 
-  if (!host || !user || !pass) {
-    throw new Error("SMTP není nakonfigurované.");
+export function getMailerClient() {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) {
+    throw new Error("Resend není nakonfigurovaný.");
   }
 
-  return nodemailer.createTransport({
-    host,
-    port,
-    secure: port === 465,
-    auth: { user, pass },
-  });
+  if (!resendClient) {
+    resendClient = new Resend(apiKey);
+  }
+
+  return resendClient;
 }
 
 export function getMailerFromAddress() {
-  return process.env.SMTP_FROM || process.env.SMTP_USER || "info@malirivcernem.cz";
+  return process.env.RESEND_FROM || "Maliri v cernem <info@malirivcernem.cz>";
 }
 
 export function getLeadNotificationEmail() {

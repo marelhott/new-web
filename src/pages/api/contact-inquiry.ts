@@ -1,7 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import { createBusinessContactEmail, createCustomerContactConfirmationEmail } from "@/emails/contactEmails";
 import { isContactInquiryPayload, validateContactInquiry } from "@/lib/contactInquiry";
-import { getLeadNotificationEmail, getMailerFromAddress, getMailerTransporter } from "@/lib/mailer";
+import { getLeadNotificationEmail, getMailerClient, getMailerFromAddress } from "@/lib/mailer";
 
 type ApiResponse = {
   ok: boolean;
@@ -24,13 +24,13 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
   }
 
   try {
-    const transporter = getMailerTransporter();
+    const mailer = getMailerClient();
     const from = getMailerFromAddress();
     const businessRecipient = getLeadNotificationEmail();
     const businessEmail = createBusinessContactEmail(req.body);
     const customerEmail = createCustomerContactConfirmationEmail(req.body);
 
-    await transporter.sendMail({
+    await mailer.emails.send({
       from,
       to: businessRecipient,
       replyTo: req.body.email,
@@ -39,7 +39,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse<
       text: businessEmail.text,
     });
 
-    await transporter.sendMail({
+    await mailer.emails.send({
       from,
       to: req.body.email,
       replyTo: businessRecipient,
