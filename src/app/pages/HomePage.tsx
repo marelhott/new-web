@@ -676,8 +676,7 @@ const priceItems = [
 
 function PricingSection() {
   const getPriceIcon = (iconType: string) => {
-    const iconProps = { size: 40, strokeWidth: 1.5 };
-    return <Home {...iconProps} />;
+    return <HomeIcon className="w-10 h-10" />;
   };
 
   return (
