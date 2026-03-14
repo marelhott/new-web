@@ -112,9 +112,6 @@ export default function AboutPage() {
                   <span className="text-foreground font-[family-name:var(--font-display)] tracking-widest" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.1em" }}>
                     {member.name}
                   </span>
-                  <span className="font-sans mt-1" style={{ fontSize: "12px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>
-                    {member.role}
-                  </span>
                 </motion.div>
               ))}
             </div>
