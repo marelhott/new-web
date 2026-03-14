@@ -116,7 +116,7 @@ function RadioCard({
     >
       <div
         className={`flex-shrink-0 w-5 h-5 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6),0_0_16px_rgba(16,185,129,0.3)]" : "border border-foreground/20"
+          selected ? "bg-slate-700 shadow-[0_0_8px_rgba(51,65,85,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
@@ -166,12 +166,12 @@ function ServiceToggle({
     >
       <div
         className={`flex-shrink-0 w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border border-foreground/20"
+          selected ? "bg-slate-700 shadow-[0_0_8px_rgba(51,65,85,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex items-center gap-2.5 flex-1">
         {isPositive ? (
-          <CheckIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-emerald-500" : "text-foreground/30"}`} />
+          <CheckIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-slate-700" : "text-foreground/30"}`} />
         ) : (
           <XMarkIcon className={`w-4 h-4 flex-shrink-0 transition-colors ${selected ? "text-red-400" : "text-foreground/30"}`} />
         )}
@@ -206,7 +206,7 @@ function CeilingOption({
     >
       <div
         className={`w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border border-foreground/20"
+          selected ? "bg-slate-700 shadow-[0_0_8px_rgba(51,65,85,0.6)]" : "border border-foreground/20"
         }`}
       />
       <span className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "16px", fontWeight: 600 }}>
