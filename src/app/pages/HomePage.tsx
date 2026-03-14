@@ -483,7 +483,7 @@ function WhyUsSection() {
                       textAlign: "left",
                     }}
                   >
-                    <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px", flex: 1 }}>
+                    <h3 style={{ margin: 0, color: "#0f172a", fontSize: "20px", lineHeight: "28px", fontWeight: 700, letterSpacing: "-0.03em", flex: 1 }}>
                       {item.title}
                     </h3>
                     {/* Toggle */}
@@ -519,7 +519,7 @@ function WhyUsSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px" }}>
+                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "15px", lineHeight: 1.6, letterSpacing: "-0.02em" }}>
                         {item.desc}
                       </p>
                     </motion.div>
