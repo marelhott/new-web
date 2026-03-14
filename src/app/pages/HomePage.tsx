@@ -340,11 +340,6 @@ function ServicePreview() {
             </h2>
             <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "linear-gradient(90deg, var(--accent), var(--copper))" }} />
           </div>
-          <div className="text-center mb-10">
-            <Link to="/sluzby" className="group inline-flex items-center gap-2 transition-colors duration-300 font-sans" style={{ fontSize: "14px", color: "#5b6877", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>
-              Všechny služby <ArrowRightIcon className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" />
-            </Link>
-          </div>
         </Reveal>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
