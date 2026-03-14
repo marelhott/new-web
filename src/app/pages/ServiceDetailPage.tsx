@@ -119,18 +119,30 @@ export default function ServiceDetailPage() {
           </div>
 
           <Reveal delay={0.2}>
-            <div className="mt-16 p-8 rounded-2xl glass gradient-border">
-              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
+            <div className="relative rounded-[10px] overflow-hidden" style={{ background: "#e9ecf2", padding: "40px 60px", marginTop: "40px" }}>
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-[70px] items-center" style={{ marginLeft: "30px" }}>
+                {/* Left side - Pricing info */}
                 <div>
-                  <span className="font-[family-name:var(--font-display)] text-accent block mb-1" style={{ fontSize: "11px", fontWeight: 600, letterSpacing: "0.08em", textTransform: "uppercase" }}>Orientační ceník</span>
-                  <span className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "20px", fontWeight: 600 }}>{service.priceHint}</span>
+                  <div className="flex flex-col gap-6">
+                    <div>
+                      <span className="font-[family-name:var(--font-display)] text-foreground/50 block mb-2" style={{ fontSize: "12px", fontWeight: 600, letterSpacing: "0.1em", textTransform: "uppercase" }}>Orientační ceník</span>
+                      <span className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "42px", fontWeight: 500, lineHeight: 1.1 }}>
+                        {service.priceHint}
+                      </span>
+                    </div>
+                    <p className="font-sans text-foreground" style={{ fontSize: "16px", lineHeight: 1.6, color: "#3d3d47" }}>
+                      Finální cenu upřesníme po osobní prohlídce prostor a detailního seznámení se všemi požadavky.
+                    </p>
+                  </div>
                 </div>
-                <div className="flex flex-wrap gap-3">
-                  <Link to="/kalkulacka" className="group inline-flex items-center gap-2 px-7 py-3.5 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #b8a88a, #c08050)", fontSize: "14px", fontWeight: 600 }}>
-                    {service.cta} <ArrowRight size={15} className="group-hover:translate-x-1 transition-transform" />
+
+                {/* Right side - CTA buttons */}
+                <div className="flex flex-col gap-4">
+                  <Link to="/kalkulacka" className="group inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg" style={{ background: "linear-gradient(135deg, #b8a88a, #c08050)", fontSize: "15px", fontWeight: 600 }}>
+                    {service.cta} <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <a href="tel:+420732333550" className="inline-flex items-center gap-2 px-7 py-3.5 glass rounded-full text-foreground/80 hover:text-foreground hover:bg-foreground/10 transition-all duration-300" style={{ fontSize: "14px", fontWeight: 500 }}>
-                    <Phone size={14} /> Zavolat
+                  <a href="tel:+420732333550" className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-full text-foreground border-2 transition-all duration-300 hover:bg-foreground/5" style={{ fontSize: "15px", fontWeight: 600, borderColor: "#6b7785", color: "#0f172a" }}>
+                    <Phone size={16} /> Zavolat
                   </a>
                 </div>
               </div>
