@@ -687,12 +687,6 @@ const testimonials = [
 ];
 
 function TestimonialsSection() {
-  const [cur, setCur] = useState(0);
-  const [dir, setDir] = useState(1);
-  const next = useCallback(() => { setDir(1); setCur((p) => (p + 1) % testimonials.length); }, []);
-  const prev = useCallback(() => { setDir(-1); setCur((p) => (p - 1 + testimonials.length) % testimonials.length); }, []);
-  useEffect(() => { const t = setInterval(next, 6000); return () => clearInterval(t); }, [next]);
-
   return (
     <section className="relative py-20 md:py-28 noise-overlay" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6f9ff 50%, #ffffff 100%)" }}>
       <div className="absolute top-24 left-[12%] w-[360px] h-[240px] rounded-full blur-[140px] pointer-events-none" style={{ background: "rgba(37,99,235,0.10)" }} />
@@ -707,53 +701,33 @@ function TestimonialsSection() {
             <div className="w-16 h-1 mx-auto mt-4 rounded-full" style={{ background: "#1a1a1a" }} />
           </div>
         </Reveal>
-        <div className="max-w-4xl mx-auto">
-          <div className="rounded-[34px] border p-8 md:p-12" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", borderColor: "rgba(37,99,235,0.12)", boxShadow: "0 24px 80px rgba(15,23,42,0.06)" }}>
-            <div className="relative min-h-[260px] flex items-center">
-              <AnimatePresence mode="wait" custom={dir}>
-                <motion.div key={cur} custom={dir} initial={{ opacity: 0, x: dir * 60 }} animate={{ opacity: 1, x: 0 }} exit={{ opacity: 0, x: dir * -60 }} transition={{ duration: 0.5, ease: [0.16, 1, 0.3, 1] }} className="w-full">
-                  <div className="grid md:grid-cols-[120px_minmax(0,1fr)] gap-8 items-start">
-                    <div className="flex md:block items-center justify-center md:justify-start gap-4">
-                      <div className="w-16 h-16 rounded-[20px] flex items-center justify-center" style={{ background: "linear-gradient(135deg, rgba(37,99,235,0.16), rgba(124,58,237,0.12))", border: "1px solid rgba(37,99,235,0.16)" }}>
-                        <span style={{ fontFamily: "'Sora', sans-serif", fontSize: "18px", fontWeight: 700, color: "#10213f", letterSpacing: "-0.04em" }}>{testimonials[cur].initials}</span>
-                      </div>
-                      <div className="hidden md:block w-12 h-px" style={{ background: "linear-gradient(90deg, rgba(37,99,235,0.55), transparent)" }} />
-                    </div>
-                    <div>
-                      <ChatBubbleLeftIcon className="w-6 h-6 mb-5" style={{ color: 'rgba(37,99,235,0.34)' }} />
-                      <p style={{ fontFamily: "'Instrument Serif', serif", fontSize: "clamp(24px, 2.7vw, 36px)", lineHeight: 1.28, fontStyle: "italic", color: "#162033", marginBottom: '28px' }}>
-                        &ldquo;{testimonials[cur].quote}&rdquo;
-                      </p>
-                      <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-5">
-                        <div>
-                          <div style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, color: "#0f172a", letterSpacing: "-0.03em" }}>{testimonials[cur].author}</div>
-                          <div style={{ fontFamily: "'Manrope', var(--font-sans)", fontSize: "14px", fontWeight: 600, color: "#5b6877", marginTop: '6px' }}>{testimonials[cur].role}</div>
-                        </div>
-                        <div className="flex items-center gap-3">
-                          <button onClick={prev} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:-translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
-                            <ChevronLeftIcon className="w-4 h-4" />
-                          </button>
-                          <div className="flex gap-2">
-                            {testimonials.map((_, i) => (
-                              <button
-                                key={i}
-                                onClick={() => { setDir(i > cur ? 1 : -1); setCur(i); }}
-                                className="rounded-full transition-all duration-300"
-                                style={{ width: i === cur ? '26px' : '8px', height: '8px', background: i === cur ? 'linear-gradient(90deg, #2563eb, #7c3aed)' : 'rgba(148,163,184,0.35)' }}
-                              />
-                            ))}
-                          </div>
-                          <button onClick={next} className="w-11 h-11 rounded-full flex items-center justify-center transition-all duration-300 hover:translate-x-0.5" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#425166" }}>
-                            <ChevronRightIcon className="w-4 h-4" />
-                          </button>
-                        </div>
-                      </div>
-                    </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6">
+          {testimonials.map((t, i) => (
+            <Reveal key={i} delay={i * 0.08}>
+              <div className="p-6 md:p-7 rounded-lg" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
+                {/* Stars */}
+                <div className="flex gap-1 mb-4">
+                  {[...Array(5)].map((_, j) => (
+                    <span key={j} style={{ fontSize: "18px", color: "#1a1a1a" }}>★</span>
+                  ))}
+                </div>
+                {/* Quote */}
+                <p style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47", marginBottom: "20px" }}>
+                  {t.quote}
+                </p>
+                {/* Author */}
+                <div style={{ paddingTop: "16px", borderTop: "1px solid rgba(15,23,42,0.08)", display: "flex", alignItems: "center", gap: "12px" }}>
+                  <div className="w-10 h-10 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: "#e9ecf2" }}>
+                    <span style={{ fontFamily: "'Sora', sans-serif", fontSize: "12px", fontWeight: 700, color: "#0f172a" }}>{t.initials}</span>
                   </div>
-                </motion.div>
-              </AnimatePresence>
-            </div>
-          </div>
+                  <div>
+                    <div style={{ fontFamily: "'Sora', sans-serif", fontSize: "14px", fontWeight: 700, color: "#0f172a" }}>{t.author}</div>
+                    <div style={{ fontSize: "12px", color: "#7b8794" }}>{t.role}</div>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
         </div>
       </div>
     </section>
