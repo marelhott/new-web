@@ -108,15 +108,15 @@ function RadioCard({
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full flex items-center gap-4 p-5 rounded-xl border-2 text-left transition-all duration-300 ${
+      className={`relative w-full flex items-center gap-4 p-5 rounded-xl border text-left transition-all duration-300 ${
         selected
-          ? "border-accent bg-accent/8 shadow-lg shadow-accent/8"
-          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15 hover:bg-foreground/[0.04]"
+          ? "border-accent/30 bg-accent/8 shadow-lg shadow-accent/8"
+          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/10 hover:bg-foreground/[0.04]"
       }`}
     >
       <div
-        className={`flex-shrink-0 w-2.5 h-2.5 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6),0_0_16px_rgba(16,185,129,0.3)]" : "border-2 border-foreground/20"
+        className={`flex-shrink-0 w-5 h-5 rounded-full transition-all duration-300 ${
+          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6),0_0_16px_rgba(16,185,129,0.3)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex-1 flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
@@ -158,15 +158,15 @@ function ServiceToggle({
     <button
       type="button"
       onClick={onClick}
-      className={`relative w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border-2 text-left transition-all duration-300 ${
+      className={`relative w-full flex items-center gap-3 px-4 py-3.5 rounded-xl border text-left transition-all duration-300 ${
         selected
-          ? "border-accent bg-accent/8 shadow-lg shadow-accent/8"
-          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15"
+          ? "border-accent/30 bg-accent/8 shadow-lg shadow-accent/8"
+          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/10"
       }`}
     >
       <div
         className={`flex-shrink-0 w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border-2 border-foreground/20"
+          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border border-foreground/20"
         }`}
       />
       <div className="flex items-center gap-2.5 flex-1">
@@ -198,15 +198,15 @@ function CeilingOption({
     <button
       type="button"
       onClick={onClick}
-      className={`flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all duration-300 ${
+      className={`flex flex-col items-center gap-2 p-4 rounded-xl border transition-all duration-300 ${
         selected
-          ? "border-accent bg-accent/8 shadow-lg shadow-accent/8"
-          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/15"
+          ? "border-accent/30 bg-accent/8 shadow-lg shadow-accent/8"
+          : "border-foreground/8 bg-foreground/[0.02] hover:border-foreground/10"
       }`}
     >
       <div
         className={`w-2 h-2 rounded-full transition-all duration-300 ${
-          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border-2 border-foreground/20"
+          selected ? "bg-emerald-500 shadow-[0_0_8px_rgba(16,185,129,0.6)]" : "border border-foreground/20"
         }`}
       />
       <span className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "16px", fontWeight: 600 }}>
