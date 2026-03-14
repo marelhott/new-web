@@ -581,7 +581,7 @@ export default function CalculatorPage() {
                   {/* Material */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Paintbrush size={14} className="inline mr-2 text-[#2563eb]" />
+                      <PaintBrushIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Barvu zajistí malíř?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -592,7 +592,7 @@ export default function CalculatorPage() {
                   {/* Furniture */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Sofa size={14} className="inline mr-2 text-[#2563eb]" />
+                      <BuildingLibraryIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Posunutí nábytku?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -603,7 +603,7 @@ export default function CalculatorPage() {
                   {/* Covering */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Shield size={14} className="inline mr-2 text-[#2563eb]" />
+                      <ShieldCheckIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Zakrývání, oblepování?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -614,7 +614,7 @@ export default function CalculatorPage() {
                   {/* Cleaning */}
                   <div>
                     <h3 className="text-foreground font-[family-name:var(--font-display)] mb-3" style={{ fontSize: "15px", fontWeight: 500 }}>
-                      <Sparkles size={14} className="inline mr-2 text-[#2563eb]" />
+                      <SparklesIcon className="w-3.5 h-3.5 inline mr-2 text-[#2563eb]" />
                       Úklid po práci?
                     </h3>
                     <div className="flex flex-col gap-2.5">
@@ -731,7 +731,7 @@ export default function CalculatorPage() {
                       className="w-10 h-10 rounded-xl flex items-center justify-center flex-shrink-0"
                       style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)" }}
                     >
-                      <User size={18} className="text-white" strokeWidth={1.5} />
+                      <UserIcon className="w-4.5 h-4.5 text-white" />
                     </div>
                     <h2 className="text-foreground font-[family-name:var(--font-display)]" style={{ fontSize: "18px", fontWeight: 600 }}>
                       Kontaktní údaje
@@ -769,7 +769,7 @@ export default function CalculatorPage() {
                       />
                       {phoneErr && (
                         <div className="flex items-center gap-2 mt-2 text-red-400" style={{ fontSize: "12px" }}>
-                          <AlertTriangle size={14} />
+                          <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                           <span>Neplatný formát (použijte: +420 123 456 789)</span>
                         </div>
                       )}
@@ -791,7 +791,7 @@ export default function CalculatorPage() {
                       />
                       {emailErr && (
                         <div className="flex items-center gap-2 mt-2 text-red-400" style={{ fontSize: "12px" }}>
-                          <AlertTriangle size={14} />
+                          <ExclamationTriangleIcon className="w-3.5 h-3.5" />
                           <span>Neplatný formát emailu</span>
                         </div>
                       )}
@@ -868,17 +868,17 @@ export default function CalculatorPage() {
                 >
                   {submitted ? (
                     <>
-                      <CheckCircle size={22} />
+                      <CheckCircleIcon className="w-5.5 h-5.5" />
                       ODESLÁNO
                     </>
                   ) : submitting ? (
                     <>
-                      <Loader2 size={22} className="animate-spin" />
+                      <SparklesIcon className="w-5.5 h-5.5 animate-spin" />
                       ODESÍLÁM...
                     </>
                   ) : (
                     <>
-                      <Send size={20} />
+                      <PaperAirplaneIcon className="w-5 h-5" />
                       ODESLAT POPTÁVKU
                     </>
                   )}
@@ -922,23 +922,23 @@ export default function CalculatorPage() {
                           href={createMailtoLink()}
                           className="flex items-center gap-3 p-4 rounded-xl bg-foreground/[0.03] border border-foreground/8 hover:bg-foreground/[0.06] transition-all duration-300"
                         >
-                          <Mail size={18} className="text-accent flex-shrink-0" />
+                          <EnvelopeIcon className="w-4.5 h-4.5 text-accent flex-shrink-0" />
                           <div className="flex-1 min-w-0">
                             <p className="text-foreground font-sans" style={{ fontSize: "14px", fontWeight: 500 }}>Odeslat poptávku emailem</p>
                             <p className="text-accent font-sans" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>info@malirivcernem.cz</p>
                           </div>
-                          <ExternalLink size={14} className="text-foreground/30 flex-shrink-0" />
+                          <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-foreground/30 flex-shrink-0" />
                         </a>
                         <a
                           href="tel:+420732333550"
                           className="flex items-center gap-3 p-4 rounded-xl bg-foreground/[0.03] border border-foreground/8 hover:bg-foreground/[0.06] transition-all duration-300"
                         >
-                          <Phone size={18} className="text-accent flex-shrink-0" />
+                          <PhoneIcon className="w-4.5 h-4.5 text-accent flex-shrink-0" />
                           <div className="flex-1 min-w-0">
                             <p className="text-foreground font-sans" style={{ fontSize: "14px", fontWeight: 500 }}>Zavolat</p>
                             <p className="text-accent font-sans" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700 }}>+420 732 333 550</p>
                           </div>
-                          <ExternalLink size={14} className="text-foreground/30 flex-shrink-0" />
+                          <ArrowTopRightOnSquareIcon className="w-3.5 h-3.5 text-foreground/30 flex-shrink-0" />
                         </a>
                       </div>
                       <p className="text-foreground/25 font-sans text-center mt-4" style={{ fontSize: "11px" }}>

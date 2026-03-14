@@ -1,7 +1,7 @@
 import { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
-import { ArrowRight, Heart, Target, Users, Award, Sparkles, Shield } from "lucide-react";
+import { ArrowRightIcon, HeartIcon, TargetIcon, UserGroupIcon, TrophyIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -197,7 +197,7 @@ export default function AboutPage() {
             <h2 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 700 }}>Chcete se k nám přidat?</h2>
             <p className="text-foreground/40 font-sans mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", lineHeight: 1.7 }}>Hledáme talentované malíře, kteří sdílejí naše hodnoty poctivé práce.</p>
             <Link to="/kontakt" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}>
-              Kontaktujte nás <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+              Kontaktujte nás <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </Link>
           </Reveal>
         </div>

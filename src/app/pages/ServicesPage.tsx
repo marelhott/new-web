@@ -2,16 +2,16 @@ import { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import {
-  ArrowRight,
-  ArrowUpRight,
-  Check,
-  Home,
-  Building2,
-  Palette,
-  Wrench,
-  Store,
-  Users,
-} from "lucide-react";
+  ArrowRightIcon,
+  ArrowUpRightIcon,
+  CheckIcon,
+  HomeIcon,
+  BuildingLibraryIcon,
+  PaintBrushIcon,
+  WrenchIcon,
+  BuildingStorefrontIcon,
+  UserGroupIcon,
+} from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 const faqItems = [
@@ -306,10 +306,8 @@ export default function ServicesPage() {
                           {s.features.map((f) => (
                             <div key={f} className="flex items-center gap-2">
                               <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${s.color}14`, color: s.color }}>
-                                <Check
-                                  size={10}
-                                  className=""
-                                  strokeWidth={3}
+                                <CheckIcon
+                                  className="w-2.5 h-2.5"
                                 />
                               </div>
                               <span
@@ -350,7 +348,7 @@ export default function ServicesPage() {
                             >
                               Detail služby
                             </span>
-                            <ArrowUpRight size={16} />
+                            <ArrowUpRightIcon className="w-4 h-4" />
                           </div>
                         </div>
                       </div>
@@ -399,9 +397,8 @@ export default function ServicesPage() {
                 }}
               >
                 Online kalkulačka{" "}
-                <ArrowRight
-                  size={16}
-                  className="group-hover:translate-x-1 transition-transform"
+                <ArrowRightIcon
+                  className="w-4 h-4 group-hover:translate-x-1 transition-transform"
                 />
               </Link>
               <Link

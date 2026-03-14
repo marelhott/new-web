@@ -3,9 +3,10 @@ import { logoDarkUrl, logoLightUrl } from "../Logo";
 import { Outlet, Link, useLocation } from "react-router";
 import { motion, AnimatePresence, useSpring } from "motion/react";
 import {
-  Menu, X, Sun, Moon, ArrowUpRight, Phone, Mail, MapPin,
-  Clock, ChevronRight, Instagram, Facebook, Linkedin
-} from "lucide-react";
+  Bars3Icon, XMarkIcon, SunIcon, MoonIcon, ArrowTopRightOnSquareIcon, PhoneIcon, EnvelopeIcon, MapPinIcon,
+  ClockIcon, ChevronRightIcon
+} from "@heroicons/react/24/outline";
+import { Instagram, Facebook, Linkedin } from "lucide-react";
 import { SITE } from "../../seo/site";
 
 const navLinks = [
@@ -100,7 +101,7 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
               onClick={toggleTheme}
               className="w-9 h-9 rounded-full flex items-center justify-center hover:bg-foreground/5 transition-colors duration-300"
             >
-              {isDark ? <Sun size={16} /> : <Moon size={16} />}
+              {isDark ? <SunIcon className="w-4 h-4" /> : <MoonIcon className="w-4 h-4" />}
             </button>
 
             <Link
@@ -112,14 +113,14 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
               }}
             >
               Online kalkulace
-              <ArrowUpRight size={13} />
+              <ArrowTopRightOnSquareIcon className="w-3 h-3" />
             </Link>
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
               className="lg:hidden w-9 h-9 flex items-center justify-center"
             >
-              {mobileOpen ? <X size={20} /> : <Menu size={20} />}
+              {mobileOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
             </button>
           </div>
         </div>
@@ -206,7 +207,7 @@ function Footer({ isDark }: { isDark: boolean }) {
                   style={{ fontSize: "14px" }}
                 >
                   {s.label}
-                  <ChevronRight size={12} className="opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
+                  <ChevronRightIcon className="w-3 h-3 opacity-0 -translate-x-1 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300" />
                 </Link>
               ))}
             </div>
@@ -218,19 +219,19 @@ function Footer({ isDark }: { isDark: boolean }) {
             </h4>
             <div className="flex flex-col gap-4">
               <a href={`tel:${SITE.phoneE164}`} className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300">
-                <Phone size={14} strokeWidth={1.5} />
+                <PhoneIcon className="w-3.5 h-3.5" />
                 <span className="font-sans" style={{ fontSize: "14px" }}>{SITE.phoneDisplay}</span>
               </a>
               <a href={`mailto:${SITE.email}`} className="flex items-center gap-3 opacity-50 hover:opacity-100 transition-opacity duration-300">
-                <Mail size={14} strokeWidth={1.5} />
+                <EnvelopeIcon className="w-3.5 h-3.5" />
                 <span className="font-sans" style={{ fontSize: "14px" }}>{SITE.email}</span>
               </a>
               <div className="flex items-center gap-3 opacity-50">
-                <MapPin size={14} strokeWidth={1.5} />
+                <MapPinIcon className="w-3.5 h-3.5" />
                 <span className="font-sans" style={{ fontSize: "14px" }}>Praha, Česká republika</span>
               </div>
               <div className="flex items-center gap-3 opacity-50">
-                <Clock size={14} strokeWidth={1.5} />
+                <ClockIcon className="w-3.5 h-3.5" />
                 <span className="font-sans" style={{ fontSize: "14px" }}>Po–Pá: 7:00 – 18:00</span>
               </div>
             </div>
