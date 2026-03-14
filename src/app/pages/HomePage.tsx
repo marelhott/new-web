@@ -328,12 +328,12 @@ function HowItWorksSection() {
 
 /* ───────── SERVICE PREVIEW ───────── */
 const services = [
-  { title: "Malování bytů a domů", desc: "Kompletní malování bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
-  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlé malování, které pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-pred-prodejem", tag: "Osobní" },
-  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
-  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Malování pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
-  { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "komercni-objekty", tag: "Odborné" },
-  { title: "Dekorativní úprava zdí", desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-sterky", tag: "Design" },
+  { title: "Malování bytů a domů", desc: "Kompletní malování bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: null, tag: "Rezidenční" },
+  { title: "Malování před prodejem nebo pronájmem", desc: "Rychlé malování, které pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: null, tag: "Osobní" },
+  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: null, tag: "Komerční" },
+  { title: "Malování restaurací, penzionů a menších hotelů", desc: "Malování pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: null, tag: "Komerční" },
+  { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: null, tag: "Odborné" },
+  { title: "Dekorativní úprava zdí", desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: null, tag: "Design" },
 ];
 
 function ServicePreview() {
@@ -359,8 +359,8 @@ function ServicePreview() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, i) => (
-            <Reveal key={s.slug} delay={i * 0.08}>
-              <Link to={`/sluzby/${s.slug}`} className="group block h-full no-underline">
+            <Reveal key={s.title} delay={i * 0.08}>
+              <Link to="/sluzby" className="group block h-full no-underline">
                 <div
                   className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-12 h-full"
                   style={{
