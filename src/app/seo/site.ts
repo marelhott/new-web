@@ -41,6 +41,14 @@ const serviceSeoMap: Record<string, ServiceSeo> = {
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fccb0003eea4f4419ae5d6485d2222ae5",
   },
+  "malovani-pred-prodejem": {
+    slug: "malovani-pred-prodejem",
+    title: "Malování před prodejem nebo pronájmem",
+    description:
+      "Rychlé a efektivní malování bytu či domu před prodejem nebo pronájmem. Neutrální atmosféra a zvýšená atraktivita nemovitosti.",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c",
+  },
   "malovani-kancelari": {
     slug: "malovani-kancelari",
     title: "Malování kanceláří v Praze",
@@ -49,6 +57,22 @@ const serviceSeoMap: Record<string, ServiceSeo> = {
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F3026d95741854f52aaaf83680e170c34",
   },
+  "komercni-objekty": {
+    slug: "komercni-objekty",
+    title: "Malování restaurací, penzionů a hotelů",
+    description:
+      "Malování pokojů a společných prostor restaurací, penzionů a menších hotelů s minimálním omezením provozu.",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F813e356566e0424cbba8f945a4b5a0bc",
+  },
+  "malovani-svj": {
+    slug: "malovani-svj",
+    title: "Malování společných prostor domu (SVJ)",
+    description:
+      "Malování chodeb, schodišť a dalších prostor bytových domů spravovaných SVJ a bytovými družstvy. Etapová realizace bez obtíží.",
+    image:
+      "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Ffe0d5ae8e8b3454e951a42634b8be26d",
+  },
   "dekorativni-sterky": {
     slug: "dekorativni-sterky",
     title: "Dekorativní stěrky a microcement",
@@ -56,22 +80,6 @@ const serviceSeoMap: Record<string, ServiceSeo> = {
       "Dekorativní stěrky, microcement a designové povrchy pro moderní interiéry. Vzorkování, návrh i profesionální aplikace.",
     image:
       "https://images.unsplash.com/photo-1719194981461-fa0ec450999e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200",
-  },
-  "opravy-a-priprava": {
-    slug: "opravy-a-priprava",
-    title: "Opravy zdí a příprava povrchů",
-    description:
-      "Tmelení, broušení, penetrace a opravy stěn před výmalbou. Kvalitní příprava povrchů pro dlouhou životnost výsledku.",
-    image:
-      "https://images.unsplash.com/photo-1589307693556-7286ae38293c?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200",
-  },
-  "komercni-objekty": {
-    slug: "komercni-objekty",
-    title: "Malování komerčních objektů a SVJ",
-    description:
-      "Velkoplošné malířské práce pro SVJ, bytové domy a developery. Koordinace realizace v obydlených objektech a etapový postup.",
-    image:
-      "https://images.unsplash.com/photo-1768270181430-3e3672a32283?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200",
   },
 };
 
