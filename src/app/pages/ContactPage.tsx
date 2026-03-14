@@ -62,7 +62,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
             {contactInfo.map((c, i) => (
               <Reveal key={c.label} delay={i * 0.08}>
-                <a href={c.href} className="group block p-6 rounded-lg transition-all duration-500 hover:-translate-y-1" style={{ background: "#ffffff", border: "1px solid #f0f0f0" }}>
+                <a href={c.href} className="group block p-6 rounded-lg transition-all duration-500 hover:-translate-y-1" style={{ background: "#f5f5f5", border: "1px solid #e0e0e0" }}>
                   <div className="mb-4">{getContactIcon(c.iconName) && React.createElement(getContactIcon(c.iconName)!, { className: "w-6 h-6", style: { color: "#2563eb" } })}</div>
                   <span className="block mb-2" style={{ fontSize: "12px", fontWeight: 600, textTransform: "uppercase", color: "#7b8794", letterSpacing: "0.05em", fontFamily: "'Manrope', var(--font-sans)" }}>{c.label}</span>
                   <span className="block mb-1" style={{ fontSize: "16px", fontWeight: 700, color: "#1a1a1a", fontFamily: "'Manrope', var(--font-sans)" }}>{c.value}</span>
@@ -75,7 +75,7 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-3">
               <Reveal>
-                <div className="p-8 md:p-10 rounded-lg" style={{ background: "#ffffff", border: "1px solid #f0f0f0" }}>
+                <div className="p-8 md:p-10 rounded-lg" style={{ background: "#f5f5f5", border: "1px solid #e0e0e0" }}>
                   {submitted ? (
                     <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center py-16">
                       <CheckCircleIcon className="w-12 h-12 text-[#2563eb] mx-auto mb-6" />
@@ -129,7 +129,7 @@ export default function ContactPage() {
             <div className="lg:col-span-2">
               <div className="lg:sticky lg:top-[96px]">
                 <Reveal delay={0.15}>
-                  <div className="p-8 rounded-lg mb-5" style={{ background: "#ffffff", border: "1px solid #f0f0f0" }}>
+                  <div className="p-8 rounded-lg mb-5" style={{ background: "#f5f5f5", border: "1px solid #e0e0e0" }}>
                     <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#1a1a1a", marginBottom: "16px", fontFamily: "'Manrope', var(--font-sans)" }}>Proč nás kontaktovat?</h4>
                     <div className="flex flex-col gap-3">
                       {["Bezplatná konzultace a prohlídka", "Přesná kalkulace do 24 hodin", "Pojištění odpovědnosti do 5 mil. Kč", "Reference od 1 000+ klientů"].map((item) => (
@@ -142,7 +142,7 @@ export default function ContactPage() {
                   </div>
                 </Reveal>
                 <Reveal delay={0.25}>
-                  <div className="p-8 rounded-lg" style={{ background: "#f5f7ff", border: "1px solid #e8ebf7" }}>
+                  <div className="p-8 rounded-lg" style={{ background: "#f5f5f5", border: "1px solid #e0e0e0" }}>
                     <h4 style={{ fontSize: "18px", fontWeight: 700, color: "#1a1a1a", marginBottom: "8px", fontFamily: "'Manrope', var(--font-sans)" }}>Rychlá kalkulace</h4>
                     <p style={{ fontSize: "13px", lineHeight: 1.6, color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500, marginBottom: "16px" }}>Spočítejte si orientační cenu online ihned.</p>
                     <a href="/kalkulacka" className="group inline-flex items-center gap-2 px-5 py-2 rounded-lg text-white transition-all duration-300" style={{ background: "#2563eb", fontSize: "13px", fontWeight: 600, fontFamily: "'Manrope', var(--font-sans)" }}>
