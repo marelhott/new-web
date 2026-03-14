@@ -259,10 +259,17 @@ function calculatePrice(form: FormState): number {
   const area = Number(form.totalArea) || 0;
   if (area <= 0) return 0;
 
+  const FLOOR_AREA_BASE_PRICE = 3000;
+  const FLOOR_AREA_THRESHOLD = 20;
+  const FLOOR_AREA_RATE = 164.2857142857;
+
   // Base price
   let basePrice = 0;
   if (form.selectedWork === "Půdorys") {
-    basePrice = area > 20 ? 3000 + (area - 20) * 140 : 3000;
+    basePrice =
+      area > FLOOR_AREA_THRESHOLD
+        ? FLOOR_AREA_BASE_PRICE + (area - FLOOR_AREA_THRESHOLD) * FLOOR_AREA_RATE
+        : FLOOR_AREA_BASE_PRICE;
   } else {
     basePrice = area > 80 ? 3000 + (area - 80) * 40 : 3000;
   }
