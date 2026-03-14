@@ -263,19 +263,17 @@ export default function ServicesPage() {
 
                       {/* Content */}
                       <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
-                        {/* Tag */}
+                        {/* Tag with Icon */}
                         <div className="mb-8">
-                          <span className="inline-block px-3 py-1.5 rounded-full bg-foreground/10 text-foreground font-sans" style={{ fontSize: "12px", fontWeight: 600 }}>
-                            {s.tag}
-                          </span>
-                        </div>
-
-                        {/* Icon - šedý, bez boxu */}
-                        <div className="mb-6">
-                          {React.createElement(getServiceIcon(s.iconName)!, {
-                            className: "w-8 h-8",
-                            style: { color: "#9ca3af" },
-                          })}
+                          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full" style={{ background: "#1a1a1a" }}>
+                            {React.createElement(getServiceIcon(s.iconName)!, {
+                              className: "w-5 h-5",
+                              style: { color: "#ffffff" },
+                            })}
+                            <span className="font-sans text-white" style={{ fontSize: "12px", fontWeight: 600 }}>
+                              {s.tag}
+                            </span>
+                          </div>
                         </div>
 
                         {/* Title */}
@@ -337,13 +335,13 @@ export default function ServicesPage() {
                               {s.price}
                             </span>
                           </div>
-                          <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all duration-300">
+                          <div className="px-6 py-3 rounded-full transition-all duration-300" style={{ background: "#1a1a1a" }}>
                             <span
+                              className="text-white font-sans"
                               style={{ fontSize: "13px", fontWeight: 600 }}
                             >
                               Detail služby
                             </span>
-                            <ArrowUpRightIcon className="w-4 h-4" />
                           </div>
                         </div>
                       </div>
