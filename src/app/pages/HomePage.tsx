@@ -1,5 +1,4 @@
 import React, { useRef, useState, useEffect, useCallback } from "react";
-import React from "react";
 import { Link } from "react-router";
 import { motion, useInView, AnimatePresence } from "motion/react";
 import {
