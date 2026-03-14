@@ -1,4 +1,4 @@
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import {
@@ -28,6 +28,19 @@ const faqItems = [
     a: "Ano, po úvodní poptávce domluvíme prohlídku nebo upřesnění podkladů a připravíme konkrétní nabídku.",
   },
 ];
+
+/* ─── Icon helper ─── */
+const getServiceIcon = (iconName: string) => {
+  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+    home: HomeIcon,
+    building: BuildingLibraryIcon,
+    palette: PaintBrushIcon,
+    wrench: WrenchIcon,
+    store: BuildingStorefrontIcon,
+    users: UserGroupIcon,
+  };
+  return icons[iconName.toLowerCase()] || null;
+};
 
 /* ─── Reveal helper ─── */
 function Reveal({
@@ -60,7 +73,7 @@ const allServices = [
     title: "Malování bytů a domů",
     slug: "malovani-bytu",
     tag: "Rezidenční",
-    icon: Home,
+    iconName: "home",
     desc: "Váš domov si zaslouží to nejlepší – a my vám to rádi dopřejeme díky dokonalé výmalbě vašich osobních prostor. Od garsoniéry po rodinný dům.",
     features: [
       "Kompletní zakrytí nábytku a podlah",
@@ -76,7 +89,7 @@ const allServices = [
     title: "Malování před prodejem nebo pronájmem",
     slug: "malovani-pred-prodejem",
     tag: "Osobní",
-    icon: Home,
+    iconName: "home",
     desc: "Příprava nemovitosti na prodej nebo pronájem vyžaduje čisté a neutrální prostředí. Zvýšíme atraktivitu vašeho bytu či domu rychlým a efektivním malováním.",
     features: [
       "Neutralizace intenzivních barev",
@@ -92,7 +105,7 @@ const allServices = [
     title: "Malování kanceláří a komerčních prostor",
     slug: "malovani-kancelari",
     tag: "Komerční",
-    icon: Building2,
+    iconName: "building",
     desc: "Reprezentativní prostředí je vizitkou každé úspěšné firmy či ordinace – a my vám ho pomůžeme vytvořit. Pracujeme mimo pracovní dobu, o víkendech i v noci.",
     features: [
       "Zero-disruption – mimo pracovní dobu",
@@ -108,7 +121,7 @@ const allServices = [
     title: "Malování pensionů, restaurací a menších hotelů",
     slug: "komercni-objekty",
     tag: "Hospitality",
-    icon: Store,
+    iconName: "store",
     desc: "Každý obchod, kavárna či penzion má svůj příběh – a my ho podtrhneme dokonalým vzhledem. Malujeme v termínech, které vám vyhovují.",
     features: [
       "Flexibilní termíny bez příplatků",
@@ -124,7 +137,7 @@ const allServices = [
     title: "Malování společných prostorů domu (SVJ)",
     slug: "komercni-objekty",
     tag: "SVJ / Developers",
-    icon: Users,
+    iconName: "users",
     desc: "Společné prostory jsou tváří každého domu. Jsme odborníci na malování chodeb, schodišť a dalších prostor spravovaných SVJ a bytovými družstvy.",
     features: [
       "Etapová realizace v obydlených domech",
@@ -140,7 +153,7 @@ const allServices = [
     title: "Dekorativní úprava zdí",
     slug: "dekorativni-sterky",
     tag: "Speciální",
-    icon: Palette,
+    iconName: "palette",
     desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Unikátní interiéry s precizním řemeslem a důrazem na jedinečnost.",
     features: [
       "Microcement a benátský štuk",
@@ -258,11 +271,10 @@ export default function ServicesPage() {
                               border: `1px solid ${s.color}30`,
                             }}
                           >
-                            <s.icon
-                              size={18}
-                              style={{ color: s.color }}
-                              strokeWidth={1.5}
-                            />
+                            {React.createElement(getServiceIcon(s.iconName)!, {
+                              className: "w-[18px] h-[18px]",
+                              style: { color: s.color },
+                            })}
                           </div>
                           <span
                             className="px-3 py-1 rounded-full border"
