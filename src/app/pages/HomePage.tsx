@@ -708,7 +708,7 @@ function TestimonialsSection() {
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <span key={j} style={{ fontSize: "18px", color: "#1a1a1a" }}>★</span>
+                    <span key={j} style={{ fontSize: "18px", color: "#2563eb" }}>★</span>
                   ))}
                 </div>
                 {/* Quote */}
