@@ -360,7 +360,7 @@ function ServicePreview() {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {services.map((s, i) => (
             <Reveal key={s.title} delay={i * 0.08}>
-              <Link to={`/sluzby#${s.slug}`} className="group block h-full no-underline">
+              <Link to={`/sluzby/${s.slug}`} className="group block h-full no-underline">
                 <div
                   className="relative overflow-hidden rounded-[10px] transition-all duration-500 hover:shadow-lg flex flex-col lg:flex-row lg:items-stretch gap-8 lg:gap-12 h-full"
                   style={{

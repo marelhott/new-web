@@ -1,5 +1,4 @@
 import React, { useRef } from "react";
-import { useEffect } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import {
@@ -170,18 +169,6 @@ const allServices = [
 
 /* ─── Page ─── */
 export default function ServicesPage() {
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash) {
-      setTimeout(() => {
-        const element = document.getElementById(hash);
-        if (element) {
-          element.scrollIntoView({ behavior: "smooth", block: "start" });
-        }
-      }, 100);
-    }
-  }, []);
-
   return (
     <>
       {/* ── HERO ── */}
@@ -251,7 +238,7 @@ export default function ServicesPage() {
           <div className="flex flex-col gap-8">
             {allServices.map((s, i) => (
               <Reveal key={`${s.slug}-${i}`} delay={i * 0.06}>
-                <Link to={`/sluzby/${s.slug}`} className="group block" id={s.slug}>
+                <Link to={`/sluzby/${s.slug}`} className="group block">
                   <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(37,99,235,0.08)]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                       {/* Image */}
