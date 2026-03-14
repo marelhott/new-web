@@ -143,10 +143,11 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                   initial={{ opacity: 0, y: 30 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: i * 0.08 }}
+                  onMouseDown={() => setMobileOpen(false)}
+                  onTouchStart={() => setMobileOpen(false)}
                 >
                   <Link
                     to={link.href}
-                    onClick={() => setMobileOpen(false)}
                     className="font-[family-name:var(--font-display)] text-foreground"
                     style={{ fontSize: "36px", fontWeight: 600 }}
                   >
@@ -154,10 +155,15 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                   </Link>
                 </motion.div>
               ))}
-              <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                transition={{ delay: 0.5 }}
+                onMouseDown={() => setMobileOpen(false)}
+                onTouchStart={() => setMobileOpen(false)}
+              >
                 <Link
                   to="/kalkulacka"
-                  onClick={() => setMobileOpen(false)}
                   className="px-8 py-3 rounded-full text-background"
                   style={{
                     fontSize: "16px", fontWeight: 500,
