@@ -183,10 +183,10 @@ function TrustSection() {
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
               <div className="group relative p-8 md:p-9 rounded-lg overflow-hidden transition-all duration-500 h-full flex flex-col text-left" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
-                <div className="mb-6">
+                <div className="mb-6 h-6">
                   {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-6 h-6", style: { color: "#9ca3af" } })}
                 </div>
-                <h3 className="mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
+                <h3 className="mb-6 min-h-[60px]" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
                   {card.title}
                 </h3>
                 <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}>
