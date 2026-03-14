@@ -1,5 +1,4 @@
 import { useRef } from "react";
-import { useRef } from "react";
 import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
 import { ArrowRightIcon, HeartIcon, TargetIcon, UserGroupIcon, StarIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
