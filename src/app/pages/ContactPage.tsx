@@ -27,7 +27,7 @@ function Reveal({ children, className = "", delay = 0 }: { children: React.React
 const contactInfo = [
   { iconName: "phone", label: "Telefon", value: "+420 732 333 550", href: "tel:+420732333550", desc: "Po–Ne 7:00–22:00" },
   { iconName: "mail", label: "E-mail", value: "info@malirivcernem.cz", href: "mailto:info@malirivcernem.cz", desc: "Odpovíme do 2 hodin" },
-  { iconName: "mappin", label: "Adresa", value: "Praha, Česká republika", href: "#", desc: "Působíme v celé Praze" },
+  { iconName: "mappin", label: "Adresa", value: "Praha, Česká republika", href: "#", desc: "Působíme dle velikosti zakázky v celé české republice" },
   { iconName: "clock", label: "Pracovní doba", value: "Po–Ne: 7:00 – 22:00", href: "#", desc: "Víkendové termíny po domluvě" },
 ];
 
