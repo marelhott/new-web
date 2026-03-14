@@ -53,12 +53,12 @@ const timeline = [
 ];
 
 const values = [
-  { icon: Target, title: "Preciznost", desc: "Každý detail se počítá.", gradient: "from-[#1e3a5f]/25" },
-  { icon: Heart, title: "Vášeň", desc: "Poctivá manuální práce nás baví.", gradient: "from-[#c08050]/25" },
-  { icon: Users, title: "Rodinné hodnoty", desc: "Jsme rodina — a tak přistupujeme i ke klientům.", gradient: "from-[#8a9a7a]/25" },
-  { icon: Shield, title: "Spolehlivost", desc: "Na naše slovo se můžete spolehnout.", gradient: "from-accent/25" },
-  { icon: Sparkles, title: "Kvalita", desc: "Pouze ověřené materiály a profesionální vybavení.", gradient: "from-[#1e3a5f]/25" },
-  { icon: Award, title: "Tradice", desc: "Přes 30 let zkušeností zakladatele.", gradient: "from-[#c08050]/25" },
+  { icon: TargetIcon, title: "Preciznost", desc: "Každý detail se počítá.", gradient: "from-[#1e3a5f]/25" },
+  { icon: HeartIcon, title: "Vášeň", desc: "Poctivá manuální práce nás baví.", gradient: "from-[#c08050]/25" },
+  { icon: UserGroupIcon, title: "Rodinné hodnoty", desc: "Jsme rodina — a tak přistupujeme i ke klientům.", gradient: "from-[#8a9a7a]/25" },
+  { icon: ShieldCheckIcon, title: "Spolehlivost", desc: "Na naše slovo se můžete spolehnout.", gradient: "from-accent/25" },
+  { icon: SparklesIcon, title: "Kvalita", desc: "Pouze ověřené materiály a profesionální vybavení.", gradient: "from-[#1e3a5f]/25" },
+  { icon: TrophyIcon, title: "Tradice", desc: "Přes 30 let zkušeností zakladatele.", gradient: "from-[#c08050]/25" },
 ];
 
 export default function AboutPage() {
