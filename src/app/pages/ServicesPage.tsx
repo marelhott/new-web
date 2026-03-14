@@ -263,68 +263,52 @@ export default function ServicesPage() {
 
                       {/* Content */}
                       <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
-                        <div className="flex items-center gap-3 mb-6">
-                          <div
-                            className="w-10 h-10 rounded-xl flex items-center justify-center"
-                            style={{
-                              background: `${s.color}15`,
-                              border: `1px solid ${s.color}30`,
-                            }}
-                          >
-                            {React.createElement(getServiceIcon(s.iconName)!, {
-                              className: "w-[18px] h-[18px]",
-                              style: { color: s.color },
-                            })}
-                          </div>
-                          <span
-                            className="px-3 py-1 rounded-full border"
-                            style={{
-                              fontSize: "11px",
-                              fontWeight: 700,
-                              letterSpacing: "0.08em",
-                              textTransform: "uppercase",
-                              color: s.color,
-                              background: `${s.color}12`,
-                              borderColor: `${s.color}22`,
-                              fontFamily: "'Manrope', var(--font-sans)",
-                            }}
-                          >
+                        {/* Tag */}
+                        <div className="mb-8">
+                          <span className="inline-block px-3 py-1.5 rounded-full bg-foreground/10 text-foreground font-sans" style={{ fontSize: "12px", fontWeight: 600 }}>
                             {s.tag}
                           </span>
                         </div>
 
+                        {/* Icon - šedý, bez boxu */}
+                        <div className="mb-6">
+                          {React.createElement(getServiceIcon(s.iconName)!, {
+                            className: "w-8 h-8",
+                            style: { color: "#9ca3af" },
+                          })}
+                        </div>
+
+                        {/* Title */}
                         <h2
-                          className="mb-4"
+                          className="mb-6"
                           style={{
-                            fontFamily: "'Sora', sans-serif",
-                            fontSize: "clamp(24px, 3vw, 34px)",
-                            fontWeight: 700,
-                            lineHeight: 1.08,
-                            letterSpacing: "-0.04em",
+                            fontFamily: "var(--font-display)",
+                            fontSize: "32px",
+                            fontWeight: 500,
+                            lineHeight: 1.2,
+                            letterSpacing: "-0.03em",
                             color: "#0f172a",
                           }}
                         >
                           {s.title}
                         </h2>
 
+                        {/* Description */}
                         <p
-                          className="font-sans mb-6"
-                          style={{ fontSize: "15px", lineHeight: 1.74, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
+                          className="font-sans mb-8"
+                          style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}
                         >
                           {s.desc}
                         </p>
 
-                        <div className="flex flex-col gap-2 mb-8">
+                        {/* Features */}
+                        <div className="flex flex-col gap-3 mb-8">
                           {s.features.map((f) => (
-                            <div key={f} className="flex items-center gap-2">
-                              <div className="w-5 h-5 rounded-full flex items-center justify-center flex-shrink-0" style={{ background: `${s.color}14`, color: s.color }}>
-                                <CheckIcon
-                                  className="w-2.5 h-2.5"
-                                />
-                              </div>
+                            <div key={f} className="flex items-start gap-2">
+                              <span className="text-foreground flex-shrink-0" style={{ fontSize: "14px" }}>•</span>
                               <span
                                 className="font-sans"
-                                style={{ fontSize: "13px", color: "#415063", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 600 }}
+                                style={{ fontSize: "14px", color: "#3d3d47", lineHeight: 1.5 }}
                               >
                                 {f}
                               </span>
@@ -332,7 +316,8 @@ export default function ServicesPage() {
                           ))}
                         </div>
 
-                        <div className="flex items-center justify-between pt-4" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
+                        {/* Price and CTA */}
+                        <div className="flex items-end justify-between pt-6" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
                           <div>
                             <span
                               className="font-sans block"
@@ -340,23 +325,21 @@ export default function ServicesPage() {
                                 fontSize: "11px",
                                 letterSpacing: "0.08em",
                                 color: "#7b8794",
-                                fontFamily: "'Manrope', var(--font-sans)",
                                 fontWeight: 700,
+                                marginBottom: "4px",
                               }}
                             >
                               ORIENTAČNÍ CENA
                             </span>
                             <span
-                              className=""
-                              style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, color: s.color, letterSpacing: "-0.03em" }}
+                              style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 500, color: "#0f172a", letterSpacing: "-0.02em" }}
                             >
                               {s.price}
                             </span>
                           </div>
                           <div className="flex items-center gap-2 text-accent group-hover:gap-3 transition-all duration-300">
                             <span
-                              className=""
-                              style={{ fontSize: "13px", fontWeight: 800, fontFamily: "'Manrope', var(--font-sans)", letterSpacing: "0.06em" }}
+                              style={{ fontSize: "13px", fontWeight: 600 }}
                             >
                               Detail služby
                             </span>
