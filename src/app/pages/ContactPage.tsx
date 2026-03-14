@@ -62,11 +62,11 @@ export default function ContactPage() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 mb-20">
             {contactInfo.map((c, i) => (
               <Reveal key={c.label} delay={i * 0.08}>
-                <a href={c.href} className="group block p-6 rounded-lg transition-all duration-500 hover:-translate-y-1" style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}>
+                <a href={c.href} className="group block p-6 rounded-lg transition-all duration-500 hover:-translate-y-1 flex flex-col" style={{ background: "#e9ecf2", border: "1px solid #d8dceb", minHeight: "180px" }}>
                   <div className="mb-4">{getContactIcon(c.iconName) && React.createElement(getContactIcon(c.iconName)!, { className: "w-6 h-6", style: { color: "#2563eb" } })}</div>
                   <span className="block mb-2" style={{ fontSize: "12px", fontWeight: 600, textTransform: "uppercase", color: "#7b8794", letterSpacing: "0.05em", fontFamily: "'Manrope', var(--font-sans)" }}>{c.label}</span>
                   <span className="block mb-1" style={{ fontSize: "16px", fontWeight: 700, color: "#1a1a1a", fontFamily: "'Manrope', var(--font-sans)" }}>{c.value}</span>
-                  <span style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{c.desc}</span>
+                  <span className="mt-auto" style={{ fontSize: "13px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>{c.desc}</span>
                 </a>
               </Reveal>
             ))}
