@@ -332,7 +332,7 @@ function ServicePreview() {
       <GradientMesh variant="dark" />
       <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
         <Reveal>
-          <div className="text-center mb-8">
+          <div className="text-center mb-16">
             <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Služby</span>
             <h2 className="font-[family-name:var(--font-display)] text-foreground" style={{ fontSize: "clamp(32px, 5vw, 56px)", fontWeight: 700, lineHeight: 1.05 }}>
               Co pro vás{" "}
