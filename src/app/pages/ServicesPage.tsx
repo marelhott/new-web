@@ -243,7 +243,7 @@ export default function ServicesPage() {
                     <div className="grid grid-cols-1 lg:grid-cols-2">
                       {/* Image */}
                       <div
-                        className={`aspect-[4/3] lg:aspect-auto lg:h-full overflow-hidden relative ${
+                        className={`aspect-[4/3] lg:aspect-[4/3] overflow-hidden relative ${
                           i % 2 === 1 ? "lg:order-2" : ""
                         }`}
                       >
