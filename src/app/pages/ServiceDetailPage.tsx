@@ -31,8 +31,8 @@ export default function ServiceDetailPage() {
   return (
     <>
       <section className="relative pt-32 pb-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)" }}>
-        <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
-          <div className="relative rounded-[10px] overflow-hidden" style={{ background: "#e9ecf2", padding: "40px 60px" }}>
+        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+          <div className="relative rounded-[10px] overflow-hidden" style={{ background: "#e9ecf2", padding: "40px 60px 40px 0", marginLeft: "-60px" }}>
             <div className="grid grid-cols-1 lg:grid-cols-[400px_1fr] gap-[70px] items-center">
               {/* Image */}
               <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} transition={{ duration: 0.8 }}>
