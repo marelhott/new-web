@@ -78,12 +78,9 @@ export default function AboutPage() {
               Česká rodinná firma, která společně{" "}
               <span className="bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">funguje už přes 10 let</span>
             </h1>
-            <div className="font-sans max-w-3xl mx-auto space-y-2" style={{ fontSize: "16px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-              <p>Naše firma se věnuje tradičnímu řemeslu.</p>
-              <p>Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let.</p>
-              <p>Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali.</p>
-              <p>Poctivá, manuální práce nás baví a důkazem toho je přes 500 úspěšně dokončených zakázek.</p>
-            </div>
+            <p className="font-sans max-w-3xl mx-auto" style={{ fontSize: "16px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+              Naše firma se věnuje tradičnímu řemeslu. Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let. Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali. Poctivá, manuální práce nás baví a důkazem toho je přes 500 úspěšně dokončených zakázek.
+            </p>
           </motion.div>
         </div>
       </section>
