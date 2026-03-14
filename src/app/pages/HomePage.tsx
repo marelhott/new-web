@@ -330,10 +330,10 @@ function HowItWorksSection() {
 const services = [
   { title: "Malování bytů a domů", desc: "Kompletní malování bytů a rodinných domů – rychle, čistě a bez starostí.", image: IMG.apartment, slug: "malovani-bytu", tag: "Rezidenční" },
   { title: "Malování před prodejem nebo pronájmem", desc: "Rychlé malování, které pomůže byt či dům připravit na prodej nebo nový pronájem.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c", slug: "malovani-pred-prodejem", tag: "Osobní" },
-  { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "dekorativni-sterky", tag: "Odborné" },
-  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "opravy-a-priprava", tag: "Komerční" },
+  { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
   { title: "Malování restaurací, penzionů a menších hotelů", desc: "Malování pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
-  { title: "Dekorativní malování", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-vymalba", tag: "Design" },
+  { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "komercni-objekty", tag: "Odborné" },
+  { title: "Dekorativní úprava zdí", desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-sterky", tag: "Design" },
 ];
 
 function ServicePreview() {
@@ -468,7 +468,7 @@ const realizaceCategories = [
     desc: "Vytváření jedinečných interiérů, které odrážejí životní styl klienta.",
     iconName: "palette",
     color: "#2563eb",
-    slug: "komercni-objekty",
+    slug: "dekorativni-sterky",
   },
   {
     title: "Elegantní bydlení",
