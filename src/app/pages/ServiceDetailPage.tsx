@@ -3,6 +3,7 @@ import { useParams, Link, Navigate } from "react-router";
 import { motion, useInView } from "motion/react";
 import { ArrowRight, ArrowLeft, Check, Phone, Send, Calculator, Paintbrush, CheckCircle2 } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import { serviceSeoContent } from "../data/serviceSeoContent";
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
   const ref = useRef<HTMLDivElement>(null);
@@ -26,6 +27,7 @@ const servicesData: Record<string, { title: string; tag: string; image: string; 
 export default function ServiceDetailPage() {
   const { slug } = useParams<{ slug: string }>();
   const service = slug ? servicesData[slug] : null;
+  const seoContent = slug ? serviceSeoContent[slug] : null;
   if (!service) return <Navigate to="/sluzby" replace />;
 
   return (
@@ -84,6 +86,22 @@ export default function ServiceDetailPage() {
 
       <section className="relative py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
+          {seoContent ? (
+            <Reveal>
+              <div className="mb-12 rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+                <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(28px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.1 }}>
+                  {seoContent.heading}
+                </h2>
+                <p className="font-sans mb-4" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontWeight: 500 }}>
+                  {seoContent.intro}
+                </p>
+                <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontWeight: 500 }}>
+                  {seoContent.body}
+                </p>
+              </div>
+            </Reveal>
+          ) : null}
+
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             <Reveal>
               <div>
@@ -148,6 +166,43 @@ export default function ServiceDetailPage() {
               </div>
             </div>
           </Reveal>
+
+          {seoContent ? (
+            <Reveal delay={0.25}>
+              <div className="mt-10 rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+                <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 items-start">
+                  <div>
+                    <h2 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, lineHeight: 1.1 }}>
+                      Časté dotazy k této službě
+                    </h2>
+                    <div className="grid gap-4">
+                      {seoContent.faq.map((item) => (
+                        <article key={item.q} className="rounded-2xl p-5" style={{ background: "rgba(15,23,42,0.04)" }}>
+                          <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "18px", fontWeight: 700, letterSpacing: "-0.03em", color: "#0f172a" }}>
+                            {item.q}
+                          </h3>
+                          <p className="m-0 font-sans" style={{ fontSize: "15px", lineHeight: 1.7, color: "#526071", fontWeight: 500 }}>
+                            {item.a}
+                          </p>
+                        </article>
+                      ))}
+                    </div>
+                  </div>
+                  <div className="flex flex-col gap-3 min-w-[220px]">
+                    <Link to="/sluzby" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                      Všechny služby
+                    </Link>
+                    <Link to="/realizace" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                      Ukázky realizací
+                    </Link>
+                    <Link to="/kontakt" className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                      Nezávazná poptávka
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </Reveal>
+          ) : null}
         </div>
       </section>
     </>

@@ -71,7 +71,7 @@ function HeroSection() {
       <div className="absolute top-0 right-0 bottom-0 left-0 w-full hidden lg:block z-0">
         <img
           src={heroPhoto}
-          alt="Malířka při práci"
+          alt="Profesionální malování bytu v Praze - malířka při práci v interiéru"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
           decoding="async"
@@ -127,7 +127,7 @@ function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mt-12 hidden rounded-2xl overflow-hidden shadow-xl"
         >
-          <img src={heroPhoto} alt="Malířka při práci" className="w-full h-auto object-cover aspect-[4/3]" loading="eager" decoding="async" />
+          <img src={heroPhoto} alt="Profesionální malování bytu v Praze - malířka při práci v interiéru" className="w-full h-auto object-cover aspect-[4/3]" loading="eager" decoding="async" />
         </motion.div>
       </div>
 
@@ -184,7 +184,7 @@ function TrustSection() {
             <Reveal key={card.title} delay={index * 0.1}>
               <div className="group relative p-8 md:p-9 rounded-lg overflow-hidden transition-all duration-500 h-full flex flex-col text-left" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
                 <div className="mb-6 h-6">
-                  {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-6 h-6", style: { color: "#9ca3af" } })}
+                  {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-6 h-6 text-[#9ca3af]" })}
                 </div>
                 <h3 className="mb-6 min-h-[60px]" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
                   {card.title}
@@ -238,7 +238,7 @@ function StatCounter({ stat }: { stat: typeof statsData[0] }) {
   return (
     <div ref={ref} className="text-center">
       <div className="font-[family-name:var(--font-display)]" style={{ fontSize: "clamp(48px, 7vw, 80px)", fontWeight: 400, color: "var(--accent)", lineHeight: 1.0, fontFamily: "'Sora', sans-serif" }}>
-        {stat.divide ? (count / 1000).toFixed(1) : count}{stat.suffix}
+        {count}{stat.suffix}
       </div>
       <p className="text-foreground/60 font-sans mt-2" style={{ fontSize: "13px", fontWeight: 500, letterSpacing: "0.02em" }}>{stat.label}</p>
     </div>
@@ -430,6 +430,64 @@ const faqItems = [
   { title: "Pomůžete mi s výběrem barev?", desc: "Ano. Rádi vám pomůžeme vybrat vhodný odstín tak, aby v interiéru dobře fungoval. V případě zájmu dokážeme připravit také jednoduchou vizualizaci." },
 ];
 
+const serviceAreaGroups = [
+  "Praha 1, Praha 2, Praha 3 a Praha 4",
+  "Praha 5, Praha 6, Praha 7 a Praha 8",
+  "Praha 9, Praha 10, Praha-západ a Praha-východ",
+];
+
+function LocalSeoSection() {
+  return (
+    <section className="relative py-20 md:py-24 noise-overlay" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6f9ff 50%, #ffffff 100%)" }}>
+      <div className="max-w-[1180px] mx-auto px-6 md:px-10 relative z-10">
+        <Reveal>
+          <div className="rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10">
+              <div>
+                <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Praha a okolí</span>
+                <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, lineHeight: 1.08 }}>
+                  Malování bytů, pokojů a kanceláří v Praze
+                </h2>
+                <p className="font-sans mb-4" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                  Pokud hledáte spolehlivého malíře pokojů v Praze, zajišťujeme kompletní malování bytů, rodinných domů, kanceláří i společných prostor domu. Postaráme se o zakrytí, opravy zdí, samotnou výmalbu i finální úklid.
+                </p>
+                <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                  Nejčastěji realizujeme <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů a pokojů</Link>, <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">malování kanceláří</Link>, zakázky pro <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">SVJ a bytové domy</Link> i <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">dekorativní stěrky</Link>. Pokud hledáte orientační <Link to="/kalkulacka" className="text-accent underline underline-offset-4">cenu malování bytu v Praze</Link>, využijte naši kalkulačku a následně si projděte i <Link to="/realizace" className="text-accent underline underline-offset-4">ukázky realizací</Link>.
+                </p>
+              </div>
+              <div>
+                <h3 className="mb-5 text-foreground" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.03em" }}>
+                  Kde nejčastěji malujeme
+                </h3>
+                <div className="flex flex-col gap-3 mb-6">
+                  {serviceAreaGroups.map((area) => (
+                    <div key={area} className="rounded-[12px] px-4 py-3" style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(15,23,42,0.06)" }}>
+                      <p className="m-0 font-sans" style={{ fontSize: "14px", lineHeight: 1.6, color: "#334155", fontWeight: 600 }}>
+                        {area}
+                      </p>
+                    </div>
+                  ))}
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white transition-all duration-300 hover:opacity-90" style={{ background: "#2563eb", fontSize: "14px", fontWeight: 700 }}>
+                    Spočítat cenu <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                  <Link to="/realizace" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                    Zobrazit reference
+                  </Link>
+                  <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                    Kontaktovat nás
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+        </Reveal>
+      </div>
+    </section>
+  );
+}
+
 function WhyUsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -448,7 +506,6 @@ function WhyUsSection() {
 
         <Reveal delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px]" style={{ alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
-            {/* Image */}
             <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
@@ -458,7 +515,6 @@ function WhyUsSection() {
               />
             </div>
 
-            {/* FAQ List */}
             <div style={{ width: "100%" }} className="md:col-span-1 col-span-1">
               {faqItems.map((item, index) => (
                 <article
@@ -562,17 +618,15 @@ function PricingSection() {
 
         <Reveal delay={0.1}>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px]" style={{ alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
-            {/* Image */}
             <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg"
-                alt="Cenová kalkulačka"
+                alt="Online kalkulačka ceny malování bytu a pokoje v Praze"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
             </div>
 
-            {/* Price List */}
             <div style={{ width: "100%", display: "flex", flexDirection: "column", minHeight: "auto", justifyContent: "space-between" }} className="md:h-[570px]">
               <div>
                 <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#3d3d47", fontWeight: 500, marginBottom: "30px" }}>
@@ -663,7 +717,7 @@ function DecorativeArtSection() {
               <div key={i} className={`overflow-hidden rounded-xl ${i === 0 ? "row-span-2" : ""}`}>
                 <ImageWithFallback
                   src={img}
-                  alt={`Dekorativní malba ${i + 1}`}
+                  alt={`Dekorativní stěrka a umělecká úprava stěny ${i + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   style={{ minHeight: i === 0 ? "320px" : "160px" }}
                   loading="lazy"
@@ -742,6 +796,7 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
+      <LocalSeoSection />
       <PricingSection />
       <DecorativeArtSection />
       <WhyUsSection />

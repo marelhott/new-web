@@ -19,7 +19,11 @@ export default function NextSeoHead() {
     <Head>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      {seo.keywords?.length ? <meta name="keywords" content={seo.keywords.join(", ")} /> : null}
       <meta name="robots" content={robots} />
+      <meta name="author" content={SITE.name} />
+      <meta name="geo.region" content="CZ-10" />
+      <meta name="geo.placename" content={SITE.city} />
       <meta name="theme-color" content="#111111" />
       <meta name="language" content="cs" />
       <meta property="og:type" content="website" />
@@ -34,6 +38,12 @@ export default function NextSeoHead() {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={image} />
+      <link rel="preconnect" href="https://cdn.builder.io" />
+      <link rel="preconnect" href="https://images.unsplash.com" />
+      <link rel="preconnect" href="https://images.pexels.com" />
+      <link rel="dns-prefetch" href="https://cdn.builder.io" />
+      <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      <link rel="dns-prefetch" href="https://images.pexels.com" />
       <link rel="canonical" href={canonical} />
       <link rel="alternate" hrefLang="cs-CZ" href={canonical} />
       <link rel="alternate" hrefLang="cs" href={canonical} />

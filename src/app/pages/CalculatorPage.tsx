@@ -1,27 +1,12 @@
-import { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { ComponentType, SVGProps, useState, useEffect, useRef, useCallback, useMemo } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
-import emailjs from "@emailjs/browser";
 import {
   CalculatorIcon, HomeIcon, Cog6ToothIcon, CheckBadgeIcon, ChatBubbleLeftIcon,
   UserIcon, CheckIcon, XMarkIcon, PhoneIcon, EnvelopeIcon, MapPinIcon, CalendarIcon,
   PaperAirplaneIcon, SparklesIcon, CheckCircleIcon, ExclamationTriangleIcon, ArrowTopRightOnSquareIcon,
   Square3Stack3DIcon, PaintBrushIcon, BuildingLibraryIcon, ShieldCheckIcon, TrashIcon
 } from "@heroicons/react/24/outline";
-
-/* ─── EMAILJS CONFIG ─── */
-const EMAILJS_CONFIG = {
-  serviceID: "service_nis6m4f",
-  businessTemplateID: "template_cgsqabs",
-  customerTemplateID: "template_65qsr9b",
-  publicKey: "1qHEdD1y0wMojMsRL",
-};
-
-/* ─── TYPES ─── */
-type AreaType = "Půdorys" | "Stěna";
-type CeilingHeight = "250" | "350" | "450";
-type RepairType = "Malé" | "Střední" | "Velké" | "Žádné";
-type YesNo = "Ano" | "Ne";
-type CleaningType = "Potřebuji" | "Nepotřebuji";
+import { emailRegex, phoneRegex, type AreaType, type CeilingHeight, type RepairType, type YesNo, type CleaningType } from "@/lib/calculatorInquiry";
 
 interface FormState {
   selectedWork: AreaType;
@@ -226,7 +211,7 @@ function SectionCard({
   children,
   delay = 0,
 }: {
-  icon: typeof Calculator;
+  icon: ComponentType<SVGProps<SVGSVGElement>>;
   title: string;
   subtitle?: string;
   children: React.ReactNode;
@@ -259,26 +244,27 @@ function calculatePrice(form: FormState): number {
   const area = Number(form.totalArea) || 0;
   if (area <= 0) return 0;
 
-  // Base price
-  let basePrice = 0;
-  if (form.selectedWork === "Půdorys") {
-    basePrice = area > 20 ? 3000 + (area - 20) * 140 : 3000;
-  } else {
-    basePrice = area > 80 ? 3000 + (area - 80) * 40 : 3000;
-  }
+  const FLOOR_AREA_RATE = 10000 / 55;
+  const WALL_AREA_RATE = FLOOR_AREA_RATE / 3.5;
+  const MIN_PRICE = 3000;
+
+  const basePrice = Math.max(
+    form.selectedWork === "Půdorys" ? area * FLOOR_AREA_RATE : area * WALL_AREA_RATE,
+    MIN_PRICE
+  );
 
   let total = basePrice;
 
   // Ceiling height (only for floor area)
   if (form.selectedWork === "Půdorys") {
-    if (form.ceilingHeightForPrice === "350") total += basePrice * 0.15;
-    else if (form.ceilingHeightForPrice === "450") total += basePrice * 0.3;
+    if (form.ceilingHeightForPrice === "350") total += basePrice * 0.1;
+    else if (form.ceilingHeightForPrice === "450") total += basePrice * 0.2;
   }
 
   // Repair type
   if (form.repairType === "Malé") total += basePrice * 0.17;
   else if (form.repairType === "Střední") total += basePrice * 0.35;
-  else if (form.repairType === "Velké") total += basePrice * 0.8;
+  else if (form.repairType === "Velké") total += basePrice * 0.6;
 
   // Services
   if (form.material === "Ano") total += basePrice * 0.2;
@@ -286,15 +272,8 @@ function calculatePrice(form: FormState): number {
   if (form.covering === "Ano") total += basePrice * 0.05;
   if (form.cleaning === "Potřebuji") total += basePrice * 0.1;
 
-  // Base cleanup fee
-  total += basePrice * 0.2;
-
   return Math.round(total);
 }
-
-/* ─── VALIDATION ─── */
-const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-const phoneRegex = /^(\+420\s?)?[0-9]{3}\s?[0-9]{3}\s?[0-9]{3}$/;
 
 /* ─── MAIN COMPONENT ─── */
 export default function CalculatorPage() {
@@ -325,11 +304,6 @@ export default function CalculatorPage() {
   const [submitted, setSubmitted] = useState(false);
   const [submitMsg, setSubmitMsg] = useState<{ text: string; type: "success" | "error" } | null>(null);
   const [showFallback, setShowFallback] = useState(false);
-
-  // Initialize EmailJS
-  useEffect(() => {
-    emailjs.init(EMAILJS_CONFIG.publicKey);
-  }, []);
 
   const set = useCallback(
     <K extends keyof FormState>(key: K, value: FormState[K]) => setForm((prev) => ({ ...prev, [key]: value })),
@@ -381,53 +355,23 @@ export default function CalculatorPage() {
     setSubmitMsg(null);
     setShowFallback(false);
 
-    const emailData = {
-      current_date: new Date().toLocaleDateString("cs-CZ", { weekday: "long", year: "numeric", month: "long", day: "numeric" }),
-      creation_time: new Date().toLocaleString("cs-CZ"),
-      customer_name: form.name || "Neuvedeno",
-      customer_email: form.email,
-      customer_phone: form.phone,
-      address: form.address || "Neuvedeno",
-      realization_date: form.realizationDate ? new Date(form.realizationDate).toLocaleDateString("cs-CZ") : "Neuvedeno",
-      total_area: form.totalArea || "0",
-      area_type: form.selectedWork === "Půdorys" ? "Podlahová plocha" : "Stěnová plocha",
-      room_count: form.roomCount || "Neuvedeno",
-      space_type: form.spaceType || "Neuvedeno",
-      repair_type: form.repairType,
-      ceiling_height: form.selectedWork === "Půdorys" ? `${form.ceilingHeightForPrice} cm` : "Neovlivňuje cenu",
-      material_provider: form.material === "Ano" ? "Malíř zajistí barvu" : "Zákazník má vlastní barvu",
-      furniture_moving: form.furnitureMoving === "Ano" ? "Ano, potřebuje" : "Ne, vyřeší sám",
-      covering: form.covering === "Ano" ? "Ano, požaduje" : "Není potřeba",
-      cleaning_service: form.cleaning === "Potřebuji" ? "Ano, požaduje úklid" : "Nepotřebuje úklid",
-      space_status: form.emptySpace === "Ano" ? "Prázdný prostor" : "Zařízený prostor",
-      carpets: form.carpets === "Ano" ? "Jsou koberce" : "Holá podlaha",
-      total_price: totalPrice.toLocaleString("cs-CZ"),
-      additional_info: form.additionalInfo || "Žádné dodatečné informace",
-    };
-
     try {
-      let businessSent = false;
-      let customerSent = false;
+      const response = await fetch("/api/calculator-inquiry", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          totalPrice,
+        }),
+      });
 
-      try {
-        await emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.businessTemplateID, { ...emailData, to_email: "info@malirivcernem.cz" }, EMAILJS_CONFIG.publicKey);
-        businessSent = true;
-      } catch { /* silent */ }
-
-      try {
-        await emailjs.send(EMAILJS_CONFIG.serviceID, EMAILJS_CONFIG.customerTemplateID, { ...emailData, to_email: form.email }, EMAILJS_CONFIG.publicKey);
-        customerSent = true;
-      } catch { /* silent */ }
-
-      if (businessSent && customerSent) {
-        setSubmitted(true);
-        setSubmitMsg({ text: "Poptávka byla úspěšně odeslána! Ozveme se vám do 24 hodin.", type: "success" });
-      } else if (businessSent) {
-        setSubmitted(true);
-        setSubmitMsg({ text: "Poptávka byla odeslána! Potvrzovací email se nepodařilo doručit, ale vaše poptávka byla přijata.", type: "success" });
-      } else {
-        throw new Error("EmailJS nedostupný");
+      const data = (await response.json()) as { ok?: boolean; message?: string };
+      if (!response.ok || !data.ok) {
+        throw new Error(data.message || "Odeslání se nepodařilo.");
       }
+
+      setSubmitted(true);
+      setSubmitMsg({ text: "Poptávka byla úspěšně odeslána! Ozveme se vám do 24 hodin.", type: "success" });
     } catch {
       setSubmitMsg({ text: "Automatické odesílání není momentálně dostupné. Použijte prosím přímý kontakt:", type: "error" });
       setShowFallback(true);
@@ -461,10 +405,10 @@ export default function CalculatorPage() {
               </h1>
             </div>
             <p className="text-foreground/50 font-sans max-w-2xl mx-auto" style={{ fontSize: "16px", lineHeight: 1.7 }}>
-              Ceny jsou přibližné. Přesnou cenu upřesníme vždy až osobně na místě.
+              Online kalkulačka malování v Praze slouží pro rychlé orientační nacenění malování bytu, pokoje, kanceláře nebo společných prostor domu.
             </p>
             <p className="text-foreground/30 font-sans max-w-2xl mx-auto mt-3 italic" style={{ fontSize: "13px", lineHeight: 1.6 }}>
-              Pokud jste s přibližnou cenou spokojeni, vyplňte prosím povinné údaje a klikněte na odeslat.
+              Ceny jsou přibližné. Přesnou cenu upřesníme vždy až osobně na místě. Pokud jste s orientační cenou spokojeni, vyplňte prosím povinné údaje a klikněte na odeslat.
               <br />
               Ozveme se vám nejpozději do 24 hodin a domluvíme podrobnosti.
             </p>

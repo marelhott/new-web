@@ -15,9 +15,9 @@ const services = [
   { label: "Malování bytů", href: "/sluzby/malovani-bytu" },
   { label: "Malování kanceláří", href: "/sluzby/malovani-kancelari" },
   { label: "Dekorativní stěrky", href: "/sluzby/dekorativni-sterky" },
-  { label: "Opravy zdí", href: "/sluzby/opravy-a-priprava" },
+  { label: "Malování před prodejem", href: "/sluzby/malovani-pred-prodejem" },
   { label: "Komerční objekty", href: "/sluzby/komercni-objekty" },
-  { label: "SVJ a bytové domy", href: "/sluzby/komercni-objekty" },
+  { label: "SVJ a bytové domy", href: "/sluzby/malovani-svj" },
 ];
 
 export function Footer() {

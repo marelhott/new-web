@@ -31,7 +31,7 @@ const faqItems = [
 
 /* ─── Icon helper ─── */
 const getServiceIcon = (iconName: string) => {
-  const icons: Record<string, React.ComponentType<{className?: string}>> = {
+  const icons: Record<string, React.ComponentType<React.SVGProps<SVGSVGElement>>> = {
     home: HomeIcon,
     building: BuildingLibraryIcon,
     palette: PaintBrushIcon,
@@ -241,7 +241,6 @@ export default function ServicesPage() {
                 <Link to={`/sluzby/${s.slug}`} className="group block">
                   <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(37,99,235,0.08)]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
                     <div className="grid grid-cols-1 lg:grid-cols-2">
-                      {/* Image */}
                       <div
                         className={`aspect-[4/3] lg:aspect-[4/3] overflow-hidden relative ${
                           i % 2 === 1 ? "lg:order-2" : ""
@@ -254,16 +253,13 @@ export default function ServicesPage() {
                           loading="lazy"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-none" />
-                        {/* Color accent strip */}
                         <div
                           className="absolute bottom-0 left-0 right-0 h-1 lg:hidden"
                           style={{ background: s.color }}
                         />
                       </div>
 
-                      {/* Content */}
                       <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
-                        {/* Tag with Icon */}
                         <div className="mb-8">
                           <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full" style={{ background: "#1a1a1a" }}>
                             {React.createElement(getServiceIcon(s.iconName)!, {
@@ -276,7 +272,6 @@ export default function ServicesPage() {
                           </div>
                         </div>
 
-                        {/* Title */}
                         <h2
                           className="mb-6"
                           style={{
@@ -291,7 +286,6 @@ export default function ServicesPage() {
                           {s.title}
                         </h2>
 
-                        {/* Description */}
                         <p
                           className="font-sans mb-8"
                           style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}
@@ -299,7 +293,6 @@ export default function ServicesPage() {
                           {s.desc}
                         </p>
 
-                        {/* Features */}
                         <div className="flex flex-col gap-3 mb-8">
                           {s.features.map((f) => (
                             <div key={f} className="flex items-start gap-2">
@@ -314,7 +307,6 @@ export default function ServicesPage() {
                           ))}
                         </div>
 
-                        {/* Price and CTA */}
                         <div className="flex items-end justify-between pt-6" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
                           <div>
                             <span
@@ -397,7 +389,6 @@ export default function ServicesPage() {
               <Link
                 to="/kontakt"
                 className="inline-flex items-center px-8 py-4 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "15px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}
-                
               >
                 Kontaktovat nás
               </Link>
