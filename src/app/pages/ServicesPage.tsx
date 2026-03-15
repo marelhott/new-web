@@ -218,11 +218,36 @@ export default function ServicesPage() {
               className="font-sans max-w-xl"
               style={{ fontSize: "17px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
             >
-              Od klasického malování bytů přes komerční prostory a SVJ po
-              speciální dekorativní techniky. Vždy precizně, čistě, v termínu a
-              za předem dohodnutou cenu.
+              Od klasického malování bytů a pokojů přes malování kanceláří,
+              společných prostor domu a SVJ až po speciální dekorativní techniky.
+              Vše realizujeme v Praze a okolí precizně, čistě, v termínu a za
+              předem dohodnutou cenu.
             </p>
           </motion.div>
+        </div>
+      </section>
+
+      <section
+        className="relative py-12 noise-overlay"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)",
+        }}
+      >
+        <div className="max-w-[1120px] mx-auto px-6 md:px-10 relative z-10">
+          <Reveal>
+            <div className="rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+              <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}>
+                Jaké malířské práce zajišťujeme v Praze a okolí
+              </h2>
+              <p className="font-sans mb-4" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                Nejčastěji poptávané je malování bytů, pokojů a kanceláří v Praze, ale realizujeme také malování restaurací, penzionů, společných prostor bytových domů a speciální dekorativní stěrky. Každá služba má vlastní detail, ceníkový rámec i doporučený postup.
+              </p>
+              <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                Pokud si nejste jistí správným řešením, začněte u <Link to="/kalkulacka" className="text-accent underline underline-offset-4">online kalkulačky malování</Link> nebo přejděte přímo na <Link to="/kontakt" className="text-accent underline underline-offset-4">kontakt</Link>. U rozsáhlejších zakázek pro SVJ, kanceláře nebo developery připravíme individuální nabídku.
+              </p>
+            </div>
+          </Reveal>
         </div>
       </section>
 

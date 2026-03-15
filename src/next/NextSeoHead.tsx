@@ -19,7 +19,11 @@ export default function NextSeoHead() {
     <Head>
       <title>{seo.title}</title>
       <meta name="description" content={seo.description} />
+      {seo.keywords?.length ? <meta name="keywords" content={seo.keywords.join(", ")} /> : null}
       <meta name="robots" content={robots} />
+      <meta name="author" content={SITE.name} />
+      <meta name="geo.region" content="CZ-10" />
+      <meta name="geo.placename" content={SITE.city} />
       <meta name="theme-color" content="#111111" />
       <meta name="language" content="cs" />
       <meta property="og:type" content="website" />

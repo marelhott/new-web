@@ -22,6 +22,7 @@ export type SeoPayload = {
   path: string;
   image?: string;
   noindex?: boolean;
+  keywords?: string[];
   jsonLd?: Array<Record<string, unknown>>;
 };
 
@@ -35,49 +36,49 @@ type ServiceSeo = {
 const serviceSeoMap: Record<string, ServiceSeo> = {
   "malovani-bytu": {
     slug: "malovani-bytu",
-    title: "Malování bytů v Praze",
+    title: "Malování bytů a pokojů v Praze",
     description:
-      "Profesionální malování bytů a rodinných domů v Praze. Zakrytí, příprava povrchů, precizní výmalba a úklid v ceně.",
+      "Profesionální malování bytů, pokojů a rodinných domů v Praze a okolí. Zakrytí, opravy zdí, precizní výmalba i finální úklid.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fccb0003eea4f4419ae5d6485d2222ae5",
   },
   "malovani-pred-prodejem": {
     slug: "malovani-pred-prodejem",
-    title: "Malování před prodejem nebo pronájmem",
+    title: "Malování před prodejem nebo pronájmem v Praze",
     description:
-      "Rychlé a efektivní malování bytu či domu před prodejem nebo pronájmem. Neutrální atmosféra a zvýšená atraktivita nemovitosti.",
+      "Rychlé malování bytu či domu před prodejem nebo pronájmem v Praze. Neutrální výmalba, opravy zdí a čisté předání pro lepší prezentaci nemovitosti.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F6f785ac818cd4504aa3ddbdcc553358c",
   },
   "malovani-kancelari": {
     slug: "malovani-kancelari",
-    title: "Malování kanceláří v Praze",
+    title: "Malování kanceláří a firemních prostor v Praze",
     description:
-      "Malování kanceláří a komerčních prostor v Praze s minimálním omezením provozu. Flexibilní termíny, rychlá realizace a čistá práce.",
+      "Malování kanceláří a komerčních prostor v Praze s minimálním omezením provozu. Flexibilní termíny, rychlá realizace, čistá práce a víkendové malování.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2F3026d95741854f52aaaf83680e170c34",
   },
   "komercni-objekty": {
     slug: "komercni-objekty",
-    title: "Malování restaurací, penzionů a hotelů",
+    title: "Malování restaurací, penzionů a hotelů v Praze",
     description:
-      "Malování pokojů a společných prostor restaurací, penzionů a menších hotelů s minimálním omezením provozu.",
+      "Malování restaurací, penzionů, hotelů a dalších komerčních objektů v Praze. Rychlá realizace, odolné nátěry a práce mimo provozní špičku.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F813e356566e0424cbba8f945a4b5a0bc",
   },
   "malovani-svj": {
     slug: "malovani-svj",
-    title: "Malování společných prostor domu (SVJ)",
+    title: "Malování společných prostor domu a SVJ v Praze",
     description:
-      "Malování chodeb, schodišť a dalších prostor bytových domů spravovaných SVJ a bytovými družstvy. Etapová realizace bez obtíží.",
+      "Malování chodeb, schodišť a společných prostor bytových domů, SVJ a družstev v Praze. Etapová realizace, koordinace a čisté provedení.",
     image:
       "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Ffe0d5ae8e8b3454e951a42634b8be26d",
   },
   "dekorativni-sterky": {
     slug: "dekorativni-sterky",
-    title: "Dekorativní stěrky a microcement",
+    title: "Dekorativní stěrky a microcement v Praze",
     description:
-      "Dekorativní stěrky, microcement a designové povrchy pro moderní interiéry. Vzorkování, návrh i profesionální aplikace.",
+      "Dekorativní stěrky, microcement, benátský štuk a designové povrchy pro moderní interiéry v Praze. Vzorkování, návrh i profesionální aplikace.",
     image:
       "https://images.unsplash.com/photo-1719194981461-fa0ec450999e?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&q=80&w=1200",
   },
@@ -209,16 +210,42 @@ function serviceSchema(service: ServiceSeo) {
 }
 
 function homeSeo(): SeoPayload {
+  const homeFaq = [
+    {
+      question: "Kolik stojí malování bytu v Praze?",
+      answer:
+        "Cena malování bytu v Praze závisí na velikosti prostoru, stavu zdí, výšce stropu a doplňkových službách. Orientační cenu si můžete spočítat v online kalkulačce.",
+    },
+    {
+      question: "Děláte i malování kanceláří a společných prostor domu?",
+      answer:
+        "Ano. Realizujeme malování kanceláří, komerčních prostor, restaurací, penzionů i společných prostor bytových domů a SVJ v Praze a okolí.",
+    },
+    {
+      question: "Zajišťujete i zakrytí, opravy zdí a úklid po malování?",
+      answer:
+        "Ano, podle rozsahu zakázky zajistíme zakrytí nábytku a podlah, opravy zdí, přípravu povrchů i finální úklid po malování.",
+    },
+  ];
+
   return {
-    title: "Malíři v černém | Malování bytů, kanceláří a dekorativní stěrky Praha",
+    title: "Malování bytů, pokojů a kanceláří Praha | Malíři v černém",
     description:
-      "Profesionální malířské práce v Praze a okolí. Malování bytů, kanceláří, opravy zdí, dekorativní stěrky a online kalkulačka ceny.",
+      "Malování bytů, pokojů, kanceláří a společných prostor v Praze a okolí. Opravy zdí, dekorativní stěrky, online kalkulačka ceny a rychlá poptávka.",
     path: "/",
+    keywords: [
+      "malování bytů Praha",
+      "malování pokojů Praha",
+      "malíř pokojů Praha",
+      "malování kanceláří Praha",
+      "dekorativní stěrky Praha",
+    ],
     image: SITE.defaultOgImage,
     jsonLd: [
       businessSchema(),
       webSiteSchema(),
       webPageSchema("Domů", "/", "Úvodní stránka firmy Malíři v černém"),
+      faqSchema(homeFaq),
     ],
   };
 }
@@ -262,15 +289,15 @@ function staticPageSeo(pathname: string): SeoPayload | null {
 
   const descriptions = {
     sluzby:
-      "Kompletní přehled malířských služeb: malování bytů a kanceláří, dekorativní stěrky, opravy povrchů a komerční objekty v Praze.",
+      "Kompletní přehled malířských služeb v Praze a okolí: malování bytů, pokojů, kanceláří, SVJ, dekorativní stěrky a komerční objekty.",
     realizace:
-      "Reference a ukázky realizací malířských prací v Praze. Prohlédněte si dokončené projekty v bytech, kancelářích a komerčních objektech.",
+      "Reference a ukázky realizací malířských prací v Praze. Prohlédněte si dokončené projekty v bytech, kancelářích, SVJ a komerčních objektech.",
     kalkulacka:
-      "Spočítejte si orientační cenu malování online a odešlete poptávku během pár minut. Rychlé nacenění malířských prací v Praze.",
+      "Spočítejte si orientační cenu malování online a odešlete poptávku během pár minut. Rychlé nacenění malování bytu, pokoje nebo kanceláře v Praze.",
     oNas:
-      "Poznejte tým Malíři v černém. Rodinná firma z Prahy s důrazem na preciznost, čistotu práce a férovou komunikaci.",
+      "Poznejte tým Malíři v černém. Firma z Prahy s důrazem na precizní malířské práce, čistotu, férovou komunikaci a rychlé termíny.",
     kontakt:
-      "Kontaktujte Malíře v černém. Telefon, email a kontaktní formulář pro poptávku malířských prací v Praze a okolí.",
+      "Kontaktujte Malíře v černém. Telefon, email a kontaktní formulář pro poptávku malování bytů, pokojů, kanceláří a stěrek v Praze a okolí.",
     ochranaOsobnichUdaju:
       "Informace o zpracování osobních údajů při poptávce malířských služeb a komunikaci se společností Malíři v černém.",
     obchodniPodminky:
@@ -279,9 +306,10 @@ function staticPageSeo(pathname: string): SeoPayload | null {
 
   const pages: Record<string, SeoPayload> = {
     "/sluzby": {
-      title: "Služby | Malíři v černém",
+      title: "Malířské služby Praha | Byty, kanceláře, SVJ a stěrky",
       description: descriptions.sluzby,
       path: "/sluzby",
+      keywords: ["malířské služby Praha", "malování bytů Praha", "malování kanceláří Praha", "malování SVJ Praha"],
       jsonLd: [
         businessSchema(),
         webPageSchema("Služby", "/sluzby", descriptions.sluzby),
@@ -293,7 +321,7 @@ function staticPageSeo(pathname: string): SeoPayload | null {
       ],
     },
     "/realizace": {
-      title: "Realizace | Ukázky prací Malíři v černém",
+      title: "Reference malování Praha | Ukázky realizací",
       description: descriptions.realizace,
       path: "/realizace",
       jsonLd: [
@@ -306,9 +334,10 @@ function staticPageSeo(pathname: string): SeoPayload | null {
       ],
     },
     "/kalkulacka": {
-      title: "Kalkulačka malování a poptávka | Malíři v černém",
+      title: "Kalkulačka malování Praha | Cena malování bytu a pokoje",
       description: descriptions.kalkulacka,
       path: "/kalkulacka",
+      keywords: ["kalkulačka malování Praha", "cena malování bytu Praha", "kolik stojí malování pokoje"],
       jsonLd: [
         businessSchema(),
         webPageSchema("Kalkulačka", "/kalkulacka", descriptions.kalkulacka),
@@ -320,7 +349,7 @@ function staticPageSeo(pathname: string): SeoPayload | null {
       ],
     },
     "/o-nas": {
-      title: "O nás | Malíři v černém",
+      title: "O nás | Malíři v černém Praha",
       description: descriptions.oNas,
       path: "/o-nas",
       jsonLd: [
@@ -333,9 +362,10 @@ function staticPageSeo(pathname: string): SeoPayload | null {
       ],
     },
     "/kontakt": {
-      title: "Kontakt | Malíři v černém Praha",
+      title: "Kontakt | Malování bytů a kanceláří Praha",
       description: descriptions.kontakt,
       path: "/kontakt",
+      keywords: ["kontakt malíř Praha", "malování bytů Praha kontakt", "malíři v černém kontakt"],
       jsonLd: [
         businessSchema(),
         webPageSchema("Kontakt", "/kontakt", descriptions.kontakt),
@@ -392,6 +422,7 @@ function servicePageSeo(pathname: string): SeoPayload | null {
     title: `${service.title} | Malíři v černém`,
     description: service.description,
     path: `/sluzby/${service.slug}`,
+    keywords: [service.title, `${service.title} Praha`, "malířské práce Praha"],
     image: service.image,
     jsonLd: [
       businessSchema(),

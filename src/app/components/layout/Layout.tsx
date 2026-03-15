@@ -22,7 +22,7 @@ const footerServices = [
   { label: "Malování bytů", href: "/sluzby/malovani-bytu" },
   { label: "Malování kanceláří", href: "/sluzby/malovani-kancelari" },
   { label: "Dekorativní stěrky", href: "/sluzby/dekorativni-sterky" },
-  { label: "Opravy a příprava", href: "/sluzby/opravy-a-priprava" },
+  { label: "Malování před prodejem", href: "/sluzby/malovani-pred-prodejem" },
   { label: "Komerční objekty", href: "/sluzby/komercni-objekty" },
 ];
 
@@ -183,7 +183,7 @@ function Footer({ isDark }: { isDark: boolean }) {
           <div>
             <img src={logoLightUrl} alt="Malíři v černém" className="h-10 w-auto opacity-90 mb-6" />
             <p className="opacity-40 font-sans mb-6" style={{ fontSize: "14px", lineHeight: 1.7 }}>
-              Profesionální malířské práce nové generace.
+              Malování bytů, pokojů, kanceláří a dekorativních stěrek v Praze a okolí. Precizní realizace, čistá práce a férová komunikace.
             </p>
             <div className="flex gap-3">
               {[Instagram, Facebook, Linkedin].map((Icon, i) => (
