@@ -792,8 +792,8 @@ export default function HomePage() {
   return (
     <>
       <HeroSection />
-      <TrustSection />
       <StatsSection />
+      <TrustSection />
       <HowItWorksSection />
       <ServicePreview />
       <LocalSeoSection />
