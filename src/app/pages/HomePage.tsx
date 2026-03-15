@@ -703,7 +703,7 @@ function DecorativeArtSection() {
               <em style={{ fontFamily: "'Instrument Serif', serif", fontWeight: "normal", fontStyle: "italic", color: "#2563eb" }}>úprava stěn</em>
             </h2>
             <p className="font-sans max-w-2xl mx-auto mt-4" style={{ fontSize: "15px", lineHeight: 1.72, color: "#3d3d47", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-              Zde malá ochutnávka z realizací naší přidružené firmy, která se rozšířila i do oblasti klasického řemesla. Jedná se o dekorativní, uměleckou malbu na zakázku s důrazem na jedinečnost a řemeslnou dokonalost různých exkluzivních malířských technik.
+              Designové úpravy stěn – betonové stěrky, limewash i originální malby
             </p>
             <Link to="/sluzby/dekorativni-sterky" className="group inline-flex items-center gap-2 mt-6 px-7 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700, fontFamily: "'Manrope', var(--font-sans)" }}>
               Chci vědět víc <ArrowRightIcon className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
