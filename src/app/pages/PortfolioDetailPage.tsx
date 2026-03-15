@@ -1,0 +1,244 @@
+import { Link } from "react-router";
+import { MapPin, Clock, Ruler, Banknote, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
+import { ImageWithFallback } from "../components/figma/ImageWithFallback";
+import type { PortfolioProject } from "../data/portfolioProjects";
+
+export default function PortfolioDetailPage({
+  project,
+}: {
+  project: PortfolioProject;
+}) {
+  const gallery = [project.cover, ...project.gallery];
+
+  return (
+    <>
+      <section
+        className="relative pt-32 pb-16 noise-overlay overflow-hidden"
+        style={{
+          background:
+            "linear-gradient(160deg, #ffffff 0%, #f4f8ff 48%, #ffffff 100%)",
+        }}
+      >
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
+          <div className="mb-8 flex flex-wrap items-center gap-3 text-sm font-medium text-slate-500">
+            <Link to="/realizace" className="hover:text-[#2563eb] transition-colors">
+              Realizace
+            </Link>
+            <span>/</span>
+            <span className="text-slate-900">{project.title}</span>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
+            <div className="overflow-hidden rounded-[28px] shadow-[0_18px_48px_rgba(15,23,42,0.08)]">
+              <ImageWithFallback
+                src={project.cover}
+                alt={`${project.title} - hlavní fotografie realizace ${project.location}`}
+                className="w-full h-full object-cover aspect-[4/3]"
+              />
+            </div>
+
+            <div>
+              <span
+                className="inline-flex items-center rounded-full px-4 py-2 mb-5"
+                style={{
+                  background: "rgba(37,99,235,0.08)",
+                  color: "#2563eb",
+                  fontSize: "12px",
+                  fontWeight: 700,
+                  letterSpacing: "0.08em",
+                  textTransform: "uppercase",
+                }}
+              >
+                {project.tag}
+              </span>
+              <h1
+                className="font-[family-name:var(--font-display)] text-foreground mb-5"
+                style={{
+                  fontSize: "clamp(34px, 5vw, 60px)",
+                  fontWeight: 700,
+                  lineHeight: 1.0,
+                }}
+              >
+                {project.title}
+              </h1>
+              <p
+                className="font-sans mb-6"
+                style={{ fontSize: "17px", lineHeight: 1.8, color: "#526071", fontWeight: 500 }}
+              >
+                {project.desc}
+              </p>
+              <div className="grid grid-cols-2 gap-4">
+                {[
+                  { icon: MapPin, label: "Lokalita", value: project.location },
+                  { icon: Ruler, label: "Plocha", value: project.area },
+                  { icon: Clock, label: "Doba realizace", value: project.duration },
+                  { icon: Banknote, label: "Cena", value: project.price },
+                  { icon: Calendar, label: "Termín", value: project.date },
+                ].map((item) => (
+                  <div
+                    key={item.label}
+                    className="rounded-2xl p-4"
+                    style={{
+                      background:
+                        "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
+                      border: "1px solid rgba(15,23,42,0.08)",
+                    }}
+                  >
+                    <div className="flex items-center gap-2 mb-2">
+                      <item.icon size={14} className="text-[#2563eb]" />
+                      <span
+                        className="font-sans"
+                        style={{ fontSize: "11px", color: "#7b8794", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
+                      >
+                        {item.label}
+                      </span>
+                    </div>
+                    <div
+                      style={{ fontFamily: "'Sora', sans-serif", fontSize: "14px", fontWeight: 700, color: "#0f172a" }}
+                    >
+                      {item.value}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        className="relative py-16 noise-overlay"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)",
+        }}
+      >
+        <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10">
+            <div>
+              <div
+                className="rounded-[28px] p-8 md:p-10 mb-8"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
+                  border: "1px solid rgba(15,23,42,0.08)",
+                  boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
+                }}
+              >
+                <h2
+                  className="font-[family-name:var(--font-display)] text-foreground mb-5"
+                  style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}
+                >
+                  Jak realizace probíhala
+                </h2>
+                <p
+                  className="font-sans"
+                  style={{ fontSize: "16px", lineHeight: 1.8, color: "#526071", fontWeight: 500 }}
+                >
+                  {project.longDesc}
+                </p>
+              </div>
+
+              <div
+                className="rounded-[28px] p-8 md:p-10"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
+                  border: "1px solid rgba(15,23,42,0.08)",
+                  boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
+                }}
+              >
+                <h2
+                  className="font-[family-name:var(--font-display)] text-foreground mb-5"
+                  style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, lineHeight: 1.1 }}
+                >
+                  Rozsah provedených prací
+                </h2>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {project.tasks.map((task) => (
+                    <div key={task} className="flex items-start gap-3">
+                      <div className="mt-1 flex h-5 w-5 items-center justify-center rounded-full bg-[#2563eb]/10">
+                        <CheckCircle2 size={12} className="text-[#2563eb]" />
+                      </div>
+                      <span
+                        className="font-sans"
+                        style={{ fontSize: "14px", lineHeight: 1.7, color: "#526071", fontWeight: 600 }}
+                      >
+                        {task}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            <div className="lg:sticky lg:top-[96px]">
+              <div
+                className="rounded-[28px] p-8 md:p-10 mb-8"
+                style={{
+                  background:
+                    "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
+                  border: "1px solid rgba(15,23,42,0.08)",
+                  boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
+                }}
+              >
+                <h2
+                  className="font-[family-name:var(--font-display)] text-foreground mb-5"
+                  style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, lineHeight: 1.1 }}
+                >
+                  Související služba
+                </h2>
+                <p
+                  className="font-sans mb-6"
+                  style={{ fontSize: "15px", lineHeight: 1.75, color: "#526071", fontWeight: 500 }}
+                >
+                  Tato reference nejlépe odpovídá službě{" "}
+                  <strong>{project.relatedServiceLabel}</strong>. Pokud řešíte
+                  podobný typ prostoru, najdete tam další informace, průběh i
+                  návaznost na kalkulaci.
+                </p>
+                <div className="flex flex-col gap-3">
+                  <Link
+                    to={`/sluzby/${project.relatedServiceSlug}`}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
+                    style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700 }}
+                  >
+                    Detail služby
+                    <ArrowRight size={15} />
+                  </Link>
+                  <Link
+                    to="/kalkulacka"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300"
+                    style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}
+                  >
+                    Spočítat cenu
+                  </Link>
+                  <Link
+                    to="/realizace"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300"
+                    style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}
+                  >
+                    Všechny reference
+                  </Link>
+                </div>
+              </div>
+
+              <div className="grid grid-cols-2 gap-3">
+                {gallery.map((image, index) => (
+                  <div key={`${image}-${index}`} className="overflow-hidden rounded-2xl">
+                    <ImageWithFallback
+                      src={image}
+                      alt={`${project.title} - fotografie realizace ${index + 1}`}
+                      className="w-full h-full object-cover aspect-[4/3]"
+                      loading="lazy"
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}

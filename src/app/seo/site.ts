@@ -1,4 +1,5 @@
 import { serviceSeoContent } from "../data/serviceSeoContent";
+import { portfolioProjects } from "../data/portfolioProjects";
 
 export const SITE = {
   name: "Malíři v černém",
@@ -273,6 +274,27 @@ function itemListSchema(name: string, items: ReadonlyArray<{ name: string; descr
   };
 }
 
+function articleSchema(title: string, description: string, path: string, image: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    headline: title,
+    description,
+    image,
+    author: {
+      "@type": "Organization",
+      name: SITE.name,
+    },
+    publisher: {
+      "@type": "Organization",
+      name: SITE.name,
+    },
+    mainEntityOfPage: absoluteUrl(path),
+    url: absoluteUrl(path),
+    inLanguage: "cs-CZ",
+  };
+}
+
 function homeSeo(): SeoPayload {
   const homeFaq = [
     {
@@ -510,10 +532,47 @@ function servicePageSeo(pathname: string): SeoPayload | null {
   };
 }
 
+function portfolioDetailSeo(pathname: string): SeoPayload | null {
+  const match = pathname.match(/^\/realizace\/([^/]+)$/);
+  if (!match) return null;
+
+  const project = portfolioProjects.find((item) => item.slug === match[1]);
+  if (!project) return null;
+
+  const title = `${project.title} | Reference malování ${project.location}`;
+  const description = `${project.desc} Lokalita ${project.location}, plocha ${project.area}, doba realizace ${project.duration}.`;
+  const path = `/realizace/${project.slug}`;
+
+  return {
+    title,
+    description,
+    path,
+    keywords: [
+      `${project.title} reference`,
+      `malování ${project.location}`,
+      `${project.relatedServiceLabel} reference`,
+      "reference malování Praha",
+    ],
+    image: project.cover,
+    jsonLd: [
+      businessSchema(),
+      webPageSchema(title, path, description),
+      breadcrumbSchema([
+        { name: "Domů", path: "/" },
+        { name: "Realizace", path: "/realizace" },
+        { name: project.title, path },
+      ]),
+      articleSchema(title, description, path, project.cover),
+    ],
+  };
+}
+
 export function resolveSeo(pathname: string): SeoPayload {
   if (pathname === "/") return homeSeo();
   const servicePage = servicePageSeo(pathname);
   if (servicePage) return servicePage;
+  const portfolioPage = portfolioDetailSeo(pathname);
+  if (portfolioPage) return portfolioPage;
   const staticPage = staticPageSeo(pathname);
   if (staticPage) return staticPage;
 
