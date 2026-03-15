@@ -71,7 +71,7 @@ function HeroSection() {
       <div className="absolute top-0 right-0 bottom-0 left-0 w-full hidden lg:block z-0">
         <img
           src={heroPhoto}
-          alt="Malířka při práci"
+          alt="Profesionální malování bytu v Praze - malířka při práci v interiéru"
           className="absolute inset-0 w-full h-full object-cover"
           loading="eager"
           decoding="async"
@@ -127,7 +127,7 @@ function HeroSection() {
           transition={{ duration: 1, delay: 0.4 }}
           className="mt-12 lg:hidden rounded-2xl overflow-hidden shadow-xl"
         >
-          <img src={heroPhoto} alt="Malířka při práci" className="w-full h-auto object-cover aspect-[4/3]" loading="eager" decoding="async" />
+          <img src={heroPhoto} alt="Profesionální malování bytu v Praze - malířka při práci v interiéru" className="w-full h-auto object-cover aspect-[4/3]" loading="eager" decoding="async" />
         </motion.div>
       </div>
 
@@ -454,7 +454,7 @@ function LocalSeoSection() {
                   Pokud hledáte spolehlivého malíře pokojů v Praze, zajišťujeme kompletní malování bytů, rodinných domů, kanceláří i společných prostor domu. Postaráme se o zakrytí, opravy zdí, samotnou výmalbu i finální úklid.
                 </p>
                 <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-                  Nejčastěji realizujeme <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů a pokojů</Link>, <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">malování kanceláří</Link>, zakázky pro <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">SVJ a bytové domy</Link> i <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">dekorativní stěrky</Link>.
+                  Nejčastěji realizujeme <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů a pokojů</Link>, <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">malování kanceláří</Link>, zakázky pro <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">SVJ a bytové domy</Link> i <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">dekorativní stěrky</Link>. Pokud hledáte orientační <Link to="/kalkulacka" className="text-accent underline underline-offset-4">cenu malování bytu v Praze</Link>, využijte naši kalkulačku a následně si projděte i <Link to="/realizace" className="text-accent underline underline-offset-4">ukázky realizací</Link>.
                 </p>
               </div>
               <div>
@@ -473,6 +473,9 @@ function LocalSeoSection() {
                 <div className="flex flex-wrap gap-3">
                   <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700 }}>
                     Spočítat cenu <ArrowRightIcon className="w-4 h-4" />
+                  </Link>
+                  <Link to="/realizace" className="inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                    Zobrazit reference
                   </Link>
                   <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
                     Kontaktovat nás
@@ -509,7 +512,7 @@ function WhyUsSection() {
             <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
-                alt="Často se nás ptáte"
+                alt="Časté otázky klientů k malování bytů a pokojů v Praze"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -623,7 +626,7 @@ function PricingSection() {
             <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg"
-                alt="Cenová kalkulačka"
+                alt="Online kalkulačka ceny malování bytu a pokoje v Praze"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
@@ -720,7 +723,7 @@ function DecorativeArtSection() {
               <div key={i} className={`overflow-hidden rounded-xl ${i === 0 ? "row-span-2" : ""}`}>
                 <ImageWithFallback
                   src={img}
-                  alt={`Dekorativní malba ${i + 1}`}
+                  alt={`Dekorativní stěrka a umělecká úprava stěny ${i + 1}`}
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-700"
                   style={{ minHeight: i === 0 ? "320px" : "160px" }}
                   loading="lazy"

@@ -1,5 +1,6 @@
 import { useState, useRef, useCallback } from "react";
 import { motion, useInView, AnimatePresence } from "motion/react";
+import { Link } from "react-router";
 import {
   ArrowUpRight,
   X,
@@ -580,7 +581,7 @@ function ProjectDetail({
               >
                 <ImageWithFallback
                   src={img}
-                  alt=""
+                  alt={`${project.title} - náhled realizace ${i + 1}`}
                   className="w-full h-full object-cover"
                 />
               </button>
@@ -692,6 +693,38 @@ export default function PortfolioPage() {
               </button>
             ))}
           </motion.div>
+        </div>
+      </section>
+
+      <section
+        className="relative py-12 noise-overlay"
+        style={{
+          background:
+            "linear-gradient(180deg, var(--s1) 0%, var(--s2) 100%)",
+        }}
+      >
+        <div className="max-w-[1120px] mx-auto px-6 md:px-10 relative z-10">
+          <Reveal>
+            <div className="rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+              <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}>
+                Reference malování bytů, kanceláří a SVJ v Praze
+              </h2>
+              <p className="font-sans mb-4" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                Tato stránka funguje jako přehled našich realizací v Praze a okolí. Najdete zde malování bytů a pokojů, kanceláří, společných prostor domu i dekorativní stěrky. U každé zakázky ukazujeme typ prostoru, orientační rozsah prací, plochu a dobu realizace.
+              </p>
+              <p className="font-sans mb-6" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                Pokud si chcete porovnat konkrétní typ služby s reálnými ukázkami, projděte si <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů</Link>, <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">malování kanceláří</Link>, <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">malování SVJ</Link> nebo <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">dekorativní stěrky</Link>.
+              </p>
+              <div className="flex flex-wrap gap-3">
+                <Link to="/sluzby" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700 }}>
+                  Zobrazit služby
+                </Link>
+                <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                  Spočítat cenu
+                </Link>
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 

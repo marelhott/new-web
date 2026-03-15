@@ -246,6 +246,24 @@ export default function ServicesPage() {
               <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
                 Pokud si nejste jistí správným řešením, začněte u <Link to="/kalkulacka" className="text-accent underline underline-offset-4">online kalkulačky malování</Link> nebo přejděte přímo na <Link to="/kontakt" className="text-accent underline underline-offset-4">kontakt</Link>. U rozsáhlejších zakázek pro SVJ, kanceláře nebo developery připravíme individuální nabídku.
               </p>
+              <div className="mt-6 grid gap-3 md:grid-cols-2">
+                <div className="rounded-2xl px-5 py-4" style={{ background: "rgba(15,23,42,0.04)" }}>
+                  <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em", color: "#0f172a" }}>
+                    Malování pokojů a bytů v Praze
+                  </h3>
+                  <p className="m-0 font-sans" style={{ fontSize: "14px", lineHeight: 1.7, color: "#526071", fontWeight: 500 }}>
+                    Pro menší i větší byty, rodinné domy a běžné rezidenční zakázky nejčastěji doporučujeme <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů a pokojů</Link> nebo <Link to="/sluzby/malovani-pred-prodejem" className="text-accent underline underline-offset-4">malování před prodejem</Link>.
+                  </p>
+                </div>
+                <div className="rounded-2xl px-5 py-4" style={{ background: "rgba(15,23,42,0.04)" }}>
+                  <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em", color: "#0f172a" }}>
+                    Kanceláře, SVJ a komerční prostory
+                  </h3>
+                  <p className="m-0 font-sans" style={{ fontSize: "14px", lineHeight: 1.7, color: "#526071", fontWeight: 500 }}>
+                    Pro firmy, výbory SVJ a provozovatele objektů máme samostatné služby pro <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">malování kanceláří</Link>, <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">společné prostory domu</Link> a <Link to="/sluzby/komercni-objekty" className="text-accent underline underline-offset-4">komerční objekty</Link>.
+                  </p>
+                </div>
+              </div>
             </div>
           </Reveal>
         </div>

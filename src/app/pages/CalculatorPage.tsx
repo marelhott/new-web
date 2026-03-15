@@ -405,10 +405,10 @@ export default function CalculatorPage() {
               </h1>
             </div>
             <p className="text-foreground/50 font-sans max-w-2xl mx-auto" style={{ fontSize: "16px", lineHeight: 1.7 }}>
-              Ceny jsou přibližné. Přesnou cenu upřesníme vždy až osobně na místě.
+              Online kalkulačka malování v Praze slouží pro rychlé orientační nacenění malování bytu, pokoje, kanceláře nebo společných prostor domu.
             </p>
             <p className="text-foreground/30 font-sans max-w-2xl mx-auto mt-3 italic" style={{ fontSize: "13px", lineHeight: 1.6 }}>
-              Pokud jste s přibližnou cenou spokojeni, vyplňte prosím povinné údaje a klikněte na odeslat.
+              Ceny jsou přibližné. Přesnou cenu upřesníme vždy až osobně na místě. Pokud jste s orientační cenou spokojeni, vyplňte prosím povinné údaje a klikněte na odeslat.
               <br />
               Ozveme se vám nejpozději do 24 hodin a domluvíme podrobnosti.
             </p>

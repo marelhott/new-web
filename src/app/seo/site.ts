@@ -1,3 +1,5 @@
+import { serviceSeoContent } from "../data/serviceSeoContent";
+
 export const SITE = {
   name: "Malíři v černém",
   baseUrl: "https://www.malirivcernem.cz",
@@ -15,6 +17,29 @@ export const SITE = {
   defaultOgImage:
     "https://cdn.builder.io/api/v1/image/assets%2Fa5554564c4f74e77865d4ed815b30c3c%2Fde4c3a59dfe7452abff728cfc029c559?format=webp&width=2400&height=1260",
 } as const;
+
+const featuredRealizations = [
+  {
+    name: "Byt 3+kk Vinohrady",
+    description: "Kompletní výmalba bytu 3+kk v Praze 2 na Vinohradech včetně oprav omítek a zakrytí interiéru.",
+    path: "/realizace",
+  },
+  {
+    name: "Kanceláře IT firmy Karlín",
+    description: "Malování kanceláří v Praze 8 přes víkend s minimálním omezením provozu.",
+    path: "/realizace",
+  },
+  {
+    name: "SVJ Biskupcova 18",
+    description: "Etapové malování společných prostor domu a schodiště pro SVJ v Praze 3.",
+    path: "/realizace",
+  },
+  {
+    name: "Microcement loft Holešovice",
+    description: "Dekorativní stěrka a microcement v loftovém bytě v Praze 7.",
+    path: "/realizace",
+  },
+] as const;
 
 export type SeoPayload = {
   title: string;
@@ -143,6 +168,10 @@ function webSiteSchema() {
     url: SITE.baseUrl,
     name: SITE.name,
     inLanguage: "cs-CZ",
+    publisher: {
+      "@type": "LocalBusiness",
+      "@id": `${SITE.baseUrl}/#business`,
+    },
   };
 }
 
@@ -206,6 +235,41 @@ function serviceSchema(service: ServiceSeo) {
     serviceType: service.title,
     areaServed: SITE.serviceAreas.map((name) => ({ "@type": "AdministrativeArea", name })),
     url: absoluteUrl(`/sluzby/${service.slug}`),
+  };
+}
+
+function collectionPageSchema(name: string, path: string, description: string) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "CollectionPage",
+    name,
+    description,
+    url: absoluteUrl(path),
+    inLanguage: "cs-CZ",
+    isPartOf: {
+      "@type": "WebSite",
+      "@id": `${SITE.baseUrl}/#website`,
+    },
+  };
+}
+
+function itemListSchema(name: string, items: ReadonlyArray<{ name: string; description: string; path: string }>) {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name,
+    itemListOrder: "https://schema.org/ItemListUnordered",
+    numberOfItems: items.length,
+    itemListElement: items.map((item, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      url: absoluteUrl(item.path),
+      item: {
+        "@type": "CreativeWork",
+        name: item.name,
+        description: item.description,
+      },
+    })),
   };
 }
 
@@ -324,9 +388,12 @@ function staticPageSeo(pathname: string): SeoPayload | null {
       title: "Reference malování Praha | Ukázky realizací",
       description: descriptions.realizace,
       path: "/realizace",
+      keywords: ["reference malování Praha", "ukázky realizací malování", "malování bytů Praha reference", "malování kanceláří Praha reference"],
       jsonLd: [
         businessSchema(),
+        collectionPageSchema("Realizace", "/realizace", descriptions.realizace),
         webPageSchema("Realizace", "/realizace", descriptions.realizace),
+        itemListSchema("Vybrané realizace", featuredRealizations),
         breadcrumbSchema([
           { name: "Domů", path: "/" },
           { name: "Realizace", path: "/realizace" },
@@ -433,6 +500,12 @@ function servicePageSeo(pathname: string): SeoPayload | null {
         { name: service.title, path: `/sluzby/${service.slug}` },
       ]),
       serviceSchema(service),
+      ...(serviceSeoContent[service.slug]
+        ? [faqSchema(serviceSeoContent[service.slug].faq.map((item) => ({
+            question: item.q,
+            answer: item.a,
+          })))]
+        : []),
     ],
   };
 }

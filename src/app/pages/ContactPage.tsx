@@ -81,7 +81,7 @@ export default function ContactPage() {
     <>
       <section className="relative pt-32 pb-20 noise-overlay overflow-hidden" style={{ background: "linear-gradient(160deg, #ffffff 0%, #f4f8ff 50%, #ffffff 100%)" }}>
         <div className="absolute inset-0 z-0 opacity-[0.06]">
-          <ImageWithFallback src="https://images.unsplash.com/photo-1698637644147-54099497b214?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxQcmFndWUlMjBvbGQlMjB0b3duJTIwYWVyaWFsJTIwcGFub3JhbWElMjBldmVuaW5nfGVufDF8fHx8MTc3MTMyOTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Praha" className="w-full h-full object-cover" />
+          <ImageWithFallback src="https://images.unsplash.com/photo-1698637644147-54099497b214?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxQcmFndWUlMjBvbGQlMjB0b3duJTIwYWVyaWFsJTIwcGFub3JhbWElMjBldmVuaW5nfGVufDF8fHx8MTc3MTMyOTY1Mnww&ixlib=rb-4.1.0&q=80&w=1080" alt="Praha a okolí - lokalita malířských služeb Malíři v černém" className="w-full h-full object-cover" />
         </div>
         <div className="absolute w-[600px] h-[600px] -top-[200px] -right-[100px] rounded-full blur-[200px] pointer-events-none z-[2]" style={{ background: "rgba(37,99,235,0.10)" }} />
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
@@ -90,7 +90,7 @@ export default function ContactPage() {
             <h1 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(36px, 6vw, 72px)", fontWeight: 700, lineHeight: 1.0 }}>
               Ozvěte se<br /><span className="bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">nám</span>
             </h1>
-            <p className="font-sans max-w-xl" style={{ fontSize: "17px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>Máte dotaz, chcete nezávaznou nabídku nebo se prostě jen potřebujete poradit?</p>
+            <p className="font-sans max-w-xl" style={{ fontSize: "17px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>Máte dotaz, chcete nezávaznou nabídku nebo se prostě jen potřebujete poradit? Pomáháme s malováním bytů, pokojů, kanceláří, SVJ i dekorativních stěrek v Praze a okolí.</p>
           </motion.div>
         </div>
       </section>
@@ -109,6 +109,20 @@ export default function ContactPage() {
               </Reveal>
             ))}
           </div>
+
+          <Reveal>
+            <div className="rounded-[28px] p-8 md:p-10 mb-8" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+              <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}>
+                Kontakt pro malování bytů, kanceláří a SVJ v Praze
+              </h2>
+              <p className="font-sans mb-4" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                Kontaktní formulář slouží pro rychlou poptávku malování bytu, pokoje, kanceláře nebo společných prostor domu. Pokud už víte základní rozměry a rozsah prací, doporučujeme nejdřív navštívit <a href="/kalkulacka" className="text-accent underline underline-offset-4">kalkulačku malování</a>, kde si spočítáte orientační cenu.
+              </p>
+              <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+                U větších realizací pro kanceláře, SVJ, restaurace nebo developery nám stačí stručný popis zakázky a kontakt. Ozveme se zpět a navrhneme další postup, termín i přesnější rozpočet.
+              </p>
+            </div>
+          </Reveal>
 
           <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
             <div className="lg:col-span-3">

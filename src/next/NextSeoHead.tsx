@@ -38,6 +38,12 @@ export default function NextSeoHead() {
       <meta name="twitter:title" content={seo.title} />
       <meta name="twitter:description" content={seo.description} />
       <meta name="twitter:image" content={image} />
+      <link rel="preconnect" href="https://cdn.builder.io" />
+      <link rel="preconnect" href="https://images.unsplash.com" />
+      <link rel="preconnect" href="https://images.pexels.com" />
+      <link rel="dns-prefetch" href="https://cdn.builder.io" />
+      <link rel="dns-prefetch" href="https://images.unsplash.com" />
+      <link rel="dns-prefetch" href="https://images.pexels.com" />
       <link rel="canonical" href={canonical} />
       <link rel="alternate" hrefLang="cs-CZ" href={canonical} />
       <link rel="alternate" hrefLang="cs" href={canonical} />
