@@ -62,7 +62,7 @@ function GradientMesh({ variant = "hero" }: { variant?: string }) {
 /* ───────── HERO (Light bg, text left, photo right – Paintly style) ───────── */
 function HeroSection() {
   return (
-    <section className="relative min-h-screen flex items-center overflow-hidden bg-background" style={{ paddingTop: "92px", paddingBottom: "128px" }}>
+    <section className="relative flex items-center overflow-hidden bg-background pb-8 md:pb-20" style={{ paddingTop: "92px", minHeight: "100vh" }}>
       <div className="absolute top-[18%] left-[6%] w-[360px] h-[360px] bg-[#2563eb]/[0.08] rounded-full blur-[170px] pointer-events-none" />
       <div className="absolute bottom-[6%] left-[28%] w-[260px] h-[260px] bg-[#ec4899]/[0.06] rounded-full blur-[130px] pointer-events-none" />
       <div className="absolute top-[14%] right-[20%] w-[240px] h-[240px] bg-[#14b8a6]/[0.05] rounded-full blur-[120px] pointer-events-none" />
@@ -81,7 +81,7 @@ function HeroSection() {
         <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.36)_0%,rgba(255,255,255,0)_18%,rgba(255,255,255,0.04)_100%)]" />
       </div>
 
-      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-20 md:pt-32 pb-32">
+      <div className="relative z-10 max-w-[1400px] mx-auto px-6 md:px-10 w-full pt-4 md:pt-16 pb-8 md:pb-32">
         <div className="max-w-xl lg:max-w-[52%]">
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <h1
@@ -105,7 +105,7 @@ function HeroSection() {
             </Link>
           </motion.div>
 
-          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-6 flex items-center gap-2 flex-wrap">
+          <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ duration: 0.8, delay: 0.7 }} className="mt-12 flex items-center gap-2 flex-wrap">
             <span className="text-foreground/55 font-sans" style={{ fontSize: "12px", fontFamily: "'Manrope', var(--font-sans)" }}>
               nebo nás kontaktujte přímo:
             </span>
@@ -183,10 +183,10 @@ function TrustSection() {
           {featureCards.map((card, index) => (
             <Reveal key={card.title} delay={index * 0.1}>
               <div className="group relative p-8 md:p-9 rounded-lg overflow-hidden transition-all duration-500 h-full flex flex-col text-left" style={{ background: "#ffffff", border: "1px solid rgba(15,23,42,0.08)" }}>
-                <div className="mb-6">
+                <div className="mb-6 h-6">
                   {getHeroIcon(card.iconName) && React.createElement(getHeroIcon(card.iconName)!, { className: "w-6 h-6 text-[#9ca3af]" })}
                 </div>
-                <h3 className="mb-6" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
+                <h3 className="mb-6 min-h-[60px]" style={{ fontFamily: "var(--font-display)", fontSize: "24px", fontWeight: 500, lineHeight: 1.2, color: "#0f172a", letterSpacing: "-0.02em" }}>
                   {card.title}
                 </h3>
                 <p className="font-sans text-[#3d3d47] flex-grow" style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}>
@@ -463,7 +463,7 @@ function LocalSeoSection() {
                 </h3>
                 <div className="flex flex-col gap-3 mb-6">
                   {serviceAreaGroups.map((area) => (
-                    <div key={area} className="rounded-2xl px-4 py-3" style={{ background: "rgba(15,23,42,0.04)" }}>
+                    <div key={area} className="rounded-[12px] px-4 py-3" style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(15,23,42,0.06)" }}>
                       <p className="m-0 font-sans" style={{ fontSize: "14px", lineHeight: 1.6, color: "#334155", fontWeight: 600 }}>
                         {area}
                       </p>
@@ -471,13 +471,13 @@ function LocalSeoSection() {
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-3">
-                  <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700 }}>
+                  <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white transition-all duration-300 hover:opacity-90" style={{ background: "#2563eb", fontSize: "14px", fontWeight: 700 }}>
                     Spočítat cenu <ArrowRightIcon className="w-4 h-4" />
                   </Link>
-                  <Link to="/realizace" className="inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                  <Link to="/realizace" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
                     Zobrazit reference
                   </Link>
-                  <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-full transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
+                  <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
                     Kontaktovat nás
                   </Link>
                 </div>
@@ -507,9 +507,8 @@ function WhyUsSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
-            {/* Image */}
-            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px]" style={{ alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+            <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
                 alt="Časté otázky klientů k malování bytů a pokojů v Praze"
@@ -518,8 +517,7 @@ function WhyUsSection() {
               />
             </div>
 
-            {/* FAQ List */}
-            <div style={{ width: "100%" }}>
+            <div style={{ width: "100%" }} className="md:col-span-1 col-span-1">
               {faqItems.map((item, index) => (
                 <article
                   key={index}
@@ -543,20 +541,20 @@ function WhyUsSection() {
                       textAlign: "left",
                     }}
                   >
-                    <h3 style={{ margin: 0, color: "#101014", fontSize: "18px", lineHeight: "26px", fontWeight: 500, letterSpacing: "-0.2px", flex: 1 }}>
+                    <h3 style={{ margin: 0, color: "#0f172a", fontSize: "20px", lineHeight: "28px", fontWeight: 700, letterSpacing: "-0.03em", flex: 1 }}>
                       {item.title}
                     </h3>
                     {/* Toggle */}
                     <span
                       style={{
                         position: "relative",
-                        width: "24px",
-                        height: "24px",
+                        width: "12px",
+                        height: "12px",
                         flex: "0 0 auto",
                         display: "block",
                       }}
                     >
-                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
+                      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.75">
                         {activeIndex === index ? (
                           <>
                             <line x1="2" y1="12" x2="22" y2="12" strokeLinecap="round" />
@@ -579,7 +577,7 @@ function WhyUsSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "16px", lineHeight: "24px", letterSpacing: "-0.1px" }}>
+                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "15px", lineHeight: 1.6, letterSpacing: "-0.02em" }}>
                         {item.desc}
                       </p>
                     </motion.div>
@@ -621,9 +619,8 @@ function PricingSection() {
         </Reveal>
 
         <Reveal delay={0.1}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "60px", alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
-            {/* Image */}
-            <div style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 md:gap-[60px]" style={{ alignItems: "start", fontFamily: "Manrope, sans-serif", maxWidth: "1280px", margin: "0 auto" }}>
+            <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://images.pexels.com/photos/8296981/pexels-photo-8296981.jpeg"
                 alt="Online kalkulačka ceny malování bytu a pokoje v Praze"
@@ -632,10 +629,9 @@ function PricingSection() {
               />
             </div>
 
-            {/* Price List */}
-            <div style={{ width: "100%", display: "flex", flexDirection: "column", height: "570px", justifyContent: "space-between" }}>
+            <div style={{ width: "100%", display: "flex", flexDirection: "column", minHeight: "auto", justifyContent: "space-between" }} className="md:h-[570px]">
               <div>
-                <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#526071", fontWeight: 500, marginBottom: "30px" }}>
+                <p style={{ fontSize: "16px", lineHeight: 1.72, color: "#3d3d47", fontWeight: 500, marginBottom: "30px" }}>
                   Cena malování závisí na velikosti bytu, stavu zdí a rozsahu přípravných prací. Pro představu uvádíme orientační ceny běžných zakázek.
                 </p>
 
@@ -768,7 +764,7 @@ function TestimonialsSection() {
                 {/* Stars */}
                 <div className="flex gap-1 mb-4">
                   {[...Array(5)].map((_, j) => (
-                    <span key={j} style={{ fontSize: "18px", color: "#1a1a1a" }}>★</span>
+                    <span key={j} style={{ fontSize: "18px", color: "#2563eb" }}>★</span>
                   ))}
                 </div>
                 {/* Quote */}

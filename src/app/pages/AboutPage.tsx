@@ -1,7 +1,6 @@
 import { useRef } from "react";
-import { Link } from "react-router";
 import { motion, useInView } from "motion/react";
-import { ArrowRightIcon, HeartIcon, CogIcon, UserGroupIcon, CheckCircleIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
+import { HeartIcon, CogIcon, UserGroupIcon, CheckCircleIcon, SparklesIcon, ShieldCheckIcon } from "@heroicons/react/24/outline";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 
 function Reveal({ children, className = "", delay = 0 }: { children: React.ReactNode; className?: string; delay?: number }) {
@@ -78,7 +77,7 @@ export default function AboutPage() {
               Česká rodinná firma, která společně{" "}
               <span className="bg-gradient-to-r from-[#2563eb] via-[#4f46e5] to-[#7c3aed] bg-clip-text text-transparent">funguje už přes 10 let</span>
             </h1>
-            <p className="font-sans max-w-3xl mx-auto" style={{ fontSize: "16px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
+            <p className="font-sans max-w-3xl mx-auto" style={{ fontSize: "15px", lineHeight: 1.82, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
               Naše firma se věnuje tradičnímu řemeslu. Zakladatel firmy, Marek, má s malbou jako takovou zkušenosti už přes 30 let. Jeho dva synové Albert a Vincent a blízcí přátelé se postupně přidali. Poctivá, manuální práce nás baví a důkazem toho je přes 1000 úspěšně dokončených zakázek.
             </p>
           </motion.div>
@@ -111,9 +110,6 @@ export default function AboutPage() {
                   </div>
                   <span className="text-foreground font-[family-name:var(--font-display)] tracking-widest" style={{ fontSize: "13px", fontWeight: 600, letterSpacing: "0.1em" }}>
                     {member.name}
-                  </span>
-                  <span className="font-sans mt-1" style={{ fontSize: "12px", color: "#6b7785", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}>
-                    {member.role}
                   </span>
                 </motion.div>
               ))}
@@ -175,7 +171,7 @@ export default function AboutPage() {
             {values.map((v, i) => (
               <Reveal key={v.title} delay={i * 0.08}>
                 <div className="group p-7 rounded-[26px] transition-all duration-500 hover:-translate-y-1" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 16px 42px rgba(15,23,42,0.05)" }}>
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${v.gradient} to-transparent flex items-center justify-center mb-5 transition-transform duration-300 group-hover:scale-110`}>
+                  <div className="mb-5">
                     <v.icon className="w-5 h-5 text-[#2563eb]" strokeWidth={1.5} />
                   </div>
                   <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.035em", color: "#0f172a" }}>{v.title}</h3>
@@ -184,19 +180,6 @@ export default function AboutPage() {
               </Reveal>
             ))}
           </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="relative py-20 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1), var(--s2))" }}>
-        <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10 text-center">
-          <Reveal>
-            <h2 className="font-[family-name:var(--font-display)] text-foreground mb-6" style={{ fontSize: "clamp(28px, 4vw, 48px)", fontWeight: 700 }}>Chcete se k nám přidat?</h2>
-            <p className="text-foreground/40 font-sans mb-10 max-w-lg mx-auto" style={{ fontSize: "16px", lineHeight: 1.7 }}>Hledáme talentované malíře, kteří sdílejí naše hodnoty poctivé práce.</p>
-            <Link to="/kontakt" className="group inline-flex items-center gap-2 px-8 py-4 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20" style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "15px", fontWeight: 600 }}>
-              Kontaktujte nás <ArrowRightIcon className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </Reveal>
         </div>
       </section>
     </>

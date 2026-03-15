@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import { MapPin, Clock, Ruler, Banknote, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
+import { MapPin, Banknote, Calendar, CheckCircle2, ArrowRight } from "lucide-react";
 import { ImageWithFallback } from "../components/figma/ImageWithFallback";
 import type { PortfolioProject } from "../data/portfolioProjects";
 
@@ -13,11 +13,8 @@ export default function PortfolioDetailPage({
   return (
     <>
       <section
-        className="relative pt-32 pb-16 noise-overlay overflow-hidden"
-        style={{
-          background:
-            "linear-gradient(160deg, #ffffff 0%, #f4f8ff 48%, #ffffff 100%)",
-        }}
+        className="relative pt-32 pb-12 noise-overlay overflow-hidden"
+        style={{ background: "linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%)" }}
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
           <div className="mb-8 flex flex-wrap items-center gap-3 text-sm font-medium text-slate-500">
@@ -28,78 +25,82 @@ export default function PortfolioDetailPage({
             <span className="text-slate-900">{project.title}</span>
           </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10 items-start">
-            <div className="overflow-hidden rounded-[28px] shadow-[0_18px_48px_rgba(15,23,42,0.08)]">
+          <div
+            className="grid grid-cols-1 lg:grid-cols-[400px_minmax(0,1fr)] gap-10 lg:gap-[70px] items-center rounded-[10px] p-6 md:p-8 lg:p-[30px]"
+            style={{ background: "#e9ecf2" }}
+          >
+            <div className="overflow-hidden rounded-2xl">
               <ImageWithFallback
                 src={project.cover}
                 alt={`${project.title} - hlavní fotografie realizace ${project.location}`}
-                className="w-full h-full object-cover aspect-[4/3]"
+                className="w-full h-full object-cover aspect-[4/5] lg:h-[500px]"
               />
             </div>
 
-            <div>
-              <span
-                className="inline-flex items-center rounded-full px-4 py-2 mb-5"
-                style={{
-                  background: "rgba(37,99,235,0.08)",
-                  color: "#2563eb",
-                  fontSize: "12px",
-                  fontWeight: 700,
-                  letterSpacing: "0.08em",
-                  textTransform: "uppercase",
-                }}
-              >
-                {project.tag}
-              </span>
-              <h1
-                className="font-[family-name:var(--font-display)] text-foreground mb-5"
-                style={{
-                  fontSize: "clamp(34px, 5vw, 60px)",
-                  fontWeight: 700,
-                  lineHeight: 1.0,
-                }}
-              >
-                {project.title}
-              </h1>
-              <p
-                className="font-sans mb-6"
-                style={{ fontSize: "17px", lineHeight: 1.8, color: "#526071", fontWeight: 500 }}
-              >
-                {project.desc}
-              </p>
-              <div className="grid grid-cols-2 gap-4">
-                {[
-                  { icon: MapPin, label: "Lokalita", value: project.location },
-                  { icon: Ruler, label: "Plocha", value: project.area },
-                  { icon: Clock, label: "Doba realizace", value: project.duration },
-                  { icon: Banknote, label: "Cena", value: project.price },
-                  { icon: Calendar, label: "Termín", value: project.date },
-                ].map((item) => (
-                  <div
-                    key={item.label}
-                    className="rounded-2xl p-4"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                      border: "1px solid rgba(15,23,42,0.08)",
-                    }}
+            <div className="min-w-0">
+              <div className="flex flex-col gap-5">
+                <div>
+                  <h1
+                    className="font-[family-name:var(--font-display)] text-foreground mb-4"
+                    style={{ fontSize: "clamp(34px, 5vw, 42px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}
                   >
-                    <div className="flex items-center gap-2 mb-2">
-                      <item.icon size={14} className="text-[#2563eb]" />
-                      <span
-                        className="font-sans"
-                        style={{ fontSize: "11px", color: "#7b8794", fontWeight: 700, letterSpacing: "0.06em", textTransform: "uppercase" }}
-                      >
-                        {item.label}
-                      </span>
-                    </div>
-                    <div
-                      style={{ fontFamily: "'Sora', sans-serif", fontSize: "14px", fontWeight: 700, color: "#0f172a" }}
+                    {project.title}
+                  </h1>
+                  <p
+                    className="font-sans"
+                    style={{ fontSize: "18px", lineHeight: 1.55, color: "#3d3d47", maxWidth: "760px" }}
+                  >
+                    {project.desc}
+                  </p>
+                </div>
+
+                <div className="flex flex-wrap gap-4">
+                  {[project.tag, project.area, project.duration].map((tag) => (
+                    <span
+                      key={tag}
+                      className="inline-flex items-center justify-center rounded-2xl px-3 py-1.5"
+                      style={{ background: "#28282c", color: "#fff", fontSize: "14px", lineHeight: 1 }}
                     >
-                      {item.value}
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <blockquote className="flex items-start gap-5 m-0">
+                  <span
+                    style={{ color: "#101014", fontSize: "56px", lineHeight: 0.8, fontWeight: 700, transform: "translateY(-4px)" }}
+                  >
+                    “
+                  </span>
+                  <p
+                    className="m-0 font-sans"
+                    style={{ fontSize: "20px", lineHeight: 1.45, color: "#3d3d47", maxWidth: "760px" }}
+                  >
+                    {project.longDesc}
+                  </p>
+                </blockquote>
+
+                <div className="flex flex-wrap gap-4 pt-2">
+                  {[
+                    { icon: MapPin, label: "Lokalita", value: project.location },
+                    { icon: Banknote, label: "Cena", value: project.price },
+                    { icon: Calendar, label: "Termín", value: project.date },
+                  ].map((item) => (
+                    <div key={item.label} className="flex items-center gap-3">
+                      <div className="flex h-12 w-12 items-center justify-center rounded-full bg-white">
+                        <item.icon size={18} className="text-[#101014]" />
+                      </div>
+                      <div>
+                        <div style={{ fontSize: "12px", color: "#6b7280", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.05em" }}>
+                          {item.label}
+                        </div>
+                        <div style={{ fontSize: "16px", color: "#101014", fontWeight: 600 }}>
+                          {item.value}
+                        </div>
+                      </div>
                     </div>
-                  </div>
-                ))}
+                  ))}
+                </div>
               </div>
             </div>
           </div>
@@ -108,26 +109,18 @@ export default function PortfolioDetailPage({
 
       <section
         className="relative py-16 noise-overlay"
-        style={{
-          background:
-            "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)",
-        }}
+        style={{ background: "linear-gradient(180deg, #ffffff 0%, #f7f8fb 100%)" }}
       >
         <div className="max-w-[1280px] mx-auto px-6 md:px-10 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-[1.1fr_0.9fr] gap-10">
+          <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.95fr] gap-8">
             <div>
               <div
-                className="rounded-[28px] p-8 md:p-10 mb-8"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                  border: "1px solid rgba(15,23,42,0.08)",
-                  boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
-                }}
+                className="rounded-[12px] p-8 md:p-10 mb-8"
+                style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}
               >
                 <h2
                   className="font-[family-name:var(--font-display)] text-foreground mb-5"
-                  style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}
+                  style={{ fontSize: "clamp(24px, 4vw, 36px)", fontWeight: 500, lineHeight: 1.08 }}
                 >
                   Jak realizace probíhala
                 </h2>
@@ -140,17 +133,12 @@ export default function PortfolioDetailPage({
               </div>
 
               <div
-                className="rounded-[28px] p-8 md:p-10"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                  border: "1px solid rgba(15,23,42,0.08)",
-                  boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
-                }}
+                className="rounded-[12px] p-8 md:p-10"
+                style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}
               >
                 <h2
                   className="font-[family-name:var(--font-display)] text-foreground mb-5"
-                  style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, lineHeight: 1.1 }}
+                  style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 500, lineHeight: 1.1 }}
                 >
                   Rozsah provedených prací
                 </h2>
@@ -174,17 +162,12 @@ export default function PortfolioDetailPage({
 
             <div className="lg:sticky lg:top-[96px]">
               <div
-                className="rounded-[28px] p-8 md:p-10 mb-8"
-                style={{
-                  background:
-                    "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                  border: "1px solid rgba(15,23,42,0.08)",
-                  boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
-                }}
+                className="rounded-[12px] p-8 md:p-10 mb-8"
+                style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}
               >
                 <h2
                   className="font-[family-name:var(--font-display)] text-foreground mb-5"
-                  style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 700, lineHeight: 1.1 }}
+                  style={{ fontSize: "clamp(24px, 3vw, 34px)", fontWeight: 500, lineHeight: 1.1 }}
                 >
                   Související služba
                 </h2>
@@ -200,22 +183,22 @@ export default function PortfolioDetailPage({
                 <div className="flex flex-col gap-3">
                   <Link
                     to={`/sluzby/${project.relatedServiceSlug}`}
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full text-white transition-all duration-300 hover:shadow-lg hover:shadow-accent/20"
-                    style={{ background: "linear-gradient(135deg, #2563eb, #4f46e5)", fontSize: "14px", fontWeight: 700 }}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg text-white transition-all duration-300 hover:opacity-90"
+                    style={{ background: "#2563eb", fontSize: "14px", fontWeight: 700 }}
                   >
                     Detail služby
                     <ArrowRight size={15} />
                   </Link>
                   <Link
                     to="/kalkulacka"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300"
-                    style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg transition-all duration-300"
+                    style={{ background: "rgba(255,255,255,0.86)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}
                   >
                     Spočítat cenu
                   </Link>
                   <Link
                     to="/realizace"
-                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-full transition-all duration-300"
+                    className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg transition-all duration-300"
                     style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}
                   >
                     Všechny reference

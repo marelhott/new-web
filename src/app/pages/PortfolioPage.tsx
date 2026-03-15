@@ -96,9 +96,8 @@ export default function PortfolioPage() {
               className="font-sans max-w-xl mb-12"
               style={{ fontSize: "17px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
             >
-              Reálné reference malování bytů, kanceláří, SVJ a dekorativních
-              stěrek v Praze a okolí. Každá významná realizace má vlastní detail,
-              abyste si mohli porovnat typ prostoru, rozsah prací i cenu.
+              Každý projekt je jiný. Projděte si naše realizace od menších
+              bytů až po rozsáhlejší komerční zakázky a společné prostory domů.
             </p>
           </motion.div>
 
@@ -144,15 +143,7 @@ export default function PortfolioPage() {
       >
         <div className="max-w-[1120px] mx-auto px-6 md:px-10 relative z-10">
           <Reveal>
-            <div
-              className="rounded-[28px] p-8 md:p-10"
-              style={{
-                background:
-                  "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                border: "1px solid rgba(15,23,42,0.08)",
-                boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
-              }}
-            >
+            <div className="rounded-[12px] p-8 md:p-10" style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}>
               <h2
                 className="font-[family-name:var(--font-display)] text-foreground mb-5"
                 style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}
@@ -240,15 +231,7 @@ export default function PortfolioPage() {
                   to={`/realizace/${project.slug}`}
                   className="group block"
                 >
-                  <div
-                    className="relative overflow-hidden rounded-[28px] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(37,99,235,0.08)]"
-                    style={{
-                      background:
-                        "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                      border: "1px solid rgba(15,23,42,0.08)",
-                      boxShadow: "0 18px 48px rgba(15,23,42,0.05)",
-                    }}
-                  >
+                  <div className="relative overflow-hidden rounded-[12px] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(37,99,235,0.08)]" style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}>
                     <div className="aspect-[4/3] overflow-hidden relative">
                       <ImageWithFallback
                         src={project.cover}
@@ -405,16 +388,7 @@ export default function PortfolioPage() {
                 { value: "15+", label: "Let zkušeností" },
                 { value: "85 000+", label: "Natřených m²" },
               ].map((item) => (
-                <div
-                  key={item.label}
-                  className="text-center p-6 rounded-[24px]"
-                  style={{
-                    background:
-                      "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))",
-                    border: "1px solid rgba(15,23,42,0.08)",
-                    boxShadow: "0 16px 42px rgba(15,23,42,0.05)",
-                  }}
-                >
+                <div key={item.label} className="text-center p-6 rounded-[12px]" style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}>
                   <span
                     className="block font-[family-name:var(--font-display)] text-accent mb-2"
                     style={{ fontSize: "clamp(28px, 4vw, 42px)", fontWeight: 700 }}

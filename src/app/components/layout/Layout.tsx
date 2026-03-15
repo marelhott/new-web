@@ -118,7 +118,7 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
 
             <button
               onClick={() => setMobileOpen(!mobileOpen)}
-              className="lg:hidden w-9 h-9 flex items-center justify-center"
+              className="lg:hidden w-9 h-9 flex items-center justify-center cursor-pointer hover:bg-foreground/5 rounded-full transition-colors"
             >
               {mobileOpen ? <XMarkIcon className="w-5 h-5" /> : <Bars3Icon className="w-5 h-5" />}
             </button>
@@ -132,10 +132,11 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-40 lg:hidden noise-overlay"
-            style={{ background: "linear-gradient(180deg, var(--background) 0%, var(--card) 100%)" }}
+            onClick={() => setMobileOpen(false)}
+            className="fixed inset-0 lg:hidden"
+            style={{ background: "linear-gradient(180deg, var(--background) 0%, var(--card) 100%)", zIndex: 49, pointerEvents: "auto" }}
           >
-            <div className="flex flex-col items-center justify-center h-full gap-6 pt-[72px] pb-20">
+            <div className="flex flex-col items-center justify-center h-full gap-6 pt-[72px] pb-20" onClick={(e) => e.stopPropagation()} style={{ pointerEvents: "auto" }}>
               {navLinks.map((link, i) => (
                 <motion.div
                   key={link.href}
@@ -145,6 +146,9 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
                 >
                   <Link
                     to={link.href}
+                    onClick={() => {
+                      setTimeout(() => setMobileOpen(false), 0);
+                    }}
                     className="font-[family-name:var(--font-display)] text-foreground"
                     style={{ fontSize: "36px", fontWeight: 600 }}
                   >
@@ -155,6 +159,9 @@ function Navbar({ isDark, toggleTheme }: { isDark: boolean; toggleTheme: () => v
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
                 <Link
                   to="/kalkulacka"
+                  onClick={() => {
+                    setTimeout(() => setMobileOpen(false), 0);
+                  }}
                   className="px-8 py-3 rounded-full text-background"
                   style={{
                     fontSize: "16px", fontWeight: 500,

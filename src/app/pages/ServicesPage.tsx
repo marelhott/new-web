@@ -1,6 +1,6 @@
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Link } from "react-router";
-import { motion, useInView } from "motion/react";
+import { AnimatePresence, motion, useInView } from "motion/react";
 import {
   ArrowRightIcon,
   ArrowUpRightIcon,
@@ -169,6 +169,9 @@ const allServices = [
 
 /* ─── Page ─── */
 export default function ServicesPage() {
+  const [activeService, setActiveService] = useState(0);
+  const selectedService = allServices[activeService] ?? allServices[0];
+
   return (
     <>
       {/* ── HERO ── */}
@@ -218,9 +221,8 @@ export default function ServicesPage() {
               className="font-sans max-w-xl"
               style={{ fontSize: "17px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}
             >
-              Od klasického malování bytů a pokojů přes malování kanceláří,
-              společných prostor domu a SVJ až po speciální dekorativní techniky.
-              Vše realizujeme v Praze a okolí precizně, čistě, v termínu a za
+              Od klasického malování bytů přes kanceláře, SVJ a komerční
+              prostory až po dekorativní techniky. Vše čistě, precizně a za
               předem dohodnutou cenu.
             </p>
           </motion.div>
@@ -236,7 +238,7 @@ export default function ServicesPage() {
       >
         <div className="max-w-[1120px] mx-auto px-6 md:px-10 relative z-10">
           <Reveal>
-            <div className="rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
+            <div className="rounded-[14px] p-8 md:p-10" style={{ background: "#e9ecf2", border: "1px solid #d8dceb" }}>
               <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(26px, 4vw, 40px)", fontWeight: 700, lineHeight: 1.08 }}>
                 Jaké malířské práce zajišťujeme v Praze a okolí
               </h2>
@@ -247,7 +249,7 @@ export default function ServicesPage() {
                 Pokud si nejste jistí správným řešením, začněte u <Link to="/kalkulacka" className="text-accent underline underline-offset-4">online kalkulačky malování</Link> nebo přejděte přímo na <Link to="/kontakt" className="text-accent underline underline-offset-4">kontakt</Link>. U rozsáhlejších zakázek pro SVJ, kanceláře nebo developery připravíme individuální nabídku.
               </p>
               <div className="mt-6 grid gap-3 md:grid-cols-2">
-                <div className="rounded-2xl px-5 py-4" style={{ background: "rgba(15,23,42,0.04)" }}>
+                <div className="rounded-[12px] px-5 py-4" style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(15,23,42,0.06)" }}>
                   <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em", color: "#0f172a" }}>
                     Malování pokojů a bytů v Praze
                   </h3>
@@ -255,7 +257,7 @@ export default function ServicesPage() {
                     Pro menší i větší byty, rodinné domy a běžné rezidenční zakázky nejčastěji doporučujeme <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů a pokojů</Link> nebo <Link to="/sluzby/malovani-pred-prodejem" className="text-accent underline underline-offset-4">malování před prodejem</Link>.
                   </p>
                 </div>
-                <div className="rounded-2xl px-5 py-4" style={{ background: "rgba(15,23,42,0.04)" }}>
+                <div className="rounded-[12px] px-5 py-4" style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(15,23,42,0.06)" }}>
                   <h3 className="mb-2" style={{ fontFamily: "'Sora', sans-serif", fontSize: "17px", fontWeight: 700, letterSpacing: "-0.03em", color: "#0f172a" }}>
                     Kanceláře, SVJ a komerční prostory
                   </h3>
@@ -269,7 +271,7 @@ export default function ServicesPage() {
         </div>
       </section>
 
-      {/* ── SERVICES LIST ── */}
+      {/* ── SERVICES SHOWCASE ── */}
       <section
         className="relative py-20 noise-overlay"
         style={{
@@ -278,122 +280,131 @@ export default function ServicesPage() {
         }}
       >
         <div className="max-w-[1400px] mx-auto px-6 md:px-10 relative z-10">
-          <div className="flex flex-col gap-8">
-            {allServices.map((s, i) => (
-              <Reveal key={`${s.slug}-${i}`} delay={i * 0.06}>
-                <Link to={`/sluzby/${s.slug}`} className="group block">
-                  <div className="relative overflow-hidden rounded-[30px] transition-all duration-500 hover:shadow-[0_24px_70px_rgba(37,99,235,0.08)]" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98) 0%, rgba(244,248,255,0.96) 100%)", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
-                    <div className="grid grid-cols-1 lg:grid-cols-2">
-                      {/* Image */}
-                      <div
-                        className={`aspect-[4/3] lg:aspect-[4/3] overflow-hidden relative ${
-                          i % 2 === 1 ? "lg:order-2" : ""
-                        }`}
+          <Reveal>
+            <div className="text-center mb-14">
+              <span
+                className="inline-flex items-center justify-center min-h-[36px] px-5 py-2 rounded-2xl mb-6"
+                style={{ background: "#28282c", color: "#fff", fontSize: "15px", fontWeight: 500 }}
+              >
+                Služby
+              </span>
+              <h2
+                className="font-[family-name:var(--font-display)] text-foreground"
+                style={{ fontSize: "clamp(34px, 5vw, 50px)", fontWeight: 500, lineHeight: 1.1, letterSpacing: "-0.03em" }}
+              >
+                Co děláme
+              </h2>
+              <p
+                className="font-sans max-w-3xl mx-auto mt-5"
+                style={{ fontSize: "20px", lineHeight: 1.5, color: "#3d3d47", fontWeight: 500 }}
+              >
+                Vyberte si službu, která nejlépe odpovídá vašemu prostoru a rozsahu prací.
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal delay={0.1}>
+            <div className="grid grid-cols-1 xl:grid-cols-[minmax(320px,610px)_minmax(320px,1fr)] gap-12 xl:gap-20 items-start">
+              <div className="w-full">
+                <div className="overflow-hidden rounded-[10px]">
+                  <ImageWithFallback
+                    src={selectedService.image}
+                    alt={selectedService.title}
+                    className="w-full h-full object-cover aspect-[610/686]"
+                    loading="lazy"
+                  />
+                </div>
+              </div>
+
+              <div className="w-full">
+                {allServices.map((service, index) => {
+                  const isActive = index === activeService;
+                  const Icon = getServiceIcon(service.iconName);
+
+                  return (
+                    <article
+                      key={service.slug}
+                      className="border-b"
+                      style={{ borderColor: "#dbdad9" }}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => setActiveService(index)}
+                        className="w-full h-20 flex items-center justify-between gap-5 text-left"
+                        aria-expanded={isActive}
                       >
-                        <ImageWithFallback
-                          src={s.image}
-                          alt={s.title}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                          loading="lazy"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent lg:bg-none" />
-                        {/* Color accent strip */}
-                        <div
-                          className="absolute bottom-0 left-0 right-0 h-1 lg:hidden"
-                          style={{ background: s.color }}
-                        />
-                      </div>
+                        <span className="flex items-center gap-5 min-w-0">
+                          {Icon ? <Icon className="w-10 h-10 text-[#2563eb]" /> : null}
+                          <span
+                            style={{ fontSize: "22px", lineHeight: "30.8px", fontWeight: 500, letterSpacing: "-0.2px", color: "#101014" }}
+                          >
+                            {service.title}
+                          </span>
+                        </span>
+                        <span className="relative block w-6 h-6 flex-shrink-0" aria-hidden="true">
+                          <span
+                            className="absolute left-1/2 top-1/2 h-[1.75px] w-6 rounded-full"
+                            style={{ background: "#101014", transform: isActive ? "translate(-50%, -50%) rotate(45deg)" : "translate(-50%, -50%)" }}
+                          />
+                          <span
+                            className="absolute left-1/2 top-1/2 h-[1.75px] w-6 rounded-full"
+                            style={{ background: "#101014", transform: isActive ? "translate(-50%, -50%) rotate(-45deg)" : "translate(-50%, -50%) rotate(90deg)" }}
+                          />
+                        </span>
+                      </button>
 
-                      {/* Content */}
-                      <div className="p-8 md:p-10 lg:p-12 flex flex-col justify-center">
-                        {/* Tag with Icon */}
-                        <div className="mb-8">
-                          <div className="inline-flex items-center gap-3 px-4 py-2 rounded-full" style={{ background: "#1a1a1a" }}>
-                            {React.createElement(getServiceIcon(s.iconName)!, {
-                              className: "w-5 h-5",
-                              style: { color: "#ffffff" },
-                            })}
-                            <span className="font-sans text-white" style={{ fontSize: "12px", fontWeight: 600 }}>
-                              {s.tag}
-                            </span>
-                          </div>
-                        </div>
-
-                        {/* Title */}
-                        <h2
-                          className="mb-6"
-                          style={{
-                            fontFamily: "var(--font-display)",
-                            fontSize: "32px",
-                            fontWeight: 500,
-                            lineHeight: 1.2,
-                            letterSpacing: "-0.03em",
-                            color: "#0f172a",
-                          }}
-                        >
-                          {s.title}
-                        </h2>
-
-                        {/* Description */}
-                        <p
-                          className="font-sans mb-8"
-                          style={{ fontSize: "15px", lineHeight: 1.6, color: "#3d3d47" }}
-                        >
-                          {s.desc}
-                        </p>
-
-                        {/* Features */}
-                        <div className="flex flex-col gap-3 mb-8">
-                          {s.features.map((f) => (
-                            <div key={f} className="flex items-start gap-2">
-                              <span className="text-foreground flex-shrink-0" style={{ fontSize: "14px" }}>•</span>
-                              <span
-                                className="font-sans"
-                                style={{ fontSize: "14px", color: "#3d3d47", lineHeight: 1.5 }}
+                      <AnimatePresence initial={false}>
+                        {isActive ? (
+                          <motion.div
+                            initial={{ height: 0, opacity: 0 }}
+                            animate={{ height: "auto", opacity: 1 }}
+                            exit={{ height: 0, opacity: 0 }}
+                            transition={{ duration: 0.25 }}
+                            className="overflow-hidden"
+                          >
+                            <div className="pb-8">
+                              <p
+                                className="font-sans max-w-[550px]"
+                                style={{ fontSize: "18px", lineHeight: "27px", letterSpacing: "-0.1px", color: "#3d3d47" }}
                               >
-                                {f}
-                              </span>
+                                {service.desc}
+                              </p>
+                              <div className="mt-5 flex flex-wrap gap-3">
+                                {service.features.map((feature) => (
+                                  <span
+                                    key={feature}
+                                    className="inline-flex items-center rounded-2xl px-3 py-2"
+                                    style={{ background: "rgba(15,23,42,0.04)", color: "#3d3d47", fontSize: "13px", fontWeight: 600 }}
+                                  >
+                                    {feature}
+                                  </span>
+                                ))}
+                              </div>
+                              <div className="mt-6 flex flex-wrap items-center gap-4">
+                                <span
+                                  style={{ color: "#101014", fontSize: "15px", fontWeight: 700 }}
+                                >
+                                  {service.price}
+                                </span>
+                                <Link
+                                  to={`/sluzby/${service.slug}`}
+                                  className="inline-flex items-center gap-2 rounded-full px-5 py-3 text-white transition-all duration-300"
+                                  style={{ background: "#2563eb", fontSize: "13px", fontWeight: 700 }}
+                                >
+                                  Detail služby
+                                  <ArrowUpRightIcon className="w-4 h-4" />
+                                </Link>
+                              </div>
                             </div>
-                          ))}
-                        </div>
-
-                        {/* Price and CTA */}
-                        <div className="flex items-end justify-between pt-6" style={{ borderTop: "1px solid rgba(15,23,42,0.08)" }}>
-                          <div>
-                            <span
-                              className="font-sans block"
-                              style={{
-                                fontSize: "11px",
-                                letterSpacing: "0.08em",
-                                color: "#7b8794",
-                                fontWeight: 700,
-                                marginBottom: "4px",
-                              }}
-                            >
-                              ORIENTAČNÍ CENA
-                            </span>
-                            <span
-                              style={{ fontFamily: "var(--font-display)", fontSize: "28px", fontWeight: 500, color: "#0f172a", letterSpacing: "-0.02em" }}
-                            >
-                              {s.price}
-                            </span>
-                          </div>
-                          <div className="px-6 py-3 rounded-full transition-all duration-300" style={{ background: "#1a1a1a" }}>
-                            <span
-                              className="text-white font-sans"
-                              style={{ fontSize: "13px", fontWeight: 600 }}
-                            >
-                              Detail služby
-                            </span>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </Link>
-              </Reveal>
-            ))}
-          </div>
+                          </motion.div>
+                        ) : null}
+                      </AnimatePresence>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </Reveal>
         </div>
       </section>
 
