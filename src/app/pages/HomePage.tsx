@@ -423,13 +423,11 @@ function ServicePreview() {
 
 /* ───────── FAQ (Frequently Asked Questions) ───────── */
 const faqItems = [
-  { title: "Kolik stojí malování bytu nebo pokoje v Praze?", desc: "Cena malování v Praze závisí hlavně na velikosti bytu, stavu zdí, výšce stropu a požadovaných službách navíc. Přesnou orientační cenu si můžete ihned spočítat v naší online kalkulačce." },
   { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
   { title: "Jak dlouho trvá výmalba bytu?", desc: "Většinu bytů zvládneme vymalovat během jednoho až dvou dnů. Záleží na rozsahu zakázky. Rádi se přijedeme na byt podívat a vše s vámi probereme osobně." },
   { title: "Jak rychle můžete nastoupit na zakázku?", desc: "Termín závisí na aktuální vytíženosti, ale často dokážeme nabídnout i expresní termín." },
   { title: "Používáte vlastní barvy?", desc: "Ano, používáme kvalitní osvědčené barvy. Pokud máte vlastní preferenci, rádi se přizpůsobíme." },
   { title: "Pomůžete mi s výběrem barev?", desc: "Ano. Rádi vám pomůžeme vybrat vhodný odstín tak, aby v interiéru dobře fungoval. V případě zájmu dokážeme připravit také jednoduchou vizualizaci." },
-  { title: "Děláte i malování kanceláří, SVJ a společných prostor domu?", desc: "Ano. Kromě malování bytů realizujeme také malování kanceláří, restaurací, penzionů, společných prostor bytových domů, SVJ i menších komerčních objektů v Praze a okolí." },
 ];
 
 const serviceAreaGroups = [
@@ -511,7 +509,7 @@ function WhyUsSection() {
             <div className="hidden md:block" style={{ width: "100%", height: "570px", overflow: "hidden", borderRadius: "10px" }}>
               <ImageWithFallback
                 src="https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F9c2ece810aa148b88d5fdc4f6340d995"
-                alt="Časté otázky klientů k malování bytů a pokojů v Praze"
+                alt="Často se nás ptáte"
                 className="w-full h-full object-cover"
                 loading="lazy"
               />
