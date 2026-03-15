@@ -88,9 +88,9 @@ function HeroSection() {
               className="tracking-[-0.045em] text-[#09090b]"
               style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 600, lineHeight: 1.2, fontFamily: "'Sora', sans-serif" }}
             >
-              Malujeme interiéry v Praze a okolí – rychle, čistě a bez starostí. Postaráme se o vše, od zakrytí nábytku až po finální úklid.
+              Malujeme interiéry v Praze a okolí – rychle, čistě a bez starostí.
               <br />
-              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: "clamp(28px, 3.5vw, 48px)" }}>Váš byt můžeme vymalovat už za jeden den.</span>
+              <span style={{ color: "#2563eb", fontFamily: "'Instrument Serif', serif", fontWeight: 400, fontStyle: "italic", fontSize: "clamp(28px, 3.5vw, 48px)" }}>Postaráme se o vše, od zakrytí nábytku až po finální úklid. Váš byt můžeme vymalovat už za jeden den.</span>
             </h1>
           </motion.div>
 
