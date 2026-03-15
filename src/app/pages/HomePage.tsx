@@ -323,7 +323,7 @@ const services = [
   { title: "Malování kanceláří a komerčních prostor", desc: "Profesionální malování kanceláří a dalších pracovních prostor, i mimo pracovní dobu.", image: IMG.office, slug: "malovani-kancelari", tag: "Komerční" },
   { title: "Malování restaurací, penzionů a menších hotelů", desc: "Malování pokojů i společných prostor s minimálním omezením provozu.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2F777a96af1fb9479da463a4976a62771f", slug: "komercni-objekty", tag: "Komerční" },
   { title: "Malování společných prostor domů (SVJ)", desc: "Chodby, schodiště a další prostory bytových domů – od přípravy zdí až po finální úklid.", image: IMG.commercial, slug: "malovani-svj", tag: "Odborné" },
-  { title: "Dekorativní úprava zdí", desc: "Microcement, benátský štuk, betonový efekt a desítky dalších moderních povrchových úprav. Vytvoříme zajímavé a unikátní prostředí dle vašich představ.", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-sterky", tag: "Design" },
+  { title: "Dekorativní úprava zdí", desc: "Designové úpravy stěn – betonové stěrky, limewash i originální malby", image: "https://cdn.builder.io/api/v1/image/assets%2Fac4f22b6755541c6871d8f6adda59355%2Fef84eec608ae45b68efe710c13fa7d1a", slug: "dekorativni-sterky", tag: "Design" },
 ];
 
 function ServicePreview() {
