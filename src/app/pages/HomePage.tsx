@@ -794,10 +794,10 @@ export default function HomePage() {
       <HeroSection />
       <TrustSection />
       <StatsSection />
-      <HowItWorksSection />
       <ServicePreview />
       <LocalSeoSection />
       <PricingSection />
+      <HowItWorksSection />
       <DecorativeArtSection />
       <WhyUsSection />
       <TestimonialsSection />
