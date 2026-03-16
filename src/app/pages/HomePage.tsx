@@ -488,7 +488,7 @@ const faqItems: Array<{ title: string; desc: React.ReactNode }> = [
 ];
 
 function WhyUsSection() {
-  const [activeIndex, setActiveIndex] = useState(0);
+  const [activeIndex, setActiveIndex] = useState<number | null>(0);
 
   return (
     <section id="faq" className="relative py-24 md:py-32 noise-overlay" style={{ background: "linear-gradient(180deg, var(--s1) 0%, var(--s2) 50%, var(--s1) 100%)" }}>
@@ -523,7 +523,7 @@ function WhyUsSection() {
                   }}
                 >
                   <button
-                    onClick={() => setActiveIndex(index)}
+                    onClick={() => setActiveIndex((currentIndex) => (currentIndex === index ? null : index))}
                     style={{
                       width: "100%",
                       minHeight: "80px",
