@@ -422,18 +422,69 @@ function ServicePreview() {
 }
 
 /* ───────── FAQ (Frequently Asked Questions) ───────── */
-const faqItems = [
+const serviceAreaGroups = [
+  "Praha 1, Praha 2, Praha 3 a Praha 4",
+  "Praha 5, Praha 6, Praha 7 a Praha 8",
+  "Praha 9, Praha 10, Praha-západ a Praha-východ",
+];
+
+const faqItems: Array<{ title: string; desc: React.ReactNode }> = [
+  {
+    title: "Co a kde nejčastěji malujeme?",
+    desc: (
+      <>
+        <p style={{ margin: 0 }}>
+          Nejčastěji realizujeme{" "}
+          <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">
+            malování bytů a pokojů
+          </Link>
+          ,{" "}
+          <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">
+            malování kanceláří
+          </Link>
+          , zakázky pro{" "}
+          <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">
+            SVJ a bytové domy
+          </Link>{" "}
+          i{" "}
+          <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">
+            dekorativní stěrky
+          </Link>
+          . Pokud hledáte orientační{" "}
+          <Link to="/kalkulacka" className="text-accent underline underline-offset-4">
+            cenu malování bytu v Praze
+          </Link>
+          , využijte naši kalkulačku a projděte si i{" "}
+          <Link to="/realizace" className="text-accent underline underline-offset-4">
+            ukázky realizací
+          </Link>
+          .
+        </p>
+        <div className="mt-4 flex flex-wrap gap-2">
+          {serviceAreaGroups.map((area) => (
+            <span
+              key={area}
+              className="rounded-full px-3 py-1.5"
+              style={{
+                background: "rgba(15,23,42,0.04)",
+                color: "#526071",
+                fontSize: "12px",
+                fontWeight: 600,
+                lineHeight: 1.5,
+              }}
+            >
+              {area}
+            </span>
+          ))}
+        </div>
+      </>
+    ),
+  },
   { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
   { title: "Jak dlouho trvá výmalba bytu?", desc: "Většinu bytů zvládneme vymalovat během jednoho až dvou dnů. Záleží na rozsahu zakázky. Rádi se přijedeme na byt podívat a vše s vámi probereme osobně." },
   { title: "Jak rychle můžete nastoupit na zakázku?", desc: "Termín závisí na aktuální vytíženosti, ale často dokážeme nabídnout i expresní termín." },
   { title: "Používáte vlastní barvy?", desc: "Ano, používáme kvalitní osvědčené barvy. Pokud máte vlastní preferenci, rádi se přizpůsobíme." },
   { title: "Pomůžete mi s výběrem barev?", desc: "Ano. Rádi vám pomůžeme vybrat vhodný odstín tak, aby v interiéru dobře fungoval. V případě zájmu dokážeme připravit také jednoduchou vizualizaci." },
-];
-
-const serviceAreaGroups = [
-  "Praha 1, Praha 2, Praha 3 a Praha 4",
-  "Praha 5, Praha 6, Praha 7 a Praha 8",
-  "Praha 9, Praha 10, Praha-západ a Praha-východ",
 ];
 
 function WhyUsSection() {
@@ -464,65 +515,6 @@ function WhyUsSection() {
             </div>
 
             <div style={{ width: "100%" }} className="md:col-span-1 col-span-1">
-              <div
-                className="pb-6 mb-2"
-                style={{ borderBottom: "1px solid #dbdad9" }}
-              >
-                <p
-                  className="font-sans"
-                  style={{
-                    margin: 0,
-                    color: "#526071",
-                    fontSize: "14px",
-                    lineHeight: 1.75,
-                    fontWeight: 500,
-                  }}
-                >
-                  Nejčastěji realizujeme{" "}
-                  <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">
-                    malování bytů a pokojů
-                  </Link>
-                  ,{" "}
-                  <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">
-                    malování kanceláří
-                  </Link>
-                  , zakázky pro{" "}
-                  <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">
-                    SVJ a bytové domy
-                  </Link>{" "}
-                  i{" "}
-                  <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">
-                    dekorativní stěrky
-                  </Link>
-                  . Pokud hledáte orientační{" "}
-                  <Link to="/kalkulacka" className="text-accent underline underline-offset-4">
-                    cenu malování bytu v Praze
-                  </Link>
-                  , využijte naši kalkulačku a projděte si i{" "}
-                  <Link to="/realizace" className="text-accent underline underline-offset-4">
-                    ukázky realizací
-                  </Link>
-                  .
-                </p>
-                <div className="mt-4 flex flex-wrap gap-2">
-                  {serviceAreaGroups.map((area) => (
-                    <span
-                      key={area}
-                      className="rounded-full px-3 py-1.5"
-                      style={{
-                        background: "rgba(15,23,42,0.04)",
-                        color: "#526071",
-                        fontSize: "12px",
-                        fontWeight: 600,
-                        lineHeight: 1.5,
-                      }}
-                    >
-                      {area}
-                    </span>
-                  ))}
-                </div>
-              </div>
-
               {faqItems.map((item, index) => (
                 <article
                   key={index}
@@ -582,9 +574,15 @@ function WhyUsSection() {
                       transition={{ duration: 0.3 }}
                       className="overflow-hidden"
                     >
-                      <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "15px", lineHeight: 1.6, letterSpacing: "-0.02em" }}>
-                        {item.desc}
-                      </p>
+                      {typeof item.desc === "string" ? (
+                        <p style={{ width: "100%", margin: 0, paddingBottom: "30px", color: "#3d3d47", fontSize: "15px", lineHeight: 1.6, letterSpacing: "-0.02em" }}>
+                          {item.desc}
+                        </p>
+                      ) : (
+                        <div style={{ width: "100%", paddingBottom: "30px", color: "#526071", fontSize: "15px", lineHeight: 1.75, letterSpacing: "-0.02em", fontWeight: 500 }}>
+                          {item.desc}
+                        </div>
+                      )}
                     </motion.div>
                   )}
                 </article>
