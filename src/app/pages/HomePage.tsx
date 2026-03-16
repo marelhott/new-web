@@ -86,7 +86,7 @@ function HeroSection() {
           <motion.div initial={{ opacity: 0, y: 30 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}>
             <h1
               className="tracking-[-0.045em] text-[#09090b]"
-              style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 600, lineHeight: 1.2, fontFamily: "'Sora', sans-serif" }}
+              style={{ fontSize: "clamp(32px, 4vw, 56px)", fontWeight: 600, lineHeight: 1.0, fontFamily: "'Sora', sans-serif" }}
             >
               Malujeme interiéry v Praze a okolí – rychle, čistě a bez starostí.
               <br />
