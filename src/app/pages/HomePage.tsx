@@ -429,6 +429,9 @@ const serviceAreaGroups = [
 ];
 
 const faqItems: Array<{ title: string; desc: React.ReactNode }> = [
+  { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
+  { title: "Jak dlouho trvá výmalba bytu?", desc: "Většinu bytů zvládneme vymalovat během jednoho až dvou dnů. Záleží na rozsahu zakázky. Rádi se přijedeme na byt podívat a vše s vámi probereme osobně." },
+  { title: "Jak rychle můžete nastoupit na zakázku?", desc: "Termín závisí na aktuální vytíženosti, ale často dokážeme nabídnout i expresní termín." },
   {
     title: "Co a kde nejčastěji malujeme?",
     desc: (
@@ -464,7 +467,7 @@ const faqItems: Array<{ title: string; desc: React.ReactNode }> = [
           {serviceAreaGroups.map((area) => (
             <span
               key={area}
-              className="rounded-full px-3 py-1.5"
+              className="rounded-full px-3 py-1.5 font-sans"
               style={{
                 background: "rgba(15,23,42,0.04)",
                 color: "#526071",
@@ -480,9 +483,6 @@ const faqItems: Array<{ title: string; desc: React.ReactNode }> = [
       </>
     ),
   },
-  { title: "Musím před malováním vystěhovat nábytek?", desc: "Nábytek většinou přesuneme doprostřed místnosti a vše pečlivě zakryjeme. Prosíme ale, aby před naším příjezdem byly z polic, skříněk a stěn uklizené osobní věci a dekorace. Díky tomu můžeme s přípravou prostoru začít hned a práce proběhne rychleji." },
-  { title: "Jak dlouho trvá výmalba bytu?", desc: "Většinu bytů zvládneme vymalovat během jednoho až dvou dnů. Záleží na rozsahu zakázky. Rádi se přijedeme na byt podívat a vše s vámi probereme osobně." },
-  { title: "Jak rychle můžete nastoupit na zakázku?", desc: "Termín závisí na aktuální vytíženosti, ale často dokážeme nabídnout i expresní termín." },
   { title: "Používáte vlastní barvy?", desc: "Ano, používáme kvalitní osvědčené barvy. Pokud máte vlastní preferenci, rádi se přizpůsobíme." },
   { title: "Pomůžete mi s výběrem barev?", desc: "Ano. Rádi vám pomůžeme vybrat vhodný odstín tak, aby v interiéru dobře fungoval. V případě zájmu dokážeme připravit také jednoduchou vizualizaci." },
 ];
