@@ -436,58 +436,6 @@ const serviceAreaGroups = [
   "Praha 9, Praha 10, Praha-západ a Praha-východ",
 ];
 
-function LocalSeoSection() {
-  return (
-    <section className="relative py-20 md:py-24 noise-overlay" style={{ background: "linear-gradient(180deg, #ffffff 0%, #f6f9ff 50%, #ffffff 100%)" }}>
-      <div className="max-w-[1180px] mx-auto px-6 md:px-10 relative z-10">
-        <Reveal>
-          <div className="rounded-[28px] p-8 md:p-10" style={{ background: "linear-gradient(180deg, rgba(255,255,255,0.98), rgba(244,248,255,0.96))", border: "1px solid rgba(15,23,42,0.08)", boxShadow: "0 18px 48px rgba(15,23,42,0.05)" }}>
-            <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr] gap-10">
-              <div>
-                <span className="text-accent font-[family-name:var(--font-display)] tracking-widest uppercase mb-4 block" style={{ fontSize: "12px", fontWeight: 600 }}>Praha a okolí</span>
-                <h2 className="font-[family-name:var(--font-display)] text-foreground mb-5" style={{ fontSize: "clamp(28px, 4vw, 44px)", fontWeight: 700, lineHeight: 1.08 }}>
-                  Malování bytů, pokojů a kanceláří v Praze
-                </h2>
-                <p className="font-sans mb-4" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-                  Pokud hledáte spolehlivého malíře pokojů v Praze, zajišťujeme kompletní malování bytů, rodinných domů, kanceláří i společných prostor domu. Postaráme se o zakrytí, opravy zdí, samotnou výmalbu i finální úklid.
-                </p>
-                <p className="font-sans" style={{ fontSize: "16px", lineHeight: 1.75, color: "#526071", fontFamily: "'Manrope', var(--font-sans)", fontWeight: 500 }}>
-                  Nejčastěji realizujeme <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">malování bytů a pokojů</Link>, <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">malování kanceláří</Link>, zakázky pro <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">SVJ a bytové domy</Link> i <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">dekorativní stěrky</Link>. Pokud hledáte orientační <Link to="/kalkulacka" className="text-accent underline underline-offset-4">cenu malování bytu v Praze</Link>, využijte naši kalkulačku a následně si projděte i <Link to="/realizace" className="text-accent underline underline-offset-4">ukázky realizací</Link>.
-                </p>
-              </div>
-              <div>
-                <h3 className="mb-5 text-foreground" style={{ fontFamily: "'Sora', sans-serif", fontSize: "20px", fontWeight: 700, letterSpacing: "-0.03em" }}>
-                  Kde nejčastěji malujeme
-                </h3>
-                <div className="flex flex-col gap-3 mb-6">
-                  {serviceAreaGroups.map((area) => (
-                    <div key={area} className="rounded-[12px] px-4 py-3" style={{ background: "rgba(255,255,255,0.72)", border: "1px solid rgba(15,23,42,0.06)" }}>
-                      <p className="m-0 font-sans" style={{ fontSize: "14px", lineHeight: 1.6, color: "#334155", fontWeight: 600 }}>
-                        {area}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <div className="flex flex-wrap gap-3">
-                  <Link to="/kalkulacka" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg text-white transition-all duration-300 hover:opacity-90" style={{ background: "#2563eb", fontSize: "14px", fontWeight: 700 }}>
-                    Spočítat cenu <ArrowRightIcon className="w-4 h-4" />
-                  </Link>
-                  <Link to="/realizace" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
-                    Zobrazit reference
-                  </Link>
-                  <Link to="/kontakt" className="inline-flex items-center gap-2 px-6 py-3 rounded-lg transition-all duration-300" style={{ background: "rgba(255,255,255,0.82)", border: "1px solid rgba(15,23,42,0.08)", color: "#334155", fontSize: "14px", fontWeight: 700 }}>
-                    Kontaktovat nás
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-    </section>
-  );
-}
-
 function WhyUsSection() {
   const [activeIndex, setActiveIndex] = useState(0);
 
@@ -516,6 +464,65 @@ function WhyUsSection() {
             </div>
 
             <div style={{ width: "100%" }} className="md:col-span-1 col-span-1">
+              <div
+                className="pb-6 mb-2"
+                style={{ borderBottom: "1px solid #dbdad9" }}
+              >
+                <p
+                  className="font-sans"
+                  style={{
+                    margin: 0,
+                    color: "#526071",
+                    fontSize: "14px",
+                    lineHeight: 1.75,
+                    fontWeight: 500,
+                  }}
+                >
+                  Nejčastěji realizujeme{" "}
+                  <Link to="/sluzby/malovani-bytu" className="text-accent underline underline-offset-4">
+                    malování bytů a pokojů
+                  </Link>
+                  ,{" "}
+                  <Link to="/sluzby/malovani-kancelari" className="text-accent underline underline-offset-4">
+                    malování kanceláří
+                  </Link>
+                  , zakázky pro{" "}
+                  <Link to="/sluzby/malovani-svj" className="text-accent underline underline-offset-4">
+                    SVJ a bytové domy
+                  </Link>{" "}
+                  i{" "}
+                  <Link to="/sluzby/dekorativni-sterky" className="text-accent underline underline-offset-4">
+                    dekorativní stěrky
+                  </Link>
+                  . Pokud hledáte orientační{" "}
+                  <Link to="/kalkulacka" className="text-accent underline underline-offset-4">
+                    cenu malování bytu v Praze
+                  </Link>
+                  , využijte naši kalkulačku a projděte si i{" "}
+                  <Link to="/realizace" className="text-accent underline underline-offset-4">
+                    ukázky realizací
+                  </Link>
+                  .
+                </p>
+                <div className="mt-4 flex flex-wrap gap-2">
+                  {serviceAreaGroups.map((area) => (
+                    <span
+                      key={area}
+                      className="rounded-full px-3 py-1.5"
+                      style={{
+                        background: "rgba(15,23,42,0.04)",
+                        color: "#526071",
+                        fontSize: "12px",
+                        fontWeight: 600,
+                        lineHeight: 1.5,
+                      }}
+                    >
+                      {area}
+                    </span>
+                  ))}
+                </div>
+              </div>
+
               {faqItems.map((item, index) => (
                 <article
                   key={index}
@@ -796,7 +803,6 @@ export default function HomePage() {
       <StatsSection />
       <HowItWorksSection />
       <ServicePreview />
-      <LocalSeoSection />
       <PricingSection />
       <DecorativeArtSection />
       <WhyUsSection />
